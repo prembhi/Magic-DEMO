@@ -4,9 +4,15 @@ import { MagicLogo } from './MagicLogo';
 
 interface MagicHeaderProps {
   cartCount?: number;
+  onNavigateShop?: () => void;
+  onOpenCart?: () => void;
 }
 
-export const MagicHeader: React.FC<MagicHeaderProps> = ({ cartCount = 0 }) => {
+export const MagicHeader: React.FC<MagicHeaderProps> = ({
+  cartCount = 0,
+  onNavigateShop,
+  onOpenCart,
+}) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedMarket, setSelectedMarket] = useState<'Dubai / UAE' | 'USA'>('Dubai / UAE');
 
@@ -75,16 +81,17 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({ cartCount = 0 }) => {
           </button>
 
           {/* Red CTA Button (Clean, sharp, brand red) */}
-          <a
-            href="#inquire"
+          <button
+            onClick={onNavigateShop}
             className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold uppercase tracking-wider text-white bg-[#C8102E] hover:bg-[#a60d26] rounded shadow-xs transition-all hover:shadow cursor-pointer whitespace-nowrap min-h-[38px]"
           >
-            <span>Request Catalog</span>
+            <span>Shop Online</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>
+          </button>
 
           {/* Cart Bag Icon with real counter */}
           <button
+            onClick={onOpenCart || onNavigateShop}
             className="relative p-2 text-[#3C1518] hover:text-[#C8102E] rounded hover:bg-black/5 transition-colors cursor-pointer min-w-[40px] min-h-[40px] flex items-center justify-center focus-visible:outline-2 focus-visible:outline-[#C8102E]"
             aria-label={`Shopping bag containing ${cartCount} items`}
           >
