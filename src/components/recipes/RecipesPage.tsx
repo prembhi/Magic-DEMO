@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { ChevronRight, Filter, Sparkles, ChefHat } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Filter, Sparkles, ChefHat } from 'lucide-react';
 import { RECIPES_DATA, Recipe, findRecipe } from '../../data/recipes';
 import { RecipeCard } from './RecipeCard';
 import { RecipeFilterSidebar, RecipeFilterState } from './RecipeFilterSidebar';
@@ -12,6 +12,7 @@ import { ShopHeader } from '../shop/ShopHeader';
 import { ShopFooter } from '../shop/ShopFooter';
 import { ShopCartDrawer } from '../shop/ShopCartDrawer';
 import { useShopCart } from '../../context/ShopCartContext';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface RecipesPageProps {
   recipeSlug?: string | null;
@@ -20,6 +21,7 @@ interface RecipesPageProps {
   onNavigateRecipes: (recipeSlug?: string) => void;
   onNavigateBundles?: () => void;
   onNavigateImpact?: () => void;
+  onNavigateNewsletter?: () => void;
   onSelectProduct: (productSlug: string) => void;
 }
 
@@ -41,6 +43,7 @@ export const RecipesPage: React.FC<RecipesPageProps> = ({
   onNavigateRecipes,
   onNavigateBundles,
   onNavigateImpact,
+  onNavigateNewsletter,
   onSelectProduct,
 }) => {
   const [activeCategoryTab, setActiveCategoryTab] = useState<string>('ALL');
@@ -49,6 +52,8 @@ export const RecipesPage: React.FC<RecipesPageProps> = ({
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const { isCartOpen, closeCart, toastMessage } = useShopCart();
+  const { isRTL, t } = useLanguage();
+  const ChevronIcon = isRTL ? ChevronLeft : ChevronRight;
 
   // If a specific recipe slug is requested, look it up
   const activeDetailRecipe = useMemo(() => {
@@ -171,6 +176,7 @@ export const RecipesPage: React.FC<RecipesPageProps> = ({
         onNavigateRecipes={() => onNavigateRecipes()}
         onNavigateBundles={onNavigateBundles}
         onNavigateImpact={onNavigateImpact}
+        onNavigateNewsletter={onNavigateNewsletter}
       />
 
       {/* MAIN CONTENT AREA */}
@@ -197,14 +203,14 @@ export const RecipesPage: React.FC<RecipesPageProps> = ({
                       onClick={onNavigateHome}
                       className="hover:text-[#C8102E] transition-colors cursor-pointer"
                     >
-                      Home
+                      {t('nav.home')}
                     </button>
                   </li>
                   <li>
-                    <ChevronRight className="w-3 h-3 text-[#3C1518]/30 inline" />
+                    <ChevronIcon className="w-3 h-3 text-[#3C1518]/30 inline" />
                   </li>
                   <li aria-current="page">
-                    <span className="font-semibold text-[#3C1518]">Recipes</span>
+                    <span className="font-semibold text-[#3C1518]">{t('nav.recipes')}</span>
                   </li>
                 </ol>
               </nav>
@@ -351,6 +357,7 @@ export const RecipesPage: React.FC<RecipesPageProps> = ({
         onNavigateRecipes={() => onNavigateRecipes()}
         onNavigateBundles={onNavigateBundles}
         onNavigateImpact={onNavigateImpact}
+        onNavigateNewsletter={onNavigateNewsletter}
       />
 
       {/* Cart Drawer */}

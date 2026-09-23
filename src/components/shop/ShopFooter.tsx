@@ -1,5 +1,6 @@
 import React from 'react';
 import { MAGIC_ASSETS } from '../../constants/assets';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface ShopFooterProps {
   onNavigateHome: () => void;
@@ -7,6 +8,7 @@ interface ShopFooterProps {
   onNavigateRecipes?: () => void;
   onNavigateBundles?: () => void;
   onNavigateImpact?: () => void;
+  onNavigateNewsletter?: () => void;
 }
 
 export const ShopFooter: React.FC<ShopFooterProps> = ({
@@ -15,7 +17,10 @@ export const ShopFooter: React.FC<ShopFooterProps> = ({
   onNavigateRecipes,
   onNavigateBundles,
   onNavigateImpact,
+  onNavigateNewsletter,
 }) => {
+  const { language, setLanguage, isRTL, t } = useLanguage();
+
   const handleRecipesClick = (e: React.MouseEvent) => {
     e.preventDefault();
     if (onNavigateRecipes) {
@@ -42,161 +47,166 @@ export const ShopFooter: React.FC<ShopFooterProps> = ({
       window.location.hash = '#impact';
     }
   };
+
+  const handleNewsletterClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigateNewsletter) {
+      onNavigateNewsletter();
+    } else {
+      window.location.hash = '#newsletter';
+    }
+  };
+
   return (
-    <footer className="w-full bg-[#2A0E10] text-[#FDF6EC] border-t border-[#3C1518] mt-12">
+    <footer className="w-full bg-[#2A0E10] text-[#FDF6EC] border-t border-[#3C1518] mt-12 select-none">
       {/* Main Multi-Column Content Area */}
       <div className="max-w-[1140px] mx-auto px-4 sm:px-6 py-10 sm:py-12">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 text-xs">
           {/* COL 1: SHOP */}
           <div>
             <h4 className="font-bold text-white text-xs uppercase tracking-wider mb-3">
-              SHOP
+              {t('footer.shop')}
             </h4>
             <ul className="space-y-2 text-[#FDF6EC]/70">
               <li>
                 <button
                   onClick={onNavigateHome}
-                  className="hover:text-[#D4A843] transition-colors cursor-pointer text-left"
+                  className="hover:text-[#D4A843] transition-colors cursor-pointer text-start"
                 >
-                  Home
+                  {t('shop.allProducts')}
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => onSelectCategory && onSelectCategory('all')}
-                  className="hover:text-[#D4A843] transition-colors cursor-pointer text-left text-white font-medium"
+                  onClick={() => onSelectCategory && onSelectCategory('dals')}
+                  className="hover:text-[#D4A843] transition-colors cursor-pointer text-start"
                 >
-                  Shop All Products
+                  {t('shop.dals')}
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => onSelectCategory && onSelectCategory('dals-lentils')}
-                  className="hover:text-[#D4A843] transition-colors cursor-pointer text-left"
+                  onClick={() => onSelectCategory && onSelectCategory('spices')}
+                  className="hover:text-[#D4A843] transition-colors cursor-pointer text-start"
                 >
-                  Dals & Lentils
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onSelectCategory && onSelectCategory('whole-spices')}
-                  className="hover:text-[#D4A843] transition-colors cursor-pointer text-left"
-                >
-                  Whole Spices
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onSelectCategory && onSelectCategory('ground-spices')}
-                  className="hover:text-[#D4A843] transition-colors cursor-pointer text-left"
-                >
-                  Ground Spices
+                  {t('shop.pureSpices')}
                 </button>
               </li>
               <li>
                 <button
                   onClick={handleBundlesClick}
-                  className="hover:text-[#D4A843] transition-colors cursor-pointer text-left"
+                  className="hover:text-[#D4A843] transition-colors cursor-pointer text-start"
                 >
-                  Bundles & Sets
+                  {t('nav.bundles')}
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* COL 2: SUPPORT */}
+          {/* COL 2: ABOUT & SOURCING */}
           <div>
             <h4 className="font-bold text-white text-xs uppercase tracking-wider mb-3">
-              SUPPORT
+              {t('footer.discover')}
             </h4>
             <ul className="space-y-2 text-[#FDF6EC]/70">
-              <li>
-                <a href="#contact" className="hover:text-[#D4A843] transition-colors">
-                  Contact Kitchen Desk
-                </a>
-              </li>
-              <li>
-                <a href="#shipping" className="hover:text-[#D4A843] transition-colors">
-                  Shipping & Dispatch
-                </a>
-              </li>
-              <li>
-                <a href="#returns" className="hover:text-[#D4A843] transition-colors">
-                  Returns & Guarantee
-                </a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:text-[#D4A843] transition-colors">
-                  FAQ & Packaging
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* COL 3: MAGIC */}
-          <div>
-            <h4 className="font-bold text-white text-xs uppercase tracking-wider mb-3">
-              MAGIC
-            </h4>
-            <ul className="space-y-2 text-[#FDF6EC]/70">
-              <li>
-                <button
-                  onClick={onNavigateHome}
-                  className="hover:text-[#D4A843] transition-colors cursor-pointer text-left"
-                >
-                  Our Heritage Story
-                </button>
-              </li>
               <li>
                 <button
                   onClick={handleImpactClick}
-                  className="hover:text-[#D4A843] transition-colors cursor-pointer text-left"
+                  className="hover:text-[#D4A843] transition-colors cursor-pointer text-start"
                 >
-                  From Farm to Magic (Impact)
+                  {t('nav.ourImpact')}
                 </button>
               </li>
               <li>
-                <a href="#quality" className="hover:text-[#D4A843] transition-colors">
-                  Optical Sorting Standards
+                <a href="#about" className="hover:text-[#D4A843] transition-colors">
+                  {isRTL ? 'معايير الجودة والفرز' : 'Triple Optical Sorting'}
                 </a>
+              </li>
+              <li>
+                <button
+                  onClick={handleNewsletterClick}
+                  className="hover:text-[#D4A843] transition-colors cursor-pointer text-start"
+                >
+                  {t('nav.newsletter')}
+                </button>
+              </li>
+              <li>
+                <a href="mailto:hello@magicspices.com" className="hover:text-[#D4A843] transition-colors">
+                  {isRTL ? 'تجارة الجملة والتموين' : 'Trade & Wholesale Inquiries'}
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* COL 3: RECIPES & INSPIRATION */}
+          <div>
+            <h4 className="font-bold text-white text-xs uppercase tracking-wider mb-3">
+              {t('nav.recipes')}
+            </h4>
+            <ul className="space-y-2 text-[#FDF6EC]/70">
+              <li>
+                <button
+                  onClick={handleRecipesClick}
+                  className="hover:text-[#D4A843] transition-colors cursor-pointer text-start"
+                >
+                  {t('recipes.title')}
+                </button>
               </li>
               <li>
                 <button
                   onClick={handleRecipesClick}
-                  className="hover:text-[#D4A843] transition-colors cursor-pointer text-left"
+                  className="hover:text-[#D4A843] transition-colors cursor-pointer text-start"
                 >
-                  Cook With Magic (Recipes)
+                  {t('recipes.category.dal')}
                 </button>
               </li>
               <li>
-                <a href="#newsletter" className="hover:text-[#D4A843] transition-colors">
-                  Trade Inquiries
-                </a>
+                <button
+                  onClick={handleNewsletterClick}
+                  className="hover:text-[#D4A843] transition-colors cursor-pointer text-start"
+                >
+                  {t('newsletter.kicker')}
+                </button>
               </li>
             </ul>
           </div>
 
-          {/* COL 4: REGION */}
+          {/* COL 4: LANGUAGE & UAE REGION */}
           <div>
             <h4 className="font-bold text-white text-xs uppercase tracking-wider mb-3">
-              REGION
+              {t('footer.language')}
             </h4>
-            <ul className="space-y-2 text-[#FDF6EC]/70">
-              <li className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#2B6E2A]" />
-                <span className="font-medium text-white">United Arab Emirates (AED)</span>
-              </li>
-              <li className="text-[#FDF6EC]/60 pl-3">
-                Dubai, Abu Dhabi, Sharjah
-              </li>
-              <li className="flex items-center gap-1.5 pt-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#D4A843]" />
-                <span>United States (USD)</span>
-              </li>
-              <li className="text-[#FDF6EC]/60 pl-3">
-                Export Distribution
-              </li>
-            </ul>
+            <div className="flex flex-col gap-2 mb-3">
+              <button
+                type="button"
+                onClick={() => setLanguage('en')}
+                className={`w-full flex items-center justify-between px-3 py-1.5 rounded text-xs font-semibold border transition-all cursor-pointer ${
+                  language === 'en'
+                    ? 'bg-white/15 text-[#D4A843] border-[#D4A843]/50'
+                    : 'bg-white/5 text-[#FDF6EC]/70 border-white/10 hover:bg-white/10'
+                }`}
+              >
+                <span>English</span>
+                <span className="font-mono text-[10px] text-white/50">EN</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setLanguage('ar')}
+                className={`w-full flex items-center justify-between px-3 py-1.5 rounded text-xs font-semibold border transition-all cursor-pointer font-arabic ${
+                  language === 'ar'
+                    ? 'bg-white/15 text-[#D4A843] border-[#D4A843]/50'
+                    : 'bg-white/5 text-[#FDF6EC]/70 border-white/10 hover:bg-white/10'
+                }`}
+              >
+                <span>العربية</span>
+                <span className="font-mono text-[10px] text-white/50">AR</span>
+              </button>
+            </div>
+
+            <div className="p-2 rounded bg-white/5 border border-white/10 text-xs text-[#FDF6EC]/80 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#2B6E2A]" />
+              <span>United Arab Emirates (AED)</span>
+            </div>
           </div>
 
           {/* COL 5: BRAND & SOCIAL */}
@@ -211,7 +221,7 @@ export const ShopFooter: React.FC<ShopFooterProps> = ({
               </div>
             </div>
             <p className="text-[11px] text-[#FDF6EC]/60 leading-relaxed mb-3">
-              Authentic Indian staples and spices, sealed in airtight multi-barrier pouches.
+              {t('footer.brandDescription')}
             </p>
             <h5 className="font-bold text-white text-[11px] uppercase tracking-wider mb-2">
               SOCIAL
@@ -229,14 +239,14 @@ export const ShopFooter: React.FC<ShopFooterProps> = ({
 
       {/* Bottom Sub-bar */}
       <div className="border-t border-white/10 bg-[#1F0B0D] py-4 text-[11px] text-[#FDF6EC]/50">
-        <div className="max-w-[1140px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
-          <p>© 2026 MAGIC Indian Spices & FMCG. All rights reserved.</p>
+        <div className="max-w-[1140px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-start">
+          <p>{t('footer.rights')}</p>
           <div className="flex items-center gap-4 text-[#FDF6EC]/60">
-            <span>Privacy Policy</span>
+            <span>{t('footer.privacy')}</span>
             <span>•</span>
-            <span>Terms of Service</span>
+            <span>{t('footer.terms')}</span>
             <span>•</span>
-            <span>Express Delivery UAE</span>
+            <span>{t('footer.uaeDelivery')}</span>
           </div>
         </div>
       </div>

@@ -43,6 +43,7 @@ interface ImpactPageProps {
   onNavigateRecipes: () => void;
   onNavigateBundles: () => void;
   onNavigateImpact?: () => void;
+  onNavigateNewsletter?: () => void;
   onSelectProduct: (slug: string) => void;
 }
 
@@ -52,6 +53,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
   onNavigateRecipes,
   onNavigateBundles,
   onNavigateImpact,
+  onNavigateNewsletter,
   onSelectProduct,
 }) => {
   const { isCartOpen, closeCart } = useShopCart();
@@ -72,6 +74,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
         onNavigateRecipes={onNavigateRecipes}
         onNavigateBundles={onNavigateBundles}
         onNavigateImpact={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        onNavigateNewsletter={onNavigateNewsletter}
       />
 
       <main className="flex-1 w-full flex flex-col">
@@ -962,6 +965,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
         onNavigateRecipes={onNavigateRecipes}
         onNavigateBundles={onNavigateBundles}
         onNavigateImpact={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        onNavigateNewsletter={onNavigateNewsletter}
       />
 
       {/* Slide-over Cart Drawer */}

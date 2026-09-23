@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { X, Plus, Minus, Trash2, ShoppingBag, ArrowRight, ShieldCheck, Truck } from 'lucide-react';
+import { X, Plus, Minus, Trash2, ShoppingBag, ArrowRight, ArrowLeft, ShieldCheck, Truck } from 'lucide-react';
 import { useShopCart } from '../../context/ShopCartContext';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface ShopCartDrawerProps {
   isOpen: boolean;
@@ -9,15 +10,18 @@ interface ShopCartDrawerProps {
 
 export const ShopCartDrawer: React.FC<ShopCartDrawerProps> = ({ isOpen, onClose }) => {
   const { items, updateQuantity, removeItem, clearCart, totalItems, subtotal } = useShopCart();
+  const { isRTL, t } = useLanguage();
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
 
-  // Delivery calculation for Dubai/UAE demo
+  // Delivery calculation for UAE
   const freeShippingThreshold = 50.0;
   const progressToFreeShipping = Math.min(100, (subtotal / freeShippingThreshold) * 100);
   const amountNeededForFreeShipping = Math.max(0, freeShippingThreshold - subtotal);
   const standardShippingCost = subtotal >= freeShippingThreshold || subtotal === 0 ? 0 : 10.0;
   const finalTotal = subtotal + standardShippingCost;
+
+  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
 
   // Handle ESC key press to close drawer
   useEffect(() => {
@@ -60,10 +64,10 @@ export const ShopCartDrawer: React.FC<ShopCartDrawerProps> = ({ isOpen, onClose 
 
   return (
     <div
-      className="fixed inset-0 z-50 flex justify-end"
+      className={`fixed inset-0 z-50 flex ${isRTL ? 'justify-start' : 'justify-end'}`}
       role="dialog"
       aria-modal="true"
-      aria-label="Kitchen shopping bag"
+      aria-label={t('cart.title')}
     >
       {/* Backdrop */}
       <div
@@ -72,7 +76,11 @@ export const ShopCartDrawer: React.FC<ShopCartDrawerProps> = ({ isOpen, onClose 
       />
 
       {/* Drawer Surface */}
-      <div className="relative w-full max-w-md h-full bg-[#FDF6EC] text-[#3C1518] shadow-2xl flex flex-col z-10 animate-in slide-in-from-right duration-300">
+      <div
+        className={`relative w-full max-w-md h-full bg-[#FDF6EC] text-[#3C1518] shadow-2xl flex flex-col z-10 animate-in duration-300 ${
+          isRTL ? 'slide-in-from-left text-right' : 'slide-in-from-right text-left'
+        }`}
+      >
         {/* Drawer Header */}
         <div className="p-4 sm:p-5 border-b border-[#3C1518]/12 bg-white flex items-center justify-between">
           <div className="flex items-center gap-2.5">
@@ -81,10 +89,10 @@ export const ShopCartDrawer: React.FC<ShopCartDrawerProps> = ({ isOpen, onClose 
             </div>
             <div>
               <h2 className="text-base font-bold text-[#3C1518] leading-tight">
-                Your Kitchen Bag
+                {t('cart.title')}
               </h2>
               <p className="text-xs text-[#3C1518]/65">
-                {totalItems} {totalItems === 1 ? 'item' : 'items'} ready for kitchen dispatch
+                {t('cart.itemsCount', `${totalItems} items`, { count: totalItems })}
               </p>
             </div>
           </div>
@@ -104,9 +112,15 @@ export const ShopCartDrawer: React.FC<ShopCartDrawerProps> = ({ isOpen, onClose 
             <span className="flex items-center gap-1.5">
               <Truck className="w-3.5 h-3.5 text-[#C8102E]" />
               {subtotal >= freeShippingThreshold ? (
-                <span className="text-[#5A7247] font-bold">You qualify for FREE Dubai Delivery!</span>
+                <span className="text-[#5A7247] font-bold">
+                  {t('cart.freeShippingUnlocked')}
+                </span>
               ) : (
-                <span>Add <strong className="font-mono text-[#C8102E]">AED {amountNeededForFreeShipping.toFixed(2)}</strong> for Free Delivery</span>
+                <span>
+                  {t('cart.freeShippingNotice', `Add AED ${amountNeededForFreeShipping.toFixed(2)} more for FREE Delivery`, {
+                    amount: amountNeededForFreeShipping.toFixed(2),
+                  })}
+                </span>
               )}
             </span>
             <span className="font-mono text-[#3C1518]/60">{progressToFreeShipping.toFixed(0)}%</span>
@@ -129,17 +143,19 @@ export const ShopCartDrawer: React.FC<ShopCartDrawerProps> = ({ isOpen, onClose 
               </div>
               <div>
                 <h3 className="text-xl font-bold font-serif text-[#3C1518]">
-                  Order Inquiry Registered!
+                  {isRTL ? 'تم تسجيل طلبك بنجاح!' : 'Order Inquiry Registered!'}
                 </h3>
                 <p className="text-xs text-[#3C1518]/70 mt-1 leading-relaxed">
-                  Thank you! Your simulated sample order has been registered for demonstration. Authentic MAGIC packaging is prepared direct from our regional distribution hub.
+                  {isRTL
+                    ? 'شكراً لك! يتم تجهيز عبوات ماجيك الأصيلة مباشرة من مركز التوزيع الإقليمي في دولة الإمارات العربية المتحدة.'
+                    : 'Thank you! Your simulated sample order has been registered for demonstration. Authentic MAGIC packaging is prepared direct from our regional distribution hub in the UAE.'}
                 </p>
               </div>
               <button
                 onClick={handleResetCheckout}
                 className="w-full py-3 bg-[#C8102E] hover:bg-[#a60d26] text-white font-bold text-xs uppercase tracking-wider rounded-xs cursor-pointer transition-colors"
               >
-                Continue Shopping
+                {t('cart.startShopping')}
               </button>
             </div>
           ) : items.length === 0 ? (
@@ -149,16 +165,16 @@ export const ShopCartDrawer: React.FC<ShopCartDrawerProps> = ({ isOpen, onClose 
                 <ShoppingBag className="w-8 h-8" />
               </div>
               <h3 className="text-base font-bold text-[#3C1518]">
-                Your kitchen bag is empty
+                {t('cart.empty')}
               </h3>
               <p className="text-xs text-[#3C1518]/65 max-w-xs">
-                Explore our authentic Indian dals, lentils, and unadulterated spices to get cooking.
+                {t('cart.emptyDesc')}
               </p>
               <button
                 onClick={onClose}
                 className="mt-2 py-2 px-5 bg-[#C8102E] hover:bg-[#a60d26] text-white font-bold text-xs uppercase tracking-wider rounded-xs cursor-pointer transition-colors"
               >
-                Browse Shop Range
+                {t('cart.startShopping')}
               </button>
             </div>
           ) : (
@@ -216,6 +232,7 @@ export const ShopCartDrawer: React.FC<ShopCartDrawerProps> = ({ isOpen, onClose 
                         onClick={() => removeItem(product.id)}
                         className="text-[#3C1518]/40 hover:text-[#C8102E] transition-colors p-1 cursor-pointer"
                         aria-label={`Remove ${product.name} from bag`}
+                        title={t('cart.remove')}
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
@@ -232,21 +249,21 @@ export const ShopCartDrawer: React.FC<ShopCartDrawerProps> = ({ isOpen, onClose 
           <div className="p-4 sm:p-5 bg-white border-t border-[#3C1518]/12 space-y-3">
             <div className="space-y-1.5 text-xs text-[#3C1518]">
               <div className="flex justify-between text-[#3C1518]/70">
-                <span>Subtotal ({totalItems} items)</span>
+                <span>{t('cart.subtotal')} ({totalItems})</span>
                 <span className="font-mono font-medium">AED {subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-[#3C1518]/70">
-                <span>Estimated Standard Delivery (Dubai)</span>
+                <span>{t('cart.shipping')}</span>
                 <span className="font-mono font-medium">
                   {standardShippingCost === 0 ? (
-                    <span className="text-[#5A7247] font-bold">FREE</span>
+                    <span className="text-[#5A7247] font-bold">{t('cart.freeShipping')}</span>
                   ) : (
                     `AED ${standardShippingCost.toFixed(2)}`
                   )}
                 </span>
               </div>
               <div className="flex justify-between text-sm font-bold text-[#3C1518] pt-2 border-t border-[#3C1518]/10">
-                <span>Total Amount</span>
+                <span>{t('cart.total')}</span>
                 <span className="font-mono text-base text-[#C8102E]">
                   AED {finalTotal.toFixed(2)}
                 </span>
@@ -254,7 +271,7 @@ export const ShopCartDrawer: React.FC<ShopCartDrawerProps> = ({ isOpen, onClose 
             </div>
 
             <p className="text-[10px] text-[#3C1518]/50 text-center italic">
-              *Prototype demonstration mode • Prices reflect illustrative demo data
+              {t('cart.deliveryNote')}
             </p>
 
             <button
@@ -263,11 +280,11 @@ export const ShopCartDrawer: React.FC<ShopCartDrawerProps> = ({ isOpen, onClose 
               className="w-full py-3 bg-[#C8102E] hover:bg-[#a60d26] disabled:bg-[#C8102E]/60 text-white font-bold text-xs uppercase tracking-wider rounded-xs shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer min-h-[44px]"
             >
               {isCheckingOut ? (
-                <span>Confirming Order Dispatch...</span>
+                <span>{isRTL ? 'جاري تجهيز الطلب...' : 'Confirming Order Dispatch...'}</span>
               ) : (
                 <>
-                  <span>Proceed to Kitchen Checkout</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span>{t('cart.checkout')}</span>
+                  <ArrowIcon className="w-4 h-4" />
                 </>
               )}
             </button>

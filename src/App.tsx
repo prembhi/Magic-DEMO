@@ -21,11 +21,13 @@ import { ProductPage } from './components/product/ProductPage';
 import { RecipesPage } from './components/recipes/RecipesPage';
 import { BundlesPage } from './components/bundles/BundlesPage';
 import { ImpactPage } from './components/impact/ImpactPage';
+import { NewsletterPage } from './components/newsletter/NewsletterPage';
 import { ShopCartDrawer } from './components/shop/ShopCartDrawer';
 import { ShopCartProvider, useShopCart } from './context/ShopCartContext';
+import { LanguageProvider } from './context/LanguageContext';
 
 interface RouteState {
-  page: 'shop' | 'home' | 'product' | 'recipes' | 'bundles' | 'impact';
+  page: 'shop' | 'home' | 'product' | 'recipes' | 'bundles' | 'impact' | 'newsletter';
   productSlug?: string;
   categoryId?: string;
   recipeSlug?: string;
@@ -40,7 +42,11 @@ function parseCurrentRoute(): RouteState {
   const hash = window.location.hash || '';
   const pathname = window.location.pathname || '';
 
-  // 1. Check Pathname first (e.g. /impact, /bundles/:slug, /bundles, /recipes/:slug, /recipes, /shop/product/:slug)
+  // 1. Check Pathname first (e.g. /newsletter, /impact, /bundles/:slug, /bundles, /recipes/:slug, /recipes, /shop/product/:slug)
+  if (pathname === '/newsletter' || pathname.startsWith('/newsletter/')) {
+    return { page: 'newsletter' };
+  }
+
   if (pathname === '/impact' || pathname.startsWith('/impact/')) {
     return { page: 'impact' };
   }
@@ -64,6 +70,10 @@ function parseCurrentRoute(): RouteState {
 
   // 2. Check Hash patterns
   const cleanHash = hash.replace(/^#\/?/, '');
+
+  if (cleanHash === 'newsletter' || cleanHash.startsWith('newsletter/')) {
+    return { page: 'newsletter' };
+  }
 
   if (cleanHash === 'impact' || cleanHash.startsWith('impact/')) {
     return { page: 'impact' };
@@ -152,6 +162,12 @@ function MainAppContent() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleNavigateNewsletter = () => {
+    setRouteState({ page: 'newsletter' });
+    window.location.hash = '#newsletter';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleNavigateProduct = (productSlug: string) => {
     const targetSlug = productSlug.startsWith('magic-') ? productSlug : `magic-${productSlug}`;
     setRouteState({ page: 'product', productSlug: targetSlug });
@@ -178,6 +194,10 @@ function MainAppContent() {
           productSlug={routeState.productSlug}
           onNavigateHome={handleNavigateHome}
           onNavigateShop={handleNavigateShop}
+          onNavigateRecipes={handleNavigateRecipes}
+          onNavigateBundles={handleNavigateBundles}
+          onNavigateImpact={handleNavigateImpact}
+          onNavigateNewsletter={handleNavigateNewsletter}
           onSelectProduct={handleNavigateProduct}
         />
       ) : routeState.page === 'recipes' ? (
@@ -187,6 +207,9 @@ function MainAppContent() {
           onNavigateHome={handleNavigateHome}
           onNavigateShop={handleNavigateShop}
           onNavigateRecipes={handleNavigateRecipes}
+          onNavigateBundles={handleNavigateBundles}
+          onNavigateImpact={handleNavigateImpact}
+          onNavigateNewsletter={handleNavigateNewsletter}
           onSelectProduct={handleNavigateProduct}
         />
       ) : routeState.page === 'bundles' ? (
@@ -198,6 +221,7 @@ function MainAppContent() {
           onNavigateRecipes={handleNavigateRecipes}
           onNavigateBundles={handleNavigateBundles}
           onNavigateImpact={handleNavigateImpact}
+          onNavigateNewsletter={handleNavigateNewsletter}
           onSelectProduct={handleNavigateProduct}
         />
       ) : routeState.page === 'impact' ? (
@@ -208,6 +232,18 @@ function MainAppContent() {
           onNavigateRecipes={handleNavigateRecipes}
           onNavigateBundles={handleNavigateBundles}
           onNavigateImpact={handleNavigateImpact}
+          onNavigateNewsletter={handleNavigateNewsletter}
+          onSelectProduct={handleNavigateProduct}
+        />
+      ) : routeState.page === 'newsletter' ? (
+        /* DEDICATED MAGIC NEWSLETTER PAGE */
+        <NewsletterPage
+          onNavigateHome={handleNavigateHome}
+          onNavigateShop={handleNavigateShop}
+          onNavigateRecipes={handleNavigateRecipes}
+          onNavigateBundles={handleNavigateBundles}
+          onNavigateImpact={handleNavigateImpact}
+          onNavigateNewsletter={handleNavigateNewsletter}
           onSelectProduct={handleNavigateProduct}
         />
       ) : routeState.page === 'shop' ? (
@@ -219,6 +255,7 @@ function MainAppContent() {
           onNavigateRecipes={handleNavigateRecipes}
           onNavigateBundles={handleNavigateBundles}
           onNavigateImpact={handleNavigateImpact}
+          onNavigateNewsletter={handleNavigateNewsletter}
         />
       ) : (
         /* APPROVED HOME PAGE (Untouched sections 1 to 11) */
@@ -238,10 +275,13 @@ function MainAppContent() {
           {/* TOP NAVIGATION BAR */}
           <MagicHeader
             cartCount={totalItems}
+            onNavigateHome={handleNavigateHome}
             onNavigateShop={() => handleNavigateShop()}
             onNavigateRecipes={() => handleNavigateRecipes()}
             onNavigateBundles={() => handleNavigateBundles()}
             onNavigateImpact={() => handleNavigateImpact()}
+            onNavigateNewsletter={() => handleNavigateNewsletter()}
+            onSelectProduct={handleNavigateProduct}
             onOpenCart={openCart}
           />
 
@@ -291,8 +331,10 @@ function MainAppContent() {
 
 export default function App() {
   return (
-    <ShopCartProvider>
-      <MainAppContent />
-    </ShopCartProvider>
+    <LanguageProvider>
+      <ShopCartProvider>
+        <MainAppContent />
+      </ShopCartProvider>
+    </LanguageProvider>
   );
 }

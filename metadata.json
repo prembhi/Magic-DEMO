@@ -1,6 +1,6 @@
 {
   "name": "MAGIC - Indian Spices & FMCG",
-  "description": "The MAGIC packaging translated into an immersive digital spice world. Premium Indian culinary heritage for Dubai, UAE and the USA.",
+  "description": "The MAGIC packaging translated into an immersive digital spice world. Premium Indian culinary heritage for Dubai and the United Arab Emirates.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

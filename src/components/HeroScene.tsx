@@ -228,10 +228,10 @@ export const HeroScene: React.FC<HeroSceneProps> = ({ onAddToCart }) => {
 
         {/* Right verified markets */}
         <div className="flex items-center gap-3">
-          <span className="font-semibold text-[#3C1518]">Global Distribution:</span>
-          <span>Dubai Wholesale City, UAE</span>
+          <span className="font-semibold text-[#3C1518]">UAE Distribution:</span>
+          <span>Dubai Wholesale City</span>
           <span className="text-[#3C1518]/30">/</span>
-          <span>USA Markets</span>
+          <span>Across all 7 Emirates</span>
           <span className="text-[#3C1518]/30">·</span>
           <span className="font-arabic font-bold text-sm text-[#C8102E]">جودة عالمية</span>
         </div>

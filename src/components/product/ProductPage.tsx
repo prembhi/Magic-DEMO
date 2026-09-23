@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronRight, ArrowLeft, AlertCircle } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ArrowLeft, ArrowRight, AlertCircle } from 'lucide-react';
 import { ShopProduct, findShopProduct } from '../../data/shopProducts';
 import { ShopHeader } from '../shop/ShopHeader';
 import { ShopFooter } from '../shop/ShopFooter';
@@ -13,6 +13,7 @@ import { ProductFaqSection } from './ProductFaqSection';
 import { RelatedProducts } from './RelatedProducts';
 import { ProductNewsletter } from './ProductNewsletter';
 import { useShopCart } from '../../context/ShopCartContext';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface ProductPageProps {
   productSlug?: string | null;
@@ -21,6 +22,7 @@ interface ProductPageProps {
   onNavigateRecipes?: () => void;
   onNavigateBundles?: () => void;
   onNavigateImpact?: () => void;
+  onNavigateNewsletter?: () => void;
   onSelectProduct: (productSlug: string) => void;
 }
 
@@ -31,10 +33,14 @@ export const ProductPage: React.FC<ProductPageProps> = ({
   onNavigateRecipes,
   onNavigateBundles,
   onNavigateImpact,
+  onNavigateNewsletter,
   onSelectProduct,
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const { isCartOpen, closeCart, toastMessage } = useShopCart();
+  const { isRTL, t } = useLanguage();
+  const ChevronIcon = isRTL ? ChevronLeft : ChevronRight;
+  const BackArrowIcon = isRTL ? ArrowRight : ArrowLeft;
 
   // Find product dynamically using the slug or identifier
   const product: ShopProduct | undefined = findShopProduct(productSlug);
@@ -65,7 +71,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({
         <div
           role="status"
           aria-live="polite"
-          className="fixed top-14 right-4 sm:right-6 z-50 bg-[#3C1518] text-[#FDF6EC] px-4 py-2.5 rounded-lg shadow-xl border border-[#D4A843]/40 flex items-center gap-2.5 text-xs font-semibold animate-in fade-in slide-in-from-top-2"
+          className="fixed top-14 right-4 sm:right-6 rtl:right-auto rtl:left-4 rtl:sm:left-6 z-50 bg-[#3C1518] text-[#FDF6EC] px-4 py-2.5 rounded-lg shadow-xl border border-[#D4A843]/40 flex items-center gap-2.5 text-xs font-semibold animate-in fade-in slide-in-from-top-2"
         >
           <span className="w-2 h-2 rounded-full bg-[#C8102E] animate-ping" />
           <span>{toastMessage}</span>
@@ -81,6 +87,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({
         onNavigateRecipes={onNavigateRecipes}
         onNavigateBundles={onNavigateBundles}
         onNavigateImpact={onNavigateImpact}
+        onNavigateNewsletter={onNavigateNewsletter}
       />
 
       {/* MAIN CONTAINER */}
@@ -97,22 +104,22 @@ export const ProductPage: React.FC<ProductPageProps> = ({
                       onClick={onNavigateHome}
                       className="hover:text-[#C8102E] transition-colors cursor-pointer"
                     >
-                      Home
+                      {t('nav.home')}
                     </button>
                   </li>
                   <li>
-                    <ChevronRight className="w-3 h-3 text-[#3C1518]/30 inline" />
+                    <ChevronIcon className="w-3 h-3 text-[#3C1518]/30 inline" />
                   </li>
                   <li>
                     <button
                       onClick={() => onNavigateShop()}
                       className="hover:text-[#C8102E] transition-colors cursor-pointer"
                     >
-                      Shop
+                      {t('nav.shop')}
                     </button>
                   </li>
                   <li>
-                    <ChevronRight className="w-3 h-3 text-[#3C1518]/30 inline" />
+                    <ChevronIcon className="w-3 h-3 text-[#3C1518]/30 inline" />
                   </li>
                   <li>
                     <button
@@ -123,7 +130,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({
                     </button>
                   </li>
                   <li>
-                    <ChevronRight className="w-3 h-3 text-[#3C1518]/30 inline" />
+                    <ChevronIcon className="w-3 h-3 text-[#3C1518]/30 inline" />
                   </li>
                   <li aria-current="page">
                     <span className="font-semibold text-[#3C1518] truncate max-w-[200px] sm:max-w-none inline-block">
@@ -206,6 +213,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({
         onNavigateRecipes={onNavigateRecipes}
         onNavigateBundles={onNavigateBundles}
         onNavigateImpact={onNavigateImpact}
+        onNavigateNewsletter={onNavigateNewsletter}
       />
 
       {/* Cart Drawer */}

@@ -3,7 +3,8 @@
 @theme {
   --font-display: 'Fraunces', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-arabic: 'Amiri', serif;
+  --font-arabic: 'Noto Kufi Arabic', 'Amiri', system-ui, sans-serif;
+  --font-arabic-display: 'Noto Kufi Arabic', 'Amiri', serif;
 
   --color-magic-red: #C8102E;
   --color-deep-maroon: #3C1518;
@@ -30,6 +31,30 @@
 
   .font-arabic {
     font-family: var(--font-arabic);
+  }
+
+  html[lang="ar"],
+  html[dir="rtl"],
+  .font-arabic-base {
+    font-family: var(--font-arabic) !important;
+  }
+
+  html[lang="ar"] h1,
+  html[lang="ar"] h2,
+  html[lang="ar"] h3,
+  html[lang="ar"] h4,
+  html[lang="ar"] h5,
+  html[lang="ar"] h6,
+  html[lang="ar"] .font-display {
+    font-family: var(--font-arabic-display) !important;
+  }
+
+  /* Force LTR on emails and phone inputs */
+  input[type="email"],
+  input[type="tel"],
+  .force-ltr {
+    direction: ltr !important;
+    text-align: left !important;
   }
 }
 

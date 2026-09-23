@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import {
   ChevronRight,
+  ChevronLeft,
   Filter,
   Sparkles,
   ArrowUpDown,
@@ -17,6 +18,7 @@ import { ShopHeader } from '../shop/ShopHeader';
 import { ShopFooter } from '../shop/ShopFooter';
 import { ShopCartDrawer } from '../shop/ShopCartDrawer';
 import { useShopCart } from '../../context/ShopCartContext';
+import { useLanguage } from '../../context/LanguageContext';
 import { BundleCard } from './BundleCard';
 import { BundleFilterSidebar, BundleFilterState } from './BundleFilterSidebar';
 import { BundleDetailPage } from './BundleDetailPage';
@@ -31,6 +33,7 @@ interface BundlesPageProps {
   onNavigateRecipes: (recipeSlug?: string) => void;
   onNavigateBundles: (bundleSlug?: string) => void;
   onNavigateImpact?: () => void;
+  onNavigateNewsletter?: () => void;
   onSelectProduct: (productSlug: string) => void;
 }
 
@@ -58,9 +61,12 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
   onNavigateRecipes,
   onNavigateBundles,
   onNavigateImpact,
+  onNavigateNewsletter,
   onSelectProduct,
 }) => {
   const { totalItems, isCartOpen, closeCart } = useShopCart();
+  const { isRTL, t } = useLanguage();
+  const ChevronIcon = isRTL ? ChevronLeft : ChevronRight;
 
   // Search & Filter state
   const [searchQuery, setSearchQuery] = useState('');
@@ -184,6 +190,7 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
         onNavigateRecipes={() => onNavigateRecipes()}
         onNavigateBundles={() => onNavigateBundles()}
         onNavigateImpact={onNavigateImpact}
+        onNavigateNewsletter={onNavigateNewsletter}
       />
 
       {/* 2. MAIN CONTENT AREA */}
@@ -210,25 +217,25 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
                     onClick={onNavigateHome}
                     className="hover:text-[#C8102E] transition-colors cursor-pointer"
                   >
-                    Home
+                    {t('nav.home')}
                   </button>
                 </li>
                 <li>
-                  <ChevronRight className="w-3 h-3 text-[#3C1518]/30 inline" />
+                  <ChevronIcon className="w-3 h-3 text-[#3C1518]/30 inline" />
                 </li>
                 <li>
                   <button
                     onClick={() => onNavigateShop()}
                     className="hover:text-[#C8102E] transition-colors cursor-pointer"
                   >
-                    Shop
+                    {t('nav.shop')}
                   </button>
                 </li>
                 <li>
-                  <ChevronRight className="w-3 h-3 text-[#3C1518]/30 inline" />
+                  <ChevronIcon className="w-3 h-3 text-[#3C1518]/30 inline" />
                 </li>
                 <li aria-current="page">
-                  <span className="font-semibold text-[#3C1518]">Bundles</span>
+                  <span className="font-semibold text-[#3C1518]">{t('nav.bundles')}</span>
                 </li>
               </ol>
             </nav>
@@ -383,6 +390,7 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
         onNavigateRecipes={() => onNavigateRecipes()}
         onNavigateBundles={() => onNavigateBundles()}
         onNavigateImpact={onNavigateImpact}
+        onNavigateNewsletter={onNavigateNewsletter}
       />
 
       {/* Cart Drawer */}
