@@ -1,5 +1,5 @@
 import React from 'react';
-import magicLogoImg from '../assets/images/magic_logo_transparent.png';
+import { MAGIC_ASSETS } from '../constants/assets';
 
 interface MagicLogoProps {
   className?: string;
@@ -23,7 +23,7 @@ export const MagicLogo: React.FC<MagicLogoProps> = ({
   return (
     <div className={`relative inline-flex items-center select-none ${className}`}>
       <img
-        src={magicLogoImg}
+        src={MAGIC_ASSETS.logo}
         alt="MAGIC Official Logo"
         className={`${heightClass} w-auto object-contain drop-shadow-sm select-none`}
         style={{

@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
 import { Clock, ChefHat, ShoppingBag, ArrowUpRight, Flame } from 'lucide-react';
-import toorImg from '../assets/images/toor_clean.png';
-import masoorImg from '../assets/images/masoordal_clean.png';
-import moongImg from '../assets/images/moong_clean.png';
-import uradImg from '../assets/images/urad_clean.png';
-import haldiImg from '../assets/images/haldi_clean.png';
-import jeeraImg from '../assets/images/jeera_clean.png';
+import { MAGIC_ASSETS } from '../constants/assets';
 
 interface RecipeIngredient {
   name: string;
@@ -47,9 +42,9 @@ export const SectionCookWithMagic: React.FC<SectionCookWithMagicProps> = ({
         'The quintessential comfort food of Indian households. Tender Toor Dal infused with turmeric, finished with a sputtering tadka of whole cumin, dried chilies, and fresh garlic.',
       accentColor: '#D4881E',
       ingredients: [
-        { name: 'Magic Toor Dal', image: toorImg, weight: '1 KG' },
-        { name: 'Magic Jeera', image: jeeraImg, weight: '100 G' },
-        { name: 'Magic Haldi', image: haldiImg, weight: '100 G' },
+        { name: 'Magic Toor Dal', image: MAGIC_ASSETS.toor, weight: '1 KG' },
+        { name: 'Magic Jeera', image: MAGIC_ASSETS.jeera, weight: '100 G' },
+        { name: 'Magic Haldi', image: MAGIC_ASSETS.haldi, weight: '100 G' },
       ],
     },
     {
@@ -63,9 +58,9 @@ export const SectionCookWithMagic: React.FC<SectionCookWithMagicProps> = ({
         'A velvety restaurant classic elevated by freshly ground whole spices, golden turmeric marinade, and warm aromatic cumin roasted to nutty perfection.',
       accentColor: '#C8102E',
       ingredients: [
-        { name: 'Magic Haldi', image: haldiImg, weight: '100 G' },
-        { name: 'Magic Jeera', image: jeeraImg, weight: '100 G' },
-        { name: 'Magic Masoor Dal', image: masoorImg, weight: '1 KG' },
+        { name: 'Magic Haldi', image: MAGIC_ASSETS.haldi, weight: '100 G' },
+        { name: 'Magic Jeera', image: MAGIC_ASSETS.jeera, weight: '100 G' },
+        { name: 'Magic Masoor Dal', image: MAGIC_ASSETS.masoor, weight: '1 KG' },
       ],
     },
     {
@@ -79,9 +74,9 @@ export const SectionCookWithMagic: React.FC<SectionCookWithMagicProps> = ({
         'Robust North Indian street flavors. Chickpeas gently braised with golden turmeric, fragrant cumin seeds, and a punchy medley of hand-pounded whole spices.',
       accentColor: '#8B4513',
       ingredients: [
-        { name: 'Magic Jeera', image: jeeraImg, weight: '100 G' },
-        { name: 'Magic Haldi', image: haldiImg, weight: '100 G' },
-        { name: 'Magic Moong Whole', image: moongImg, weight: '1 KG' },
+        { name: 'Magic Jeera', image: MAGIC_ASSETS.jeera, weight: '100 G' },
+        { name: 'Magic Haldi', image: MAGIC_ASSETS.haldi, weight: '100 G' },
+        { name: 'Magic Moong Whole', image: MAGIC_ASSETS.moong, weight: '1 KG' },
       ],
     },
     {
@@ -95,9 +90,9 @@ export const SectionCookWithMagic: React.FC<SectionCookWithMagicProps> = ({
         'Royal Hyderabadi culinary heritage. Long-grain rice steam-cooked under a sealed dum with unadulterated whole spices, golden haldi marinade, and fried shallots.',
       accentColor: '#9C3A18',
       ingredients: [
-        { name: 'Magic Jeera', image: jeeraImg, weight: '100 G' },
-        { name: 'Magic Haldi', image: haldiImg, weight: '100 G' },
-        { name: 'Magic Urad Whole', image: uradImg, weight: '1 KG' },
+        { name: 'Magic Jeera', image: MAGIC_ASSETS.jeera, weight: '100 G' },
+        { name: 'Magic Haldi', image: MAGIC_ASSETS.haldi, weight: '100 G' },
+        { name: 'Magic Urad Whole', image: MAGIC_ASSETS.urad, weight: '1 KG' },
       ],
     },
   ];

@@ -1,10 +1,5 @@
 import { MagicProduct } from '../types/product';
-import toorImg from '../assets/images/toor_clean.png';
-import masoorImg from '../assets/images/masoordal_clean.png';
-import moongImg from '../assets/images/moong_clean.png';
-import uradImg from '../assets/images/urad_clean.png';
-import haldiImg from '../assets/images/haldi_clean.png';
-import jeeraImg from '../assets/images/jeera_clean.png';
+import { MAGIC_ASSETS } from '../constants/assets';
 
 export const MAGIC_PRODUCTS: MagicProduct[] = [
   {
@@ -24,7 +19,7 @@ export const MAGIC_PRODUCTS: MagicProduct[] = [
     pouchColor: '#FDF6EC',
     pouchAccent: '#D4881E',
     windowGrainType: 'yellow-toor',
-    image: toorImg,
+    image: MAGIC_ASSETS.toor,
     environment: {
       themeColor: '#E8922F',
       accentColor: '#F4B042',
@@ -58,7 +53,7 @@ export const MAGIC_PRODUCTS: MagicProduct[] = [
     pouchColor: '#FDF6EC',
     pouchAccent: '#C8102E',
     windowGrainType: 'red-lentil',
-    image: masoorImg,
+    image: MAGIC_ASSETS.masoor,
     environment: {
       themeColor: '#D94833',
       accentColor: '#F48B29',
@@ -92,7 +87,7 @@ export const MAGIC_PRODUCTS: MagicProduct[] = [
     pouchColor: '#FDF6EC',
     pouchAccent: '#4D6B3C',
     windowGrainType: 'green-mung',
-    image: moongImg,
+    image: MAGIC_ASSETS.moong,
     environment: {
       themeColor: '#5A7247',
       accentColor: '#7E9F63',
@@ -126,7 +121,7 @@ export const MAGIC_PRODUCTS: MagicProduct[] = [
     pouchColor: '#FDF6EC',
     pouchAccent: '#3C1518',
     windowGrainType: 'black-urad',
-    image: uradImg,
+    image: MAGIC_ASSETS.urad,
     environment: {
       themeColor: '#4A282D',
       accentColor: '#8B1A4A',
@@ -160,7 +155,7 @@ export const MAGIC_PRODUCTS: MagicProduct[] = [
     pouchColor: '#FDF6EC',
     pouchAccent: '#E8922F',
     windowGrainType: 'yellow-turmeric',
-    image: haldiImg,
+    image: MAGIC_ASSETS.haldi,
     environment: {
       themeColor: '#D4A843',
       accentColor: '#F5C342',
@@ -194,7 +189,7 @@ export const MAGIC_PRODUCTS: MagicProduct[] = [
     pouchColor: '#FDF6EC',
     pouchAccent: '#6B4226',
     windowGrainType: 'cumin-seed',
-    image: jeeraImg,
+    image: MAGIC_ASSETS.jeera,
     environment: {
       themeColor: '#8A5A36',
       accentColor: '#B87333',

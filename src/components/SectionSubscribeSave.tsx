@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { Calendar, Repeat, Sparkles, Check, ArrowRight } from 'lucide-react';
-import toorImg from '../assets/images/toor_clean.png';
-import haldiImg from '../assets/images/haldi_clean.png';
-import jeeraImg from '../assets/images/jeera_clean.png';
-import masoorImg from '../assets/images/masoordal_clean.png';
+import { MAGIC_ASSETS } from '../constants/assets';
 
 interface SectionSubscribeSaveProps {
   onAddToCart?: (productId: string) => void;
@@ -164,7 +161,7 @@ export const SectionSubscribeSave: React.FC<SectionSubscribeSaveProps> = ({
               >
                 <div className="w-[180px] sm:w-[210px] aspect-[1/1.42] flex items-center justify-center">
                   <img
-                    src={masoorImg}
+                    src={MAGIC_ASSETS.masoor}
                     alt="Masoor Dal in subscription stack"
                     className="w-full h-full object-contain pointer-events-none select-none drop-shadow-xl"
                   />
@@ -181,7 +178,7 @@ export const SectionSubscribeSave: React.FC<SectionSubscribeSaveProps> = ({
               >
                 <div className="w-[190px] sm:w-[220px] aspect-[1/1.42] flex items-center justify-center">
                   <img
-                    src={toorImg}
+                    src={MAGIC_ASSETS.toor}
                     alt="Toor Dal in subscription stack"
                     className="w-full h-full object-contain pointer-events-none select-none drop-shadow-2xl"
                   />
@@ -198,7 +195,7 @@ export const SectionSubscribeSave: React.FC<SectionSubscribeSaveProps> = ({
               >
                 <div className="w-[160px] sm:w-[190px] aspect-[1/1.42] flex items-center justify-center">
                   <img
-                    src={haldiImg}
+                    src={MAGIC_ASSETS.haldi}
                     alt="Haldi in subscription stack"
                     className="w-full h-full object-contain pointer-events-none select-none drop-shadow-xl"
                   />
@@ -215,7 +212,7 @@ export const SectionSubscribeSave: React.FC<SectionSubscribeSaveProps> = ({
               >
                 <div className="w-[150px] sm:w-[180px] aspect-[1/1.42] flex items-center justify-center">
                   <img
-                    src={jeeraImg}
+                    src={MAGIC_ASSETS.jeera}
                     alt="Jeera in subscription stack"
                     className="w-full h-full object-contain pointer-events-none select-none drop-shadow-xl"
                   />

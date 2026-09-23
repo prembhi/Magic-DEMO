@@ -1,5 +1,6 @@
 import React from 'react';
 import { Sparkles, Globe, ShieldCheck, Flame } from 'lucide-react';
+import { MAGIC_ASSETS } from '../constants/assets';
 
 export const SectionBrandStory: React.FC = () => {
   return (
@@ -86,22 +87,12 @@ export const SectionBrandStory: React.FC = () => {
               <div className="relative z-10 w-72 h-72 rounded-full p-2 bg-gradient-to-tr from-[#996E24] via-[#D4A843] to-[#F5C342] shadow-2xl flex items-center justify-center">
                 {/* Deep hammered brass interior */}
                 <div className="relative w-full h-full rounded-full bg-gradient-to-b from-[#4A2412] to-[#200B0D] p-5 flex flex-col items-center justify-center text-center overflow-hidden border border-[#D4A843]/60 shadow-inner">
-                  {/* Subtle spice bloom illustration */}
-                  <svg className="w-28 h-28 mb-1 text-[#D4A843]" viewBox="0 0 100 100" fill="none">
-                    {/* Brass Masala Dabba center motif */}
-                    <circle cx="50" cy="50" r="38" stroke="#D4A843" strokeWidth="2" strokeDasharray="3 3" />
-                    <circle cx="50" cy="50" r="28" fill="#C8102E" fillOpacity="0.4" />
-                    {/* Cumin seed starburst */}
-                    <ellipse cx="50" cy="30" rx="3" ry="8" fill="#D4A843" />
-                    <ellipse cx="50" cy="70" rx="3" ry="8" fill="#D4A843" />
-                    <ellipse cx="30" cy="50" rx="8" ry="3" fill="#D4A843" />
-                    <ellipse cx="70" cy="50" rx="8" ry="3" fill="#D4A843" />
-                    {/* Turmeric root silhouette */}
-                    <path d="M42 42 C 45 38, 55 38, 58 42 C 62 46, 58 54, 50 56 C 42 54, 38 46, 42 42 Z" fill="#F4B042" />
-                  </svg>
-                  <span className="font-display font-black text-2xl tracking-wider text-[#FDF6EC]">
-                    MAGIC
-                  </span>
+                  {/* Authentic MAGIC Brand Logo */}
+                  <img
+                    src={MAGIC_ASSETS.logo}
+                    alt="MAGIC Heritage Brand"
+                    className="h-14 sm:h-16 w-auto object-contain drop-shadow-md mb-2 select-none pointer-events-none"
+                  />
                   <span className="text-[10px] tracking-[0.25em] uppercase text-[#D4A843] font-bold mt-0.5">
                     HERITAGE SPICE ARTISTRY
                   </span>

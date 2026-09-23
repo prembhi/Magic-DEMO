@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
 import { Package, ArrowUpRight, Sparkles, Layers } from 'lucide-react';
-import toorImg from '../assets/images/toor_clean.png';
-import masoorImg from '../assets/images/masoordal_clean.png';
-import moongImg from '../assets/images/moong_clean.png';
-import uradImg from '../assets/images/urad_clean.png';
-import haldiImg from '../assets/images/haldi_clean.png';
-import jeeraImg from '../assets/images/jeera_clean.png';
+import { MAGIC_ASSETS } from '../constants/assets';
 
 interface BundleConcept {
   id: string;
@@ -38,11 +33,11 @@ export const SectionMagicBundles: React.FC<SectionMagicBundlesProps> = ({
       accentColor: '#D4881E',
       badge: '5 Essential Staples',
       products: [
-        { image: toorImg, alt: 'Toor Dal', offset: { x: -60, y: 15, rot: -8, z: 10, scale: 0.82 } },
-        { image: masoorImg, alt: 'Masoor Dal', offset: { x: -20, y: 0, rot: -3, z: 20, scale: 0.95 } },
-        { image: moongImg, alt: 'Moong Whole', offset: { x: 30, y: 20, rot: 6, z: 15, scale: 0.85 } },
-        { image: haldiImg, alt: 'Haldi', offset: { x: -45, y: 40, rot: -10, z: 25, scale: 0.75 } },
-        { image: jeeraImg, alt: 'Jeera', offset: { x: 45, y: 45, rot: 8, z: 30, scale: 0.75 } },
+        { image: MAGIC_ASSETS.toor, alt: 'Toor Dal', offset: { x: -60, y: 15, rot: -8, z: 10, scale: 0.82 } },
+        { image: MAGIC_ASSETS.masoor, alt: 'Masoor Dal', offset: { x: -20, y: 0, rot: -3, z: 20, scale: 0.95 } },
+        { image: MAGIC_ASSETS.moong, alt: 'Moong Whole', offset: { x: 30, y: 20, rot: 6, z: 15, scale: 0.85 } },
+        { image: MAGIC_ASSETS.haldi, alt: 'Haldi', offset: { x: -45, y: 40, rot: -10, z: 25, scale: 0.75 } },
+        { image: MAGIC_ASSETS.jeera, alt: 'Jeera', offset: { x: 45, y: 45, rot: 8, z: 30, scale: 0.75 } },
       ],
     },
     {
@@ -55,9 +50,9 @@ export const SectionMagicBundles: React.FC<SectionMagicBundlesProps> = ({
       accentColor: '#C8102E',
       badge: 'Curry Foundation',
       products: [
-        { image: jeeraImg, alt: 'Jeera', offset: { x: -45, y: 10, rot: -6, z: 10, scale: 0.88 } },
-        { image: masoorImg, alt: 'Masoor Dal', offset: { x: 0, y: -10, rot: 0, z: 20, scale: 1.05 } },
-        { image: haldiImg, alt: 'Haldi', offset: { x: 50, y: 15, rot: 7, z: 15, scale: 0.9 } },
+        { image: MAGIC_ASSETS.jeera, alt: 'Jeera', offset: { x: -45, y: 10, rot: -6, z: 10, scale: 0.88 } },
+        { image: MAGIC_ASSETS.masoor, alt: 'Masoor Dal', offset: { x: 0, y: -10, rot: 0, z: 20, scale: 1.05 } },
+        { image: MAGIC_ASSETS.haldi, alt: 'Haldi', offset: { x: 50, y: 15, rot: 7, z: 15, scale: 0.9 } },
       ],
     },
     {
@@ -70,11 +65,11 @@ export const SectionMagicBundles: React.FC<SectionMagicBundlesProps> = ({
       accentColor: '#6B381E',
       badge: 'Discovery Collection',
       products: [
-        { image: uradImg, alt: 'Urad Whole', offset: { x: -70, y: 10, rot: -10, z: 5, scale: 0.8 } },
-        { image: toorImg, alt: 'Toor Dal', offset: { x: -35, y: -5, rot: -4, z: 15, scale: 0.92 } },
-        { image: moongImg, alt: 'Moong Whole', offset: { x: 10, y: -12, rot: 2, z: 20, scale: 1.0 } },
-        { image: masoorImg, alt: 'Masoor Dal', offset: { x: 55, y: 5, rot: 8, z: 12, scale: 0.85 } },
-        { image: haldiImg, alt: 'Haldi', offset: { x: 0, y: 40, rot: 0, z: 25, scale: 0.78 } },
+        { image: MAGIC_ASSETS.urad, alt: 'Urad Whole', offset: { x: -70, y: 10, rot: -10, z: 5, scale: 0.8 } },
+        { image: MAGIC_ASSETS.toor, alt: 'Toor Dal', offset: { x: -35, y: -5, rot: -4, z: 15, scale: 0.92 } },
+        { image: MAGIC_ASSETS.moong, alt: 'Moong Whole', offset: { x: 10, y: -12, rot: 2, z: 20, scale: 1.0 } },
+        { image: MAGIC_ASSETS.masoor, alt: 'Masoor Dal', offset: { x: 55, y: 5, rot: 8, z: 12, scale: 0.85 } },
+        { image: MAGIC_ASSETS.haldi, alt: 'Haldi', offset: { x: 0, y: 40, rot: 0, z: 25, scale: 0.78 } },
       ],
     },
   ];
