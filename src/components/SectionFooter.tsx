@@ -97,6 +97,11 @@ export const SectionFooter: React.FC = () => {
                 </a>
               </li>
               <li>
+                <a href="#impact" className="hover:text-white transition-colors">
+                  From Farm to Magic (Impact)
+                </a>
+              </li>
+              <li>
                 <a href="#heritage" className="hover:text-white transition-colors">
                   Our Story
                 </a>

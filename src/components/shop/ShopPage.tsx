@@ -15,12 +15,18 @@ interface ShopPageProps {
   onNavigateHome: () => void;
   onSelectProduct?: (productId: string) => void;
   initialCategoryId?: string;
+  onNavigateRecipes?: () => void;
+  onNavigateBundles?: () => void;
+  onNavigateImpact?: () => void;
 }
 
 export const ShopPage: React.FC<ShopPageProps> = ({
   onNavigateHome,
   onSelectProduct,
   initialCategoryId,
+  onNavigateRecipes,
+  onNavigateBundles,
+  onNavigateImpact,
 }) => {
   const [selectedCategoryId, setSelectedCategoryId] = useState<string>(initialCategoryId || 'all');
   const [selectedSubItem, setSelectedSubItem] = useState<string | null>(null);
@@ -119,6 +125,9 @@ export const ShopPage: React.FC<ShopPageProps> = ({
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
         onNavigateHome={onNavigateHome}
+        onNavigateRecipes={onNavigateRecipes}
+        onNavigateBundles={onNavigateBundles}
+        onNavigateImpact={onNavigateImpact}
       />
 
       {/* 2. COMPACT BREADCRUMB (Centered inside main content width) */}
@@ -308,6 +317,9 @@ export const ShopPage: React.FC<ShopPageProps> = ({
       <ShopFooter
         onNavigateHome={onNavigateHome}
         onSelectCategory={setSelectedCategoryId}
+        onNavigateRecipes={onNavigateRecipes}
+        onNavigateBundles={onNavigateBundles}
+        onNavigateImpact={onNavigateImpact}
       />
     </div>
   );

@@ -19,14 +19,17 @@ import { SectionFooter } from './components/SectionFooter';
 import { ShopPage } from './components/shop/ShopPage';
 import { ProductPage } from './components/product/ProductPage';
 import { RecipesPage } from './components/recipes/RecipesPage';
+import { BundlesPage } from './components/bundles/BundlesPage';
+import { ImpactPage } from './components/impact/ImpactPage';
 import { ShopCartDrawer } from './components/shop/ShopCartDrawer';
 import { ShopCartProvider, useShopCart } from './context/ShopCartContext';
 
 interface RouteState {
-  page: 'shop' | 'home' | 'product' | 'recipes';
+  page: 'shop' | 'home' | 'product' | 'recipes' | 'bundles' | 'impact';
   productSlug?: string;
   categoryId?: string;
   recipeSlug?: string;
+  bundleSlug?: string;
 }
 
 function parseCurrentRoute(): RouteState {
@@ -37,7 +40,17 @@ function parseCurrentRoute(): RouteState {
   const hash = window.location.hash || '';
   const pathname = window.location.pathname || '';
 
-  // 1. Check Pathname first (e.g. /recipes/:slug, /recipes, /shop/product/:slug)
+  // 1. Check Pathname first (e.g. /impact, /bundles/:slug, /bundles, /recipes/:slug, /recipes, /shop/product/:slug)
+  if (pathname === '/impact' || pathname.startsWith('/impact/')) {
+    return { page: 'impact' };
+  }
+
+  const bundlePathMatch = pathname.match(/^\/bundles\/?([^/?#]*)/i);
+  if (bundlePathMatch) {
+    const slug = bundlePathMatch[1]?.trim();
+    return { page: 'bundles', bundleSlug: slug ? slug : undefined };
+  }
+
   const recipePathMatch = pathname.match(/^\/recipes\/?([^/?#]*)/i);
   if (recipePathMatch) {
     const slug = recipePathMatch[1]?.trim();
@@ -51,6 +64,15 @@ function parseCurrentRoute(): RouteState {
 
   // 2. Check Hash patterns
   const cleanHash = hash.replace(/^#\/?/, '');
+
+  if (cleanHash === 'impact' || cleanHash.startsWith('impact/')) {
+    return { page: 'impact' };
+  }
+
+  if (cleanHash.startsWith('bundles')) {
+    const bundleSlug = cleanHash.replace(/^bundles\/?/, '').trim();
+    return { page: 'bundles', bundleSlug: bundleSlug ? bundleSlug : undefined };
+  }
 
   if (cleanHash.startsWith('recipes')) {
     const recipeSlug = cleanHash.replace(/^recipes\/?/, '').trim();
@@ -118,6 +140,18 @@ function MainAppContent() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleNavigateBundles = (bundleSlug?: string) => {
+    setRouteState({ page: 'bundles', bundleSlug });
+    window.location.hash = bundleSlug ? `#bundles/${bundleSlug}` : '#bundles';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNavigateImpact = () => {
+    setRouteState({ page: 'impact' });
+    window.location.hash = '#impact';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleNavigateProduct = (productSlug: string) => {
     const targetSlug = productSlug.startsWith('magic-') ? productSlug : `magic-${productSlug}`;
     setRouteState({ page: 'product', productSlug: targetSlug });
@@ -155,12 +189,36 @@ function MainAppContent() {
           onNavigateRecipes={handleNavigateRecipes}
           onSelectProduct={handleNavigateProduct}
         />
+      ) : routeState.page === 'bundles' ? (
+        /* BUNDLES COLLECTION & DETAIL PAGE */
+        <BundlesPage
+          bundleSlug={routeState.bundleSlug}
+          onNavigateHome={handleNavigateHome}
+          onNavigateShop={handleNavigateShop}
+          onNavigateRecipes={handleNavigateRecipes}
+          onNavigateBundles={handleNavigateBundles}
+          onNavigateImpact={handleNavigateImpact}
+          onSelectProduct={handleNavigateProduct}
+        />
+      ) : routeState.page === 'impact' ? (
+        /* IMPACT STORY PAGE: FROM FARM TO MAGIC */
+        <ImpactPage
+          onNavigateHome={handleNavigateHome}
+          onNavigateShop={handleNavigateShop}
+          onNavigateRecipes={handleNavigateRecipes}
+          onNavigateBundles={handleNavigateBundles}
+          onNavigateImpact={handleNavigateImpact}
+          onSelectProduct={handleNavigateProduct}
+        />
       ) : routeState.page === 'shop' ? (
         /* SHOP PAGE */
         <ShopPage
           onNavigateHome={handleNavigateHome}
           onSelectProduct={handleNavigateProduct}
           initialCategoryId={routeState.categoryId}
+          onNavigateRecipes={handleNavigateRecipes}
+          onNavigateBundles={handleNavigateBundles}
+          onNavigateImpact={handleNavigateImpact}
         />
       ) : (
         /* APPROVED HOME PAGE (Untouched sections 1 to 11) */
@@ -182,6 +240,8 @@ function MainAppContent() {
             cartCount={totalItems}
             onNavigateShop={() => handleNavigateShop()}
             onNavigateRecipes={() => handleNavigateRecipes()}
+            onNavigateBundles={() => handleNavigateBundles()}
+            onNavigateImpact={() => handleNavigateImpact()}
             onOpenCart={openCart}
           />
 

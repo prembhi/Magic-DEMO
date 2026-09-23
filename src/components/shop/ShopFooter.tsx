@@ -5,12 +5,16 @@ interface ShopFooterProps {
   onNavigateHome: () => void;
   onSelectCategory?: (catId: string) => void;
   onNavigateRecipes?: () => void;
+  onNavigateBundles?: () => void;
+  onNavigateImpact?: () => void;
 }
 
 export const ShopFooter: React.FC<ShopFooterProps> = ({
   onNavigateHome,
   onSelectCategory,
   onNavigateRecipes,
+  onNavigateBundles,
+  onNavigateImpact,
 }) => {
   const handleRecipesClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -18,6 +22,24 @@ export const ShopFooter: React.FC<ShopFooterProps> = ({
       onNavigateRecipes();
     } else {
       window.location.hash = '#recipes';
+    }
+  };
+
+  const handleBundlesClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigateBundles) {
+      onNavigateBundles();
+    } else {
+      window.location.hash = '#bundles';
+    }
+  };
+
+  const handleImpactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigateImpact) {
+      onNavigateImpact();
+    } else {
+      window.location.hash = '#impact';
     }
   };
   return (
@@ -71,6 +93,14 @@ export const ShopFooter: React.FC<ShopFooterProps> = ({
                   Ground Spices
                 </button>
               </li>
+              <li>
+                <button
+                  onClick={handleBundlesClick}
+                  className="hover:text-[#D4A843] transition-colors cursor-pointer text-left"
+                >
+                  Bundles & Sets
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -115,6 +145,14 @@ export const ShopFooter: React.FC<ShopFooterProps> = ({
                   className="hover:text-[#D4A843] transition-colors cursor-pointer text-left"
                 >
                   Our Heritage Story
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={handleImpactClick}
+                  className="hover:text-[#D4A843] transition-colors cursor-pointer text-left"
+                >
+                  From Farm to Magic (Impact)
                 </button>
               </li>
               <li>

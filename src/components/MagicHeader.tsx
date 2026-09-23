@@ -6,6 +6,8 @@ interface MagicHeaderProps {
   cartCount?: number;
   onNavigateShop?: () => void;
   onNavigateRecipes?: () => void;
+  onNavigateBundles?: () => void;
+  onNavigateImpact?: () => void;
   onOpenCart?: () => void;
 }
 
@@ -13,6 +15,8 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
   cartCount = 0,
   onNavigateShop,
   onNavigateRecipes,
+  onNavigateBundles,
+  onNavigateImpact,
   onOpenCart,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -24,6 +28,24 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
       onNavigateRecipes();
     } else {
       window.location.hash = '#recipes';
+    }
+  };
+
+  const handleBundlesClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigateBundles) {
+      onNavigateBundles();
+    } else {
+      window.location.hash = '#bundles';
+    }
+  };
+
+  const handleImpactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigateImpact) {
+      onNavigateImpact();
+    } else {
+      window.location.hash = '#impact';
     }
   };
 
@@ -75,6 +97,20 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
             className="hover:text-[#C8102E] transition-colors whitespace-nowrap focus-visible:outline-2 focus-visible:outline-[#C8102E] py-1"
           >
             Global Distribution
+          </a>
+          <a
+            href="#bundles"
+            onClick={handleBundlesClick}
+            className="hover:text-[#C8102E] transition-colors whitespace-nowrap focus-visible:outline-2 focus-visible:outline-[#C8102E] py-1"
+          >
+            Bundles
+          </a>
+          <a
+            href="#impact"
+            onClick={handleImpactClick}
+            className="hover:text-[#C8102E] transition-colors whitespace-nowrap focus-visible:outline-2 focus-visible:outline-[#C8102E] py-1"
+          >
+            Impact
           </a>
           <a
             href="#recipes"
@@ -171,6 +207,26 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
               className="py-1 hover:text-[#C8102E] transition-colors"
             >
               Global Distribution
+            </a>
+            <a
+              href="#bundles"
+              onClick={(e) => {
+                setMobileMenuOpen(false);
+                handleBundlesClick(e);
+              }}
+              className="py-1 hover:text-[#C8102E] transition-colors"
+            >
+              Bundles
+            </a>
+            <a
+              href="#impact"
+              onClick={(e) => {
+                setMobileMenuOpen(false);
+                handleImpactClick(e);
+              }}
+              className="py-1 hover:text-[#C8102E] transition-colors"
+            >
+              Impact
             </a>
             <a
               href="#recipes"

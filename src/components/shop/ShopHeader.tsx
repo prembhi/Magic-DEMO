@@ -4,19 +4,23 @@ import { MAGIC_ASSETS } from '../../constants/assets';
 import { useShopCart } from '../../context/ShopCartContext';
 
 interface ShopHeaderProps {
-  searchQuery: string;
-  onSearchChange: (query: string) => void;
+  searchQuery?: string;
+  onSearchChange?: (query: string) => void;
   onNavigateHome: () => void;
   onNavigateRecipes?: () => void;
   onNavigateShop?: () => void;
+  onNavigateBundles?: () => void;
+  onNavigateImpact?: () => void;
 }
 
 export const ShopHeader: React.FC<ShopHeaderProps> = ({
-  searchQuery,
-  onSearchChange,
+  searchQuery = '',
+  onSearchChange = () => {},
   onNavigateHome,
   onNavigateRecipes,
   onNavigateShop,
+  onNavigateBundles,
+  onNavigateImpact,
 }) => {
   const { totalItems, subtotal, openCart } = useShopCart();
   const [selectedRegion, setSelectedRegion] = useState<'UAE' | 'USA'>('UAE');
@@ -35,6 +39,22 @@ export const ShopHeader: React.FC<ShopHeaderProps> = ({
       onNavigateShop();
     } else {
       window.location.hash = '#shop';
+    }
+  };
+
+  const handleBundlesClick = () => {
+    if (onNavigateBundles) {
+      onNavigateBundles();
+    } else {
+      window.location.hash = '#bundles';
+    }
+  };
+
+  const handleImpactClick = () => {
+    if (onNavigateImpact) {
+      onNavigateImpact();
+    } else {
+      window.location.hash = '#impact';
     }
   };
 
@@ -70,6 +90,20 @@ export const ShopHeader: React.FC<ShopHeaderProps> = ({
               className="hidden sm:inline-flex text-[11px] font-semibold text-[#3C1518]/70 hover:text-[#C8102E] transition-colors cursor-pointer"
             >
               Shop
+            </button>
+            <span className="hidden sm:inline-block text-[#3C1518]/30">|</span>
+            <button
+              onClick={handleBundlesClick}
+              className="inline-flex text-[11px] font-semibold text-[#3C1518]/70 hover:text-[#C8102E] transition-colors cursor-pointer"
+            >
+              Bundles
+            </button>
+            <span className="hidden sm:inline-block text-[#3C1518]/30">|</span>
+            <button
+              onClick={handleImpactClick}
+              className="inline-flex text-[11px] font-semibold text-[#3C1518]/70 hover:text-[#C8102E] transition-colors cursor-pointer"
+            >
+              Impact
             </button>
             <span className="hidden sm:inline-block text-[#3C1518]/30">|</span>
             <button

@@ -18,6 +18,9 @@ interface ProductPageProps {
   productSlug?: string | null;
   onNavigateHome: () => void;
   onNavigateShop: (category?: string) => void;
+  onNavigateRecipes?: () => void;
+  onNavigateBundles?: () => void;
+  onNavigateImpact?: () => void;
   onSelectProduct: (productSlug: string) => void;
 }
 
@@ -25,6 +28,9 @@ export const ProductPage: React.FC<ProductPageProps> = ({
   productSlug,
   onNavigateHome,
   onNavigateShop,
+  onNavigateRecipes,
+  onNavigateBundles,
+  onNavigateImpact,
   onSelectProduct,
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -71,6 +77,10 @@ export const ProductPage: React.FC<ProductPageProps> = ({
         searchQuery={searchQuery}
         onSearchChange={handleSearchChange}
         onNavigateHome={onNavigateHome}
+        onNavigateShop={() => onNavigateShop()}
+        onNavigateRecipes={onNavigateRecipes}
+        onNavigateBundles={onNavigateBundles}
+        onNavigateImpact={onNavigateImpact}
       />
 
       {/* MAIN CONTAINER */}
@@ -193,6 +203,9 @@ export const ProductPage: React.FC<ProductPageProps> = ({
       <ShopFooter
         onNavigateHome={onNavigateHome}
         onSelectCategory={(id) => onNavigateShop(id)}
+        onNavigateRecipes={onNavigateRecipes}
+        onNavigateBundles={onNavigateBundles}
+        onNavigateImpact={onNavigateImpact}
       />
 
       {/* Cart Drawer */}

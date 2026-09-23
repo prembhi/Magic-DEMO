@@ -18,6 +18,8 @@ interface RecipesPageProps {
   onNavigateHome: () => void;
   onNavigateShop: (category?: string) => void;
   onNavigateRecipes: (recipeSlug?: string) => void;
+  onNavigateBundles?: () => void;
+  onNavigateImpact?: () => void;
   onSelectProduct: (productSlug: string) => void;
 }
 
@@ -37,6 +39,8 @@ export const RecipesPage: React.FC<RecipesPageProps> = ({
   onNavigateHome,
   onNavigateShop,
   onNavigateRecipes,
+  onNavigateBundles,
+  onNavigateImpact,
   onSelectProduct,
 }) => {
   const [activeCategoryTab, setActiveCategoryTab] = useState<string>('ALL');
@@ -163,6 +167,10 @@ export const RecipesPage: React.FC<RecipesPageProps> = ({
           setCurrentPage(1);
         }}
         onNavigateHome={onNavigateHome}
+        onNavigateShop={() => onNavigateShop()}
+        onNavigateRecipes={() => onNavigateRecipes()}
+        onNavigateBundles={onNavigateBundles}
+        onNavigateImpact={onNavigateImpact}
       />
 
       {/* MAIN CONTENT AREA */}
@@ -340,6 +348,9 @@ export const RecipesPage: React.FC<RecipesPageProps> = ({
       <ShopFooter
         onNavigateHome={onNavigateHome}
         onSelectCategory={(id) => onNavigateShop(id)}
+        onNavigateRecipes={() => onNavigateRecipes()}
+        onNavigateBundles={onNavigateBundles}
+        onNavigateImpact={onNavigateImpact}
       />
 
       {/* Cart Drawer */}
