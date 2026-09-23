@@ -151,11 +151,13 @@ export const ShopFooter: React.FC<ShopFooterProps> = ({
           {/* COL 5: BRAND & SOCIAL */}
           <div className="col-span-2 md:col-span-1">
             <div className="mb-3">
-              <img
-                src={MAGIC_ASSETS.logo}
-                alt="MAGIC"
-                className="h-8 w-auto object-contain brightness-0 invert opacity-90"
-              />
+              <div className="inline-block bg-[#FAF7F2] px-3 py-1.5 rounded border border-[#E6E0D6] shadow-xs">
+                <img
+                  src={MAGIC_ASSETS.logo}
+                  alt="MAGIC"
+                  className="h-7 w-auto object-contain"
+                />
+              </div>
             </div>
             <p className="text-[11px] text-[#FDF6EC]/60 leading-relaxed mb-3">
               Authentic Indian staples and spices, sealed in airtight multi-barrier pouches.

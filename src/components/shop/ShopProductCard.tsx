@@ -5,11 +5,23 @@ import { useShopCart } from '../../context/ShopCartContext';
 
 interface ShopProductCardProps {
   product: ShopProduct;
+  onSelectProduct?: (productId: string) => void;
 }
 
-export const ShopProductCard: React.FC<ShopProductCardProps> = ({ product }) => {
+export const ShopProductCard: React.FC<ShopProductCardProps> = ({
+  product,
+  onSelectProduct,
+}) => {
   const { addItem, updateQuantity, getItemQuantity } = useShopCart();
   const quantity = getItemQuantity(product.id);
+
+  const handleCardClick = () => {
+    if (onSelectProduct) {
+      onSelectProduct(product.slug || product.id);
+    } else if (typeof window !== 'undefined') {
+      window.location.hash = `#shop/product/${product.slug || product.id}`;
+    }
+  };
 
   const handleAdd = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -26,27 +38,15 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({ product }) => 
     updateQuantity(product.id, quantity - 1);
   };
 
-  // Calculate discount percentage if demo compare-at price exists
-  const discountPercent =
-    product.compareAtPrice && product.compareAtPrice > product.price
-      ? Math.round(((product.compareAtPrice - product.price) / product.compareAtPrice) * 100)
-      : null;
-
   return (
     <article
-      className="group bg-white rounded border border-[#E6E0D6] hover:border-[#C8102E]/40 hover:shadow-xs p-2 sm:p-2.5 flex flex-col justify-between transition-all relative"
+      onClick={handleCardClick}
+      className="group bg-white rounded border border-[#E6E0D6] hover:border-[#C8102E]/40 hover:shadow-xs p-2 sm:p-2.5 flex flex-col justify-between transition-all relative cursor-pointer"
       aria-label={`${product.name}, ${product.weight}, price AED ${product.price.toFixed(2)}`}
     >
       <div>
         {/* COMPACT PRODUCT IMAGE STAGE (Matches Talabat Grocery image box footprint) */}
         <div className="relative w-full h-36 sm:h-40 bg-[#FAF7F2] rounded-xs p-2 flex items-center justify-center overflow-hidden mb-2">
-          {/* Subtle Discount Badge (Top Left) */}
-          {discountPercent && (
-            <span className="absolute top-1.5 left-1.5 z-10 bg-[#2B6E2A] text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded-2xs uppercase tracking-wide leading-none shadow-2xs">
-              SAVE {discountPercent}%
-            </span>
-          )}
-
           {/* Authentic Packaging Pouch with object-fit: contain */}
           <img
             src={product.image}
@@ -99,11 +99,6 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({ product }) => 
           <span className="text-xs sm:text-sm font-bold text-[#3C1518] font-mono leading-none">
             AED {product.price.toFixed(2)}
           </span>
-          {product.compareAtPrice && (
-            <span className="text-[10px] text-[#3C1518]/40 line-through font-mono">
-              AED {product.compareAtPrice.toFixed(2)}
-            </span>
-          )}
         </div>
 
         {/* PRODUCT NAME & DETAILS */}

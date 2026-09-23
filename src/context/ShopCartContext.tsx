@@ -8,7 +8,7 @@ export interface CartItem {
 
 interface ShopCartContextType {
   items: CartItem[];
-  addItem: (product: ShopProduct) => void;
+  addItem: (product: ShopProduct, quantityToAdd?: number) => void;
   updateQuantity: (productId: string, quantity: number) => void;
   removeItem: (productId: string) => void;
   clearCart: () => void;
@@ -29,17 +29,18 @@ export const ShopCartProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  const addItem = (product: ShopProduct) => {
+  const addItem = (product: ShopProduct, quantityToAdd: number = 1) => {
+    const qty = Math.max(1, quantityToAdd);
     setItems((prev) => {
       const existing = prev.find((item) => item.product.id === product.id);
       if (existing) {
         return prev.map((item) =>
-          item.product.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+          item.product.id === product.id ? { ...item, quantity: item.quantity + qty } : item
         );
       }
-      return [...prev, { product, quantity: 1 }];
+      return [...prev, { product, quantity: qty }];
     });
-    setToastMessage(`Added ${product.name} to kitchen bag`);
+    setToastMessage(`Added ${product.name} (${qty}) to kitchen bag`);
     setTimeout(() => {
       setToastMessage(null);
     }, 2400);

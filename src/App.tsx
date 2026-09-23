@@ -17,41 +17,92 @@ import { SectionSubscribeSave } from './components/SectionSubscribeSave';
 import { SectionFinalCta } from './components/SectionFinalCta';
 import { SectionFooter } from './components/SectionFooter';
 import { ShopPage } from './components/shop/ShopPage';
+import { ProductPage } from './components/product/ProductPage';
+import { ShopCartDrawer } from './components/shop/ShopCartDrawer';
 import { ShopCartProvider, useShopCart } from './context/ShopCartContext';
 
-function MainAppContent() {
-  const [currentPage, setCurrentPage] = useState<'shop' | 'home'>(() => {
-    if (typeof window !== 'undefined' && window.location.hash === '#home') {
-      return 'home';
-    }
-    return 'shop';
-  });
+interface RouteState {
+  page: 'shop' | 'home' | 'product';
+  productSlug?: string;
+  categoryId?: string;
+}
 
-  const { totalItems, addItem, openCart } = useShopCart();
+function parseCurrentRoute(): RouteState {
+  if (typeof window === 'undefined') {
+    return { page: 'shop' };
+  }
+
+  const hash = window.location.hash || '';
+  const pathname = window.location.pathname || '';
+
+  // 1. Check Pathname first (e.g. /shop/product/:slug or /product/:slug)
+  const pathMatch = pathname.match(/^\/(?:shop\/product\/|product\/)([^/?#]+)/i);
+  if (pathMatch) {
+    return { page: 'product', productSlug: pathMatch[1] };
+  }
+
+  // 2. Check Hash patterns
+  const cleanHash = hash.replace(/^#\/?/, '');
+
+  // Match /shop/product/:slug or #shop/product/:slug or #product/:slug or direct slugs
+  const hashProductMatch = cleanHash.match(
+    /^(?:shop\/product\/|product\/)?(magic-[a-z0-9-]+|toor-dal|masoor-dal|moong-whole|urad-whole|haldi|jeera)$/i
+  );
+  if (hashProductMatch) {
+    return { page: 'product', productSlug: hashProductMatch[1] };
+  }
+
+  if (cleanHash === 'home') {
+    return { page: 'home' };
+  }
+
+  // Check category hash if any e.g. #shop/dals-lentils
+  if (cleanHash.startsWith('shop/')) {
+    const cat = cleanHash.replace(/^shop\//, '');
+    return { page: 'shop', categoryId: cat };
+  }
+
+  if (cleanHash === 'shop') {
+    return { page: 'shop' };
+  }
+
+  return { page: 'shop' };
+}
+
+function MainAppContent() {
+  const [routeState, setRouteState] = useState<RouteState>(() => parseCurrentRoute());
+  const { totalItems, openCart, isCartOpen, closeCart } = useShopCart();
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  // Sync hash with page state
+  // Sync hash/history with page state
   useEffect(() => {
-    const handleHashChange = () => {
-      if (window.location.hash === '#home') {
-        setCurrentPage('home');
-      } else if (window.location.hash === '#shop') {
-        setCurrentPage('shop');
-      }
+    const handleRouteChange = () => {
+      setRouteState(parseCurrentRoute());
     };
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('hashchange', handleRouteChange);
+    window.addEventListener('popstate', handleRouteChange);
+    return () => {
+      window.removeEventListener('hashchange', handleRouteChange);
+      window.removeEventListener('popstate', handleRouteChange);
+    };
   }, []);
 
-  const handleNavigateShop = () => {
-    setCurrentPage('shop');
-    window.location.hash = '#shop';
+  const handleNavigateShop = (categoryId?: string) => {
+    setRouteState({ page: 'shop', categoryId });
+    window.location.hash = categoryId ? `#shop/${categoryId}` : '#shop';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleNavigateHome = () => {
-    setCurrentPage('home');
+    setRouteState({ page: 'home' });
     window.location.hash = '#home';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleNavigateProduct = (productSlug: string) => {
+    const targetSlug = productSlug.startsWith('magic-') ? productSlug : `magic-${productSlug}`;
+    setRouteState({ page: 'product', productSlug: targetSlug });
+    window.location.hash = `#shop/product/${targetSlug}`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -68,9 +119,21 @@ function MainAppContent() {
 
   return (
     <>
-      {currentPage === 'shop' ? (
+      {routeState.page === 'product' ? (
+        /* REUSABLE DYNAMIC SINGLE PRODUCT PAGE */
+        <ProductPage
+          productSlug={routeState.productSlug}
+          onNavigateHome={handleNavigateHome}
+          onNavigateShop={handleNavigateShop}
+          onSelectProduct={handleNavigateProduct}
+        />
+      ) : routeState.page === 'shop' ? (
         /* SHOP PAGE */
-        <ShopPage onNavigateHome={handleNavigateHome} />
+        <ShopPage
+          onNavigateHome={handleNavigateHome}
+          onSelectProduct={handleNavigateProduct}
+          initialCategoryId={routeState.categoryId}
+        />
       ) : (
         /* APPROVED HOME PAGE (Untouched sections 1 to 11) */
         <div className="min-h-screen bg-[#FDF6EC] text-[#3C1518] flex flex-col font-sans selection:bg-[#C8102E] selection:text-white relative">
@@ -89,7 +152,7 @@ function MainAppContent() {
           {/* TOP NAVIGATION BAR */}
           <MagicHeader
             cartCount={totalItems}
-            onNavigateShop={handleNavigateShop}
+            onNavigateShop={() => handleNavigateShop()}
             onOpenCart={openCart}
           />
 
@@ -128,6 +191,9 @@ function MainAppContent() {
 
           {/* SECTION 11 — FOOTER */}
           <SectionFooter />
+
+          {/* Cart Drawer for Home */}
+          <ShopCartDrawer isOpen={isCartOpen} onClose={closeCart} />
         </div>
       )}
     </>

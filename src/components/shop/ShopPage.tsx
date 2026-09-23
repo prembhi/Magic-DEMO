@@ -13,10 +13,16 @@ type SortOption = 'featured' | 'name-asc' | 'name-desc' | 'price-asc' | 'price-d
 
 interface ShopPageProps {
   onNavigateHome: () => void;
+  onSelectProduct?: (productId: string) => void;
+  initialCategoryId?: string;
 }
 
-export const ShopPage: React.FC<ShopPageProps> = ({ onNavigateHome }) => {
-  const [selectedCategoryId, setSelectedCategoryId] = useState<string>('all');
+export const ShopPage: React.FC<ShopPageProps> = ({
+  onNavigateHome,
+  onSelectProduct,
+  initialCategoryId,
+}) => {
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string>(initialCategoryId || 'all');
   const [selectedSubItem, setSelectedSubItem] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [sortBy, setSortBy] = useState<SortOption>('featured');
@@ -210,7 +216,11 @@ export const ShopPage: React.FC<ShopPageProps> = ({ onNavigateHome }) => {
             {filteredProducts.length > 0 ? (
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
                 {filteredProducts.map((product) => (
-                  <ShopProductCard key={product.id} product={product} />
+                  <ShopProductCard
+                    key={product.id}
+                    product={product}
+                    onSelectProduct={onSelectProduct}
+                  />
                 ))}
               </div>
             ) : (
