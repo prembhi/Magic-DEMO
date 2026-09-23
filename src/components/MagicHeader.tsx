@@ -5,16 +5,27 @@ import { MagicLogo } from './MagicLogo';
 interface MagicHeaderProps {
   cartCount?: number;
   onNavigateShop?: () => void;
+  onNavigateRecipes?: () => void;
   onOpenCart?: () => void;
 }
 
 export const MagicHeader: React.FC<MagicHeaderProps> = ({
   cartCount = 0,
   onNavigateShop,
+  onNavigateRecipes,
   onOpenCart,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedMarket, setSelectedMarket] = useState<'Dubai / UAE' | 'USA'>('Dubai / UAE');
+
+  const handleRecipesClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigateRecipes) {
+      onNavigateRecipes();
+    } else {
+      window.location.hash = '#recipes';
+    }
+  };
 
   return (
     <header className="relative w-full z-40 bg-[#FDF6EC]/95 backdrop-blur-md border-b border-[#3C1518]/10 transition-colors">
@@ -64,6 +75,13 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
             className="hover:text-[#C8102E] transition-colors whitespace-nowrap focus-visible:outline-2 focus-visible:outline-[#C8102E] py-1"
           >
             Global Distribution
+          </a>
+          <a
+            href="#recipes"
+            onClick={handleRecipesClick}
+            className="text-[#C8102E] font-bold hover:underline transition-colors whitespace-nowrap focus-visible:outline-2 focus-visible:outline-[#C8102E] py-1"
+          >
+            Recipes
           </a>
         </nav>
 
@@ -153,6 +171,16 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
               className="py-1 hover:text-[#C8102E] transition-colors"
             >
               Global Distribution
+            </a>
+            <a
+              href="#recipes"
+              onClick={(e) => {
+                setMobileMenuOpen(false);
+                handleRecipesClick(e);
+              }}
+              className="py-1 font-bold text-[#C8102E] hover:underline transition-colors"
+            >
+              Recipes
             </a>
 
             <div className="pt-3 border-t border-[#3C1518]/10 flex flex-col gap-2.5">

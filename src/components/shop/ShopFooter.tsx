@@ -4,12 +4,22 @@ import { MAGIC_ASSETS } from '../../constants/assets';
 interface ShopFooterProps {
   onNavigateHome: () => void;
   onSelectCategory?: (catId: string) => void;
+  onNavigateRecipes?: () => void;
 }
 
 export const ShopFooter: React.FC<ShopFooterProps> = ({
   onNavigateHome,
   onSelectCategory,
+  onNavigateRecipes,
 }) => {
+  const handleRecipesClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigateRecipes) {
+      onNavigateRecipes();
+    } else {
+      window.location.hash = '#recipes';
+    }
+  };
   return (
     <footer className="w-full bg-[#2A0E10] text-[#FDF6EC] border-t border-[#3C1518] mt-12">
       {/* Main Multi-Column Content Area */}
@@ -113,9 +123,12 @@ export const ShopFooter: React.FC<ShopFooterProps> = ({
                 </a>
               </li>
               <li>
-                <a href="#kitchen" className="hover:text-[#D4A843] transition-colors">
-                  Cook With Magic
-                </a>
+                <button
+                  onClick={handleRecipesClick}
+                  className="hover:text-[#D4A843] transition-colors cursor-pointer text-left"
+                >
+                  Cook With Magic (Recipes)
+                </button>
               </li>
               <li>
                 <a href="#newsletter" className="hover:text-[#D4A843] transition-colors">

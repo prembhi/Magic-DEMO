@@ -7,16 +7,36 @@ interface ShopHeaderProps {
   searchQuery: string;
   onSearchChange: (query: string) => void;
   onNavigateHome: () => void;
+  onNavigateRecipes?: () => void;
+  onNavigateShop?: () => void;
 }
 
 export const ShopHeader: React.FC<ShopHeaderProps> = ({
   searchQuery,
   onSearchChange,
   onNavigateHome,
+  onNavigateRecipes,
+  onNavigateShop,
 }) => {
   const { totalItems, subtotal, openCart } = useShopCart();
   const [selectedRegion, setSelectedRegion] = useState<'UAE' | 'USA'>('UAE');
   const [selectedLang, setSelectedLang] = useState<'English' | 'العربية'>('English');
+
+  const handleRecipesClick = () => {
+    if (onNavigateRecipes) {
+      onNavigateRecipes();
+    } else {
+      window.location.hash = '#recipes';
+    }
+  };
+
+  const handleShopClick = () => {
+    if (onNavigateShop) {
+      onNavigateShop();
+    } else {
+      window.location.hash = '#shop';
+    }
+  };
 
   return (
     <header className="w-full bg-[#FAF7F2] border-b border-[#E6E0D6] text-[#3C1518]">
@@ -24,7 +44,7 @@ export const ShopHeader: React.FC<ShopHeaderProps> = ({
       <div className="border-b border-[#E6E0D6]/80 bg-white">
         <div className="max-w-[1140px] mx-auto px-4 sm:px-6 h-12 flex items-center justify-between gap-4 text-xs">
           {/* Left: Brand Logo & Navigation */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3">
             <button
               onClick={onNavigateHome}
               className="flex items-center gap-2 cursor-pointer focus-visible:outline-2 focus-visible:outline-[#C8102E] rounded py-0.5"
@@ -43,6 +63,20 @@ export const ShopHeader: React.FC<ShopHeaderProps> = ({
               className="hidden md:inline-flex text-[11px] font-semibold text-[#3C1518]/70 hover:text-[#C8102E] transition-colors cursor-pointer"
             >
               Brand Homepage
+            </button>
+            <span className="hidden sm:inline-block text-[#3C1518]/30">|</span>
+            <button
+              onClick={handleShopClick}
+              className="hidden sm:inline-flex text-[11px] font-semibold text-[#3C1518]/70 hover:text-[#C8102E] transition-colors cursor-pointer"
+            >
+              Shop
+            </button>
+            <span className="hidden sm:inline-block text-[#3C1518]/30">|</span>
+            <button
+              onClick={handleRecipesClick}
+              className="inline-flex items-center gap-1 text-[11px] font-bold text-[#C8102E] hover:underline transition-colors cursor-pointer"
+            >
+              <span>Recipes</span>
             </button>
           </div>
 

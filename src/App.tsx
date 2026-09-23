@@ -18,13 +18,15 @@ import { SectionFinalCta } from './components/SectionFinalCta';
 import { SectionFooter } from './components/SectionFooter';
 import { ShopPage } from './components/shop/ShopPage';
 import { ProductPage } from './components/product/ProductPage';
+import { RecipesPage } from './components/recipes/RecipesPage';
 import { ShopCartDrawer } from './components/shop/ShopCartDrawer';
 import { ShopCartProvider, useShopCart } from './context/ShopCartContext';
 
 interface RouteState {
-  page: 'shop' | 'home' | 'product';
+  page: 'shop' | 'home' | 'product' | 'recipes';
   productSlug?: string;
   categoryId?: string;
+  recipeSlug?: string;
 }
 
 function parseCurrentRoute(): RouteState {
@@ -35,7 +37,13 @@ function parseCurrentRoute(): RouteState {
   const hash = window.location.hash || '';
   const pathname = window.location.pathname || '';
 
-  // 1. Check Pathname first (e.g. /shop/product/:slug or /product/:slug)
+  // 1. Check Pathname first (e.g. /recipes/:slug, /recipes, /shop/product/:slug)
+  const recipePathMatch = pathname.match(/^\/recipes\/?([^/?#]*)/i);
+  if (recipePathMatch) {
+    const slug = recipePathMatch[1]?.trim();
+    return { page: 'recipes', recipeSlug: slug ? slug : undefined };
+  }
+
   const pathMatch = pathname.match(/^\/(?:shop\/product\/|product\/)([^/?#]+)/i);
   if (pathMatch) {
     return { page: 'product', productSlug: pathMatch[1] };
@@ -43,6 +51,11 @@ function parseCurrentRoute(): RouteState {
 
   // 2. Check Hash patterns
   const cleanHash = hash.replace(/^#\/?/, '');
+
+  if (cleanHash.startsWith('recipes')) {
+    const recipeSlug = cleanHash.replace(/^recipes\/?/, '').trim();
+    return { page: 'recipes', recipeSlug: recipeSlug ? recipeSlug : undefined };
+  }
 
   // Match /shop/product/:slug or #shop/product/:slug or #product/:slug or direct slugs
   const hashProductMatch = cleanHash.match(
@@ -99,6 +112,12 @@ function MainAppContent() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleNavigateRecipes = (recipeSlug?: string) => {
+    setRouteState({ page: 'recipes', recipeSlug });
+    window.location.hash = recipeSlug ? `#recipes/${recipeSlug}` : '#recipes';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleNavigateProduct = (productSlug: string) => {
     const targetSlug = productSlug.startsWith('magic-') ? productSlug : `magic-${productSlug}`;
     setRouteState({ page: 'product', productSlug: targetSlug });
@@ -127,6 +146,15 @@ function MainAppContent() {
           onNavigateShop={handleNavigateShop}
           onSelectProduct={handleNavigateProduct}
         />
+      ) : routeState.page === 'recipes' ? (
+        /* RECIPES DISCOVERY & DETAIL PAGE */
+        <RecipesPage
+          recipeSlug={routeState.recipeSlug}
+          onNavigateHome={handleNavigateHome}
+          onNavigateShop={handleNavigateShop}
+          onNavigateRecipes={handleNavigateRecipes}
+          onSelectProduct={handleNavigateProduct}
+        />
       ) : routeState.page === 'shop' ? (
         /* SHOP PAGE */
         <ShopPage
@@ -153,6 +181,7 @@ function MainAppContent() {
           <MagicHeader
             cartCount={totalItems}
             onNavigateShop={() => handleNavigateShop()}
+            onNavigateRecipes={() => handleNavigateRecipes()}
             onOpenCart={openCart}
           />
 
