@@ -6,11 +6,12 @@ import { ShopFooter } from '../shop/ShopFooter';
 import { ShopCartDrawer } from '../shop/ShopCartDrawer';
 import { ProductGallery } from './ProductGallery';
 import { ProductInfo } from './ProductInfo';
-import { ProductAbout } from './ProductAbout';
-import { ProductWhyMagic } from './ProductWhyMagic';
-import { ProductCookWithMagic } from './ProductCookWithMagic';
-import { ProductDetails } from './ProductDetails';
+import { ProductEditorialBenefitStrip } from './ProductEditorialBenefitStrip';
+import { ProductStorytelling } from './ProductStorytelling';
+import { ProductRecipeCards } from './ProductRecipeCards';
+import { ProductFaqSection } from './ProductFaqSection';
 import { RelatedProducts } from './RelatedProducts';
+import { ProductNewsletter } from './ProductNewsletter';
 import { useShopCart } from '../../context/ShopCartContext';
 
 interface ProductPageProps {
@@ -65,7 +66,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({
         </div>
       )}
 
-      {/* 1. EXISTING APPROVED MARKETPLACE HEADER */}
+      {/* TOP MARKETPLACE HEADER */}
       <ShopHeader
         searchQuery={searchQuery}
         onSearchChange={handleSearchChange}
@@ -73,93 +74,99 @@ export const ProductPage: React.FC<ProductPageProps> = ({
       />
 
       {/* MAIN CONTAINER */}
-      <main className="flex-1 max-w-[1180px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+      <main className="flex-1 w-full flex flex-col">
         {product ? (
           <>
-            {/* 2. COMPACT BREADCRUMB */}
-            <nav aria-label="Breadcrumb" className="mb-4 sm:mb-6">
-              <ol className="flex items-center flex-wrap gap-1 sm:gap-1.5 text-xs text-[#3C1518]/60">
-                <li>
-                  <button
-                    onClick={onNavigateHome}
-                    className="hover:text-[#C8102E] transition-colors cursor-pointer"
-                  >
-                    Home
-                  </button>
-                </li>
-                <li>
-                  <ChevronRight className="w-3 h-3 text-[#3C1518]/30 inline" />
-                </li>
-                <li>
-                  <button
-                    onClick={() => onNavigateShop()}
-                    className="hover:text-[#C8102E] transition-colors cursor-pointer"
-                  >
-                    Shop
-                  </button>
-                </li>
-                <li>
-                  <ChevronRight className="w-3 h-3 text-[#3C1518]/30 inline" />
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleCategoryClick(product.category)}
-                    className="hover:text-[#C8102E] transition-colors cursor-pointer"
-                  >
-                    {product.category}
-                  </button>
-                </li>
-                <li>
-                  <ChevronRight className="w-3 h-3 text-[#3C1518]/30 inline" />
-                </li>
-                <li aria-current="page">
-                  <span className="font-semibold text-[#3C1518] truncate max-w-[180px] sm:max-w-none inline-block">
-                    {product.name}
-                  </span>
-                </li>
-              </ol>
-            </nav>
+            {/* HERO SECTION: Breadcrumb + 55/45 Immersion */}
+            <div className="max-w-[1240px] w-full mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6">
+              {/* BREADCRUMB */}
+              <nav aria-label="Breadcrumb" className="mb-4 sm:mb-6">
+                <ol className="flex items-center flex-wrap gap-1 sm:gap-1.5 text-xs text-[#3C1518]/60">
+                  <li>
+                    <button
+                      onClick={onNavigateHome}
+                      className="hover:text-[#C8102E] transition-colors cursor-pointer"
+                    >
+                      Home
+                    </button>
+                  </li>
+                  <li>
+                    <ChevronRight className="w-3 h-3 text-[#3C1518]/30 inline" />
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => onNavigateShop()}
+                      className="hover:text-[#C8102E] transition-colors cursor-pointer"
+                    >
+                      Shop
+                    </button>
+                  </li>
+                  <li>
+                    <ChevronRight className="w-3 h-3 text-[#3C1518]/30 inline" />
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => handleCategoryClick(product.category)}
+                      className="hover:text-[#C8102E] transition-colors cursor-pointer"
+                    >
+                      {product.category}
+                    </button>
+                  </li>
+                  <li>
+                    <ChevronRight className="w-3 h-3 text-[#3C1518]/30 inline" />
+                  </li>
+                  <li aria-current="page">
+                    <span className="font-semibold text-[#3C1518] truncate max-w-[200px] sm:max-w-none inline-block">
+                      {product.name}
+                    </span>
+                  </li>
+                </ol>
+              </nav>
 
-            {/* 3. MAIN PRODUCT HERO: Desktop Left ~55%, Right ~45% */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-              {/* LEFT: Large authentic MAGIC product presentation (approx 55% desktop width) */}
-              <div className="lg:col-span-7">
-                <ProductGallery product={product} />
-              </div>
+              {/* 1 & 2: IMMERSIVE HERO GALLERY + STRONG PURCHASE PANEL */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
+                {/* 1. Large immersive product hero / gallery (approx 55% desktop width) */}
+                <div className="lg:col-span-7">
+                  <ProductGallery product={product} />
+                </div>
 
-              {/* RIGHT: Product purchase panel (approx 45% desktop width) */}
-              <div className="lg:col-span-5">
-                <ProductInfo
-                  product={product}
-                  onNavigateCategory={handleCategoryClick}
-                />
+                {/* 2. Strong purchase information panel beside it (approx 45% desktop width) */}
+                <div className="lg:col-span-5">
+                  <ProductInfo
+                    product={product}
+                    onNavigateCategory={handleCategoryClick}
+                  />
+                </div>
               </div>
             </div>
 
-            {/* 4. ABOUT THIS PRODUCT & STRUCTURED INFORMATION GRID */}
-            <ProductAbout product={product} />
+            {/* 3. EDITORIAL VISUAL BENEFIT STRIP */}
+            <ProductEditorialBenefitStrip product={product} />
 
-            {/* 5. WHY MAGIC / PRODUCT BENEFITS */}
-            <ProductWhyMagic product={product} />
+            {/* 4. CULINARY / CONTENT STORYTELLING SECTION */}
+            <ProductStorytelling product={product} />
 
-            {/* 6. HOW TO USE / COOK WITH MAGIC */}
-            <ProductCookWithMagic
+            {/* 5. RECIPE / CONTENT CARDS ("Cook With MAGIC") */}
+            <ProductRecipeCards
               product={product}
               onSelectProduct={onSelectProduct}
             />
 
-            {/* 7. EXPANDABLE PRODUCT DETAILS & TRANSPARENCY ACCORDION */}
-            <ProductDetails product={product} />
+            {/* 6. LARGE FAQ ACCORDION SECTION */}
+            <ProductFaqSection product={product} />
 
-            {/* 8. RELATED PRODUCTS ("EXPLORE MORE FROM MAGIC") */}
+            {/* 7. RELATED / FEATURED PRODUCTS SECTION */}
             <RelatedProducts
               currentProduct={product}
               onSelectProduct={onSelectProduct}
             />
+
+            {/* 8. NEWSLETTER ("Join The MAGIC Kitchen") */}
+            <ProductNewsletter />
           </>
         ) : (
-          /* 16. ERROR / UNKNOWN PRODUCT FALLBACK */
-          <div className="py-20 sm:py-28 text-center max-w-md mx-auto">
+          /* UNKNOWN PRODUCT FALLBACK */
+          <div className="py-20 sm:py-28 text-center max-w-md mx-auto px-4">
             <div className="w-12 h-12 rounded-full bg-[#C8102E]/10 text-[#C8102E] flex items-center justify-center mx-auto mb-4">
               <AlertCircle className="w-6 h-6" />
             </div>
@@ -182,7 +189,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({
         )}
       </main>
 
-      {/* 9. EXISTING APPROVED FOOTER */}
+      {/* 9. FULL MAGIC FOOTER */}
       <ShopFooter
         onNavigateHome={onNavigateHome}
         onSelectCategory={(id) => onNavigateShop(id)}
