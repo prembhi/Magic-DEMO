@@ -26,6 +26,7 @@ export interface Recipe {
   primaryProduct: RecipeProductRef;
   ingredients: string[];
   instructions: string[];
+  cookingNotes?: string;
 }
 
 export const RECIPES_DATA: Recipe[] = [
@@ -93,6 +94,8 @@ export const RECIPES_DATA: Recipe[] = [
       'Add sliced garlic and dried red chilies, sauteing until garlic turns golden brown and fragrant.',
       'Pour the hot sizzling tadka immediately over the dal, cover with a lid for 2 minutes to trap aromatics, and serve hot with basmati rice.',
     ],
+    cookingNotes:
+      'For the most aromatic tadka, ensure the ghee is shimmering hot before adding the cumin seeds. Let them crackle and toast to a hazelnut brown for 10 seconds before folding in the garlic and dried chilies. Immediately pour over the simmering dal and cover with a tight lid for two minutes to trap the volatile aromatics.',
   },
   {
     id: 'masoor-dal-fry',
@@ -157,6 +160,8 @@ export const RECIPES_DATA: Recipe[] = [
       'Add onions and ginger, sauteing until deep golden brown. Stir in tomatoes and cook until oil separates.',
       'Fold in the cooked red lentils and simmer together for 5 minutes for flavors to marry.',
     ],
+    cookingNotes:
+      'Split red lentils (Masoor) cook remarkably fast compared to whole pulses and need zero soaking. Simmer them until tender and creamy, then vigorously whisk to emulsify before folding into the caramelized onion-tomato bhuna.',
   },
   {
     id: 'heritage-sambar',
@@ -220,6 +225,8 @@ export const RECIPES_DATA: Recipe[] = [
       'Pour in the mashed toor dal, add extra water if needed, and simmer for 8 minutes.',
       'Tempering: In hot oil, crackle mustard seeds, MAGIC Jeera, dried chilies, and curry leaves. Pour over boiling sambar.',
     ],
+    cookingNotes:
+      'Extract tamarind pulp with warm water to capture its pure tart acidity. Simmer shallots and drumsticks in the spiced tamarind broth until just tender before stirring in the mashed Toor Dal so the vegetables preserve their structural bite.',
   },
   {
     id: 'homestyle-khichdi',
@@ -283,6 +290,8 @@ export const RECIPES_DATA: Recipe[] = [
       'Pressure cook for 4 whistles on medium heat. Allow pressure to release naturally.',
       'Serve warm topped with a generous spoon of cow ghee and mango pickle.',
     ],
+    cookingNotes:
+      'The secret to a silky, comforting khichdi is equal parts dal and grain cooked with an extra cup of water. Temper whole cumin in generous spoonfuls of hot cow ghee right before serving for golden, soul-warming nourishment.',
   },
   {
     id: 'authentic-dal-makhani',
@@ -347,6 +356,8 @@ export const RECIPES_DATA: Recipe[] = [
       'Add cooked lentils with cooking liquor. Simmer on low heat for 45 minutes, mashing beans with the back of a ladle to create velvety richness.',
       'Finish with heavy cream and a dollop of cold butter before serving.',
     ],
+    cookingNotes:
+      'Whole black urad benefits from prolonged gentle simmering to release its natural starches and rich creaminess. Wash the lentils thoroughly until the rinse water runs clear, and finish with cold butter stirred in off the flame.',
   },
   {
     id: 'sabut-moong-curry',
@@ -511,6 +522,8 @@ export const RECIPES_DATA: Recipe[] = [
       'Remove from heat, whisk in honey and coconut oil until frothy.',
       'Pour into warm ceramic mugs and dust with a tiny pinch of turmeric.',
     ],
+    cookingNotes:
+      'Simmer high-curcumin MAGIC Haldi on gentle heat for at least 3 minutes to dissolve its earthy pungency. A pinch of ground black pepper or tiny dab of ghee enhances the natural bioavailability of curcumin.',
   },
   {
     id: 'cooling-spiced-chaas',
@@ -557,6 +570,8 @@ export const RECIPES_DATA: Recipe[] = [
       'Blend for 15 seconds until frothy and light.',
       'Pour into tall glasses over ice, garnish generously with roasted crushed MAGIC Jeera and torn mint.',
     ],
+    cookingNotes:
+      'Dry roast the cumin seeds on a dry tava until fragrant and smoke starts rising, then crush coarsely with a mortar and pestle. Stirring freshly roasted cumin into cold churned yogurt produces an instantly refreshing, digestive tonic.',
   },
   {
     id: 'sprout-chaat',
@@ -613,6 +628,8 @@ export const RECIPES_DATA: Recipe[] = [
       'Drizzle fresh lime juice and toss gently to coat evenly.',
       'Serve immediately as an invigorating mid-day snack.',
     ],
+    cookingNotes:
+      'Sprout whole green moong for 24 to 36 hours in a warm, dark pantry corner. A light 2-minute steam tenderizes the sprouts while preserving their crisp crunch and fresh chlorophyll sweetness.',
   },
   {
     id: 'chana-masala',
@@ -670,6 +687,8 @@ export const RECIPES_DATA: Recipe[] = [
       'Add chickpeas and 1 cup water. Simmer on medium-low for 15 minutes, lightly crushing a few chickpeas to thicken gravy.',
       'Garnish with ginger matchsticks and fresh cilantro.',
     ],
+    cookingNotes:
+      'Simmering cooked chickpeas with a pinch of turmeric and whole cumin allows the pulses to absorb deep spice liquor. Lightly mash 10% of the chickpeas against the side of the pot to naturally thicken the gravy without cornstarch.',
   },
   {
     id: 'dum-biryani',
@@ -727,6 +746,8 @@ export const RECIPES_DATA: Recipe[] = [
       'Seal lid with foil or dough. Cook on low heat (dum) for 25 minutes.',
       'Rest for 10 minutes before gently scooping from the bottom to preserve grain length.',
     ],
+    cookingNotes:
+      'Par-boil the aged basmati rice to exactly 70% doneness (the grain should break into three pieces when pressed between fingers). Seal the heavy pot with foil or dough so the aromatic steam gently infuses the spices through each grain.',
   },
 ];
 

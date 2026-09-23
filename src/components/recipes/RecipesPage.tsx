@@ -172,6 +172,7 @@ export const RecipesPage: React.FC<RecipesPageProps> = ({
           <RecipeDetailPage
             recipe={activeDetailRecipe}
             onNavigateHome={onNavigateHome}
+            onNavigateShop={onNavigateShop}
             onNavigateRecipes={() => onNavigateRecipes()}
             onSelectRecipe={handleSelectRecipe}
             onSelectProduct={onSelectProduct}
