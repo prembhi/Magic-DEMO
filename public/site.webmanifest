@@ -1,0 +1,17 @@
+{
+  "name": "MAGIC Foods UAE - Pure Indian Pulses & Spices",
+  "short_name": "MAGIC UAE",
+  "description": "Authentic single-origin Indian pulses & whole spices, packaged for fresh delivery across Dubai and the UAE.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#FDF6EC",
+  "theme_color": "#C8102E",
+  "icons": [
+    {
+      "src": "./assets/magic/magic_logo_transparent.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

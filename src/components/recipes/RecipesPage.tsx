@@ -180,7 +180,7 @@ export const RecipesPage: React.FC<RecipesPageProps> = ({
       />
 
       {/* MAIN CONTENT AREA */}
-      <main className="flex-1 w-full flex flex-col">
+      <main className="flex-1 w-full flex flex-col focus:outline-none" id="main-content" tabIndex={-1}>
         {activeDetailRecipe ? (
           /* RECIPE DETAIL VIEW (/recipes/:slug) */
           <RecipeDetailPage

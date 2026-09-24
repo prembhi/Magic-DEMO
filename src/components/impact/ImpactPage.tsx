@@ -77,7 +77,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
         onNavigateNewsletter={onNavigateNewsletter}
       />
 
-      <main className="flex-1 w-full flex flex-col">
+      <main className="flex-1 w-full flex flex-col focus:outline-none" id="main-content" tabIndex={-1}>
         {/* ==================================================
             SECTION 01: HERO (Cinematic Agricultural / Editorial Cover)
             ================================================== */}

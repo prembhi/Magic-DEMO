@@ -104,7 +104,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({
       />
 
       {/* MAIN CONTAINER */}
-      <main className="flex-1 w-full flex flex-col">
+      <main className="flex-1 w-full flex flex-col focus:outline-none" id="main-content" tabIndex={-1}>
         {product ? (
           <>
             {/* HERO SECTION: Breadcrumb + 55/45 Immersion */}

@@ -58,6 +58,43 @@
   }
 }
 
+/* WCAG 2.2 AA Focus Visible & Keyboard Navigation Standards */
+:focus-visible {
+  outline: 2px solid #C8102E !important;
+  outline-offset: 3px !important;
+}
+
+/* Ensure high contrast focus indicators on dark/maroon backgrounds */
+.bg-\[\#3C1518\] :focus-visible,
+[data-theme="dark"] :focus-visible {
+  outline: 2px solid #D4A843 !important;
+  outline-offset: 3px !important;
+}
+
+/* Screen reader only utility class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
 /* Custom smooth animations & grain texture */
 @keyframes slowDrift {
   0% {
@@ -85,10 +122,125 @@
   animation: subtleFloat 7s ease-in-out infinite;
 }
 
+/* 2.5D Depth & Transform Utilities */
+.perspective-1200 {
+  perspective: 1200px;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.perspective-800 {
+  perspective: 800px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ============================================================ */
+/* MAGIC EDITORIAL MOTION SYSTEM (60fps, No layout triggers)    */
+/* ============================================================ */
+:root {
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-gentle: cubic-bezier(0.25, 0.9, 0.35, 1);
+}
+
+.ease-editorial {
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ease-cinematic {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ease-gentle {
+  transition-timing-function: cubic-bezier(0.25, 0.9, 0.35, 1);
+}
+
+/* Typography Reveal: Fraunces section titles */
+.reveal-heading {
+  opacity: 0;
+  transform: translateY(28px);
+  letter-spacing: 0.015em;
+  transition: opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+              letter-spacing 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-heading.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+  letter-spacing: normal;
+}
+
+/* Editorial Image Reveal: gentle entrance with subtle scale settlement */
+.reveal-image {
+  opacity: 0;
+  transform: translateY(20px) scale(1.025);
+  transition: opacity 1100ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1100ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-image.is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Depth Hierarchy Tokens */
+.depth-text {
+  will-change: transform;
+}
+
+.depth-botanical {
+  will-change: transform;
+}
+
+.depth-photo {
+  will-change: transform;
+}
+
+.depth-bg {
+  will-change: transform;
+}
+
+/* Universal WCAG 2.2 AA prefers-reduced-motion compliance */
 @media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
   .animate-slow-drift,
   .animate-subtle-float {
     animation: none !important;
+  }
+  .reveal-heading,
+  .reveal-image {
+    opacity: 1 !important;
+    transform: none !important;
+    letter-spacing: normal !important;
+    transition: none !important;
   }
 }
 

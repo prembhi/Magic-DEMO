@@ -1,23 +1,101 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MAGIC - Indian Spices & FMCG</title>
-    <meta name="description" content="The MAGIC packaging translated into an immersive digital spice world. Premium Indian culinary heritage for Dubai and the United Arab Emirates." />
-    <meta property="og:title" content="MAGIC - Indian Spices & FMCG" />
-    <meta property="og:description" content="The MAGIC packaging translated into an immersive digital spice world. Premium Indian culinary heritage for Dubai and the United Arab Emirates." />
+    <title>MAGIC UAE | Pure Indian Pulses & Single-Origin Spices</title>
+    <meta
+      name="description"
+      content="Authentic single-origin Indian pulses & whole spices, sourced directly from verified farming communities to UAE kitchens. 100% unpolished & laser-sorted."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#C8102E" />
+
+    <!-- Canonical URL (Configured for GitHub Pages production) -->
+    <link rel="canonical" href="https://prembhi.github.io/Magic-DEMO/" />
+
+    <!-- Favicon & Web App Manifest -->
+    <link rel="icon" type="image/png" href="./assets/magic/magic_logo_transparent.png" />
+    <link rel="apple-touch-icon" href="./assets/magic/magic_logo_transparent.png" />
+    <link rel="manifest" href="./site.webmanifest" />
+
+    <!-- Open Graph Metadata -->
+    <meta property="og:site_name" content="MAGIC Foods UAE" />
+    <meta property="og:title" content="MAGIC UAE | Pure Indian Pulses & Single-Origin Spices" />
+    <meta
+      property="og:description"
+      content="Authentic single-origin Indian pulses & whole spices, sourced directly from verified farming communities to UAE kitchens. 100% unpolished & laser-sorted."
+    />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://prembhi.github.io/Magic-DEMO/" />
+    <meta property="og:image" content="https://prembhi.github.io/Magic-DEMO/assets/magic/toor_clean.png" />
+
+    <!-- Twitter Card Metadata -->
     <meta name="twitter:card" content="summary_large_image" />
-    
+    <meta name="twitter:title" content="MAGIC UAE | Pure Indian Pulses & Single-Origin Spices" />
+    <meta
+      name="twitter:description"
+      content="Authentic single-origin Indian pulses & whole spices, sourced directly from verified farming communities to UAE kitchens."
+    />
+    <meta name="twitter:image" content="https://prembhi.github.io/Magic-DEMO/assets/magic/toor_clean.png" />
+
+    <!-- Performance: Preload Critical Hero LCP Image -->
+    <link rel="preload" as="image" href="./assets/magic/toor_clean.png" fetchpriority="high" />
+
     <!-- Google Fonts: Fraunces (Display), Plus Jakarta Sans (UI/Body), Noto Kufi Arabic & Amiri (Arabic) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    >
+
+    <!-- GitHub Pages Single Page Apps URL Redirection Receiver -->
+    <script>
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+
+    <!-- Structured Data (JSON-LD): Organization & WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://prembhi.github.io/Magic-DEMO/#organization",
+          "name": "MAGIC Foods UAE",
+          "url": "https://prembhi.github.io/Magic-DEMO/",
+          "logo": "https://prembhi.github.io/Magic-DEMO/assets/magic/magic_logo_transparent.png",
+          "description": "Authentic Indian pulses and single-origin spices, unpolished and packaged for fresh delivery across Dubai and the UAE.",
+          "areaServed": {
+            "@type": "Country",
+            "name": "United Arab Emirates"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://prembhi.github.io/Magic-DEMO/#website",
+          "url": "https://prembhi.github.io/Magic-DEMO/",
+          "name": "MAGIC Foods UAE",
+          "publisher": {
+            "@id": "https://prembhi.github.io/Magic-DEMO/#organization"
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body class="bg-[#FDF6EC] text-[#3C1518] antialiased selection:bg-[#C8102E] selection:text-white">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

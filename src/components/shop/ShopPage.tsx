@@ -145,10 +145,10 @@ export const ShopPage: React.FC<ShopPageProps> = ({
       />
 
       {/* 3. MAIN SHOPPING AREA (Centered max-width with generous whitespace outside) */}
-      <div className="flex-1 w-full max-w-[1140px] mx-auto px-4 sm:px-6 py-5">
+      <div className="flex-1 w-full max-w-[1240px] mx-auto px-4 sm:px-6 py-5">
         <div className="flex flex-col lg:flex-row gap-5 items-start">
-          {/* LEFT: Categories Sidebar (~240px Desktop) */}
-          <aside className="hidden lg:block w-[240px] shrink-0 sticky top-4">
+          {/* LEFT: Categories Sidebar (~210px Desktop) */}
+          <aside className="hidden lg:block w-[210px] shrink-0 sticky top-4">
             <ShopSidebar
               selectedCategoryId={selectedCategoryId}
               onSelectCategory={setSelectedCategoryId}
@@ -158,7 +158,7 @@ export const ShopPage: React.FC<ShopPageProps> = ({
           </aside>
 
           {/* RIGHT: Product Content Area */}
-          <main className="flex-1 w-full min-w-0" id="shop-products-area">
+          <main className="flex-1 w-full min-w-0 focus:outline-none" id="main-content" tabIndex={-1}>
             {/* MAIN PRODUCT HEADER (Compact Grocery Heading + Controls) */}
             <div className="bg-white rounded border border-[#E6E0D6] p-3 mb-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -226,7 +226,7 @@ export const ShopPage: React.FC<ShopPageProps> = ({
 
             {/* 6. DENSE 4-COLUMN PRODUCT GRID (Desktop 4 cols, Tablet 3 cols, Mobile 2 cols) */}
             {filteredProducts.length > 0 ? (
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-3.5">
                 {filteredProducts.map((product) => (
                   <ShopProductCard
                     key={product.id}

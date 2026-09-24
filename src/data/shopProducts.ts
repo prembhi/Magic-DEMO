@@ -17,6 +17,7 @@ export interface ShopProduct {
   ingredients?: string;
   searchKeywords: string[];
   featuredRank: number;
+  badge?: 'NEW' | 'BESTSELLER' | 'FEATURED';
 }
 
 export interface ShopCategory {

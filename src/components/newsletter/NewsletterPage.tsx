@@ -167,7 +167,7 @@ export const NewsletterPage: React.FC<NewsletterPageProps> = ({
         onNavigateNewsletter={onNavigateNewsletter || (() => window.scrollTo({ top: 0, behavior: 'smooth' }))}
       />
 
-      <main className="flex-1 w-full flex flex-col">
+      <main className="flex-1 w-full flex flex-col focus:outline-none" id="main-content" tabIndex={-1}>
         {/* ================================================================ */}
         {/* SECTION 01: NEWSLETTER HERO (50/50 Desktop Split, Stacked Mobile) */}
         {/* ================================================================ */}

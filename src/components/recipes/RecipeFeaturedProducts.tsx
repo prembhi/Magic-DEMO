@@ -50,6 +50,7 @@ export const RecipeFeaturedProducts: React.FC<RecipeFeaturedProductsProps> = ({
               key={product.id}
               product={product}
               onSelectProduct={onSelectProduct}
+              variant="compact"
             />
           ))}
         </div>

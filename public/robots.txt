@@ -1,0 +1,6 @@
+# robots.txt for MAGIC UAE (Production)
+User-agent: *
+Allow: /
+
+# Canonical Sitemap
+Sitemap: https://prembhi.github.io/Magic-DEMO/sitemap.xml

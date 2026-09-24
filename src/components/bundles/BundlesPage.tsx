@@ -194,7 +194,7 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
       />
 
       {/* 2. MAIN CONTENT AREA */}
-      <main className="flex-1 w-full flex flex-col">
+      <main className="flex-1 w-full flex flex-col focus:outline-none" id="main-content" tabIndex={-1}>
         {activeDetailBundle ? (
           /* BUNDLE DETAIL VIEW (/bundles/:slug) */
           <BundleDetailPage

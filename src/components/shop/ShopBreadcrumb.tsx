@@ -21,7 +21,7 @@ export const ShopBreadcrumb: React.FC<ShopBreadcrumbProps> = ({
       aria-label="Breadcrumb"
       className="w-full bg-[#FAF7F2] border-b border-[#EAE4D9] py-2 select-none"
     >
-      <div className="max-w-[1140px] mx-auto px-4 sm:px-6 flex items-center gap-1.5 text-[11px] text-[#3C1518]/65">
+      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 flex items-center gap-1.5 text-[11px] text-[#3C1518]/65">
         <button
           onClick={onNavigateHome}
           className="hover:text-[#C8102E] transition-colors cursor-pointer"

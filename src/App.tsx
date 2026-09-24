@@ -4,30 +4,21 @@
  */
 
 import { useState, useEffect } from 'react';
-import { MagicHeader } from './components/MagicHeader';
-import { HeroScene } from './components/HeroScene';
-import { SectionTrustStrip } from './components/SectionTrustStrip';
-import { SectionExploreRange } from './components/SectionExploreRange';
-import { SectionFeaturedProducts } from './components/SectionFeaturedProducts';
-import { SectionBrandStory } from './components/SectionBrandStory';
-import { SectionScrollStory } from './components/SectionScrollStory';
-import { SectionCookWithMagic } from './components/SectionCookWithMagic';
-import { SectionMagicBundles } from './components/SectionMagicBundles';
-import { SectionSubscribeSave } from './components/SectionSubscribeSave';
-import { SectionFinalCta } from './components/SectionFinalCta';
-import { SectionFooter } from './components/SectionFooter';
+import { HomePage } from './components/home/HomePage';
 import { ShopPage } from './components/shop/ShopPage';
 import { ProductPage } from './components/product/ProductPage';
 import { RecipesPage } from './components/recipes/RecipesPage';
 import { BundlesPage } from './components/bundles/BundlesPage';
 import { ImpactPage } from './components/impact/ImpactPage';
 import { NewsletterPage } from './components/newsletter/NewsletterPage';
-import { ShopCartDrawer } from './components/shop/ShopCartDrawer';
+import { NotFoundPage } from './components/NotFoundPage';
 import { ShopCartProvider, useShopCart } from './context/ShopCartContext';
 import { LanguageProvider } from './context/LanguageContext';
+import { updatePageMetadata } from './utils/seo';
+import { SHOP_PRODUCTS } from './data/shopProducts';
 
 interface RouteState {
-  page: 'shop' | 'home' | 'product' | 'recipes' | 'bundles' | 'impact' | 'newsletter';
+  page: 'shop' | 'home' | 'product' | 'recipes' | 'bundles' | 'impact' | 'newsletter' | '404';
   productSlug?: string;
   categoryId?: string;
   recipeSlug?: string;
@@ -36,13 +27,25 @@ interface RouteState {
 
 function parseCurrentRoute(): RouteState {
   if (typeof window === 'undefined') {
-    return { page: 'shop' };
+    return { page: 'home' };
   }
 
   const hash = window.location.hash || '';
-  const pathname = window.location.pathname || '';
+  let pathname = window.location.pathname || '';
 
-  // 1. Check Pathname first (e.g. /newsletter, /impact, /bundles/:slug, /bundles, /recipes/:slug, /recipes, /shop/product/:slug)
+  // Normalize base path for GitHub Pages (e.g. /Magic-DEMO/ -> /)
+  const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+  if (base && pathname.startsWith(base)) {
+    pathname = pathname.slice(base.length) || '/';
+  } else if (pathname.startsWith('/Magic-DEMO')) {
+    pathname = pathname.replace(/^\/Magic-DEMO/, '') || '/';
+  }
+
+  // 1. Check Pathname first
+  if (pathname === '/404' || pathname === '/404.html') {
+    return { page: '404' };
+  }
+
   if (pathname === '/newsletter' || pathname.startsWith('/newsletter/')) {
     return { page: 'newsletter' };
   }
@@ -68,8 +71,22 @@ function parseCurrentRoute(): RouteState {
     return { page: 'product', productSlug: pathMatch[1] };
   }
 
+  if (pathname === '/shop' || pathname.startsWith('/shop/')) {
+    const cat = pathname.replace(/^\/shop\/?/, '').trim();
+    return { page: 'shop', categoryId: cat ? cat : undefined };
+  }
+
+  // If path is not root and not recognized, check if it's 404
+  if (pathname !== '/' && pathname !== '' && pathname !== '/index.html') {
+    return { page: '404' };
+  }
+
   // 2. Check Hash patterns
   const cleanHash = hash.replace(/^#\/?/, '');
+
+  if (cleanHash === '404') {
+    return { page: '404' };
+  }
 
   if (cleanHash === 'newsletter' || cleanHash.startsWith('newsletter/')) {
     return { page: 'newsletter' };
@@ -97,7 +114,7 @@ function parseCurrentRoute(): RouteState {
     return { page: 'product', productSlug: hashProductMatch[1] };
   }
 
-  if (cleanHash === 'home') {
+  if (cleanHash === 'home' || cleanHash === '') {
     return { page: 'home' };
   }
 
@@ -111,13 +128,13 @@ function parseCurrentRoute(): RouteState {
     return { page: 'shop' };
   }
 
-  return { page: 'shop' };
+  return { page: 'home' };
 }
 
 function MainAppContent() {
   const [routeState, setRouteState] = useState<RouteState>(() => parseCurrentRoute());
-  const { totalItems, openCart, isCartOpen, closeCart } = useShopCart();
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const { totalItems, openCart } = useShopCart();
+  const [, setToastMessage] = useState<string | null>(null);
 
   // Sync hash/history with page state
   useEffect(() => {
@@ -131,6 +148,123 @@ function MainAppContent() {
       window.removeEventListener('popstate', handleRouteChange);
     };
   }, []);
+
+  // Synchronize SEO & dynamic structured data per route
+  useEffect(() => {
+    switch (routeState.page) {
+      case 'home':
+        updatePageMetadata({
+          title: 'MAGIC UAE | Single-Origin Pulses & Spices | Direct From Indian Farms',
+          description: 'Single-origin pulses, whole spices, and staples sourced directly from generational Indian farms for kitchens in Dubai, Abu Dhabi, and across the UAE.',
+          canonicalPath: '/',
+          ogType: 'website',
+          jsonLd: {
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'MAGIC UAE',
+            url: 'https://prembhi.github.io/Magic-DEMO/',
+            description: 'Single-origin pulses and spices delivered across the UAE.',
+          },
+        });
+        break;
+      case 'shop':
+        updatePageMetadata({
+          title: 'Shop Single-Origin Staples | MAGIC UAE',
+          description: 'Browse single-origin pulses and spices in 500g, 1kg, and 2kg packs. Free UAE delivery on orders above AED 150.',
+          canonicalPath: '/#shop',
+          ogType: 'website',
+          jsonLd: {
+            '@context': 'https://schema.org',
+            '@type': 'CollectionPage',
+            name: 'MAGIC Shop - Single-Origin Pulses & Spices',
+            url: 'https://prembhi.github.io/Magic-DEMO/#shop',
+            description: 'Clean-label, lab-tested whole dals, spices, and grains.',
+          },
+        });
+        break;
+      case 'product': {
+        const product = SHOP_PRODUCTS.find((p) => p.slug === routeState.productSlug || p.id === routeState.productSlug);
+        const name = product ? product.name : 'Single-Origin Product';
+        const price = product ? product.price.toFixed(2) : '14.50';
+        updatePageMetadata({
+          title: `${name} | MAGIC UAE Single-Origin`,
+          description: product
+            ? `Buy authentic ${name} (${product.weight}) in Dubai & UAE. Single-origin, direct from Indian farms. Clean label, no preservatives.`
+            : 'Single-origin farm-sourced staples in Dubai and UAE.',
+          canonicalPath: `/#shop/product/${routeState.productSlug || ''}`,
+          ogType: 'product',
+          jsonLd: {
+            '@context': 'https://schema.org',
+            '@type': 'Product',
+            name: name,
+            description: product ? `${product.name} - ${product.englishSub || ''}. Origin: ${product.origin || 'India'}.` : 'Authentic single-origin pulses and spices direct from generational farms.',
+            image: product?.image,
+            offers: {
+              '@type': 'Offer',
+              price: price,
+              priceCurrency: 'AED',
+              availability: 'https://schema.org/InStock',
+              seller: {
+                '@type': 'Organization',
+                name: 'MAGIC UAE',
+              },
+            },
+          },
+        });
+        break;
+      }
+      case 'recipes':
+        updatePageMetadata({
+          title: 'Authentic Kitchen Recipes | Cook With MAGIC UAE',
+          description: 'Tested home recipes for authentic Dal Tadka, Khichdi, and comforting pulse dishes made with single-origin Indian ingredients.',
+          canonicalPath: routeState.recipeSlug ? `/#recipes/${routeState.recipeSlug}` : '/#recipes',
+          ogType: 'article',
+          jsonLd: {
+            '@context': 'https://schema.org',
+            '@type': 'Recipe',
+            name: routeState.recipeSlug ? `MAGIC Recipe: ${routeState.recipeSlug}` : 'MAGIC Recipes Collection',
+            description: 'Simple, unhurried recipes showcasing single-origin dals and spices.',
+            publisher: {
+              '@type': 'Organization',
+              name: 'MAGIC UAE',
+            },
+          },
+        });
+        break;
+      case 'bundles':
+        updatePageMetadata({
+          title: 'Curated Pantry Bundles | MAGIC UAE',
+          description: 'Thoughtfully paired single-origin sets for everyday home cooking. Curated pulses, spices, and staples delivered across the UAE.',
+          canonicalPath: routeState.bundleSlug ? `/#bundles/${routeState.bundleSlug}` : '/#bundles',
+          ogType: 'website',
+        });
+        break;
+      case 'impact':
+        updatePageMetadata({
+          title: 'Our Impact & Direct Farm Sourcing | MAGIC UAE',
+          description: 'How MAGIC partners directly with Indian generational farming communities, eliminating middlemen and paying 15-20% above mandi rates.',
+          canonicalPath: '/#impact',
+          ogType: 'article',
+        });
+        break;
+      case 'newsletter':
+        updatePageMetadata({
+          title: 'The MAGIC Letter | Harvest Notes & Recipes from UAE',
+          description: 'Subscribe to our monthly harvest dispatch for seasonal recipes, origin stories, and early access to limited micro-lots.',
+          canonicalPath: '/#newsletter',
+          ogType: 'website',
+        });
+        break;
+      case '404':
+        updatePageMetadata({
+          title: 'Page Not Found | MAGIC UAE',
+          description: 'The requested page could not be located. Explore our authentic single-origin pulses, recipes, and farm stories.',
+          canonicalPath: '/404.html',
+          ogType: 'website',
+        });
+        break;
+    }
+  }, [routeState]);
 
   const handleNavigateShop = (categoryId?: string) => {
     setRouteState({ page: 'shop', categoryId });
@@ -188,6 +322,14 @@ function MainAppContent() {
 
   return (
     <>
+      {/* WCAG 2.2 AA (Criterion 2.4.1) Bypass Blocks: Skip to Main Content Link */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:start-4 focus:z-[9999] focus:px-5 focus:py-2.5 focus:bg-[#C8102E] focus:text-white focus:font-bold focus:rounded-full focus:shadow-2xl focus:outline-hidden focus:ring-2 focus:ring-white text-xs tracking-wider uppercase transition-all"
+      >
+        Skip to main content
+      </a>
+
       {routeState.page === 'product' ? (
         /* REUSABLE DYNAMIC SINGLE PRODUCT PAGE */
         <ProductPage
@@ -257,73 +399,27 @@ function MainAppContent() {
           onNavigateImpact={handleNavigateImpact}
           onNavigateNewsletter={handleNavigateNewsletter}
         />
+      ) : routeState.page === '404' ? (
+        /* 404 NOT FOUND PAGE */
+        <NotFoundPage
+          onNavigateHome={handleNavigateHome}
+          onNavigateShop={handleNavigateShop}
+          onNavigateRecipes={handleNavigateRecipes}
+          onNavigateBundles={handleNavigateBundles}
+          onNavigateImpact={handleNavigateImpact}
+          onNavigateNewsletter={handleNavigateNewsletter}
+        />
       ) : (
-        /* APPROVED HOME PAGE (Untouched sections 1 to 11) */
-        <div className="min-h-screen bg-[#FDF6EC] text-[#3C1518] flex flex-col font-sans selection:bg-[#C8102E] selection:text-white relative">
-          {/* Interactive feedback toast */}
-          {toastMessage && (
-            <div
-              role="status"
-              aria-live="polite"
-              className="fixed top-24 right-6 z-50 bg-[#3C1518] text-[#FDF6EC] px-4 py-2.5 rounded-lg shadow-xl border border-[#D4A843]/40 flex items-center gap-2 text-xs font-semibold animate-in fade-in slide-in-from-top-2"
-            >
-              <span className="w-2 h-2 rounded-full bg-[#C8102E] animate-ping" />
-              <span>{toastMessage}</span>
-            </div>
-          )}
-
-          {/* TOP NAVIGATION BAR */}
-          <MagicHeader
-            cartCount={totalItems}
-            onNavigateHome={handleNavigateHome}
-            onNavigateShop={() => handleNavigateShop()}
-            onNavigateRecipes={() => handleNavigateRecipes()}
-            onNavigateBundles={() => handleNavigateBundles()}
-            onNavigateImpact={() => handleNavigateImpact()}
-            onNavigateNewsletter={() => handleNavigateNewsletter()}
-            onSelectProduct={handleNavigateProduct}
-            onOpenCart={openCart}
-          />
-
-          {/* HOMEPAGE SECTIONS 1 TO 11 IN EXACT RHYTHMIC ORDER */}
-          <main className="flex-1 flex flex-col">
-            {/* SECTION 1 — HERO SCENE */}
-            <HeroScene onAddToCart={handleAddToCart} />
-
-            {/* SECTION 2 — TRUST / BRAND BENEFITS */}
-            <SectionTrustStrip />
-
-            {/* SECTION 3 — EXPLORE OUR RANGE */}
-            <SectionExploreRange />
-
-            {/* SECTION 4 — FEATURED PRODUCTS */}
-            <SectionFeaturedProducts onAddToCart={handleAddToCart} />
-
-            {/* SECTION 5 — BRAND STORY */}
-            <SectionBrandStory />
-
-            {/* SECTION 6 — SCROLL-DRIVEN PRODUCT STORY */}
-            <SectionScrollStory onAddToCart={handleAddToCart} />
-
-            {/* SECTION 7 — COOK WITH MAGIC */}
-            <SectionCookWithMagic onAddToCart={handleAddToCart} />
-
-            {/* SECTION 8 — MAGIC BUNDLES */}
-            <SectionMagicBundles onAddToCart={handleAddToCart} />
-
-            {/* SECTION 9 — SUBSCRIBE & SAVE */}
-            <SectionSubscribeSave onAddToCart={handleAddToCart} />
-
-            {/* SECTION 10 — FINAL CTA + NEWSLETTER */}
-            <SectionFinalCta onShopClick={handleShopAllClick} />
-          </main>
-
-          {/* SECTION 11 — FOOTER */}
-          <SectionFooter />
-
-          {/* Cart Drawer for Home */}
-          <ShopCartDrawer isOpen={isCartOpen} onClose={closeCart} />
-        </div>
+        /* REBUILT PREMIUM EDITORIAL HOME PAGE (7 EXPERIENCES) */
+        <HomePage
+          onNavigateHome={handleNavigateHome}
+          onNavigateShop={handleNavigateShop}
+          onNavigateRecipes={handleNavigateRecipes}
+          onNavigateBundles={handleNavigateBundles}
+          onNavigateImpact={handleNavigateImpact}
+          onNavigateNewsletter={handleNavigateNewsletter}
+          onSelectProduct={handleNavigateProduct}
+        />
       )}
     </>
   );
