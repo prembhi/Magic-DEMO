@@ -61,7 +61,31 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     params?: Record<string, string | number>
   ): string => {
     const dict = language === 'ar' ? arTranslations : enTranslations;
-    let translation = dict[key] || fallback || key;
+    let translation = dict[key];
+
+    // If missing in Arabic dictionary, try English dictionary first
+    if (!translation && language === 'ar') {
+      translation = enTranslations[key];
+    }
+
+    // If still missing, use explicit fallback parameter if provided
+    if (!translation && fallback) {
+      translation = fallback;
+    }
+
+    // Safe fallback: never expose raw dot keys (e.g. 'nav.home', 'nav.shop') to users
+    if (!translation) {
+      if (key.includes('.')) {
+        const lastPart = key.split('.').pop() || key;
+        // Transform camelCase like 'shopAll' -> 'Shop All', 'ourImpact' -> 'Our Impact'
+        translation = lastPart
+          .replace(/([A-Z])/g, ' $1')
+          .replace(/^./, (str) => str.toUpperCase())
+          .trim();
+      } else {
+        translation = key;
+      }
+    }
 
     if (params) {
       Object.entries(params).forEach(([paramKey, paramValue]) => {

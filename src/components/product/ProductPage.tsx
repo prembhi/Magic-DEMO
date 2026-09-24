@@ -52,6 +52,19 @@ export const ProductPage: React.FC<ProductPageProps> = ({
     }
   };
 
+  const getCategoryLabel = (cat: string) => {
+    if (!isRTL) return cat;
+    switch (cat) {
+      case 'Dals & Lentils': return 'البقوليات والعدس';
+      case 'Whole Spices': return 'التوابل الكاملة';
+      case 'Ground Spices': return 'التوابل المطحونة';
+      case 'Bundles & Sets': return 'الباقات والمجموعات';
+      case 'Masalas': return 'خلطات التوابل';
+      case 'Ready Mixes': return 'الخلطات الجاهزة';
+      default: return cat;
+    }
+  };
+
   const handleCategoryClick = (categoryName: string) => {
     if (categoryName === 'Dals & Lentils') {
       onNavigateShop('dals-lentils');
@@ -104,7 +117,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({
                       onClick={onNavigateHome}
                       className="hover:text-[#C8102E] transition-colors cursor-pointer"
                     >
-                      {t('nav.home')}
+                      {t('nav.home', 'Home')}
                     </button>
                   </li>
                   <li>
@@ -115,7 +128,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({
                       onClick={() => onNavigateShop()}
                       className="hover:text-[#C8102E] transition-colors cursor-pointer"
                     >
-                      {t('nav.shop')}
+                      {t('nav.shop', 'Shop')}
                     </button>
                   </li>
                   <li>
@@ -126,7 +139,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({
                       onClick={() => handleCategoryClick(product.category)}
                       className="hover:text-[#C8102E] transition-colors cursor-pointer"
                     >
-                      {product.category}
+                      {getCategoryLabel(product.category)}
                     </button>
                   </li>
                   <li>
@@ -134,7 +147,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({
                   </li>
                   <li aria-current="page">
                     <span className="font-semibold text-[#3C1518] truncate max-w-[200px] sm:max-w-none inline-block">
-                      {product.name}
+                      {isRTL && product.arabicName ? product.arabicName : product.name}
                     </span>
                   </li>
                 </ol>

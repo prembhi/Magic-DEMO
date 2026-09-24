@@ -26,7 +26,7 @@ export const ShopBreadcrumb: React.FC<ShopBreadcrumbProps> = ({
           onClick={onNavigateHome}
           className="hover:text-[#C8102E] transition-colors cursor-pointer"
         >
-          {t('nav.home')}
+          {t('nav.home', 'Home')}
         </button>
 
         <ChevronIcon className="w-3 h-3 text-[#3C1518]/30 shrink-0" aria-hidden="true" />
@@ -39,7 +39,7 @@ export const ShopBreadcrumb: React.FC<ShopBreadcrumbProps> = ({
               : ''
           }`}
         >
-          {t('nav.shop')}
+          {t('nav.shop', 'Shop')}
         </button>
 
         {currentCategoryName !== 'All Products' && currentCategoryName !== 'جميع المنتجات' && (

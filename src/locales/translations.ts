@@ -11,6 +11,8 @@ export const enTranslations: Translations = {
   'announcement.shipping': 'FREE DUBAI & UAE DELIVERY ON ORDERS OVER 50 AED',
 
   // Navigation
+  'nav.home': 'Home',
+  'nav.shop': 'Shop',
   'nav.shopAll': 'Shop All',
   'nav.spices': 'Spices',
   'nav.bundles': 'Bundles',
@@ -23,6 +25,13 @@ export const enTranslations: Translations = {
   'nav.cart': 'Cart',
   'nav.shopAllMagic': 'SHOP ALL MAGIC',
   'nav.exploreAllSpices': 'Explore All Pure Spices',
+
+  // Common & Breadcrumbs
+  'common.home': 'Home',
+  'common.shop': 'Shop',
+  'common.back': 'Back',
+  'breadcrumb.home': 'Home',
+  'breadcrumb.shop': 'Shop',
 
   // Shop All Dropdown
   'dropdown.spices.title': 'SPICES',
@@ -228,6 +237,8 @@ export const arTranslations: Translations = {
   'announcement.shipping': 'توصيل مجاني في دبي وجميع الإمارات للطلبات فوق 50 درهم',
 
   // Navigation
+  'nav.home': 'الرئيسية',
+  'nav.shop': 'المتجر',
   'nav.shopAll': 'تسوق الكل',
   'nav.spices': 'التوابل',
   'nav.bundles': 'الباقات',
@@ -240,6 +251,13 @@ export const arTranslations: Translations = {
   'nav.cart': 'السلة',
   'nav.shopAllMagic': 'تسوق كل منتجات ماجيك',
   'nav.exploreAllSpices': 'استكشف جميع التوابل النقية',
+
+  // Common & Breadcrumbs
+  'common.home': 'الرئيسية',
+  'common.shop': 'المتجر',
+  'common.back': 'رجوع',
+  'breadcrumb.home': 'الرئيسية',
+  'breadcrumb.shop': 'المتجر',
 
   // Shop All Dropdown
   'dropdown.spices.title': 'التوابل',

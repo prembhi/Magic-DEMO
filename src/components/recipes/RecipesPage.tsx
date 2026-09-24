@@ -203,14 +203,14 @@ export const RecipesPage: React.FC<RecipesPageProps> = ({
                       onClick={onNavigateHome}
                       className="hover:text-[#C8102E] transition-colors cursor-pointer"
                     >
-                      {t('nav.home')}
+                      {t('nav.home', 'Home')}
                     </button>
                   </li>
                   <li>
                     <ChevronIcon className="w-3 h-3 text-[#3C1518]/30 inline" />
                   </li>
                   <li aria-current="page">
-                    <span className="font-semibold text-[#3C1518]">{t('nav.recipes')}</span>
+                    <span className="font-semibold text-[#3C1518]">{t('nav.recipes', 'Recipes')}</span>
                   </li>
                 </ol>
               </nav>

@@ -345,7 +345,7 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
               className="flex items-center focus-visible:outline-2 focus-visible:outline-[#D4A843] rounded py-1 transition-transform hover:opacity-95"
               aria-label="MAGIC Spices & Foods Home"
             >
-              <MagicLogo size="sm" variant="white" withRegistered={true} />
+              <MagicLogo size="sm" withRegistered={true} />
             </a>
 
             {/* DESKTOP NAVIGATION ITEMS */}
@@ -381,83 +381,85 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
                 {/* COMPACT CREAM DROPDOWN: SHOP ALL */}
                 {activeDropdown === 'shopAll' && (
                   <div
-                    className={`absolute top-full mt-1 w-72 sm:w-80 bg-[#FDF6EC] text-[#3C1518] shadow-2xl rounded-xs border border-[#D4A843]/30 p-4 z-50 animate-in fade-in slide-in-from-top-1 duration-150 ${
-                      isRTL ? 'right-0 text-right' : 'left-0 text-left'
-                    }`}
+                    className="absolute top-full mt-1.5 start-0 w-[320px] bg-[#FDF6EC] text-[#3C1518] shadow-lg shadow-[#3C1518]/10 rounded-xs border border-[#D4A843]/30 px-[22px] py-[20px] z-50 text-start animate-in fade-in slide-in-from-top-1 duration-150"
                     onMouseEnter={() => handleMouseEnter('shopAll')}
                     onMouseLeave={handleMouseLeave}
                     role="menu"
                     aria-label="Shop All menu"
                   >
-                    <div className="space-y-1">
-                      {/* Spices item */}
+                    <div className="flex flex-col" role="none">
+                      {/* 1. SPICES ITEM */}
                       <button
+                        type="button"
                         onClick={(e) => navigateToShop('spices', e)}
-                        className="w-full flex items-center gap-3.5 p-2.5 rounded hover:bg-[#FAF1E0] transition-all group cursor-pointer"
+                        className="w-full grid grid-cols-[44px_1fr] gap-[14px] items-start py-[10px] px-2 -mx-2 rounded-xs transition-colors hover:bg-[#F4ECE1]/60 group cursor-pointer text-start motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-[#C8102E]"
                         role="menuitem"
                       >
-                        <div className="w-9 h-9 rounded bg-white/90 border border-[#D4A843]/20 flex items-center justify-center shrink-0 shadow-xs group-hover:border-[#C8102E]/30 transition-colors">
-                          <ChilliIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                        <div className="w-[40px] h-[40px] rounded-xs bg-white/95 border border-[#D4A843]/30 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-[#C8102E]/40 transition-colors">
+                          <ChilliIcon className="w-5 h-5 text-[#C8102E] transition-transform motion-reduce:transform-none group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
                         </div>
-                        <div className="flex-1">
-                          <span className="font-display font-bold text-sm tracking-wide text-[#C8102E] block group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform">
+                        <div className="flex flex-col text-start">
+                          <span className="font-display font-bold text-[16px] text-[#C8102E] leading-tight group-hover:text-[#A60D26] transition-colors">
                             {t('dropdown.spices.title')}
                           </span>
-                          <span className="text-[11px] text-[#3C1518]/70 block leading-tight">
+                          <p className="font-sans text-[12.5px] text-[#3C1518] leading-[1.35] mt-1">
                             {t('dropdown.spices.desc')}
-                          </span>
+                          </p>
                         </div>
                       </button>
 
-                      {/* Bundles item */}
+                      {/* 2. BUNDLES ITEM */}
                       <button
+                        type="button"
                         onClick={(e) => navigateToBundles(undefined, e)}
-                        className="w-full flex items-center gap-3.5 p-2.5 rounded hover:bg-[#FAF1E0] transition-all group cursor-pointer"
+                        className="w-full grid grid-cols-[44px_1fr] gap-[14px] items-start py-[10px] px-2 -mx-2 rounded-xs transition-colors hover:bg-[#F4ECE1]/60 group cursor-pointer text-start motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-[#C8102E]"
                         role="menuitem"
                       >
-                        <div className="w-9 h-9 rounded bg-white/90 border border-[#D4A843]/20 flex items-center justify-center shrink-0 shadow-xs group-hover:border-[#C8102E]/30 transition-colors">
-                          <BundleBoxIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                        <div className="w-[40px] h-[40px] rounded-xs bg-white/95 border border-[#D4A843]/30 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-[#C8102E]/40 transition-colors">
+                          <BundleBoxIcon className="w-5 h-5 text-[#C8102E] transition-transform motion-reduce:transform-none group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
                         </div>
-                        <div className="flex-1">
-                          <span className="font-display font-bold text-sm tracking-wide text-[#C8102E] block group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform">
+                        <div className="flex flex-col text-start">
+                          <span className="font-display font-bold text-[16px] text-[#C8102E] leading-tight group-hover:text-[#A60D26] transition-colors">
                             {t('dropdown.bundles.title')}
                           </span>
-                          <span className="text-[11px] text-[#3C1518]/70 block leading-tight">
+                          <p className="font-sans text-[12.5px] text-[#3C1518] leading-[1.35] mt-1">
                             {t('dropdown.bundles.desc')}
-                          </span>
+                          </p>
                         </div>
                       </button>
 
-                      {/* Recipes item */}
+                      {/* 3. RECIPES ITEM */}
                       <button
+                        type="button"
                         onClick={(e) => navigateToRecipes(undefined, e)}
-                        className="w-full flex items-center gap-3.5 p-2.5 rounded hover:bg-[#FAF1E0] transition-all group cursor-pointer"
+                        className="w-full grid grid-cols-[44px_1fr] gap-[14px] items-start py-[10px] px-2 -mx-2 rounded-xs transition-colors hover:bg-[#F4ECE1]/60 group cursor-pointer text-start motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-[#C8102E]"
                         role="menuitem"
                       >
-                        <div className="w-9 h-9 rounded bg-white/90 border border-[#D4A843]/20 flex items-center justify-center shrink-0 shadow-xs group-hover:border-[#C8102E]/30 transition-colors">
-                          <RecipePotIcon className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                        <div className="w-[40px] h-[40px] rounded-xs bg-white/95 border border-[#D4A843]/30 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-[#C8102E]/40 transition-colors">
+                          <RecipePotIcon className="w-5 h-5 text-[#C8102E] transition-transform motion-reduce:transform-none group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
                         </div>
-                        <div className="flex-1">
-                          <span className="font-display font-bold text-sm tracking-wide text-[#C8102E] block group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform">
+                        <div className="flex flex-col text-start">
+                          <span className="font-display font-bold text-[16px] text-[#C8102E] leading-tight group-hover:text-[#A60D26] transition-colors">
                             {t('dropdown.recipes.title')}
                           </span>
-                          <span className="text-[11px] text-[#3C1518]/70 block leading-tight">
+                          <p className="font-sans text-[12.5px] text-[#3C1518] leading-[1.35] mt-1">
                             {t('dropdown.recipes.desc')}
-                          </span>
+                          </p>
                         </div>
                       </button>
-                    </div>
 
-                    {/* Bottom CTA */}
-                    <div className="pt-3 mt-2 border-t border-[#3C1518]/10">
-                      <button
-                        onClick={(e) => navigateToShop(undefined, e)}
-                        className="w-full flex items-center justify-between text-xs font-bold text-[#C8102E] hover:text-[#3C1518] p-1.5 transition-colors group cursor-pointer"
-                        role="menuitem"
-                      >
-                        <span className="tracking-wider">{t('nav.shopAllMagic')}</span>
-                        <ArrowIcon className="w-4 h-4 transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
-                      </button>
+                      {/* BOTTOM CTA */}
+                      <div className="pt-[16px] mt-1 border-t border-[#3C1518]/12">
+                        <button
+                          type="button"
+                          onClick={(e) => navigateToShop(undefined, e)}
+                          className="w-full flex items-center justify-between text-start font-sans font-bold text-[13px] tracking-wider text-[#C8102E] hover:text-[#A60D26] transition-colors group cursor-pointer px-1 py-0.5 rounded-xs focus-visible:outline-2 focus-visible:outline-[#C8102E]"
+                          role="menuitem"
+                        >
+                          <span className="uppercase">{t('nav.shopAllMagic')}</span>
+                          <ArrowIcon className="w-4 h-4 transition-transform motion-reduce:transform-none group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 )}
@@ -543,95 +545,97 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
                 {/* COMPACT CREAM DROPDOWN: DISCOVER */}
                 {activeDropdown === 'discover' && (
                   <div
-                    className={`absolute top-full mt-1 w-72 sm:w-80 bg-[#FDF6EC] text-[#3C1518] shadow-2xl rounded-xs border border-[#D4A843]/30 p-4 z-50 animate-in fade-in slide-in-from-top-1 duration-150 ${
-                      isRTL ? 'right-0 text-right' : 'left-0 text-left'
-                    }`}
+                    className="absolute top-full mt-1.5 start-0 w-[340px] bg-[#FDF6EC] text-[#3C1518] shadow-lg shadow-[#3C1518]/10 rounded-xs border border-[#D4A843]/30 p-3.5 z-50 text-start animate-in fade-in slide-in-from-top-1 duration-150"
                     onMouseEnter={() => handleMouseEnter('discover')}
                     onMouseLeave={handleMouseLeave}
                     role="menu"
                     aria-label="Discover menu"
                   >
-                    <div className="pb-2 mb-2 border-b border-[#3C1518]/10 flex items-center justify-between">
-                      <span className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-[#3C1518]/60">
+                    <div className="px-1 pb-2.5 mb-2 border-b border-[#3C1518]/12 flex items-center justify-between">
+                      <span className="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-[#3C1518]/70">
                         {t('discover.title')}
                       </span>
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#E8922F]" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#C8102E]" aria-hidden="true" />
                     </div>
 
-                    <div className="space-y-1">
+                    <div className="space-y-1" role="none">
                       {/* Impact item */}
                       <button
+                        type="button"
                         onClick={navigateToImpact}
-                        className="w-full flex items-center gap-3.5 p-2 rounded hover:bg-[#FAF1E0] transition-all group cursor-pointer"
+                        className="w-full flex items-start gap-3 p-2.5 rounded-xs hover:bg-[#F4ECE1] transition-colors group cursor-pointer text-start motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-[#C8102E]"
                         role="menuitem"
                       >
-                        <div className="w-8 h-8 rounded bg-white/90 border border-[#D4A843]/20 flex items-center justify-center shrink-0 shadow-xs group-hover:border-[#C8102E]/30 transition-colors">
-                          <ImpactSproutIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                        <div className="w-8 h-8 rounded-xs bg-white/95 border border-[#D4A843]/30 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-[#C8102E]/40 transition-colors">
+                          <ImpactSproutIcon className="w-4 h-4 text-[#C8102E] transition-transform motion-reduce:transform-none group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
                         </div>
-                        <div className="flex-1">
-                          <span className="font-display font-bold text-xs tracking-wide text-[#C8102E] block group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform">
+                        <div className="flex-1 min-w-0">
+                          <span className="font-display font-bold text-xs uppercase tracking-wide text-[#C8102E] block leading-tight group-hover:text-[#A60D26] transition-colors">
                             {t('discover.impact.title')}
                           </span>
-                          <span className="text-[11px] text-[#3C1518]/70 block leading-tight">
+                          <p className="text-[11px] text-[#3C1518]/75 leading-snug mt-1 font-normal">
                             {t('discover.impact.desc')}
-                          </span>
+                          </p>
                         </div>
                       </button>
 
                       {/* Newsletter item */}
                       <button
+                        type="button"
                         onClick={navigateToNewsletter}
-                        className="w-full flex items-center gap-3.5 p-2 rounded hover:bg-[#FAF1E0] transition-all group cursor-pointer"
+                        className="w-full flex items-start gap-3 p-2.5 rounded-xs hover:bg-[#F4ECE1] transition-colors group cursor-pointer text-start motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-[#C8102E]"
                         role="menuitem"
                       >
-                        <div className="w-8 h-8 rounded bg-white/90 border border-[#D4A843]/20 flex items-center justify-center shrink-0 shadow-xs group-hover:border-[#C8102E]/30 transition-colors">
-                          <NewsletterLetterIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                        <div className="w-8 h-8 rounded-xs bg-white/95 border border-[#D4A843]/30 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-[#C8102E]/40 transition-colors">
+                          <NewsletterLetterIcon className="w-4 h-4 text-[#C8102E] transition-transform motion-reduce:transform-none group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
                         </div>
-                        <div className="flex-1">
-                          <span className="font-display font-bold text-xs tracking-wide text-[#C8102E] block group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform">
+                        <div className="flex-1 min-w-0">
+                          <span className="font-display font-bold text-xs uppercase tracking-wide text-[#C8102E] block leading-tight group-hover:text-[#A60D26] transition-colors">
                             {t('discover.newsletter.title')}
                           </span>
-                          <span className="text-[11px] text-[#3C1518]/70 block leading-tight">
+                          <p className="text-[11px] text-[#3C1518]/75 leading-snug mt-1 font-normal">
                             {t('discover.newsletter.desc')}
-                          </span>
+                          </p>
                         </div>
                       </button>
 
                       {/* Recipes item */}
                       <button
+                        type="button"
                         onClick={(e) => navigateToRecipes(undefined, e)}
-                        className="w-full flex items-center gap-3.5 p-2 rounded hover:bg-[#FAF1E0] transition-all group cursor-pointer"
+                        className="w-full flex items-start gap-3 p-2.5 rounded-xs hover:bg-[#F4ECE1] transition-colors group cursor-pointer text-start motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-[#C8102E]"
                         role="menuitem"
                       >
-                        <div className="w-8 h-8 rounded bg-white/90 border border-[#D4A843]/20 flex items-center justify-center shrink-0 shadow-xs group-hover:border-[#C8102E]/30 transition-colors">
-                          <RecipePotIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                        <div className="w-8 h-8 rounded-xs bg-white/95 border border-[#D4A843]/30 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-[#C8102E]/40 transition-colors">
+                          <RecipePotIcon className="w-4 h-4 text-[#C8102E] transition-transform motion-reduce:transform-none group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
                         </div>
-                        <div className="flex-1">
-                          <span className="font-display font-bold text-xs tracking-wide text-[#C8102E] block group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform">
+                        <div className="flex-1 min-w-0">
+                          <span className="font-display font-bold text-xs uppercase tracking-wide text-[#C8102E] block leading-tight group-hover:text-[#A60D26] transition-colors">
                             {t('discover.recipes.title')}
                           </span>
-                          <span className="text-[11px] text-[#3C1518]/70 block leading-tight">
+                          <p className="text-[11px] text-[#3C1518]/75 leading-snug mt-1 font-normal">
                             {t('discover.recipes.desc')}
-                          </span>
+                          </p>
                         </div>
                       </button>
 
                       {/* Bundles item */}
                       <button
+                        type="button"
                         onClick={(e) => navigateToBundles(undefined, e)}
-                        className="w-full flex items-center gap-3.5 p-2 rounded hover:bg-[#FAF1E0] transition-all group cursor-pointer"
+                        className="w-full flex items-start gap-3 p-2.5 rounded-xs hover:bg-[#F4ECE1] transition-colors group cursor-pointer text-start motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-[#C8102E]"
                         role="menuitem"
                       >
-                        <div className="w-8 h-8 rounded bg-white/90 border border-[#D4A843]/20 flex items-center justify-center shrink-0 shadow-xs group-hover:border-[#C8102E]/30 transition-colors">
-                          <BundleBoxIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                        <div className="w-8 h-8 rounded-xs bg-white/95 border border-[#D4A843]/30 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-[#C8102E]/40 transition-colors">
+                          <BundleBoxIcon className="w-4 h-4 text-[#C8102E] transition-transform motion-reduce:transform-none group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
                         </div>
-                        <div className="flex-1">
-                          <span className="font-display font-bold text-xs tracking-wide text-[#C8102E] block group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 transition-transform">
+                        <div className="flex-1 min-w-0">
+                          <span className="font-display font-bold text-xs uppercase tracking-wide text-[#C8102E] block leading-tight group-hover:text-[#A60D26] transition-colors">
                             {t('discover.bundles.title')}
                           </span>
-                          <span className="text-[11px] text-[#3C1518]/70 block leading-tight">
+                          <p className="text-[11px] text-[#3C1518]/75 leading-snug mt-1 font-normal">
                             {t('discover.bundles.desc')}
-                          </span>
+                          </p>
                         </div>
                       </button>
                     </div>
@@ -1173,7 +1177,7 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
             {/* Drawer Header */}
             <div className="p-4 bg-[#C8102E] text-[#FDF6EC] flex items-center justify-between border-b border-[#A60D26]">
               <a href="#home" onClick={navigateToHome} aria-label="MAGIC Home">
-                <MagicLogo size="sm" variant="white" withRegistered={true} />
+                <MagicLogo size="sm" withRegistered={true} />
               </a>
 
               {/* Language Switcher inside Mobile Header */}
