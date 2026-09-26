@@ -36,6 +36,7 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
   const [purchaseOption, setPurchaseOption] = useState<'onetime' | 'subscribe'>('onetime');
   const [deliveryFrequency, setDeliveryFrequency] = useState<FrequencyOption>('30');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isAdded, setIsAdded] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown on click outside
@@ -80,6 +81,10 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
     addItem(product, 1);
+    setIsAdded(true);
+    setTimeout(() => {
+      setIsAdded(false);
+    }, 1100);
   };
 
   const handleIncrement = (e: React.MouseEvent) => {
@@ -134,11 +139,16 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
 
   // Compact Variant for dense multi-column editorial listings (e.g. 6-column recipe ingredients)
   if (variant === 'compact') {
+    const displayName = isRTL && product.arabicName ? product.arabicName : product.name;
+    const displayCategory = isRTL && product.arabicCategory ? product.arabicCategory : product.category;
+    const displayWeight = isRTL && product.arabicWeight ? product.arabicWeight : product.weight;
+    const displayPrice = isRTL ? `${product.price.toFixed(2)} د.إ` : `AED ${product.price.toFixed(2)}`;
+
     return (
       <article
         onClick={handleViewProduct}
         className="group bg-white rounded-xl border border-[#E6E0D6] hover:border-[#C8102E]/40 hover:shadow-xs p-2 sm:p-2.5 flex flex-col justify-between transition-all relative cursor-pointer"
-        aria-label={`${product.name}, ${product.weight}, AED ${product.price.toFixed(2)}`}
+        aria-label={`${displayName}, ${displayWeight}, ${displayPrice}`}
       >
         <div>
           <div className="relative w-full h-36 sm:h-40 bg-[#FAF7F2] rounded-lg p-2 flex items-center justify-center overflow-hidden mb-2">
@@ -154,8 +164,8 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
                   type="button"
                   onClick={handleAddToCart}
                   className="w-7 h-7 rounded-full bg-white border border-[#E6E0D6] text-[#C8102E] hover:bg-[#C8102E] hover:text-white hover:border-[#C8102E] shadow-xs flex items-center justify-center transition-colors cursor-pointer"
-                  title={`Add ${product.name} to cart`}
-                  aria-label={`Add ${product.name} to cart`}
+                  title={`Add ${displayName} to cart`}
+                  aria-label={`Add ${displayName} to cart`}
                 >
                   <Plus className="w-4 h-4 stroke-[2.5]" />
                 </button>
@@ -163,7 +173,7 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
                 <div
                   className="h-7 bg-white border border-[#C8102E] rounded-full flex items-center px-1 shadow-xs overflow-hidden"
                   role="group"
-                  aria-label={`Quantity selector for ${product.name}`}
+                  aria-label={`Quantity selector for ${displayName}`}
                 >
                   <button
                     type="button"
@@ -191,18 +201,18 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
 
           <div className="flex items-baseline gap-1.5">
             <span className="text-xs sm:text-sm font-bold text-[#3C1518] font-mono leading-none">
-              AED {product.price.toFixed(2)}
+              {displayPrice}
             </span>
           </div>
 
           <h3 className="text-xs font-semibold text-[#3C1518] group-hover:text-[#C8102E] transition-colors line-clamp-2 mt-1 leading-snug">
-            {product.name}
+            {displayName}
           </h3>
 
           <div className="flex items-center justify-between mt-1 text-[11px] text-[#3C1518]/60">
-            <span>{product.weight}</span>
-            <span className="font-arabic text-[11px] text-[#3C1518]/45">
-              {product.arabicName.split(' ')[0]}
+            <span>{displayWeight}</span>
+            <span className="font-mono text-[10px] text-[#3C1518]/50 uppercase tracking-wider">
+              {displayCategory}
             </span>
           </div>
         </div>
@@ -210,11 +220,16 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
     );
   }
 
+  const displayName = isRTL && product.arabicName ? product.arabicName : product.name;
+  const displayCategory = isRTL && product.arabicCategory ? product.arabicCategory : product.category;
+  const displayWeight = isRTL && product.arabicWeight ? product.arabicWeight : product.weight;
+  const displayPrice = isRTL ? `${product.price.toFixed(2)} د.إ` : `AED ${product.price.toFixed(2)}`;
+
   // REBUILT PREMIUM MAGIC FMCG SHOPPING CARD
   return (
     <article
-      className="group bg-white rounded-2xl border-2 border-[#3C1518]/15 hover:border-[#C8102E] transition-all duration-300 flex flex-col justify-between shadow-xs hover:shadow-md relative"
-      aria-label={`${product.name}, ${product.weight}, AED ${product.price.toFixed(2)}`}
+      className="group magic-product-card bg-white rounded-2xl border-2 border-[#3C1518]/15 hover:border-[#C8102E] flex flex-col justify-between shadow-xs hover:shadow-md relative"
+      aria-label={`${displayName}, ${displayWeight}, ${displayPrice}`}
     >
       <div>
         {/* 1. PRODUCT IMAGE STAGE (Flush, generous ~280-300px height, packaging occupying 80-85%) */}
@@ -234,7 +249,7 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
             src={product.image}
             alt={product.altText}
             loading="lazy"
-            className="h-[84%] max-h-[86%] w-auto max-w-[85%] object-contain filter drop-shadow-lg transition-transform duration-300 group-hover:scale-[1.02] motion-reduce:transform-none select-none z-10"
+            className="magic-product-image h-[84%] max-h-[86%] w-auto max-w-[85%] object-contain filter drop-shadow-lg motion-reduce:transform-none select-none z-10"
           />
 
           {/* Ground contact shadow */}
@@ -251,10 +266,10 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
           {/* CATEGORY & DASHED PACK SIZE PILL */}
           <div className="flex items-center justify-between gap-2 mb-1.5">
             <span className="text-[11px] font-bold uppercase tracking-wider text-[#6B4226]">
-              {product.category}
+              {displayCategory}
             </span>
             <span className="border border-dashed border-[#3C1518]/35 rounded-full px-2.5 py-0.5 text-[11px] font-mono font-medium text-[#3C1518] whitespace-nowrap shrink-0">
-              {product.weight}
+              {displayWeight}
             </span>
           </div>
 
@@ -263,7 +278,7 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
             onClick={handleViewProduct}
             className="font-display font-bold text-base sm:text-[17px] text-[#3C1518] hover:text-[#C8102E] transition-colors leading-snug line-clamp-2 min-h-[2.5rem] flex items-start mb-2.5 cursor-pointer"
           >
-            {product.name}
+            {displayName}
           </h3>
 
           {/* 3. CLEAN UNBOXED RADIO ROWS (Grid auto minmax(0, 1fr) auto to prevent any label and price overlap) */}
@@ -271,25 +286,27 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
             {/* Row 1: One-Time Purchase */}
             <label
               onClick={handleSelectOneTime}
-              className="grid items-center gap-2 py-0.5 cursor-pointer select-none group/radio w-full min-w-0"
+              className={`grid items-center gap-2 py-0.5 px-1.5 -mx-1.5 rounded-md cursor-pointer select-none group/radio w-full min-w-0 transition-colors duration-200 ${
+                purchaseOption === 'onetime' ? 'bg-[#FDF6EC]/60' : 'hover:bg-[#FAF7F2]'
+              }`}
               style={{ gridTemplateColumns: 'auto minmax(0, 1fr) auto' }}
             >
               {/* Col 1: Radio Indicator */}
               <span
-                className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
+                className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 transition-all duration-200 ${
                   purchaseOption === 'onetime'
-                    ? 'border-[#C8102E]'
+                    ? 'border-[#C8102E] scale-105'
                     : 'border-[#3C1518]/40 group-hover/radio:border-[#3C1518]/70'
                 }`}
               >
                 {purchaseOption === 'onetime' && (
-                  <span className="w-2 h-2 rounded-full bg-[#C8102E]" />
+                  <span className="w-2 h-2 rounded-full bg-[#C8102E] animate-in zoom-in duration-150" />
                 )}
               </span>
 
               {/* Col 2: Label (Flexible middle column, min-w-0 prevents pushing price out) */}
               <span
-                className={`text-xs leading-tight text-start min-w-0 transition-colors ${
+                className={`text-xs leading-tight text-start min-w-0 transition-colors duration-200 ${
                   purchaseOption === 'onetime'
                     ? 'font-semibold text-[#3C1518]'
                     : 'font-medium text-[#3C1518]/75'
@@ -300,32 +317,34 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
 
               {/* Col 3: Right-aligned Price (Fixed width, never overflows) */}
               <span className="font-mono font-bold text-xs sm:text-[13px] text-[#3C1518] text-end whitespace-nowrap shrink-0 justify-self-end">
-                AED {product.price.toFixed(2)}
+                {displayPrice}
               </span>
             </label>
 
             {/* Row 2: Subscribe & Save */}
             <label
               onClick={handleSelectSubscribe}
-              className="grid items-center gap-2 py-0.5 cursor-pointer select-none group/radio w-full min-w-0"
+              className={`grid items-center gap-2 py-0.5 px-1.5 -mx-1.5 rounded-md cursor-pointer select-none group/radio w-full min-w-0 transition-colors duration-200 ${
+                purchaseOption === 'subscribe' ? 'bg-[#FDF6EC]/60' : 'hover:bg-[#FAF7F2]'
+              }`}
               style={{ gridTemplateColumns: 'auto minmax(0, 1fr) auto' }}
             >
               {/* Col 1: Radio Indicator */}
               <span
-                className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
+                className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 transition-all duration-200 ${
                   purchaseOption === 'subscribe'
-                    ? 'border-[#C8102E]'
+                    ? 'border-[#C8102E] scale-105'
                     : 'border-[#3C1518]/40 group-hover/radio:border-[#3C1518]/70'
                 }`}
               >
                 {purchaseOption === 'subscribe' && (
-                  <span className="w-2 h-2 rounded-full bg-[#C8102E]" />
+                  <span className="w-2 h-2 rounded-full bg-[#C8102E] animate-in zoom-in duration-150" />
                 )}
               </span>
 
               {/* Col 2: Label */}
               <span
-                className={`text-xs leading-tight text-start min-w-0 transition-colors ${
+                className={`text-xs leading-tight text-start min-w-0 transition-colors duration-200 ${
                   purchaseOption === 'subscribe'
                     ? 'font-semibold text-[#3C1518]'
                     : 'font-medium text-[#3C1518]/75'
@@ -409,10 +428,21 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
         <button
           type="button"
           onClick={handleAddToCart}
-          className="w-full h-11 bg-[#C8102E] hover:bg-[#9C0A20] active:scale-[0.99] text-white text-xs font-bold uppercase tracking-wider rounded-md transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
-          aria-label={`Add ${product.name} to cart`}
+          className={`w-full h-11 text-xs font-bold uppercase tracking-wider rounded-md transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer shadow-xs active:scale-[0.985] ${
+            isAdded
+              ? 'bg-[#5A7247] text-white scale-[1.01]'
+              : 'bg-[#C8102E] hover:bg-[#9C0A20] text-white'
+          }`}
+          aria-label={`Add ${displayName} to cart`}
         >
-          <span>{t('product.addToCartBtn', 'ADD TO CART')}</span>
+          {isAdded ? (
+            <span className="flex items-center gap-1.5 animate-in fade-in duration-200">
+              <Check className="w-4 h-4 stroke-[3]" />
+              <span>{t('product.addedToCart', 'ADDED TO CART')}</span>
+            </span>
+          ) : (
+            <span>{t('product.addToCartBtn', 'ADD TO CART')}</span>
+          )}
         </button>
 
         <button

@@ -3,13 +3,18 @@ import { MagicHeader } from '../MagicHeader';
 import { SectionFooter } from '../SectionFooter';
 import { ShopCartDrawer } from '../shop/ShopCartDrawer';
 import { useShopCart } from '../../context/ShopCartContext';
+
 import { HomeHero } from './HomeHero';
-import { HomeFarmStory } from './HomeFarmStory';
-import { HomeProductShowcase } from './HomeProductShowcase';
+import { HomeBenefitStrip } from './HomeBenefitStrip';
+import { HomeFavourites } from './HomeFavourites';
 import { HomeBundles } from './HomeBundles';
-import { HomeRecipes } from './HomeRecipes';
-import { HomeSubscribe } from './HomeSubscribe';
-import { HomeFinalStatement } from './HomeFinalStatement';
+import { HomeBrandStatement } from './HomeBrandStatement';
+import { HomeCookWithMagic } from './HomeCookWithMagic';
+import { HomeFarmProvenance } from './HomeFarmProvenance';
+import { HomeWhyMagic } from './HomeWhyMagic';
+import { HomeSourcingMap } from './HomeSourcingMap';
+import { HomeFaq } from './HomeFaq';
+import { HomeCommunity } from './HomeCommunity';
 
 interface HomePageProps {
   onNavigateHome: () => void;
@@ -33,13 +38,6 @@ export const HomePage: React.FC<HomePageProps> = ({
   const { totalItems, isCartOpen, openCart, closeCart } = useShopCart();
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  const handleAddToCart = (productName: string) => {
-    setToastMessage(`Added "${productName}" to sample inquiry bag`);
-    setTimeout(() => {
-      setToastMessage(null);
-    }, 2800);
-  };
-
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -61,8 +59,9 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       )}
 
-      {/* TOP NAVIGATION BAR (Preserved approved UAE Header) */}
+      {/* TOP NAVIGATION BAR (Overlay on hero, transitions to solid Magic Red on scroll) */}
       <MagicHeader
+        overlayHero={true}
         cartCount={totalItems}
         onNavigateHome={onNavigateHome}
         onNavigateShop={() => onNavigateShop()}
@@ -74,50 +73,63 @@ export const HomePage: React.FC<HomePageProps> = ({
         onOpenCart={openCart}
       />
 
-      {/* EDITORIAL HOMEPAGE ARCHITECTURE (7 MEANINGFUL EXPERIENCES) */}
+      {/* REBUILT EDITORIAL ECOMMERCE HOMEPAGE (10-SECTION RHYTHM) */}
       <main className="flex-1 flex flex-col focus:outline-none" id="main-content" tabIndex={-1}>
-        {/* 01 HERO */}
+        {/* 01. HERO (2.5D Depth Composition + Authentic Packaging + Editorial Headlines) */}
         <HomeHero
-          onExplorePantry={() => scrollToSection('pantry')}
+          onExplorePantry={() => scrollToSection('favourites')}
           onDiscoverStory={() => scrollToSection('farm-to-kitchen')}
           onSelectProduct={onSelectProduct}
         />
 
-        {/* 02 FROM FARM TO KITCHEN */}
-        <HomeFarmStory onNavigateImpact={onNavigateImpact} />
+        {/* 02. BENEFIT STRIP (Single Origin · Farm Sourced · Fresh Harvest · Unadulterated) */}
+        <HomeBenefitStrip />
 
-        {/* 03 THE MAGIC PANTRY */}
-        <HomeProductShowcase
+        {/* 03. MAGIC FAVOURITES (Editorial Split + Canonical ShopProductCards) */}
+        <HomeFavourites
           onNavigateShop={() => onNavigateShop()}
           onSelectProduct={onSelectProduct}
         />
 
-        {/* 04 BUILD YOUR MAGIC PANTRY (BUNDLES) */}
+        {/* 04. BUILD YOUR MAGIC PANTRY (Recipe-Based Curated Pantry Sets) */}
         <HomeBundles
           onNavigateBundles={onNavigateBundles}
           onSelectProduct={onSelectProduct}
         />
 
-        {/* 05 COOK WITH MAGIC (RECIPES) */}
-        <HomeRecipes
+        {/* 05. BRAND STATEMENT (Pure Ingredients · Real Origins · Magic in Every Pinch) */}
+        <HomeBrandStatement
+          onNavigateImpact={onNavigateImpact}
+          onExplorePantry={() => onNavigateShop()}
+        />
+
+        {/* 06. COOK WITH MAGIC (Mixed Photography + Culinary Illustrations + Recipe Cards) */}
+        <HomeCookWithMagic
           onNavigateRecipes={onNavigateRecipes}
           onSelectProduct={onSelectProduct}
         />
 
-        {/* 06 NEVER RUN OUT OF MAGIC (SUBSCRIBE & SAVE) */}
-        <HomeSubscribe
-          onNavigateShop={() => onNavigateShop()}
+        {/* 07. FROM INDIAN FARMS TO YOUR MAGIC PANTRY (Intro + 2.5D Landscape Banner) */}
+        <HomeFarmProvenance
+          onNavigateImpact={onNavigateImpact}
+        />
+
+        {/* 08. WHAT SETS MAGIC APART (Editorial Sourcing Model Comparison Table) */}
+        <HomeWhyMagic />
+
+        {/* 09. WHERE MAGIC BEGINS (India Sourcing Map + Connected Harvest Product) */}
+        <HomeSourcingMap
           onSelectProduct={onSelectProduct}
         />
 
-        {/* 07 FINAL BRAND STATEMENT */}
-        <HomeFinalStatement
-          onNavigateImpact={onNavigateImpact}
-          onExplorePantry={() => onNavigateShop()}
-        />
+        {/* 10. FREQUENTLY ASKED QUESTIONS (Hand-Drawn Bee & Flowers + Accessible Accordion) */}
+        <HomeFaq />
+
+        {/* 11. COMMUNITY & HARVEST DISPATCH (Brand Newsletter Subscription) */}
+        <HomeCommunity />
       </main>
 
-      {/* 08 FOOTER (Preserved approved MAGIC Footer) */}
+      {/* 11. FOOTER (Preserved approved Deep Maroon Agricultural Footer) */}
       <SectionFooter />
 
       {/* CART DRAWER */}

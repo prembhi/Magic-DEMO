@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: 'Fraunces', Georgia, serif;
+  --font-display: 'Syne', 'Fraunces', Georgia, serif;
+  --font-serif-display: 'Fraunces', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-arabic: 'Noto Kufi Arabic', 'Amiri', system-ui, sans-serif;
   --font-arabic-display: 'Noto Kufi Arabic', 'Amiri', serif;
@@ -18,11 +19,30 @@
 }
 
 @layer base {
+  /* ============================================================ */
+  /* HIDE NATIVE BROWSER SCROLLBAR ACROSS ALL BROWSERS            */
+  /* Preserves full scrolling functionality (wheel, touch, keys)  */
+  /* ============================================================ */
+  html {
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE / Edge legacy */
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+  }
+
   body {
     font-family: var(--font-sans);
     background-color: #FDF6EC;
     color: #3C1518;
     overflow-x: hidden;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
   }
 
   h1, h2, h3, .font-display {
@@ -37,8 +57,11 @@
   html[dir="rtl"],
   .font-arabic-base {
     font-family: var(--font-arabic) !important;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
   }
 
+  /* Arabic headline typography and line-height balance */
   html[lang="ar"] h1,
   html[lang="ar"] h2,
   html[lang="ar"] h3,
@@ -47,14 +70,28 @@
   html[lang="ar"] h6,
   html[lang="ar"] .font-display {
     font-family: var(--font-arabic-display) !important;
+    line-height: 1.35 !important;
   }
 
-  /* Force LTR on emails and phone inputs */
+  /* Global letter-spacing reset for Arabic (prevents cursive glyph disconnects) */
+  html[lang="ar"] [class*="tracking-"],
+  html[dir="rtl"] [class*="tracking-"] {
+    letter-spacing: 0 !important;
+  }
+
+  /* Force LTR on emails, phone inputs, and code numbers */
   input[type="email"],
   input[type="tel"],
   .force-ltr {
     direction: ltr !important;
-    text-align: left !important;
+    text-align: start !important;
+  }
+
+  /* Custom scrollbar physical lock to right edge */
+  aside[aria-label="Page scroll position"] {
+    right: 0.5rem !important;
+    left: auto !important;
+    direction: ltr !important;
   }
 }
 
@@ -173,6 +210,91 @@
   transition-timing-function: cubic-bezier(0.25, 0.9, 0.35, 1);
 }
 
+/* Global Button Micro-Interaction System */
+.magic-btn-primary {
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+              background-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.magic-btn-primary:hover {
+  transform: translateY(-1px);
+}
+
+.magic-btn-primary:active {
+  transform: translateY(1px) scale(0.985);
+}
+
+.magic-btn-secondary {
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+              background-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.magic-btn-secondary:hover {
+  transform: translateY(-1px);
+}
+
+.magic-btn-secondary:active {
+  transform: translateY(1px) scale(0.985);
+}
+
+/* Product Card Tactile Physics */
+.magic-product-card {
+  transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 380ms cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 380ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.magic-product-card:hover {
+  transform: translateY(-3px);
+}
+
+.magic-product-image {
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.magic-product-card:hover .magic-product-image {
+  transform: scale(1.035);
+}
+
+/* Universal Scroll Reveal Directives */
+[data-reveal="up"] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+[data-reveal="up"].is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-reveal="fade"] {
+  opacity: 0;
+  transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity;
+}
+
+[data-reveal="fade"].is-revealed {
+  opacity: 1;
+}
+
+[data-reveal="image"] {
+  opacity: 0;
+  transform: translateY(20px) scale(1.02);
+  transition: opacity 900ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+[data-reveal="image"].is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
 /* Typography Reveal: Fraunces section titles */
 .reveal-heading {
   opacity: 0;
@@ -236,11 +358,18 @@
     animation: none !important;
   }
   .reveal-heading,
-  .reveal-image {
+  .reveal-image,
+  [data-reveal] {
     opacity: 1 !important;
     transform: none !important;
     letter-spacing: normal !important;
     transition: none !important;
+  }
+  .magic-product-card:hover,
+  .magic-product-card:hover .magic-product-image,
+  .magic-btn-primary:hover,
+  .magic-btn-secondary:hover {
+    transform: none !important;
   }
 }
 

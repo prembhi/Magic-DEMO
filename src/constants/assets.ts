@@ -24,16 +24,65 @@ export const MAGIC_ASSETS = {
   dalTadka: `${baseUrl}assets/magic/magic-dal-tadka.png`,
   kitchenSunset: `${baseUrl}assets/magic/magic-kitchen-sunset.png`,
 
-  // Approved Botanical / Decorative Motifs
-  illustrationTurmeric: `${baseUrl}assets/magic/illustration-turmeric.png`,
-  illustrationCumin: `${baseUrl}assets/magic/illustration-cumin.png`,
-  illustrationLentils: `${baseUrl}assets/magic/illustration-lentils.png`,
-  illustrationChili: `${baseUrl}assets/magic/illustration-chili.png`,
-  illustrationCoriander: `${baseUrl}assets/magic/illustration-coriander.png`,
-  illustrationPantryTools: `${baseUrl}assets/magic/illustration-pantry-tools.png`,
+  // Hero Cinematic Brand Film Assets (Farm-to-Spice Indian Sourcing Video)
+  heroVideoMp4: `${baseUrl}assets/magic/magic-hero-brand-film.mp4`,
+  heroVideoWebm: `${baseUrl}assets/magic/magic-hero-brand-film.webm`,
+  heroPoster: `${baseUrl}assets/magic/magic-hero-poster.jpg`,
+
+  // Hand-Drawn Editorial Illustration System (Diaspora-inspired, original to MAGIC)
+  farmerHeroLeft: `${baseUrl}assets/magic/magic-farmer-hero-left.png`,
+  farmerHeroRight: `${baseUrl}assets/magic/magic-farmer-hero-right.png`,
+  farmEditorial: `${baseUrl}assets/magic/magic-farm-editorial.jpg`,
+  beeEditorial: `${baseUrl}assets/magic/magic-bee-editorial.png`,
+  beeEditorialPng: `${baseUrl}assets/magic/magic-bee-editorial.png`,
+  beeEditorialJpg: `${baseUrl}assets/magic/magic-bee-editorial.jpg`,
+  spiceEditorial: `${baseUrl}assets/magic/magic-spice-editorial.png`,
+  masalaDabbaEditorial: `${baseUrl}assets/magic/magic-masala-dabba-editorial.jpg`,
+  masalaDabbaEditorialPng: `${baseUrl}assets/magic/magic-masala-dabba-editorial.png`,
+  mortarPestleEditorial: `${baseUrl}assets/magic/magic-mortar-pestle-editorial.jpg`,
+  mortarPestleEditorialPng: `${baseUrl}assets/magic/magic-mortar-pestle-editorial.png`,
+  harvestEditorial: `${baseUrl}assets/magic/magic-harvest-editorial.jpg`,
+  pantryToolsIllustration: `${baseUrl}assets/magic/illustration-pantry-tools.png`,
+
+  // Compatibility aliases for legacy component references
+  illustrationTurmeric: `${baseUrl}assets/magic/magic-spice-editorial.png`,
+  illustrationCumin: `${baseUrl}assets/magic/magic-spice-editorial.png`,
+  illustrationLentils: `${baseUrl}assets/magic/magic-spice-editorial.png`,
+  illustrationChili: `${baseUrl}assets/magic/magic-spice-editorial.png`,
+  illustrationCoriander: `${baseUrl}assets/magic/magic-spice-editorial.png`,
+  illustrationPantryTools: `${baseUrl}assets/magic/magic-mortar-pestle-editorial.jpg`,
+  masalaDabba: `${baseUrl}assets/magic/magic-masala-dabba-editorial.jpg`,
+  mortarPestle: `${baseUrl}assets/magic/magic-mortar-pestle-editorial.jpg`,
+  beeBotanical: `${baseUrl}assets/magic/magic-bee-editorial.jpg`,
+  farmStoryIllustration: `${baseUrl}assets/magic/magic-farm-editorial.jpg`,
+  tadkaCooking: `${baseUrl}assets/magic/magic-masala-dabba-editorial.jpg`,
 
   // Approved Footer Agricultural Illustration Assets (v3 isolated farmer subjects)
   footerLandscape: `${baseUrl}assets/magic/magic-footer-landscape.webp?v=3`,
   footerFarmerLeft: `${baseUrl}assets/magic/magic-footer-farmer-left.webp?v=3`,
   footerFarmerRight: `${baseUrl}assets/magic/magic-footer-farmer-right.webp?v=3`,
+
+  // Dedicated Editorial Hand-Drawn Illustration System
+  illustrations: {
+    farmerField: `${baseUrl}assets/magic/illustrations/illustration-farmer-field.png`,
+    farmerHarvesting: `${baseUrl}assets/magic/illustrations/illustration-farmer-harvesting.png`,
+    harvestBasket: `${baseUrl}assets/magic/illustrations/illustration-harvest-basket.png`,
+    turmeric: `${baseUrl}assets/magic/illustrations/illustration-turmeric-simple.png`,
+    cumin: `${baseUrl}assets/magic/illustrations/illustration-cumin-simple.png`,
+    chilli: `${baseUrl}assets/magic/illustrations/illustration-chilli-simple.png`,
+    lentils: `${baseUrl}assets/magic/illustrations/illustration-lentils-simple.png`,
+    coriander: `${baseUrl}assets/magic/illustrations/illustration-coriander-simple.png`,
+    brassBowl: `${baseUrl}assets/magic/illustrations/illustration-brass-spice-bowl.png`,
+    woodenSpoon: `${baseUrl}assets/magic/illustrations/illustration-wooden-spoon-spices.png`,
+    masalaDabba: `${baseUrl}assets/magic/illustrations/illustration-masala-dabba.png`,
+    pantryDesk: `${baseUrl}assets/magic/illustrations/illustration-pantry-desk.png`,
+    kitchenCooking: `${baseUrl}assets/magic/illustrations/illustration-kitchen-cooking.png`,
+    farmToKitchen: `${baseUrl}assets/magic/illustrations/illustration-farm-to-kitchen.png`,
+    farmJournal: `${baseUrl}assets/magic/illustrations/illustration-farm-journal.png`,
+    indiaSourcing: `${baseUrl}assets/magic/illustrations/illustration-india-sourcing.png`,
+    qualitySelection: `${baseUrl}assets/magic/illustrations/illustration-quality-selection.png`,
+    freshness: `${baseUrl}assets/magic/illustrations/illustration-freshness.png`,
+    heritageKitchen: `${baseUrl}assets/magic/illustrations/illustration-heritage-kitchen.png`,
+    farmSourcing: `${baseUrl}assets/magic/illustrations/illustration-farm-sourcing.png`,
+  },
 } as const;

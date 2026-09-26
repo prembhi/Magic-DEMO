@@ -36,6 +36,7 @@ export interface MagicHeaderProps {
   onOpenCart?: () => void;
   searchQuery?: string;
   onSearchChange?: (query: string) => void;
+  overlayHero?: boolean;
 }
 
 type DropdownType = 'shopAll' | 'spices' | 'discover' | 'account' | null;
@@ -52,9 +53,26 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
   onOpenCart,
   searchQuery = '',
   onSearchChange,
+  overlayHero = false,
 }) => {
   // Localization context
   const { language, setLanguage, isRTL, t } = useLanguage();
+
+  // Scroll detection for overlay hero transition
+  const [isScrolled, setIsScrolled] = useState(!overlayHero);
+
+  useEffect(() => {
+    if (!overlayHero) {
+      setIsScrolled(true);
+      return;
+    }
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 48);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [overlayHero]);
 
   // Access cart context
   const shopCart = useShopCart();
@@ -302,14 +320,23 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
   const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
 
   return (
-    <div ref={headerContainerRef} className="relative w-full z-50 select-none">
+    <div
+      ref={headerContainerRef}
+      className={`z-50 select-none transition-all duration-300 ${
+        overlayHero ? 'fixed top-0 inset-x-0' : 'relative w-full'
+      }`}
+    >
       {/* ==================================================
           LAYER 1: ORANGE ANNOUNCEMENT STRIP
           Warm orange/saffron tone consistent with MAGIC
           UAE ONLY - No USA references
           ================================================== */}
       <div
-        className="w-full bg-[#E8922F] text-[#3C1518] text-[11px] sm:text-xs font-bold tracking-wider uppercase h-7 sm:h-7.5 px-3 flex items-center justify-center border-b border-[#D4A843]/40 transition-colors"
+        className={`w-full text-[#3C1518] text-[11px] sm:text-xs font-bold tracking-wider uppercase h-7 sm:h-7.5 px-3 flex items-center justify-center border-b transition-colors duration-300 ${
+          overlayHero && !isScrolled
+            ? 'bg-[#E8922F]/95 border-[#D4A843]/30 backdrop-blur-xs'
+            : 'bg-[#E8922F] border-[#D4A843]/40'
+        }`}
         role="region"
         aria-label="Announcement"
       >
@@ -329,11 +356,17 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
 
       {/* ==================================================
           LAYER 2: MAGIC RED NAVIGATION BAR
-          Background: MAGIC RED (#C8102E)
-          Main text: #FDF6EC / white
+          Transparent overlay on top of hero video at scroll 0
+          Smooth transition to solid MAGIC RED (#C8102E) on scroll
           Height: compact, ~64px
           ================================================== */}
-      <header className="relative w-full bg-[#C8102E] text-[#FDF6EC] shadow-md border-b border-[#A60D26]">
+      <header
+        className={`relative w-full transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          overlayHero && !isScrolled && !activeDropdown && !mobileMenuOpen && !isSearchOpen
+            ? 'bg-gradient-to-b from-[#3C1518]/85 via-[#3C1518]/50 to-transparent backdrop-blur-[3px] border-b border-white/10 text-[#FDF6EC] shadow-none'
+            : 'bg-[#C8102E] text-[#FDF6EC] shadow-md border-b border-[#A60D26]'
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-17 flex items-center justify-between gap-4">
           
           {/* LOGO & PRIMARY NAV */}

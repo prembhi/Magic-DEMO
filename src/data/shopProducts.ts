@@ -7,6 +7,8 @@ export interface ShopProduct {
   category: 'Dals & Lentils' | 'Whole Spices' | 'Ground Spices' | 'Masalas' | 'Ready Mixes' | 'Bundles & Sets';
   subCategory?: string;
   arabicName: string;
+  arabicCategory?: string;
+  arabicWeight?: string;
   englishSub?: string;
   weight: string;
   price: number;
@@ -37,6 +39,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     category: 'Dals & Lentils',
     subCategory: 'Toor Dal',
     arabicName: 'توار دال هندي ممتاز',
+    arabicCategory: 'بقوليات وعدس',
+    arabicWeight: '1 كجم',
     englishSub: 'Split Yellow Pigeon Peas',
     weight: '1 KG',
     price: 14.5,
@@ -55,6 +59,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     category: 'Dals & Lentils',
     subCategory: 'Masoor Dal',
     arabicName: 'عدس أحمر هندي ممتاز',
+    arabicCategory: 'بقوليات وعدس',
+    arabicWeight: '1 كجم',
     englishSub: 'Split Red Lentils',
     weight: '1 KG',
     price: 13.0,
@@ -73,6 +79,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     category: 'Dals & Lentils',
     subCategory: 'Moong Whole',
     arabicName: 'ماش أخضر كامل ممتاز',
+    arabicCategory: 'بقوليات وعدس',
+    arabicWeight: '1 كجم',
     englishSub: 'Whole Green Gram',
     weight: '1 KG',
     price: 15.25,
@@ -91,6 +99,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     category: 'Dals & Lentils',
     subCategory: 'Urad Whole',
     arabicName: 'عدس أسود كامل ممتاز',
+    arabicCategory: 'بقوليات وعدس',
+    arabicWeight: '1 كجم',
     englishSub: 'Whole Black Matpe Beans',
     weight: '1 KG',
     price: 16.0,
@@ -109,6 +119,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     category: 'Ground Spices',
     subCategory: 'Haldi',
     arabicName: 'كركم مطحون نقي',
+    arabicCategory: 'توابل مطحونة',
+    arabicWeight: '100 جم',
     englishSub: 'Pure High-Curcumin Turmeric',
     weight: '100 G',
     price: 7.5,
@@ -127,6 +139,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     category: 'Whole Spices',
     subCategory: 'Jeera',
     arabicName: 'كمون حب بلدي نقي',
+    arabicCategory: 'بهارات حب كاملة',
+    arabicWeight: '100 جم',
     englishSub: 'Whole Aromatic Cumin Seeds',
     weight: '100 G',
     price: 9.0,

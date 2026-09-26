@@ -244,7 +244,6 @@ export const enTranslations: Translations = {
   'newsletter.ctaTitle': 'BRING A LITTLE MAGIC TO YOUR INBOX.',
 
   // Editorial Homepage (7 Experiences)
-  'home.hero.kicker': 'INDIAN FOOD · FARM ORIGIN · UAE EXCELLENCE',
   'home.hero.tagline': 'The Pure Harvest',
   'home.hero.sub': 'Pure single-origin Indian pulses & whole spices, sourced directly from verified farmer clusters to everyday UAE kitchens.',
   'home.hero.ctaPantry': 'EXPLORE THE PANTRY',
@@ -537,7 +536,6 @@ export const arTranslations: Translations = {
   'newsletter.ctaTitle': 'اجلب سحر ماجيك إلى بريدك الإلكتروني.',
 
   // Editorial Homepage (7 Experiences)
-  'home.hero.kicker': 'أغذية هندية · أصالة المنشأ · جودة استثنائية للإمارات',
   'home.hero.tagline': 'الحصاد النقي',
   'home.hero.sub': 'بقوليات وتوابل هندية نقية أحادية المصدر، مباشرة من مزارع معتمدة إلى مطبخك في الإمارات.',
   'home.hero.ctaPantry': 'استكشف المؤونة',

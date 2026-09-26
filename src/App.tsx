@@ -11,14 +11,16 @@ import { RecipesPage } from './components/recipes/RecipesPage';
 import { BundlesPage } from './components/bundles/BundlesPage';
 import { ImpactPage } from './components/impact/ImpactPage';
 import { NewsletterPage } from './components/newsletter/NewsletterPage';
+import { TypographyTestPage } from './components/typography/TypographyTestPage';
 import { NotFoundPage } from './components/NotFoundPage';
+import { MagicScrollProgress } from './components/common/MagicScrollProgress';
 import { ShopCartProvider, useShopCart } from './context/ShopCartContext';
 import { LanguageProvider } from './context/LanguageContext';
 import { updatePageMetadata } from './utils/seo';
 import { SHOP_PRODUCTS } from './data/shopProducts';
 
 interface RouteState {
-  page: 'shop' | 'home' | 'product' | 'recipes' | 'bundles' | 'impact' | 'newsletter' | '404';
+  page: 'shop' | 'home' | 'product' | 'recipes' | 'bundles' | 'impact' | 'newsletter' | 'typography-test' | '404';
   productSlug?: string;
   categoryId?: string;
   recipeSlug?: string;
@@ -44,6 +46,10 @@ function parseCurrentRoute(): RouteState {
   // 1. Check Pathname first
   if (pathname === '/404' || pathname === '/404.html') {
     return { page: '404' };
+  }
+
+  if (pathname === '/typography-test' || pathname.startsWith('/typography-test/')) {
+    return { page: 'typography-test' };
   }
 
   if (pathname === '/newsletter' || pathname.startsWith('/newsletter/')) {
@@ -86,6 +92,10 @@ function parseCurrentRoute(): RouteState {
 
   if (cleanHash === '404') {
     return { page: '404' };
+  }
+
+  if (cleanHash === 'typography-test' || cleanHash.startsWith('typography-test')) {
+    return { page: 'typography-test' };
   }
 
   if (cleanHash === 'newsletter' || cleanHash.startsWith('newsletter/')) {
@@ -377,6 +387,9 @@ function MainAppContent() {
           onNavigateNewsletter={handleNavigateNewsletter}
           onSelectProduct={handleNavigateProduct}
         />
+      ) : routeState.page === 'typography-test' ? (
+        /* TEMPORARY TYPOGRAPHY SYSTEM COMPARISON PAGE */
+        <TypographyTestPage onNavigateHome={handleNavigateHome} />
       ) : routeState.page === 'newsletter' ? (
         /* DEDICATED MAGIC NEWSLETTER PAGE */
         <NewsletterPage
@@ -421,6 +434,9 @@ function MainAppContent() {
           onSelectProduct={handleNavigateProduct}
         />
       )}
+
+      {/* CUSTOM MAGIC SCROLL PROGRESS RAIL (Desktop Only - Global Viewport Overlay) */}
+      <MagicScrollProgress />
     </>
   );
 }

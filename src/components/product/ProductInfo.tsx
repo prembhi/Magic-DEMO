@@ -1,7 +1,19 @@
 import React, { useState } from 'react';
-import { Plus, Minus, ShoppingBag, Check, RefreshCw, Truck, ShieldCheck, Clock } from 'lucide-react';
+import {
+  Plus,
+  Minus,
+  ShoppingBag,
+  Check,
+  RefreshCw,
+  Truck,
+  ShieldCheck,
+  Clock,
+  Sparkles,
+} from 'lucide-react';
 import { ShopProduct } from '../../data/shopProducts';
+import { getProductSpecDetails } from '../../data/productDetailsData';
 import { useShopCart } from '../../context/ShopCartContext';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface ProductInfoProps {
   product: ShopProduct;
@@ -13,6 +25,9 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
   onNavigateCategory,
 }) => {
   const { addItem, openCart } = useShopCart();
+  const { isRTL } = useLanguage();
+  const details = getProductSpecDetails(product.id);
+
   const [purchaseType, setPurchaseType] = useState<'one-time' | 'subscription'>('one-time');
   const [deliveryFrequency, setDeliveryFrequency] = useState<'30' | '60' | '90'>('30');
   const [quantity, setQuantity] = useState<number>(1);
@@ -20,7 +35,7 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
 
   // Calculate prices
   const regularPrice = product.price;
-  const subscriptionDiscount = 0.10; // 10% save
+  const subscriptionDiscount = 0.1; // 10% save
   const subscriptionPrice = Number((regularPrice * (1 - subscriptionDiscount)).toFixed(2));
   const activeUnitPrice = purchaseType === 'subscription' ? subscriptionPrice : regularPrice;
   const totalPrice = (activeUnitPrice * quantity).toFixed(2);
@@ -42,36 +57,40 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
   };
 
   return (
-    <div className="w-full flex flex-col justify-start text-[#3C1518]">
-      {/* 1. SMALL CATEGORY LABEL */}
+    <div className="w-full flex flex-col justify-start text-[#3C1518] select-none">
+      {/* ========================================================================= */}
+      {/* 1. CATEGORY / PRODUCT TYPE                                                */}
+      {/* ========================================================================= */}
       <div className="flex items-center gap-2 mb-2">
         <button
           type="button"
           onClick={() => onNavigateCategory && onNavigateCategory(product.category)}
-          className="text-[11px] font-bold tracking-widest uppercase text-[#C8102E] hover:underline cursor-pointer"
+          className="text-xs font-mono font-bold tracking-widest uppercase text-[#C8102E] hover:underline cursor-pointer"
         >
-          {product.category}
+          {isRTL && product.arabicCategory ? product.arabicCategory : product.category}
         </button>
         {product.subCategory && (
           <>
             <span className="text-xs text-[#3C1518]/30">/</span>
-            <span className="text-[11px] text-[#3C1518]/60 font-medium">
+            <span className="text-xs font-mono text-[#3C1518]/60 font-medium">
               {product.subCategory}
             </span>
           </>
         )}
       </div>
 
-      {/* 2. PRODUCT TITLE & DUAL LANGUAGE */}
+      {/* ========================================================================= */}
+      {/* 2. PRODUCT NAME (FRAUNCES DOMINANT)                                       */}
+      {/* ========================================================================= */}
       <div className="mb-3">
-        <span className="font-serif text-sm tracking-widest uppercase text-[#C8102E] font-bold block mb-0.5">
+        <span className="font-display font-bold text-xs tracking-widest uppercase text-[#C8102E] block mb-1">
           MAGIC
         </span>
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-black text-[#3C1518] leading-[1.05] tracking-tight">
+        <h1 className="font-display font-black text-3xl sm:text-4xl lg:text-[2.75rem] text-[#3C1518] leading-[1.05] tracking-tight">
           {product.name.replace(/^MAGIC\s*/i, '')}
         </h1>
-        <div className="flex items-baseline gap-3 mt-1.5">
-          <span className="font-arabic text-base sm:text-lg text-[#3C1518]/75 font-normal">
+        <div className="flex items-baseline gap-3 mt-1.5 flex-wrap">
+          <span className="font-arabic text-base sm:text-lg text-[#3C1518]/80 font-medium">
             {product.arabicName}
           </span>
           {product.englishSub && (
@@ -82,10 +101,19 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
         </div>
       </div>
 
-      {/* 3. VISUALLY DOMINANT PRICE */}
-      <div className="py-3 border-y border-[#E6E0D6] flex items-baseline justify-between gap-3 my-2">
+      {/* ========================================================================= */}
+      {/* 3. SHORT PRODUCT DESCRIPTION                                              */}
+      {/* ========================================================================= */}
+      <p className="text-xs sm:text-sm text-[#3C1518]/80 font-sans leading-relaxed mb-4">
+        {details.shortDescription || product.culinaryProfile}
+      </p>
+
+      {/* ========================================================================= */}
+      {/* 4. VISUALLY DOMINANT PRICE                                                */}
+      {/* ========================================================================= */}
+      <div className="py-3 border-y border-[#3C1518]/12 flex items-baseline justify-between gap-3 mb-4">
         <div className="flex items-baseline gap-2.5">
-          <span className="text-3xl sm:text-4xl font-bold font-mono text-[#3C1518] leading-none">
+          <span className="text-3xl sm:text-4xl font-black font-mono text-[#3C1518] leading-none">
             AED {activeUnitPrice.toFixed(2)}
           </span>
           {purchaseType === 'subscription' && (
@@ -94,56 +122,47 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
             </span>
           )}
           <span className="text-[11px] text-[#3C1518]/60 font-medium">
-            VAT Inclusive
+            {isRTL ? 'شامل ضريبة القيمة المضافة' : 'VAT Inclusive'}
           </span>
         </div>
-        <div className="text-right">
-          <span className="inline-block text-[11px] font-semibold text-[#2B6E2A] bg-[#2B6E2A]/10 px-2 py-0.5 rounded-2xs">
-            In Stock • Express Dispatch
+        <div>
+          <span className="inline-block text-[11px] font-mono font-semibold text-[#2B6E2A] bg-[#2B6E2A]/10 px-2.5 py-0.5 rounded-full border border-[#2B6E2A]/20">
+            {isRTL ? 'متوفر • شحن سريع' : 'In Stock • UAE Express'}
           </span>
         </div>
       </div>
 
-      {/* 4. WEIGHT / VARIANT SELECTOR */}
-      <div className="my-4">
+      {/* ========================================================================= */}
+      {/* 5. WEIGHT / SIZE / EXISTING PRODUCT OPTIONS                               */}
+      {/* ========================================================================= */}
+      <div className="mb-4">
         <div className="flex items-center justify-between text-xs mb-1.5">
           <span className="font-bold text-[#3C1518] uppercase tracking-wider text-[11px]">
-            Pack Weight
+            {isRTL ? 'وزن العبوة' : 'Pack Weight'}
           </span>
-          <span className="text-[#3C1518]/60 text-[11px]">
-            Single Pouch Format
+          <span className="text-[#3C1518]/60 text-[11px] font-mono">
+            {isRTL ? 'عبوة فردية محكمة الإغلاق' : 'Single Pouch Format'}
           </span>
         </div>
         <div className="flex gap-2">
-          <button
-            type="button"
-            className="px-4 py-2 bg-white border-2 border-[#C8102E] text-[#C8102E] font-bold text-xs font-mono rounded-xs shadow-2xs cursor-default flex items-center gap-1.5"
-            aria-selected="true"
-          >
-            <span>{product.weight}</span>
+          <div className="px-4 py-2 bg-white border-2 border-[#C8102E] text-[#C8102E] font-bold text-xs font-mono rounded-lg shadow-2xs flex items-center gap-1.5">
+            <span>{isRTL && product.arabicWeight ? product.arabicWeight : product.weight}</span>
             <span className="text-[10px] text-[#3C1518]/50 font-normal">
-              (Standard)
+              ({isRTL ? 'قياسي' : 'Standard'})
             </span>
-          </button>
+          </div>
         </div>
       </div>
 
-      {/* 5. PURCHASE OPTIONS (SUBSCRIPTION UI ACCORDING TO UX RESEARCH) */}
-      <div className="my-4 border border-[#E6E0D6] rounded-xs bg-white overflow-hidden shadow-2xs">
-        <div className="px-3.5 py-2 bg-[#FAF7F2] border-b border-[#E6E0D6] flex items-center justify-between">
-          <span className="text-[11px] font-bold tracking-wider uppercase text-[#3C1518]">
-            Purchase Options
-          </span>
-          <span className="text-[10px] text-[#3C1518]/60">
-            Cancel Anytime
-          </span>
-        </div>
-
+      {/* ========================================================================= */}
+      {/* 6. PURCHASE MODE: ONE-TIME VS. SUBSCRIBE & SAVE                           */}
+      {/* ========================================================================= */}
+      <div className="mb-4 border border-[#3C1518]/15 rounded-xl bg-white overflow-hidden shadow-2xs">
         {/* OPTION 1: One-Time Purchase */}
         <label
           onClick={() => setPurchaseType('one-time')}
-          className={`flex items-center justify-between p-3.5 cursor-pointer border-b border-[#E6E0D6] transition-colors ${
-            purchaseType === 'one-time' ? 'bg-[#FAF7F2]/40' : 'hover:bg-[#FAF7F2]/20'
+          className={`flex items-center justify-between p-3.5 sm:p-4 cursor-pointer border-b border-[#3C1518]/10 transition-colors ${
+            purchaseType === 'one-time' ? 'bg-[#FAF7F2]' : 'hover:bg-[#FAF7F2]/50'
           }`}
         >
           <div className="flex items-center gap-3">
@@ -155,7 +174,7 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
               className="w-4 h-4 accent-[#C8102E] cursor-pointer"
             />
             <span className="text-xs sm:text-sm font-bold text-[#3C1518]">
-              One-Time Purchase
+              {isRTL ? 'شراء لمرة واحدة' : 'One-Time Purchase'}
             </span>
           </div>
           <span className="text-xs sm:text-sm font-bold font-mono text-[#3C1518]">
@@ -164,10 +183,10 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
         </label>
 
         {/* OPTION 2: Subscribe & Save 10% */}
-        <div className={purchaseType === 'subscription' ? 'bg-[#FAF7F2]/40' : ''}>
+        <div className={purchaseType === 'subscription' ? 'bg-[#FAF7F2]' : ''}>
           <label
             onClick={() => setPurchaseType('subscription')}
-            className="flex items-center justify-between p-3.5 cursor-pointer transition-colors"
+            className="flex items-center justify-between p-3.5 sm:p-4 cursor-pointer transition-colors"
           >
             <div className="flex items-center gap-3">
               <input
@@ -179,10 +198,10 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
               />
               <div className="flex items-center gap-2">
                 <span className="text-xs sm:text-sm font-bold text-[#3C1518]">
-                  Subscribe & Save
+                  {isRTL ? 'اشترك ووفر' : 'Subscribe & Save'}
                 </span>
-                <span className="bg-[#2B6E2A] text-white text-[10px] font-extrabold px-1.5 py-0.5 rounded-2xs uppercase tracking-wide">
-                  Save 10%
+                <span className="bg-[#2B6E2A] text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wide">
+                  {isRTL ? 'وفر 10%' : 'Save 10%'}
                 </span>
               </div>
             </div>
@@ -191,57 +210,58 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
             </span>
           </label>
 
-          {/* REVEALED SUBSCRIPTION CONTROLS WHEN SELECTED */}
+          {/* Subscription Controls & Perks */}
           {purchaseType === 'subscription' && (
-            <div className="px-4 pb-4 pt-1 border-t border-[#E6E0D6]/70 bg-[#FAF7F2]/80 space-y-3">
-              {/* Delivery Frequency Header */}
+            <div className="px-4 pb-4 pt-1 border-t border-[#3C1518]/10 bg-[#FAF7F2] space-y-3 animate-in fade-in duration-200">
               <div className="flex items-center justify-between text-[11px] pt-2">
-                <span className="font-bold text-[#3C1518] uppercase tracking-wider">
-                  Deliver Every:
+                <span className="font-mono font-bold text-[#3C1518] uppercase tracking-wider">
+                  {isRTL ? 'تكرار التوصيل:' : 'Deliver Every:'}
                 </span>
-                <span className="text-[#2B6E2A] font-bold text-[10px] uppercase">
-                  Save 10% on every order
+                <span className="text-[#2B6E2A] font-mono font-bold text-[10px] uppercase">
+                  {isRTL ? 'خصم 10% على كل دفعة' : '10% OFF Every Order'}
                 </span>
               </div>
 
-              {/* Radio-Style Frequency Selector (30 / 60 / 90 Days) */}
+              {/* Frequency Selector */}
               <div className="grid grid-cols-3 gap-2">
                 {[
-                  { value: '30', label: '30 Days', desc: 'Recommended' },
-                  { value: '60', label: '60 Days', desc: 'Standard' },
-                  { value: '90', label: '90 Days', desc: 'Extended' },
+                  { value: '30', labelEn: '30 Days', labelAr: '30 يوم', descEn: 'Recommended', descAr: 'مستحسن' },
+                  { value: '60', labelEn: '60 Days', labelAr: '60 يوم', descEn: 'Standard', descAr: 'عادي' },
+                  { value: '90', labelEn: '90 Days', labelAr: '90 يوم', descEn: 'Extended', descAr: 'ممتد' },
                 ].map((freq) => (
                   <button
                     key={freq.value}
                     type="button"
                     onClick={() => setDeliveryFrequency(freq.value as any)}
-                    className={`py-2 px-2 rounded-xs border text-center transition-all cursor-pointer ${
+                    className={`py-2 px-2 rounded-lg border text-center transition-all cursor-pointer ${
                       deliveryFrequency === freq.value
                         ? 'border-[#C8102E] bg-white text-[#C8102E] font-bold shadow-2xs'
-                        : 'border-[#E6E0D6] bg-white/60 text-[#3C1518]/70 hover:bg-white'
+                        : 'border-[#3C1518]/15 bg-white/70 text-[#3C1518]/70 hover:bg-white'
                     }`}
                   >
-                    <div className="text-xs font-mono">{freq.label}</div>
-                    <div className="text-[9px] text-[#3C1518]/50 uppercase tracking-tighter">
-                      {freq.desc}
+                    <div className="text-xs font-mono font-bold">
+                      {isRTL ? freq.labelAr : freq.labelEn}
+                    </div>
+                    <div className="text-[9px] text-[#3C1518]/50 uppercase tracking-tight">
+                      {isRTL ? freq.descAr : freq.descEn}
                     </div>
                   </button>
                 ))}
               </div>
 
-              {/* Subscription Benefits List */}
-              <div className="pt-2 border-t border-[#E6E0D6]/60 text-[11px] text-[#3C1518]/80 space-y-1">
+              {/* Perks */}
+              <div className="pt-2 border-t border-[#3C1518]/10 text-[11px] text-[#3C1518]/80 space-y-1">
                 <div className="flex items-center gap-1.5">
                   <span className="text-[#2B6E2A] font-bold">✓</span>
-                  <span>Save 10% on every recurring order</span>
+                  <span>{isRTL ? 'توفير 10% مستمر على كل طلب دوري' : 'Save 10% on every recurring harvest order'}</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <span className="text-[#2B6E2A] font-bold">✓</span>
-                  <span>Flexible delivery schedule to your doorstep</span>
+                  <span>{isRTL ? 'جدول توصيل مرن ومباشر إلى باب منزلك' : 'Flexible schedule delivered to your doorstep'}</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <span className="text-[#2B6E2A] font-bold">✓</span>
-                  <span>Skip, modify, or cancel anytime with zero penalty</span>
+                  <span>{isRTL ? 'يمكنك التخطي أو التعديل أو الإلغاء في أي وقت' : 'Skip, pause, or cancel anytime with zero fee'}</span>
                 </div>
               </div>
             </div>
@@ -249,11 +269,13 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
         </div>
       </div>
 
-      {/* 6. QUANTITY + PRIMARY CTA */}
-      <div className="my-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-        {/* Quantity Stepper (44x44px touch targets) */}
+      {/* ========================================================================= */}
+      {/* 7. QUANTITY STEPPER + DOMINANT ADD TO CART CTA                            */}
+      {/* ========================================================================= */}
+      <div className="mb-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+        {/* Quantity Stepper (min 44px touch targets) */}
         <div
-          className="h-12 bg-white border border-[#D9D2C7] rounded-xs flex items-center px-1 shadow-2xs min-w-[120px] justify-between"
+          className="h-12 bg-white border border-[#3C1518]/20 rounded-lg flex items-center px-1 shadow-2xs min-w-[120px] justify-between"
           role="group"
           aria-label={`Quantity selector for ${product.name}`}
         >
@@ -261,8 +283,8 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
             type="button"
             onClick={handleDecrement}
             disabled={quantity <= 1}
-            className="w-10 h-10 flex items-center justify-center text-[#3C1518] hover:bg-[#FAF7F2] disabled:opacity-30 disabled:hover:bg-transparent rounded-xs cursor-pointer transition-colors"
-            aria-label="Decrease quantity"
+            className="w-10 h-10 flex items-center justify-center text-[#3C1518] hover:bg-[#FAF7F2] disabled:opacity-30 disabled:hover:bg-transparent rounded-md cursor-pointer transition-colors"
+            aria-label={isRTL ? 'تقليل الكمية' : 'Decrease quantity'}
           >
             <Minus className="w-4 h-4 stroke-[2.5]" />
           </button>
@@ -275,21 +297,21 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
           <button
             type="button"
             onClick={handleIncrement}
-            className="w-10 h-10 flex items-center justify-center text-[#3C1518] hover:bg-[#FAF7F2] rounded-xs cursor-pointer transition-colors"
-            aria-label="Increase quantity"
+            className="w-10 h-10 flex items-center justify-center text-[#3C1518] hover:bg-[#FAF7F2] rounded-md cursor-pointer transition-colors"
+            aria-label={isRTL ? 'زيادة الكمية' : 'Increase quantity'}
           >
             <Plus className="w-4 h-4 stroke-[2.5]" />
           </button>
         </div>
 
-        {/* Primary CTA (Dominant MAGIC Red) */}
+        {/* Primary CTA (Dominant MAGIC Red, min 44px) */}
         <button
           type="button"
           onClick={handleAddToCart}
-          className={`flex-1 h-12 px-6 rounded-xs font-bold text-xs sm:text-sm flex items-center justify-center gap-2 cursor-pointer transition-all shadow-xs ${
+          className={`flex-1 h-12 px-6 rounded-lg font-bold text-xs sm:text-sm font-mono tracking-wider uppercase flex items-center justify-center gap-2.5 cursor-pointer transition-all shadow-md ${
             justAdded
               ? 'bg-[#2B6E2A] text-white'
-              : 'bg-[#C8102E] hover:bg-[#A60D26] text-white active:scale-[0.99]'
+              : 'bg-[#C8102E] hover:bg-[#A60D26] text-white active:scale-[0.99] border border-white/20'
           }`}
           aria-label={
             purchaseType === 'subscription'
@@ -300,47 +322,61 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
           {justAdded ? (
             <>
               <Check className="w-4 h-4 stroke-[3]" />
-              <span>Added to Bag</span>
+              <span>{isRTL ? 'تمت الإضافة للسلة' : 'Added to Bag'}</span>
             </>
           ) : purchaseType === 'subscription' ? (
             <>
               <RefreshCw className="w-4 h-4 stroke-[2.5]" />
-              <span>SUBSCRIBE & SAVE • AED {totalPrice}</span>
+              <span>{isRTL ? 'اشترك ووفر' : 'SUBSCRIBE & SAVE'}</span>
             </>
           ) : (
             <>
               <ShoppingBag className="w-4 h-4 stroke-[2.5]" />
-              <span>ADD TO CART • AED {totalPrice}</span>
+              <span>{isRTL ? 'أضف إلى السلة' : 'ADD TO CART'}</span>
             </>
           )}
         </button>
 
-        {/* View Bag Quick Button */}
+        {/* View Bag Quick Trigger */}
         <button
           type="button"
           onClick={openCart}
-          className="h-12 px-4 bg-white hover:bg-[#FAF7F2] text-[#3C1518] border border-[#D9D2C7] rounded-xs text-xs font-bold cursor-pointer transition-colors hidden md:inline-flex items-center justify-center shadow-2xs"
+          className="h-12 px-4 bg-white hover:bg-[#FAF7F2] text-[#3C1518] border border-[#3C1518]/20 rounded-lg text-xs font-mono font-bold cursor-pointer transition-colors hidden md:inline-flex items-center justify-center shadow-2xs"
         >
-          View Bag
+          {isRTL ? 'عرض السلة' : 'View Bag'}
         </button>
       </div>
 
-      {/* 7. DELIVERY / TRUST STRIP */}
-      <div className="mt-2 pt-3 border-t border-[#E6E0D6] grid grid-cols-3 gap-2 text-center text-[10px] sm:text-[11px] text-[#3C1518]/75">
-        <div className="p-2 bg-white/60 rounded border border-[#E6E0D6]/60">
-          <Truck className="w-4 h-4 text-[#C8102E] mx-auto mb-1" />
-          <span className="font-bold block text-[#3C1518]">Free Delivery</span>
-          <span>Orders over AED 50</span>
+      {/* ========================================================================= */}
+      {/* 8. SUPPORTING ASSURANCE STRIP                                             */}
+      {/* ========================================================================= */}
+      <div className="pt-3 border-t border-[#3C1518]/12 grid grid-cols-3 gap-2 text-center text-[10px] sm:text-[11px] text-[#3C1518]/75">
+        <div className="p-2 bg-white/70 rounded-lg border border-[#3C1518]/10">
+          <Truck className="w-3.5 h-3.5 text-[#C8102E] mx-auto mb-1" />
+          <span className="font-bold block text-[#3C1518]">
+            {isRTL ? 'توصيل مجاني' : 'Free Delivery'}
+          </span>
+          <span className="text-[10px] text-[#3C1518]/60">
+            {isRTL ? 'للطلبات فوق 50 درهم' : 'Orders over AED 50'}
+          </span>
         </div>
-        <div className="p-2 bg-white/60 rounded border border-[#E6E0D6]/60">
-          <Clock className="w-4 h-4 text-[#C8102E] mx-auto mb-1" />
-          <span className="font-bold block text-[#3C1518]">UAE Express</span>
-          <span>Dispatched in 30–45m</span>
+        <div className="p-2 bg-white/70 rounded-lg border border-[#3C1518]/10">
+          <Clock className="w-3.5 h-3.5 text-[#C8102E] mx-auto mb-1" />
+          <span className="font-bold block text-[#3C1518]">
+            {isRTL ? 'شحن سريع' : 'UAE Express'}
+          </span>
+          <span className="text-[10px] text-[#3C1518]/60">
+            {isRTL ? '30–45 دقيقة' : '30–45 min dispatch'}
+          </span>
         </div>
-        <div className="p-2 bg-white/60 rounded border border-[#E6E0D6]/60">
-          <ShieldCheck className="w-4 h-4 text-[#2B6E2A] mx-auto mb-1" />
-          <span className="font-bold block text-[#3C1518]">Airtight Foil</span>
-          <span>100% Sealed Purity</span>
+        <div className="p-2 bg-white/70 rounded-lg border border-[#3C1518]/10">
+          <ShieldCheck className="w-3.5 h-3.5 text-[#2B6E2A] mx-auto mb-1" />
+          <span className="font-bold block text-[#3C1518]">
+            {isRTL ? 'تغليف نيتروجين' : 'Airtight Foil'}
+          </span>
+          <span className="text-[10px] text-[#3C1518]/60">
+            {isRTL ? 'حماية تامة للأريج' : '100% Sealed Purity'}
+          </span>
         </div>
       </div>
     </div>

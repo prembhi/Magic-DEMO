@@ -341,19 +341,8 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
             <div className="w-full relative rounded-xs overflow-hidden border border-[#D9CEBA] bg-gradient-to-br from-[#FAF5EE] via-[#F4ECE1] to-[#EFE2D2] p-7 sm:p-9 flex flex-col justify-between shadow-sm min-h-[440px] sm:min-h-[500px]">
               {/* Subtle decorative concentric brass rim and geometric motifs */}
               <div className="absolute inset-3 border border-[#D4A843]/25 pointer-events-none rounded-2xs" />
-              <div className="absolute top-0 right-0 w-32 h-32 bg-radial from-[#D4A843]/15 to-transparent pointer-events-none" />
-
-              {/* Editorial Magazine Masthead Strip */}
-              <div className="relative z-10 flex items-center justify-between pb-3 border-b border-[#3C1518]/10 text-[10px] font-mono uppercase tracking-[0.2em] text-[#3C1518]/65">
-                <span className="flex items-center gap-1.5 font-bold text-[#C8102E]">
-                  <Sparkles className="w-3 h-3 text-[#D4A843]" />
-                  <span>MAGIC CULINARY ARCHIVE</span>
-                </span>
-                <span>VOL. 01</span>
-              </div>
-
               {/* Elevated Stage with Authentic Primary Packaging & Plate Graphics */}
-              <div className="relative z-10 my-6 flex flex-col items-center justify-center flex-1">
+              <div className="relative z-10 my-auto py-4 flex flex-col items-center justify-center flex-1">
                 {/* Artisan Graphic Plate / Spice Halo */}
                 <div className="relative w-64 h-64 sm:w-72 sm:h-72 flex items-center justify-center">
                   <div className="absolute inset-0 rounded-full border border-[#D4A843]/30 bg-white/40 shadow-inner" />
@@ -407,13 +396,6 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
       {/* 3. RECIPE INTRO & STORY (Generous Editorial Section) */}
       <section className="bg-white border-y border-[#E6DFC8] py-12 sm:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
-          <div className="flex items-center justify-center sm:justify-start gap-2 mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D4A843]" />
-            <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#3C1518]/65 font-bold">
-              Culinary Notes & Provenance
-            </span>
-          </div>
-
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-black text-[#3C1518] mb-4 tracking-tight leading-tight">
             {recipe.tagline}
           </h2>
@@ -579,9 +561,6 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
           {/* RIGHT COLUMN (7 cols on Desktop): STEP-BY-STEP METHOD */}
           <div className="lg:col-span-7 space-y-6">
             <div className="pb-4 border-b border-[#3C1518]/12">
-              <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#C8102E] font-bold block mb-1">
-                Kitchen Method
-              </span>
               <h2 className="text-2xl sm:text-3xl font-serif font-black text-[#3C1518] tracking-tight">
                 Preparation & Cooking Steps
               </h2>
@@ -832,9 +811,6 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-8 pb-3 border-b border-[#3C1518]/12 gap-2">
             <div>
-              <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#C8102E] font-bold block mb-1">
-                CULINARY INSPIRATION
-              </span>
               <h2
                 id="more-recipes-heading"
                 className="text-2xl sm:text-3xl font-serif font-black text-[#3C1518] tracking-tight"

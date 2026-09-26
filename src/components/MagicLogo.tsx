@@ -12,6 +12,7 @@ export const MagicLogo: React.FC<MagicLogoProps> = ({
   className = '',
   size = 'md',
   withRegistered = true,
+  variant = 'default',
 }) => {
   // Height presets for responsive viewports
   const heightClass = {
@@ -30,7 +31,9 @@ export const MagicLogo: React.FC<MagicLogoProps> = ({
       />
       {withRegistered && (
         <span
-          className="text-[10px] font-bold ml-0.5 -mt-3.5 select-none font-serif text-[#FDF6EC]/85"
+          className={`text-[10px] font-bold ml-0.5 -mt-3.5 select-none font-serif ${
+            variant === 'white' ? 'text-[#FDF6EC]/85' : 'text-[#3C1518]/70'
+          }`}
           aria-hidden="true"
         >
           ®

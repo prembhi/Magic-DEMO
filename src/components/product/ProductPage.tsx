@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronRight, ChevronLeft, ArrowLeft, ArrowRight, AlertCircle } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ArrowLeft } from 'lucide-react';
 import { ShopProduct, findShopProduct } from '../../data/shopProducts';
 import { ShopHeader } from '../shop/ShopHeader';
 import { ShopFooter } from '../shop/ShopFooter';
@@ -8,10 +8,8 @@ import { ProductGallery } from './ProductGallery';
 import { ProductInfo } from './ProductInfo';
 import { ProductEditorialBenefitStrip } from './ProductEditorialBenefitStrip';
 import { ProductStorytelling } from './ProductStorytelling';
-import { ProductRecipeCards } from './ProductRecipeCards';
-import { ProductFaqSection } from './ProductFaqSection';
+import { ProductDetails } from './ProductDetails';
 import { RelatedProducts } from './RelatedProducts';
-import { ProductNewsletter } from './ProductNewsletter';
 import { useShopCart } from '../../context/ShopCartContext';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -40,7 +38,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({
   const { isCartOpen, closeCart, toastMessage } = useShopCart();
   const { isRTL, t } = useLanguage();
   const ChevronIcon = isRTL ? ChevronLeft : ChevronRight;
-  const BackArrowIcon = isRTL ? ArrowRight : ArrowLeft;
 
   // Find product dynamically using the slug or identifier
   const product: ShopProduct | undefined = findShopProduct(productSlug);
@@ -55,13 +52,20 @@ export const ProductPage: React.FC<ProductPageProps> = ({
   const getCategoryLabel = (cat: string) => {
     if (!isRTL) return cat;
     switch (cat) {
-      case 'Dals & Lentils': return 'البقوليات والعدس';
-      case 'Whole Spices': return 'التوابل الكاملة';
-      case 'Ground Spices': return 'التوابل المطحونة';
-      case 'Bundles & Sets': return 'الباقات والمجموعات';
-      case 'Masalas': return 'خلطات التوابل';
-      case 'Ready Mixes': return 'الخلطات الجاهزة';
-      default: return cat;
+      case 'Dals & Lentils':
+        return 'البقوليات والعدس';
+      case 'Whole Spices':
+        return 'التوابل الكاملة';
+      case 'Ground Spices':
+        return 'التوابل المطحونة';
+      case 'Bundles & Sets':
+        return 'الباقات والمجموعات';
+      case 'Masalas':
+        return 'خلطات التوابل';
+      case 'Ready Mixes':
+        return 'الخلطات الجاهزة';
+      default:
+        return cat;
     }
   };
 
@@ -91,7 +95,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({
         </div>
       )}
 
-      {/* TOP MARKETPLACE HEADER */}
+      {/* 1. TOP MARKETPLACE HEADER */}
       <ShopHeader
         searchQuery={searchQuery}
         onSearchChange={handleSearchChange}
@@ -103,17 +107,20 @@ export const ProductPage: React.FC<ProductPageProps> = ({
         onNavigateNewsletter={onNavigateNewsletter}
       />
 
-      {/* MAIN CONTAINER */}
+      {/* 2. MAIN SINGLE PRODUCT CONTENT (Exact 5-Chapter Rhythm) */}
       <main className="flex-1 w-full flex flex-col focus:outline-none" id="main-content" tabIndex={-1}>
         {product ? (
           <>
-            {/* HERO SECTION: Breadcrumb + 55/45 Immersion */}
+            {/* ------------------------------------------------------------- */}
+            {/* CHAPTER 1: PRODUCT HERO (55-58% Gallery + 42-45% Info Panel) */}
+            {/* ------------------------------------------------------------- */}
             <div className="max-w-[1240px] w-full mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6">
-              {/* BREADCRUMB */}
+              {/* Breadcrumb Navigation */}
               <nav aria-label="Breadcrumb" className="mb-4 sm:mb-6">
                 <ol className="flex items-center flex-wrap gap-1 sm:gap-1.5 text-xs text-[#3C1518]/60">
                   <li>
                     <button
+                      type="button"
                       onClick={onNavigateHome}
                       className="hover:text-[#C8102E] transition-colors cursor-pointer"
                     >
@@ -125,6 +132,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({
                   </li>
                   <li>
                     <button
+                      type="button"
                       onClick={() => onNavigateShop()}
                       className="hover:text-[#C8102E] transition-colors cursor-pointer"
                     >
@@ -136,6 +144,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({
                   </li>
                   <li>
                     <button
+                      type="button"
                       onClick={() => handleCategoryClick(product.category)}
                       className="hover:text-[#C8102E] transition-colors cursor-pointer"
                     >
@@ -153,14 +162,14 @@ export const ProductPage: React.FC<ProductPageProps> = ({
                 </ol>
               </nav>
 
-              {/* 1 & 2: IMMERSIVE HERO GALLERY + STRONG PURCHASE PANEL */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
-                {/* 1. Large immersive product hero / gallery (approx 55% desktop width) */}
+              {/* 2-Column Product Hero Stage (55-58% / 42-45%) */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-14 items-start">
+                {/* Left Column: Interactive Product Gallery (approx 56% desktop width) */}
                 <div className="lg:col-span-7">
                   <ProductGallery product={product} />
                 </div>
 
-                {/* 2. Strong purchase information panel beside it (approx 45% desktop width) */}
+                {/* Right Column: Product Information & Purchase Controls (approx 44% desktop width) */}
                 <div className="lg:col-span-5">
                   <ProductInfo
                     product={product}
@@ -170,46 +179,43 @@ export const ProductPage: React.FC<ProductPageProps> = ({
               </div>
             </div>
 
-            {/* 3. EDITORIAL VISUAL BENEFIT STRIP */}
+            {/* ------------------------------------------------------------- */}
+            {/* CHAPTER 2: PRODUCT ATTRIBUTES / TRUST STRIP                    */}
+            {/* ------------------------------------------------------------- */}
             <ProductEditorialBenefitStrip product={product} />
 
-            {/* 4. CULINARY / CONTENT STORYTELLING SECTION */}
+            {/* ------------------------------------------------------------- */}
+            {/* CHAPTER 3: PRODUCT STORY (FROM FARM TO PANTRY)                */}
+            {/* ------------------------------------------------------------- */}
             <ProductStorytelling product={product} />
 
-            {/* 5. RECIPE / CONTENT CARDS ("Cook With MAGIC") */}
-            <ProductRecipeCards
-              product={product}
-              onSelectProduct={onSelectProduct}
-            />
+            {/* ------------------------------------------------------------- */}
+            {/* CHAPTER 4: PRODUCT DETAILS (EXPANDABLE ACCORDIONS)            */}
+            {/* ------------------------------------------------------------- */}
+            <ProductDetails product={product} />
 
-            {/* 6. LARGE FAQ ACCORDION SECTION */}
-            <ProductFaqSection product={product} />
-
-            {/* 7. RELATED / FEATURED PRODUCTS SECTION */}
+            {/* ------------------------------------------------------------- */}
+            {/* CHAPTER 5: YOU MAY ALSO LIKE (CANONICAL PRODUCT CARDS)        */}
+            {/* ------------------------------------------------------------- */}
             <RelatedProducts
               currentProduct={product}
               onSelectProduct={onSelectProduct}
             />
-
-            {/* 8. NEWSLETTER ("Join The MAGIC Kitchen") */}
-            <ProductNewsletter />
           </>
         ) : (
           /* UNKNOWN PRODUCT FALLBACK */
           <div className="py-20 sm:py-28 text-center max-w-md mx-auto px-4">
-            <div className="w-12 h-12 rounded-full bg-[#C8102E]/10 text-[#C8102E] flex items-center justify-center mx-auto mb-4">
-              <AlertCircle className="w-6 h-6" />
-            </div>
-            <h1 className="text-xl sm:text-2xl font-bold font-serif text-[#3C1518] mb-2">
+            <h1 className="text-xl sm:text-2xl font-bold font-display text-[#3C1518] mb-2">
               Product Not Found
             </h1>
             <p className="text-xs sm:text-sm text-[#3C1518]/70 mb-6 leading-relaxed">
-              We couldn't locate &ldquo;{productSlug || 'the requested item'}&rdquo;. It may have moved or been updated.
+              We couldn&apos;t locate &ldquo;{productSlug || 'the requested item'}&rdquo;. It may have moved or been updated.
             </p>
             <div className="flex items-center justify-center gap-3">
               <button
+                type="button"
                 onClick={() => onNavigateShop()}
-                className="py-2.5 px-5 bg-[#C8102E] hover:bg-[#A60D26] text-white text-xs font-bold rounded-xs cursor-pointer transition-colors shadow-xs inline-flex items-center gap-2"
+                className="py-2.5 px-5 bg-[#C8102E] hover:bg-[#A60D26] text-white text-xs font-bold rounded-lg cursor-pointer transition-colors shadow-xs inline-flex items-center gap-2"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
                 Return to Shop Catalog
@@ -219,7 +225,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({
         )}
       </main>
 
-      {/* 9. FULL MAGIC FOOTER */}
+      {/* 3. FULL MAGIC FOOTER */}
       <ShopFooter
         onNavigateHome={onNavigateHome}
         onSelectCategory={(id) => onNavigateShop(id)}

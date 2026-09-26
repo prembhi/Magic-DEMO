@@ -46,9 +46,6 @@ export const HomeRecipes: React.FC<HomeRecipesProps> = ({
         {/* EDITORIAL HEADER ROW */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-16">
           <div className="max-w-2xl">
-            <span className="font-mono text-xs text-[#C8102E] tracking-[0.25em] uppercase font-bold block mb-3">
-              05 / 07 — KITCHEN INSPIRATION
-            </span>
             <h2
               id="recipes-heading"
               ref={headingRef}

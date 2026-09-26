@@ -92,9 +92,6 @@ export const HomeSubscribe: React.FC<HomeSubscribeProps> = ({
       <div className="relative max-w-7xl mx-auto z-10">
         {/* EDITORIAL HEADER */}
         <div className="max-w-2xl mb-12 sm:mb-16">
-          <span className="font-mono text-xs text-[#D4A843] tracking-[0.25em] uppercase font-bold block mb-3">
-            06 / 07 — PANTRY CONTINUITY
-          </span>
           <h2
             id="subscribe-heading"
             ref={headingRef}

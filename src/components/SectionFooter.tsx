@@ -1,13 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { MagicLogo } from './MagicLogo';
-import { Heart } from 'lucide-react';
+import { Heart, Instagram, MessageCircle, Youtube, Mail, ArrowUp, ArrowRight, Check } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { LegalModal, LegalDocType } from './common/LegalModal';
 import { MAGIC_ASSETS } from '../constants/assets';
+import { EditorialBrassBowl } from './illustrations/MagicEditorialIllustrations';
+
+/* ========================================================================== */
+/* MAIN SECTION FOOTER COMPONENT                                               */
+/* ========================================================================== */
 
 export const SectionFooter: React.FC = () => {
   const { language, setLanguage, isRTL, t } = useLanguage();
   const [activeLegalDoc, setActiveLegalDoc] = useState<LegalDocType | null>(null);
+  const footerRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isReducedMotion, setIsReducedMotion] = useState(false);
+
+  // Newsletter Form State
+  const [email, setEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setIsReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsReducedMotion(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  useEffect(() => {
+    if (!footerRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.08 }
+    );
+    observer.observe(footerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email || !email.includes('@')) return;
+    setIsSubmitting(true);
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSubscribed(true);
+      setEmail('');
+    }, 600);
+  };
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -15,287 +62,420 @@ export const SectionFooter: React.FC = () => {
 
   return (
     <footer
-      className="relative w-full bg-[#3C1518] text-[#FDF6EC] pt-14 sm:pt-16 pb-12 px-4 sm:px-6 lg:px-8 border-t border-[#D4A843]/20 select-none overflow-hidden"
+      ref={footerRef}
+      className="relative w-full bg-[#FDF6EC] text-[#3C1518] pt-12 sm:pt-14 lg:pt-16 pb-8 px-4 sm:px-6 lg:px-10 border-t border-[#3C1518]/15 select-none overflow-hidden"
       aria-label="Site Footer"
     >
       {/* ============================================================ */}
-      {/* 1. CONTINUOUS ILLUSTRATED AGRICULTURAL LANDSCAPE ARTWORK      */}
+      {/* 1. DECORATIVE AGRICULTURAL STORY (Subtle Horizon at Bottom)  */}
       {/* ============================================================ */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 pointer-events-none overflow-hidden z-0 select-none"
+        className="absolute inset-x-0 bottom-0 h-[320px] sm:h-[380px] pointer-events-none overflow-hidden z-0 select-none"
       >
         {/* Continuous Illustrated Agricultural Landscape with Left & Right Farmers */}
         <img
           src={MAGIC_ASSETS.footerLandscape}
           alt=""
-          className="absolute inset-0 w-full h-full object-cover object-bottom opacity-80 filter contrast-[1.04]"
+          style={{
+            opacity: isVisible || isReducedMotion ? 0.22 : 0.12,
+            transform: isVisible || isReducedMotion ? 'translateY(0)' : 'translateY(15px)',
+            transition: 'opacity 900ms ease-out, transform 900ms ease-out',
+          }}
+          className="absolute inset-0 w-full h-full object-cover object-bottom filter contrast-[1.08] saturate-[0.80]"
           loading="lazy"
         />
 
-        {/* Central Darkening Vignette: Keeps central 35-40% quiet and columns fully readable */}
+        {/* Softening Vignette: Keeps center quiet for readable brand text */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              'radial-gradient(ellipse 60% 80% at 50% 60%, #3C1518 0%, #3C1518 40%, rgba(60, 21, 24, 0.78) 68%, rgba(60, 21, 24, 0.15) 90%, transparent 100%)',
+              'radial-gradient(ellipse 70% 80% at 50% 40%, #FDF6EC 0%, #FDF6EC 40%, rgba(253, 246, 236, 0.85) 75%, transparent 100%)',
           }}
         />
 
-        {/* Top Fade to Solid Deep Maroon: Behind Brand Row & Logo */}
+        {/* Top Fade to Seamless Warm Ivory */}
         <div
-          className="absolute top-0 inset-x-0 h-36 sm:h-44 pointer-events-none"
+          className="absolute top-0 inset-x-0 h-32 pointer-events-none"
           style={{
             background:
-              'linear-gradient(to bottom, #3C1518 0%, rgba(60, 21, 24, 0.96) 35%, rgba(60, 21, 24, 0.4) 75%, transparent 100%)',
+              'linear-gradient(to bottom, #FDF6EC 0%, rgba(253, 246, 236, 0.95) 45%, transparent 100%)',
           }}
         />
 
-        {/* Bottom Grounding Fade: Behind UAE Store & Copyright */}
+        {/* Bottom Grounding Fade */}
         <div
-          className="absolute bottom-0 inset-x-0 h-24 sm:h-28 pointer-events-none"
+          className="absolute bottom-0 inset-x-0 h-24 pointer-events-none"
           style={{
             background:
-              'linear-gradient(to top, #3C1518 0%, rgba(60, 21, 24, 0.92) 30%, transparent 100%)',
+              'linear-gradient(to top, #FDF6EC 0%, rgba(253, 246, 236, 0.94) 30%, transparent 100%)',
           }}
         />
       </div>
 
-      <div className="relative max-w-[1240px] mx-auto z-10">
-        {/* TOP BRAND HERO ROW */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between pb-10 mb-12 border-b border-[#D4A843]/[0.12] gap-6">
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
-            <div className="flex items-center gap-1.5">
-              <MagicLogo size="lg" />
-              <span className="text-[#D4A843]/60 font-sans text-xs -mt-3 select-none">®</span>
-            </div>
-            <div className="sm:border-l sm:border-white/15 sm:pl-6 rtl:sm:border-l-0 rtl:sm:border-r rtl:sm:border-white/15 rtl:sm:pr-6 rtl:sm:pl-0 flex flex-col">
-              <span className="font-display font-bold text-sm text-[#FDF6EC] tracking-wider uppercase">
-                {isRTL ? 'أغذية وتوابل هندية أصيلة' : 'Authentic Indian Spices & Heritage Foods'}
-              </span>
-              <span className="font-normal text-xs text-[#D4A843] mt-0.5 font-arabic">
-                {isRTL
-                  ? 'توابل هندية أصيلة ومواد غذائية تراثية • United Arab Emirates'
-                  : 'توابل هندية أصيلة ومواد غذائية تراثية • United Arab Emirates'}
-              </span>
-            </div>
-          </div>
+      <div className="relative max-w-[1280px] mx-auto z-10">
+        {/* ============================================================ */}
+        {/* 2. TOP EDITORIAL NEWSLETTER BAND WITH CURATED ILLUSTRATIONS  */}
+        {/* ============================================================ */}
+        <div
+          style={{
+            transform: isVisible || isReducedMotion ? 'translateY(0)' : 'translateY(25px)',
+            opacity: isVisible || isReducedMotion ? 1 : 0,
+            transition: 'transform 800ms cubic-bezier(0.22, 1, 0.36, 1), opacity 800ms ease-out',
+          }}
+          className="relative bg-[#FAF5EE] border border-[#3C1518]/15 rounded-2xl p-6 sm:p-8 lg:p-10 mb-10 sm:mb-12 shadow-xs overflow-hidden"
+        >
+          {/* NEWSLETTER CONTENT GRID */}
+          <div className="relative z-20 max-w-2xl mx-auto text-center flex flex-col items-center">
+            {/* Small Editorial Overline */}
+            <p className="text-[11px] font-mono font-bold tracking-widest text-[#3C1518] uppercase mb-3.5">
+              {isRTL ? 'رسائل الحصاد والمطبخ' : 'THE MAGIC DISPATCH'}
+            </p>
 
-          {/* Back to Top */}
-          <button
-            onClick={scrollToTop}
-            className="self-start md:self-auto inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-black/20 hover:bg-black/40 text-xs font-semibold text-[#D4A843] border border-[#D4A843]/30 transition-colors cursor-pointer min-h-[40px]"
-            aria-label="Back to top of page"
-          >
-            <span>{isRTL ? 'العودة إلى الأعلى' : 'Back to top'}</span>
-            <span className="text-sm font-mono">↑</span>
-          </button>
+            {/* Headline */}
+            <h3 className="font-display font-black text-2xl sm:text-4xl lg:text-5xl text-[#3C1518] tracking-tight leading-[1.15] mb-3.5">
+              {isRTL ? 'ابقَ قريباً من مصدر التوابل.' : 'STAY CLOSE TO THE SOURCE.'}
+            </h3>
+
+            {/* Supporting Copy */}
+            <p className="font-sans text-xs sm:text-sm lg:text-base text-[#3C1518]/80 max-w-lg leading-relaxed mb-6 sm:mb-8">
+              {isRTL
+                ? 'ملاحظات الحصاد الموسمي، وتوابل المطبخ الجديدة، ووصفات وقصص ماجيك من المزارع الهندية خلف كل رشة.'
+                : 'Seasonal harvest notes, new pantry arrivals, recipes and MAGIC stories from the farms behind every pinch.'}
+            </p>
+
+            {/* Form */}
+            {isSubscribed ? (
+              <div className="w-full max-w-md py-4 px-6 rounded-2xl bg-white border border-[#5A7247]/40 shadow-xs flex items-center justify-center gap-3 text-sm font-semibold text-[#3C1518] animate-in fade-in zoom-in duration-300">
+                <div className="w-6 h-6 rounded-full bg-[#5A7247] text-white flex items-center justify-center shrink-0">
+                  <Check className="w-3.5 h-3.5" />
+                </div>
+                <span>
+                  {isRTL
+                    ? 'أهلاً بك في طاولة ماجيك! تم تأكيد اشتراكك بنجاح.'
+                    : 'Welcome to the MAGIC table! Check your inbox for your 10% welcome note.'}
+                </span>
+              </div>
+            ) : (
+              <form
+                onSubmit={handleSubscribe}
+                className="w-full max-w-md flex flex-col sm:flex-row items-center gap-2.5"
+              >
+                <div className="relative w-full">
+                  <Mail className="absolute start-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#3C1518]/45 pointer-events-none" />
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder={isRTL ? 'أدخل بريدك الإلكتروني' : 'Enter your email address'}
+                    aria-label="Email address for MAGIC newsletter"
+                    className="w-full ps-11 pe-4 py-3.5 text-xs sm:text-sm bg-white/95 text-[#3C1518] placeholder-[#3C1518]/45 rounded-full border border-[#3C1518]/25 focus:border-[#C8102E] focus:ring-2 focus:ring-[#C8102E]/20 focus:outline-none transition-all shadow-2xs"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#C8102E] hover:bg-[#A60D26] text-white font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer flex items-center justify-center gap-2 shrink-0 active:scale-95 disabled:opacity-75 min-h-[46px]"
+                >
+                  <span>
+                    {isSubmitting
+                      ? (isRTL ? 'جاري الانضمام...' : 'JOINING...')
+                      : (isRTL ? 'اشترك الآن' : 'SIGN UP')}
+                  </span>
+                  <ArrowRight className={`w-3.5 h-3.5 ${isRTL ? 'rotate-180' : ''}`} />
+                </button>
+              </form>
+            )}
+
+            <span className="text-[11px] text-[#3C1518]/55 mt-3">
+              {isRTL
+                ? 'نحترم خصوصيتك. يمكنك إلغاء الاشتراك في أي وقت.'
+                : 'Zero spam. Unsubscribe anytime with a single click.'}
+            </span>
+          </div>
         </div>
 
-        {/* MULTI-COLUMN EDITORIAL FOOTER GRID */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12 mb-16">
-          {/* COL 1: SHOP */}
-          <div className="flex flex-col">
-            <span className="font-display font-bold text-xs uppercase tracking-[0.2em] text-[#D4A843] mb-4">
-              {t('footer.shop')}
-            </span>
-            <ul className="flex flex-col gap-2.5 text-xs text-[#FDF6EC]/70 font-medium">
-              <li>
-                <a href="#shop" className="hover:text-white transition-colors">
-                  {t('shop.allProducts')}
-                </a>
-              </li>
-              <li>
-                <a href="#shop" className="hover:text-white transition-colors">
-                  {t('shop.dals')}
-                </a>
-              </li>
-              <li>
-                <a href="#shop" className="hover:text-white transition-colors">
-                  {t('shop.pureSpices')}
-                </a>
-              </li>
-              <li>
-                <a href="#bundles" className="hover:text-white transition-colors">
-                  {t('nav.bundles')}
-                </a>
-              </li>
-            </ul>
-          </div>
+        {/* ============================================================ */}
+        {/* 3. MAIN FOOTER EDITORIAL GRID                                */}
+        {/* ============================================================ */}
+        <div
+          style={{
+            transform: isVisible || isReducedMotion ? 'translateY(0)' : 'translateY(20px)',
+            opacity: isVisible || isReducedMotion ? 1 : 0,
+            transition: 'transform 800ms cubic-bezier(0.22, 1, 0.36, 1) 100ms, opacity 800ms ease-out 100ms',
+          }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 pb-10 sm:pb-12 border-b border-[#3C1518]/12"
+        >
+          {/* LEFT LARGE BRAND BLOCK (4 cols) */}
+          <div className="lg:col-span-4 flex flex-col justify-between">
+            <div>
+              {/* Logo + Brand Heading */}
+              <div className="flex items-center gap-3 mb-4">
+                <MagicLogo size="lg" variant="default" />
+              </div>
 
-          {/* COL 2: DISCOVER */}
-          <div className="flex flex-col">
-            <span className="font-display font-bold text-xs uppercase tracking-[0.2em] text-[#D4A843] mb-4">
-              {t('footer.discover')}
-            </span>
-            <ul className="flex flex-col gap-2.5 text-xs text-[#FDF6EC]/70 font-medium">
-              <li>
-                <a href="#recipes" className="hover:text-white transition-colors">
-                  {t('nav.recipes')}
-                </a>
-              </li>
-              <li>
-                <a href="#impact" className="hover:text-white transition-colors">
-                  {t('nav.ourImpact')}
-                </a>
-              </li>
-              <li>
-                <a href="#newsletter" className="hover:text-white transition-colors">
-                  {t('nav.newsletter')}
-                </a>
-              </li>
-              <li>
-                <a href="#bundles" className="hover:text-white transition-colors uppercase tracking-wider text-[11px]">
-                  {t('bundles.title')}
-                </a>
-              </li>
-            </ul>
-          </div>
+              <div className="mb-4">
+                <h4 className="font-display font-bold text-xs uppercase tracking-[0.18em] text-[#3C1518]">
+                  {isRTL ? 'أغذية وتوابل هندية أصيلة' : 'AUTHENTIC INDIAN SPICES & HERITAGE FOODS'}
+                </h4>
+                <p className="font-arabic text-xs text-[#6B4226] mt-0.5">
+                  {isRTL
+                    ? 'توابل هندية أصيلة ومواد غذائية تراثية • United Arab Emirates'
+                    : 'توابل هندية أصيلة ومواد غذائية تراثية • United Arab Emirates'}
+                </p>
+              </div>
 
-          {/* COL 3: CARE & CONTACT */}
-          <div className="flex flex-col">
-            <span className="font-display font-bold text-xs uppercase tracking-[0.2em] text-[#D4A843] mb-4">
-              {t('footer.support')}
-            </span>
-            <ul className="flex flex-col gap-2.5 text-xs text-[#FDF6EC]/70 font-medium">
-              <li>
-                <button
-                  type="button"
-                  onClick={() => setActiveLegalDoc('shipping')}
-                  className="hover:text-white transition-colors cursor-pointer text-start focus-visible:outline-2 focus-visible:outline-[#D4A843] rounded"
-                >
-                  {t('footer.uaeDelivery')}
-                </button>
-              </li>
-              <li>
-                <a href="mailto:hello@magicspices.com" className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-[#D4A843] rounded">
-                  hello@magicspices.com
-                </a>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => setActiveLegalDoc('shipping')}
-                  className="hover:text-white transition-colors cursor-pointer text-start focus-visible:outline-2 focus-visible:outline-[#D4A843] rounded"
-                >
-                  {t('footer.shippingPolicy')}
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => setActiveLegalDoc('privacy')}
-                  className="hover:text-white transition-colors cursor-pointer text-start focus-visible:outline-2 focus-visible:outline-[#D4A843] rounded"
-                >
-                  {t('footer.privacy')}
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => setActiveLegalDoc('terms')}
-                  className="hover:text-white transition-colors cursor-pointer text-start focus-visible:outline-2 focus-visible:outline-[#D4A843] rounded"
-                >
-                  {t('footer.terms')}
-                </button>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  onClick={() => setActiveLegalDoc('accessibility')}
-                  className="hover:text-white transition-colors cursor-pointer text-start focus-visible:outline-2 focus-visible:outline-[#D4A843] rounded"
-                >
-                  {isRTL ? 'إمكانية الوصول (WCAG)' : 'Accessibility Statement'}
-                </button>
-              </li>
-            </ul>
-          </div>
+              {/* Brand Narrative */}
+              <p className="text-xs sm:text-sm text-[#3C1518]/80 leading-relaxed font-normal mb-6 max-w-sm">
+                {isRTL
+                  ? 'توابل هندية أصيلة وبقوليات تراثية كاملة، ننتقيها بعناية من المزارع الهندية وأقاليم الزراعة الأصيلة التي تمنح كل مكون نكهته وطابعه الفريد.'
+                  : 'Authentic Indian spices and wholesome pulses, sourced with care from the farms and growing regions that give every ingredient its character.'}
+              </p>
 
-          {/* COL 4: LANGUAGE / اللغة */}
-          <div className="flex flex-col">
-            <span className="font-display font-bold text-xs uppercase tracking-[0.2em] text-[#D4A843] mb-4">
-              {t('footer.language')}
-            </span>
-
-            {/* Language Switcher Buttons */}
-            <div className="flex flex-col gap-2 mb-4">
-              <button
-                type="button"
-                onClick={() => setLanguage('en')}
-                className={`inline-flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer min-h-[42px] ${
-                  language === 'en'
-                    ? 'bg-black/30 text-[#D4A843] border-[#D4A843]/50 shadow-xs'
-                    : 'bg-black/15 text-[#FDF6EC]/70 border-white/10 hover:bg-black/25'
-                }`}
-              >
-                <span>English</span>
-                <span className="font-mono text-[10px] text-white/50">EN</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setLanguage('ar')}
-                className={`inline-flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer font-arabic min-h-[42px] ${
-                  language === 'ar'
-                    ? 'bg-black/30 text-[#D4A843] border-[#D4A843]/50 shadow-xs'
-                    : 'bg-black/15 text-[#FDF6EC]/70 border-white/10 hover:bg-black/25'
-                }`}
-              >
-                <span>العربية</span>
-                <span className="font-mono text-[10px] text-white/50">AR</span>
-              </button>
+              {/* Small Brass Spice Bowl Illustration Motif */}
+              <div aria-hidden="true" className="w-24 sm:w-28 mb-6 opacity-85">
+                <EditorialBrassBowl className="w-full h-auto drop-shadow-2xs" />
+              </div>
             </div>
 
-            {/* Static UAE Market Note */}
-            <div className="p-2 rounded bg-black/20 border border-white/10 text-xs text-[#FDF6EC]/70 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#2B6E2A] shrink-0" />
-              <span>United Arab Emirates (AED)</span>
-            </div>
-          </div>
-
-          {/* COL 5: SOCIAL */}
-          <div className="flex flex-col">
-            <span className="font-display font-bold text-xs uppercase tracking-[0.2em] text-[#D4A843] mb-4">
-              SOCIAL
-            </span>
-            <ul className="flex flex-col gap-2.5 text-xs text-[#FDF6EC]/70 font-medium">
-              <li>
+            {/* Social Channels (Simple Line-Style Icons) */}
+            <div className="flex flex-col gap-2.5">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-[#3C1518]/60 font-semibold">
+                {isRTL ? 'تواصل معنا' : 'CONNECT WITH MAGIC'}
+              </span>
+              <div className="flex items-center gap-2.5">
                 <a
                   href="https://instagram.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-white transition-colors"
+                  aria-label="Instagram"
+                  className="w-9 h-9 rounded-full bg-white/70 hover:bg-white text-[#3C1518] hover:text-[#C8102E] border border-[#3C1518]/15 hover:border-[#C8102E]/50 flex items-center justify-center transition-all shadow-2xs hover:scale-105"
                 >
-                  Instagram
+                  <Instagram className="w-4 h-4" />
                 </a>
-              </li>
-              <li>
                 <a
-                  href="https://facebook.com"
+                  href="https://wa.me/971500000000"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-white transition-colors"
+                  aria-label="WhatsApp Support"
+                  className="w-9 h-9 rounded-full bg-white/70 hover:bg-white text-[#3C1518] hover:text-[#5A7247] border border-[#3C1518]/15 hover:border-[#5A7247]/50 flex items-center justify-center transition-all shadow-2xs hover:scale-105"
                 >
-                  Facebook
+                  <MessageCircle className="w-4 h-4" />
                 </a>
-              </li>
-              <li>
                 <a
-                  href="https://pinterest.com"
+                  href="https://youtube.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-white transition-colors"
+                  aria-label="YouTube"
+                  className="w-9 h-9 rounded-full bg-white/70 hover:bg-white text-[#3C1518] hover:text-[#C8102E] border border-[#3C1518]/15 hover:border-[#C8102E]/50 flex items-center justify-center transition-all shadow-2xs hover:scale-105"
                 >
-                  Pinterest
+                  <Youtube className="w-4 h-4" />
                 </a>
-              </li>
-            </ul>
+                <a
+                  href="mailto:hello@magicspices.com"
+                  aria-label="Email Us"
+                  className="w-9 h-9 rounded-full bg-white/70 hover:bg-white text-[#3C1518] hover:text-[#D4A843] border border-[#3C1518]/15 hover:border-[#D4A843]/60 flex items-center justify-center transition-all shadow-2xs hover:scale-105"
+                >
+                  <Mail className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT NAVIGATION COLUMNS (8 cols: Shop, Discover, Care, Language/Region) */}
+          <div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-8">
+            {/* COL 1: SHOP */}
+            <div className="flex flex-col">
+              <span className="font-display font-bold text-xs uppercase tracking-[0.2em] text-[#3C1518] mb-4">
+                {t('footer.shop')}
+              </span>
+              <ul className="flex flex-col gap-2.5 text-xs text-[#3C1518]/80 font-medium">
+                <li>
+                  <a href="#shop" className="hover:text-[#C8102E] transition-colors focus-visible:outline-2 focus-visible:outline-[#C8102E] rounded">
+                    {t('shop.allProducts')}
+                  </a>
+                </li>
+                <li>
+                  <a href="#shop" className="hover:text-[#C8102E] transition-colors focus-visible:outline-2 focus-visible:outline-[#C8102E] rounded">
+                    {t('shop.pureSpices')}
+                  </a>
+                </li>
+                <li>
+                  <a href="#shop" className="hover:text-[#C8102E] transition-colors focus-visible:outline-2 focus-visible:outline-[#C8102E] rounded">
+                    {t('shop.dals')}
+                  </a>
+                </li>
+                <li>
+                  <a href="#bundles" className="hover:text-[#C8102E] transition-colors focus-visible:outline-2 focus-visible:outline-[#C8102E] rounded">
+                    {t('nav.bundles')}
+                  </a>
+                </li>
+                <li>
+                  <a href="#subscribe" className="hover:text-[#C8102E] transition-colors focus-visible:outline-2 focus-visible:outline-[#C8102E] rounded">
+                    {isRTL ? 'الاشتراك والتوفير' : 'Subscribe & Save'}
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* COL 2: DISCOVER */}
+            <div className="flex flex-col">
+              <span className="font-display font-bold text-xs uppercase tracking-[0.2em] text-[#3C1518] mb-4">
+                {t('footer.discover')}
+              </span>
+              <ul className="flex flex-col gap-2.5 text-xs text-[#3C1518]/80 font-medium">
+                <li>
+                  <a href="#recipes" className="hover:text-[#C8102E] transition-colors focus-visible:outline-2 focus-visible:outline-[#C8102E] rounded">
+                    {t('nav.recipes')}
+                  </a>
+                </li>
+                <li>
+                  <a href="#why-magic" className="hover:text-[#C8102E] transition-colors focus-visible:outline-2 focus-visible:outline-[#C8102E] rounded">
+                    {isRTL ? 'لماذا ماجيك؟' : 'What Makes Us Different'}
+                  </a>
+                </li>
+                <li>
+                  <a href="#impact" className="hover:text-[#C8102E] transition-colors focus-visible:outline-2 focus-visible:outline-[#C8102E] rounded">
+                    {t('nav.ourImpact')}
+                  </a>
+                </li>
+                <li>
+                  <a href="#farm-story" className="hover:text-[#C8102E] transition-colors focus-visible:outline-2 focus-visible:outline-[#C8102E] rounded">
+                    {isRTL ? 'أصل المزارع والمنشأ' : 'Farm Provenance'}
+                  </a>
+                </li>
+                <li>
+                  <a href="#favourites" className="hover:text-[#C8102E] transition-colors focus-visible:outline-2 focus-visible:outline-[#C8102E] rounded">
+                    {isRTL ? 'مفضلات المطبخ' : 'Kitchen Favourites'}
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* COL 3: CARE & CONTACT */}
+            <div className="flex flex-col">
+              <span className="font-display font-bold text-xs uppercase tracking-[0.2em] text-[#3C1518] mb-4">
+                {t('footer.support')}
+              </span>
+              <ul className="flex flex-col gap-2.5 text-xs text-[#3C1518]/80 font-medium">
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => setActiveLegalDoc('shipping')}
+                    className="hover:text-[#C8102E] transition-colors cursor-pointer text-start focus-visible:outline-2 focus-visible:outline-[#C8102E] rounded"
+                  >
+                    {t('footer.uaeDelivery')}
+                  </button>
+                </li>
+                <li>
+                  <a href="mailto:hello@magicspices.com" className="hover:text-[#C8102E] transition-colors focus-visible:outline-2 focus-visible:outline-[#C8102E] rounded">
+                    hello@magicspices.com
+                  </a>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => setActiveLegalDoc('shipping')}
+                    className="hover:text-[#C8102E] transition-colors cursor-pointer text-start focus-visible:outline-2 focus-visible:outline-[#C8102E] rounded"
+                  >
+                    {t('footer.shippingPolicy')}
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => setActiveLegalDoc('privacy')}
+                    className="hover:text-[#C8102E] transition-colors cursor-pointer text-start focus-visible:outline-2 focus-visible:outline-[#C8102E] rounded"
+                  >
+                    {t('footer.privacy')}
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => setActiveLegalDoc('terms')}
+                    className="hover:text-[#C8102E] transition-colors cursor-pointer text-start focus-visible:outline-2 focus-visible:outline-[#C8102E] rounded"
+                  >
+                    {t('footer.terms')}
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => setActiveLegalDoc('accessibility')}
+                    className="hover:text-[#C8102E] transition-colors cursor-pointer text-start focus-visible:outline-2 focus-visible:outline-[#C8102E] rounded"
+                  >
+                    {isRTL ? 'إمكانية الوصول (WCAG)' : 'Accessibility'}
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            {/* COL 4: LANGUAGE & REGION CONTROLS */}
+            <div className="flex flex-col">
+              <span className="font-display font-bold text-xs uppercase tracking-[0.2em] text-[#3C1518] mb-4">
+                {t('footer.language')}
+              </span>
+
+              {/* Language Switcher Buttons */}
+              <div className="flex flex-col gap-2 mb-4">
+                <button
+                  type="button"
+                  onClick={() => setLanguage('en')}
+                  className={`inline-flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer min-h-[40px] ${
+                    language === 'en'
+                      ? 'bg-white text-[#C8102E] border-[#C8102E]/60 shadow-xs font-bold'
+                      : 'bg-white/50 text-[#3C1518]/75 border-[#3C1518]/15 hover:bg-white hover:text-[#3C1518]'
+                  }`}
+                >
+                  <span>English</span>
+                  <span className="font-mono text-[10px] text-[#3C1518]/50">EN</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setLanguage('ar')}
+                  className={`inline-flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer font-arabic min-h-[40px] ${
+                    language === 'ar'
+                      ? 'bg-white text-[#C8102E] border-[#C8102E]/60 shadow-xs font-bold'
+                      : 'bg-white/50 text-[#3C1518]/75 border-[#3C1518]/15 hover:bg-white hover:text-[#3C1518]'
+                  }`}
+                >
+                  <span>العربية</span>
+                  <span className="font-mono text-[10px] text-[#3C1518]/50">AR</span>
+                </button>
+              </div>
+
+              {/* UAE Market Note */}
+              <div className="p-2.5 rounded-lg bg-white/60 border border-[#3C1518]/15 text-xs text-[#3C1518]/80 flex items-center gap-2 shadow-2xs mb-4">
+                <span className="w-2 h-2 rounded-full bg-[#2B6E2A] shrink-0" />
+                <span className="font-medium">United Arab Emirates (AED)</span>
+              </div>
+
+              {/* Back to Top button in column */}
+              <button
+                type="button"
+                onClick={scrollToTop}
+                className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-white/60 hover:bg-white text-xs font-semibold text-[#3C1518] hover:text-[#C8102E] border border-[#3C1518]/25 hover:border-[#C8102E]/50 shadow-2xs transition-all cursor-pointer min-h-[38px] active:scale-95"
+                aria-label="Back to top of page"
+              >
+                <span>{isRTL ? 'العودة للأعلى' : 'Back to top'}</span>
+                <ArrowUp className="w-3.5 h-3.5" />
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* BOTTOM METADATA & LEGAL BAR */}
-        <div className="pt-8 border-t border-[#D4A843]/[0.12] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#FDF6EC]/60">
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-white/40">UAE STORE</span>
+        {/* ============================================================ */}
+        {/* 4. CREATIVE FOOTER BOTTOM EDGE & METADATA                     */}
+        {/* ============================================================ */}
+        <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#3C1518]/75">
+          {/* UAE Store & Copyright */}
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 sm:gap-3">
+            <span className="font-mono font-semibold text-[11px] text-[#3C1518]/60 bg-[#3C1518]/5 px-2 py-0.5 rounded border border-[#3C1518]/10">
+              UAE STORE
+            </span>
             <span>•</span>
             <span>
               {isRTL
@@ -304,7 +484,8 @@ export const SectionFooter: React.FC = () => {
             </span>
           </div>
 
-          <div className="flex items-center gap-2 text-white/40">
+          {/* Crafted with love & Made by */}
+          <div className="flex flex-wrap items-center justify-center md:justify-end gap-2 text-[#3C1518]/70">
             <span>Crafted with</span>
             <Heart className="w-3.5 h-3.5 text-[#C8102E] fill-current" />
             <span>for UAE Culinary Kitchens</span>
@@ -313,7 +494,7 @@ export const SectionFooter: React.FC = () => {
               href="https://encesmarketing.com"
               target="_blank"
               rel="noreferrer"
-              className="text-[#D4A843] hover:underline transition-colors"
+              className="text-[#3C1518] hover:text-[#C8102E] hover:underline transition-colors font-semibold"
             >
               Made by ENCES Marketing
             </a>

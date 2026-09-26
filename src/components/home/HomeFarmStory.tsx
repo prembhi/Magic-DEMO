@@ -4,6 +4,7 @@ import { MAGIC_ASSETS } from '../../constants/assets';
 import { useLanguage } from '../../context/LanguageContext';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { useSmoothScroll } from '../../hooks/useSmoothScroll';
+import { EditorialGrainStalk } from '../illustrations/MagicEditorialIllustrations';
 
 interface HomeFarmStoryProps {
   onNavigateImpact: () => void;
@@ -100,21 +101,16 @@ export const HomeFarmStory: React.FC<HomeFarmStoryProps> = ({ onNavigateImpact }
       </div>
 
       {/* ============================================================ */}
-      {/* INTENTIONALLY ANCHORED BOTANICAL (Lentil motif at base)       */}
+      {/* INTENTIONALLY ANCHORED CANONICAL GRAIN MOTIF (Restrained base)*/}
       {/* ============================================================ */}
       <div
         aria-hidden="true"
-        className="absolute -bottom-10 -start-10 w-[200px] sm:w-[260px] lg:w-[320px] pointer-events-none opacity-25 z-10 transition-transform duration-300 ease-editorial depth-botanical"
+        className="absolute -bottom-4 -start-4 w-[110px] sm:w-[140px] pointer-events-none opacity-30 z-10 select-none"
         style={{
-          transform: isReducedMotion ? 'none' : `translate3d(0, ${(smoothY * 0.02).toFixed(1)}px, 0)`,
+          transform: isReducedMotion ? 'none' : `translate3d(0, ${(smoothY * 0.02).toFixed(1)}px, 0) rotate(12deg)`,
         }}
       >
-        <img
-          src={MAGIC_ASSETS.illustrationLentils}
-          alt=""
-          className="w-full h-auto object-contain filter drop-shadow-lg"
-          loading="lazy"
-        />
+        <EditorialGrainStalk className="w-full h-auto drop-shadow-md" />
       </div>
 
       {/* ============================================================ */}
@@ -124,9 +120,6 @@ export const HomeFarmStory: React.FC<HomeFarmStoryProps> = ({ onNavigateImpact }
         {/* EDITORIAL SECTION HEADER */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-8 mb-8 sm:mb-12 border-b border-white/15">
           <div>
-            <span className="font-mono text-xs text-[#D4A843] tracking-[0.25em] uppercase font-bold block mb-2">
-              02 / 07 — SOURCING ETHOS
-            </span>
             <h2
               id="farm-story-heading"
               ref={headingRef}

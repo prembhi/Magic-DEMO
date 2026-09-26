@@ -102,9 +102,6 @@ export const HomeProductShowcase: React.FC<HomeProductShowcaseProps> = ({
         {/* HEADER BLOCK */}
         <div className="max-w-7xl mx-auto w-full flex items-end justify-between pb-6 border-b border-[#3C1518]/10">
           <div>
-            <span className="font-mono text-xs text-[#C8102E] tracking-[0.25em] uppercase font-bold block mb-2">
-              03 / 07 — EVERYDAY STAPLES
-            </span>
             <h2
               id="pantry-heading"
               ref={headingRef}
@@ -278,9 +275,6 @@ export const HomeProductShowcase: React.FC<HomeProductShowcaseProps> = ({
       <div className={`lg:hidden px-4 sm:px-6 py-12 ${isReducedMotion ? 'block' : ''}`}>
         <div className="flex items-end justify-between mb-8">
           <div>
-            <span className="font-mono text-xs text-[#C8102E] tracking-[0.25em] uppercase font-bold block mb-1">
-              03 / 07 — EVERYDAY STAPLES
-            </span>
             <h2 className="font-display font-black text-3xl sm:text-4xl text-[#3C1518]">
               {t('home.pantry.title', 'THE MAGIC PANTRY')}
             </h2>
