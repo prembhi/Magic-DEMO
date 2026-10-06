@@ -165,7 +165,7 @@ export const SectionCookWithMagic: React.FC<SectionCookWithMagicProps> = ({
           <div className="lg:col-span-6 flex flex-col justify-between">
             <div>
               {/* Recipe Meta Badges */}
-              <div className="flex items-center gap-3 text-xs font-mono font-bold text-[#6B4226] mb-3">
+              <div className="flex items-center gap-3 text-xs font-sans font-medium font-bold text-[#6B4226] mb-3">
                 <span className="flex items-center gap-1.5 text-[#3C1518]">
                   <Clock className="w-4 h-4 text-[#C8102E]" />
                   {activeRecipe.cookTime}

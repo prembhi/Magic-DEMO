@@ -183,7 +183,7 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
                   >
                     <Minus className="w-3 h-3 stroke-[2.5]" />
                   </button>
-                  <span className="w-5 text-center text-xs font-bold text-[#3C1518] font-mono select-none">
+                  <span className="w-5 text-center text-xs font-bold text-[#3C1518] font-sans font-medium select-none">
                     {quantity}
                   </span>
                   <button
@@ -200,7 +200,7 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
           </div>
 
           <div className="flex items-baseline gap-1.5">
-            <span className="text-xs sm:text-sm font-bold text-[#3C1518] font-mono leading-none">
+            <span className="text-xs sm:text-sm font-bold text-[#3C1518] font-sans font-medium leading-none">
               {displayPrice}
             </span>
           </div>
@@ -211,7 +211,7 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
 
           <div className="flex items-center justify-between mt-1 text-[11px] text-[#3C1518]/60">
             <span>{displayWeight}</span>
-            <span className="font-mono text-[10px] text-[#3C1518]/50 uppercase tracking-wider">
+            <span className="font-sans font-medium text-[10px] text-[#3C1518]/50 uppercase tracking-wider">
               {displayCategory}
             </span>
           </div>
@@ -232,14 +232,14 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
       aria-label={`${displayName}, ${displayWeight}, ${displayPrice}`}
     >
       <div>
-        {/* 1. PRODUCT IMAGE STAGE (Flush, generous ~280-300px height, packaging occupying 80-85%) */}
+        {/* 1. PRODUCT IMAGE STAGE (Flush, generous ~310-360px height, packaging occupying 88-90%) */}
         <div
           onClick={handleViewProduct}
-          className="relative w-full h-[280px] sm:h-[300px] bg-gradient-to-b from-[#FDF6EC] to-[#FAF3E8]/40 rounded-t-[14px] flex items-center justify-center p-4 cursor-pointer select-none overflow-hidden"
+          className="relative w-full h-[360px] sm:h-[400px] md:h-[440px] bg-gradient-to-b from-[#FDF6EC] to-[#FAF3E8]/40 rounded-t-[14px] flex items-center justify-center p-4 cursor-pointer select-none overflow-hidden"
         >
           {/* Optional Pill Badge at top-left (e.g., Bestseller pill in reference) */}
           {product.badge && (
-            <span className="absolute top-3.5 start-3.5 z-20 px-3 py-0.5 rounded-full text-[11px] font-semibold tracking-wide bg-white border border-[#3C1518]/25 text-[#3C1518] shadow-2xs">
+            <span className="absolute top-3.5 start-3.5 z-20 px-3 py-1 rounded-full text-xs font-semibold tracking-wide bg-white border border-[#3C1518]/25 text-[#3C1518] shadow-2xs">
               {t(`product.badge.${product.badge.toLowerCase()}`, product.badge)}
             </span>
           )}
@@ -249,12 +249,12 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
             src={product.image}
             alt={product.altText}
             loading="lazy"
-            className="magic-product-image h-[84%] max-h-[86%] w-auto max-w-[85%] object-contain filter drop-shadow-lg motion-reduce:transform-none select-none z-10"
+            className="magic-product-image h-[88%] max-h-[90%] w-auto max-w-[88%] object-contain filter drop-shadow-xl motion-reduce:transform-none select-none z-10 transition-transform duration-300 group-hover:scale-103"
           />
 
           {/* Ground contact shadow */}
           <div
-            className="absolute bottom-2.5 inset-x-10 h-3 rounded-full blur-sm pointer-events-none opacity-30"
+            className="absolute bottom-2.5 inset-x-10 h-3.5 rounded-full blur-sm pointer-events-none opacity-35"
             style={{
               background: 'radial-gradient(ellipse at center, rgba(60, 21, 24, 0.45) 0%, transparent 70%)',
             }}
@@ -262,21 +262,21 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
         </div>
 
         {/* 2. PRODUCT INFORMATION SECTION */}
-        <div className="p-3 sm:p-3.5 flex flex-col">
+        <div className="p-3.5 sm:p-4 flex flex-col">
           {/* CATEGORY & DASHED PACK SIZE PILL */}
           <div className="flex items-center justify-between gap-2 mb-1.5">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#6B4226]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#6B4226]">
               {displayCategory}
             </span>
-            <span className="border border-dashed border-[#3C1518]/35 rounded-full px-2.5 py-0.5 text-[11px] font-mono font-medium text-[#3C1518] whitespace-nowrap shrink-0">
+            <span className="border border-dashed border-[#3C1518]/35 rounded-full px-2.5 py-0.5 text-xs font-semibold text-[#3C1518] whitespace-nowrap shrink-0">
               {displayWeight}
             </span>
           </div>
 
-          {/* PRODUCT NAME (Fraunces serif, up to 2 full lines, consistent height for grid alignment) */}
+          {/* PRODUCT NAME (Bricolage Grotesque display, up to 2 full lines, consistent height for grid alignment) */}
           <h3
             onClick={handleViewProduct}
-            className="font-display font-bold text-base sm:text-[17px] text-[#3C1518] hover:text-[#C8102E] transition-colors leading-snug line-clamp-2 min-h-[2.5rem] flex items-start mb-2.5 cursor-pointer"
+            className="font-display font-extrabold text-lg sm:text-xl text-[#3C1518] hover:text-[#C8102E] transition-colors leading-snug line-clamp-2 min-h-[2.6rem] flex items-start mb-2.5 cursor-pointer"
           >
             {displayName}
           </h3>
@@ -286,8 +286,8 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
             {/* Row 1: One-Time Purchase */}
             <label
               onClick={handleSelectOneTime}
-              className={`grid items-center gap-2 py-0.5 px-1.5 -mx-1.5 rounded-md cursor-pointer select-none group/radio w-full min-w-0 transition-colors duration-200 ${
-                purchaseOption === 'onetime' ? 'bg-[#FDF6EC]/60' : 'hover:bg-[#FAF7F2]'
+              className={`grid items-center gap-2 py-1 px-1.5 -mx-1.5 rounded-md cursor-pointer select-none group/radio w-full min-w-0 transition-colors duration-200 ${
+                purchaseOption === 'onetime' ? 'bg-[#FDF6EC]/80' : 'hover:bg-[#FAF7F2]'
               }`}
               style={{ gridTemplateColumns: 'auto minmax(0, 1fr) auto' }}
             >
@@ -306,7 +306,7 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
 
               {/* Col 2: Label (Flexible middle column, min-w-0 prevents pushing price out) */}
               <span
-                className={`text-xs leading-tight text-start min-w-0 transition-colors duration-200 ${
+                className={`text-xs sm:text-[13px] leading-tight text-start min-w-0 transition-colors duration-200 ${
                   purchaseOption === 'onetime'
                     ? 'font-semibold text-[#3C1518]'
                     : 'font-medium text-[#3C1518]/75'
@@ -316,7 +316,7 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
               </span>
 
               {/* Col 3: Right-aligned Price (Fixed width, never overflows) */}
-              <span className="font-mono font-bold text-xs sm:text-[13px] text-[#3C1518] text-end whitespace-nowrap shrink-0 justify-self-end">
+              <span className="font-bold text-xs sm:text-sm text-[#3C1518] text-end whitespace-nowrap shrink-0 justify-self-end">
                 {displayPrice}
               </span>
             </label>
@@ -324,8 +324,8 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
             {/* Row 2: Subscribe & Save */}
             <label
               onClick={handleSelectSubscribe}
-              className={`grid items-center gap-2 py-0.5 px-1.5 -mx-1.5 rounded-md cursor-pointer select-none group/radio w-full min-w-0 transition-colors duration-200 ${
-                purchaseOption === 'subscribe' ? 'bg-[#FDF6EC]/60' : 'hover:bg-[#FAF7F2]'
+              className={`grid items-center gap-2 py-1 px-1.5 -mx-1.5 rounded-md cursor-pointer select-none group/radio w-full min-w-0 transition-colors duration-200 ${
+                purchaseOption === 'subscribe' ? 'bg-[#FDF6EC]/80' : 'hover:bg-[#FAF7F2]'
               }`}
               style={{ gridTemplateColumns: 'auto minmax(0, 1fr) auto' }}
             >
@@ -344,7 +344,7 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
 
               {/* Col 2: Label */}
               <span
-                className={`text-xs leading-tight text-start min-w-0 transition-colors duration-200 ${
+                className={`text-xs sm:text-[13px] leading-tight text-start min-w-0 transition-colors duration-200 ${
                   purchaseOption === 'subscribe'
                     ? 'font-semibold text-[#3C1518]'
                     : 'font-medium text-[#3C1518]/75'
@@ -424,11 +424,11 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
       </div>
 
       {/* 5. CTA HIERARCHY: SOLID BUTTON + QUIET EDITORIAL LINK WITH UNDERLINE */}
-      <div className="px-3 pb-3 sm:px-3.5 sm:pb-3.5 pt-0 flex flex-col items-center">
+      <div className="px-3.5 pb-3.5 sm:px-4 sm:pb-4 pt-0 flex flex-col items-center">
         <button
           type="button"
           onClick={handleAddToCart}
-          className={`w-full h-11 text-xs font-bold uppercase tracking-wider rounded-md transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer shadow-xs active:scale-[0.985] ${
+          className={`w-full min-h-[48px] h-12 sm:h-14 text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-md transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer shadow-xs active:scale-[0.985] ${
             isAdded
               ? 'bg-[#5A7247] text-white scale-[1.01]'
               : 'bg-[#C8102E] hover:bg-[#9C0A20] text-white'
@@ -448,7 +448,7 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
         <button
           type="button"
           onClick={handleViewProduct}
-          className="text-[11px] font-bold uppercase tracking-wider text-[#3C1518]/75 hover:text-[#C8102E] underline underline-offset-4 transition-colors cursor-pointer py-2 block"
+          className="text-xs font-semibold uppercase tracking-wider text-[#3C1518]/75 hover:text-[#C8102E] underline underline-offset-4 transition-colors cursor-pointer py-2 block"
         >
           {t('product.viewProductBtn', 'VIEW PRODUCT')}
         </button>

@@ -42,7 +42,7 @@ export const HomeFarmProvenance: React.FC<HomeFarmProvenanceProps> = ({
     <section
       ref={sectionRef}
       id="farm-to-kitchen"
-      className="w-full bg-[#FAF5EE] text-[#3C1518] py-10 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-12 border-b border-[#3C1518]/12 select-none relative overflow-hidden"
+      className="w-full bg-[#FAF5EE] text-[#3C1518] py-20 sm:py-28 lg:py-36 px-4 sm:px-6 lg:px-12 border-b border-[#3C1518]/12 select-none relative overflow-hidden"
       aria-labelledby="farm-provenance-heading"
     >
       <div className="max-w-7xl mx-auto relative z-10">
@@ -56,14 +56,14 @@ export const HomeFarmProvenance: React.FC<HomeFarmProvenanceProps> = ({
             opacity: isVisible || isReducedMotion ? 1 : 0,
             transition: 'opacity 650ms cubic-bezier(0.22, 1, 0.36, 1), transform 650ms cubic-bezier(0.22, 1, 0.36, 1)',
           }}
-          className="max-w-3xl mb-6 sm:mb-8"
+          className="max-w-3xl mb-8 sm:mb-10"
         >
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#5A7247] mb-2">
+          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-[#5A7247] mb-2.5">
             {isRTL ? 'المنشأ الزراعي والتوريد المتوارث' : 'SOURCING ETHOS & PROVENANCE'}
           </p>
           <h2
             id="farm-provenance-heading"
-            className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-[#3C1518] tracking-tight leading-[0.98] mb-3"
+            className="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl xl:text-8xl text-[#3C1518] tracking-tight leading-[0.98] mb-3.5"
           >
             {isRTL ? (
               <>
@@ -87,7 +87,7 @@ export const HomeFarmProvenance: React.FC<HomeFarmProvenanceProps> = ({
         </div>
 
         {/* ========================================================================= */}
-        {/* 2. ONE EDITORIAL FARM LANDSCAPE STORY (INTEGRATED LANDSCAPE + FARMER)     */}
+        {/* 2. AUTHENTIC EDITORIAL PHOTOGRAPHY SPREAD                                 */}
         {/* ========================================================================= */}
         <div
           style={{
@@ -95,52 +95,72 @@ export const HomeFarmProvenance: React.FC<HomeFarmProvenanceProps> = ({
             opacity: isVisible || isReducedMotion ? 1 : 0,
             transition: 'opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) 150ms, transform 700ms cubic-bezier(0.22, 1, 0.36, 1) 150ms',
           }}
-          className="relative w-full rounded-2xl overflow-hidden border border-[#3C1518]/15 bg-[#FDF6EC] shadow-xs"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch"
         >
-          {/* Main Landscape Stage */}
-          <div className="relative w-full h-[280px] sm:h-[340px] md:h-[380px] lg:h-[420px] overflow-hidden">
-            {/* Background Agricultural Landscape Artwork */}
+          {/* DOMINANT LANDSCAPE PHOTOGRAPHY (7 Cols on Desktop) */}
+          <div className="lg:col-span-8 relative rounded-2xl overflow-hidden border border-[#3C1518]/15 bg-[#3C1518] min-h-[320px] sm:min-h-[400px] lg:min-h-[480px] flex flex-col justify-end p-6 sm:p-8 group shadow-md">
             <img
-              src={MAGIC_ASSETS.farmEditorial}
-              alt="Indian Farm Harvest Landscape"
-              className="w-full h-full object-cover"
+              src={MAGIC_ASSETS.editorial.chilliField}
+              alt="Authentic Indian Chilli Harvest Field"
+              className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.88] contrast-[1.05] group-hover:scale-103 transition-transform duration-700 ease-out"
               loading="lazy"
             />
+            {/* Scrim Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#3C1518]/90 via-[#3C1518]/30 to-transparent pointer-events-none" />
 
-            {/* Subtle base gradient scrim for editorial readability without occluding artwork */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#3C1518]/85 via-[#3C1518]/25 to-transparent pointer-events-none" />
-
-            {/* INTEGRATED FARMER ILLUSTRATION (Standing in the farm landscape on the right side) */}
-            <div
-              aria-hidden="true"
-              className="absolute right-4 sm:right-8 md:right-12 lg:right-16 bottom-0 z-10 pointer-events-none select-none flex items-end justify-center"
-            >
-              <img
-                src={MAGIC_ASSETS.illustrations.farmerField}
-                alt=""
-                className="w-32 sm:w-44 md:w-52 lg:w-60 xl:w-64 h-auto max-h-[200px] sm:max-h-[250px] md:max-h-[290px] lg:max-h-[330px] object-contain object-bottom drop-shadow-sm"
-                loading="lazy"
-              />
-            </div>
-
-            {/* Editorial Caption & Action Band */}
-            <div className="absolute bottom-4 sm:bottom-6 inset-x-4 sm:inset-x-8 z-20 flex flex-col sm:flex-row sm:items-end justify-between text-white gap-3 sm:gap-6">
-              <div className="max-w-sm sm:max-w-md md:max-w-lg">
-                <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-[#D4A843] font-bold block mb-1">
-                  {isRTL ? 'شراكات حصاد مباشرة 100%' : '100% DIRECT HARVEST PARTNERSHIPS'}
+            <div className="relative z-10 text-white max-w-xl">
+              <span className="text-xs font-semibold tracking-widest text-[#D4A843] uppercase block mb-1.5">
+                {isRTL ? 'حقول حصاد الشمس المفتوحة' : 'OPEN-AIR SUN HARVEST BELTS'}
+              </span>
+              <h3 className="font-display font-extrabold text-xl sm:text-2xl lg:text-3xl text-[#FDF6EC] leading-tight mb-2">
+                {isRTL ? 'عائلات زراعية تتوارث الأرض والمحصول' : 'Generational Growers Preserving Soil & Heritage'}
+              </h3>
+              <p className="text-xs sm:text-sm text-[#FDF6EC]/85 font-sans leading-relaxed mb-4">
+                {isRTL
+                  ? 'محاصيل تُحصد في أوانها الطبيعي، وتجفف تحت أشعة الشمس بدون أي معالجات كيميائية أو زيوت صناعية.'
+                  : 'Crops harvested at peak physiological maturity, open-air cured without synthetic sulfur baths or chemical polishes.'}
+              </p>
+              <div className="flex items-center gap-3">
+                <span className="text-xs font-semibold text-[#D4A843] bg-white/10 backdrop-blur-xs px-3 py-1 rounded-full border border-[#D4A843]/40">
+                  {isRTL ? '15–20% علاوة سعر عادل' : '15–20% Fair Price Premium'}
                 </span>
-                <p className="font-display font-bold text-sm sm:text-lg md:text-xl text-[#FDF6EC] leading-snug">
-                  {isRTL ? '15–20% أعلى من أسعار السوق تُدفع مباشرة للمزارعين' : '15–20% Above Mandi Rates Paid Directly to Generational Growers'}
+              </div>
+            </div>
+          </div>
+
+          {/* HUMAN STORYTELLING COMPANION SPREAD (4 Cols on Desktop) */}
+          <div className="lg:col-span-4 flex flex-col justify-between gap-6">
+            {/* Real Grower Portrait Card */}
+            <div className="relative rounded-2xl overflow-hidden border border-[#3C1518]/15 bg-white p-5 flex flex-col justify-between shadow-xs flex-1">
+              <div className="relative w-full h-48 sm:h-56 rounded-xl overflow-hidden bg-[#FAF5EE] mb-4">
+                <img
+                  src={MAGIC_ASSETS.editorial.oldLadyInFarm}
+                  alt="Generational Indian Farmer"
+                  className="w-full h-full object-cover object-top hover:scale-103 transition-transform duration-500 ease-out"
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-[#C8102E] block mb-1">
+                  {isRTL ? 'الكرامة الزراعية' : 'GROWER DIGNITY'}
+                </span>
+                <h4 className="font-display font-extrabold text-lg sm:text-xl text-[#3C1518] leading-snug mb-2">
+                  {isRTL ? 'شراكات مباشرة 100%' : '100% Direct Partnerships'}
+                </h4>
+                <p className="text-xs sm:text-sm text-[#3C1518]/80 font-sans leading-relaxed mb-4">
+                  {isRTL
+                    ? 'نحن نلغي كافة الوسطاء التجاريين لضمان وصول القيمة العادلة مباشرة للأسر التي تزرع طعامنا.'
+                    : 'Middlemen are bypassed so fair financial reward reaches the families whose generational knowledge nurtures every harvest.'}
                 </p>
               </div>
 
               <button
                 type="button"
                 onClick={onNavigateImpact}
-                className="h-10 px-5 bg-[#C8102E] hover:bg-[#A60D26] text-white text-xs font-bold uppercase tracking-wider rounded-md shadow-xs transition-all flex items-center gap-2 cursor-pointer shrink-0 self-start sm:self-auto active:scale-[0.98] group"
+                className="w-full min-h-[46px] h-11 sm:h-12 px-6 bg-[#C8102E] hover:bg-[#A60D26] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-md shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98] group"
               >
-                <span>{isRTL ? 'استكشف أثرنا الزراعي' : 'EXPLORE THE IMPACT'}</span>
-                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180" />
+                <span>{isRTL ? 'استكشف أثرنا الزراعي' : 'OUR SOURCING ETHOS'}</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
               </button>
             </div>
           </div>

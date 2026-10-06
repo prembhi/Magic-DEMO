@@ -25,7 +25,7 @@ export const BundlePromoSection: React.FC<BundlePromoSectionProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           {/* Left Column: Campaign Copy & Actions */}
           <div className="lg:col-span-6 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full border border-[#D4A843]/30 text-[10px] font-mono uppercase tracking-[0.25em] text-[#D4A843] mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full border border-[#D4A843]/30 text-[10px] font-sans font-medium uppercase tracking-[0.25em] text-[#D4A843] mb-4">
               <Sparkles className="w-3 h-3 text-[#D4A843]" />
               <span>THE HERITAGE COOK'S PANTRY</span>
             </div>

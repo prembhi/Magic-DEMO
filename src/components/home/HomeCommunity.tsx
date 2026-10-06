@@ -64,7 +64,7 @@ export const HomeCommunity: React.FC = () => {
     <section
       ref={sectionRef}
       id="community"
-      className="relative w-full flex items-center justify-center py-12 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-12 overflow-hidden select-none"
+      className="relative w-full flex items-center justify-center py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 overflow-hidden select-none"
       aria-label={isRTL ? 'انضم إلى مجتمع مطبخ ماجيك' : 'Join The MAGIC Kitchen Community'}
     >
       {/* ========================================================================= */}
@@ -95,7 +95,7 @@ export const HomeCommunity: React.FC = () => {
       {/* ========================================================================= */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[#C8102E]/72 pointer-events-none z-1"
+        className="absolute inset-0 bg-[#C8102E]/75 pointer-events-none z-1"
       />
 
       {/* ========================================================================= */}
@@ -119,7 +119,7 @@ export const HomeCommunity: React.FC = () => {
       />
 
       {/* ========================================================================= */}
-      {/* 4. CENTERED NEWSLETTER CONTENT (Max width ~700px)                         */}
+      {/* 4. CENTERED NEWSLETTER CONTENT (Max width ~740px)                         */}
       {/* ========================================================================= */}
       <div
         style={{
@@ -129,31 +129,31 @@ export const HomeCommunity: React.FC = () => {
             ? 'none'
             : 'opacity 800ms cubic-bezier(0.22, 1, 0.36, 1), transform 800ms cubic-bezier(0.22, 1, 0.36, 1)',
         }}
-        className="relative max-w-[700px] w-full mx-auto text-center z-10 px-4"
+        className="relative max-w-[740px] w-full mx-auto text-center z-10 px-4"
       >
-        <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#D4A843] mb-3">
+        <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#D4A843] mb-3">
           {isRTL ? 'نشرة ماجيك الموسمية للمحاصيل' : 'THE HARVEST DISPATCH'}
         </p>
 
-        <h2 className="font-display font-black text-2xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-[1.1] mb-2.5 drop-shadow-[0_2px_12px_rgba(60,21,24,0.30)]">
+        <h2 className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.06] mb-4 drop-shadow-[0_2px_12px_rgba(60,21,24,0.30)]">
           {isRTL ? 'انضم إلى مجتمع مطبخ ماجيك.' : 'JOIN THE MAGIC KITCHEN.'}
         </h2>
 
-        <p className="max-w-lg mx-auto text-sm sm:text-base text-white/95 leading-relaxed font-sans mb-6 drop-shadow-xs">
+        <p className="max-w-xl mx-auto text-base sm:text-lg text-white/95 leading-relaxed font-sans mb-7 drop-shadow-xs">
           {isRTL
             ? 'اشترك لتصلك أخبار المحاصيل الطازجة مباشرة من مزارع الهند، ووصفات الطهي المنزلي الأصيلة، وأولوية حجز الدفعات المحدودة في الإمارات.'
             : 'Subscribe for seasonal crop updates from Indian farmers, unhurried home cooking recipes, and early access to fresh micro-lots delivered in the UAE.'}
         </p>
 
         {subscribed ? (
-          <div className="p-6 rounded-2xl bg-[#3C1518]/85 border border-white/30 max-w-md mx-auto animate-in fade-in duration-300 shadow-xl text-white">
+          <div className="p-6 sm:p-8 rounded-2xl bg-[#3C1518]/90 border border-white/30 max-w-md mx-auto animate-in fade-in duration-300 shadow-xl text-white">
             <div className="w-12 h-12 rounded-full bg-white text-[#C8102E] flex items-center justify-center mx-auto mb-3 shadow-md">
               <Check className="w-6 h-6 stroke-[3]" />
             </div>
-            <h3 className="font-display font-bold text-lg text-white mb-1">
+            <h3 className="font-display font-bold text-lg sm:text-xl text-white mb-1.5">
               {isRTL ? 'أهلاً بك في مطبخ ماجيك!' : 'Welcome to the Kitchen!'}
             </h3>
-            <p className="text-xs text-white/85">
+            <p className="text-sm text-white/85">
               {isRTL
                 ? 'تفقّد بريدك الإلكتروني للحصول على دليل المحصول الترحيبي وأولى وصفاتنا الحصرية.'
                 : 'Check your inbox for our seasonal harvest welcome guide and your first recipe dispatch.'}
@@ -165,7 +165,7 @@ export const HomeCommunity: React.FC = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto"
           >
             <div className="relative w-full">
-              <Mail className="absolute start-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#3C1518]/50 pointer-events-none" />
+              <Mail className="absolute start-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#3C1518]/50 pointer-events-none" />
               <input
                 type="email"
                 required
@@ -173,20 +173,20 @@ export const HomeCommunity: React.FC = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder={isRTL ? 'أدخل بريدك الإلكتروني' : 'Enter your email address'}
                 aria-label={isRTL ? 'البريد الإلكتروني لنشرة ماجيك' : 'Email address for MAGIC harvest dispatch'}
-                className="w-full h-12 sm:h-14 ps-11 pe-4 rounded-md bg-white text-[#3C1518] placeholder-[#3C1518]/50 text-xs sm:text-sm font-medium focus:outline-hidden focus:ring-2 focus:ring-white border border-white shadow-md text-start"
+                className="w-full h-12 sm:h-14 ps-12 pe-4 rounded-md bg-white text-[#3C1518] placeholder-[#3C1518]/50 text-sm font-normal focus:outline-hidden focus:ring-2 focus:ring-white border border-white shadow-md text-start"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full sm:w-auto h-12 sm:h-14 px-8 bg-[#3C1518] hover:bg-[#250D0F] text-[#FDF6EC] text-xs sm:text-sm font-bold uppercase tracking-wider rounded-md shadow-md transition-all shrink-0 cursor-pointer active:scale-[0.98]"
+              className="w-full sm:w-auto h-12 sm:h-14 px-8 bg-[#3C1518] hover:bg-[#250D0F] text-[#FDF6EC] text-sm font-bold uppercase tracking-wider rounded-md shadow-md transition-all shrink-0 cursor-pointer active:scale-[0.98]"
             >
               {isRTL ? 'اشترك الآن' : 'SUBSCRIBE'}
             </button>
           </form>
         )}
 
-        <span className="block mt-4 text-[11px] text-white/80 font-mono">
+        <span className="block mt-4 text-xs text-white/80 font-sans">
           {isRTL
             ? 'بدون رسائل مزعجة. يمكنك إلغاء الاشتراك بنقرة واحدة في أي وقت.'
             : 'Zero spam. Unsubscribe anytime with a single click.'}

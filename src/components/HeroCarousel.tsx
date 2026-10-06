@@ -257,7 +257,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
           </button>
 
           {/* Minimal Numerical Counter: 01 / 06 */}
-          <div className="flex items-center gap-2 font-mono tabular-nums text-sm font-semibold tracking-wider text-[#3C1518]">
+          <div className="flex items-center gap-2 font-sans font-medium tabular-nums text-sm font-semibold tracking-wider text-[#3C1518]">
             <span className="text-[#C8102E] font-bold text-base">
               {currentProduct.number}
             </span>
@@ -300,7 +300,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({
             <span className="text-[#3C1518]/30">·</span>
             <span className="font-arabic font-bold text-sm text-[#C8102E]">{currentProduct.arabicName}</span>
             <span className="text-[#3C1518]/30 hidden md:inline">·</span>
-            <span className="text-[11px] font-mono text-[#3C1518]/80 hidden md:inline bg-[#3C1518]/5 px-2 py-0.5 rounded border border-[#3C1518]/10">
+            <span className="text-[11px] font-sans font-medium text-[#3C1518]/80 hidden md:inline bg-[#3C1518]/5 px-2 py-0.5 rounded border border-[#3C1518]/10">
               {currentProduct.weight} · {currentProduct.weightArabic}
             </span>
           </div>

@@ -61,18 +61,18 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
       {/* ========================================================================= */}
       {/* 1. CATEGORY / PRODUCT TYPE                                                */}
       {/* ========================================================================= */}
-      <div className="flex items-center gap-2 mb-2">
+      <div className="flex items-center gap-2 mb-2.5">
         <button
           type="button"
           onClick={() => onNavigateCategory && onNavigateCategory(product.category)}
-          className="text-xs font-mono font-bold tracking-widest uppercase text-[#C8102E] hover:underline cursor-pointer"
+          className="text-xs font-sans font-bold tracking-widest uppercase text-[#C8102E] hover:underline cursor-pointer"
         >
           {isRTL && product.arabicCategory ? product.arabicCategory : product.category}
         </button>
         {product.subCategory && (
           <>
             <span className="text-xs text-[#3C1518]/30">/</span>
-            <span className="text-xs font-mono text-[#3C1518]/60 font-medium">
+            <span className="text-xs font-sans text-[#3C1518]/60 font-semibold">
               {product.subCategory}
             </span>
           </>
@@ -80,16 +80,16 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
       </div>
 
       {/* ========================================================================= */}
-      {/* 2. PRODUCT NAME (FRAUNCES DOMINANT)                                       */}
+      {/* 2. PRODUCT NAME                                                           */}
       {/* ========================================================================= */}
-      <div className="mb-3">
+      <div className="mb-3.5">
         <span className="font-display font-bold text-xs tracking-widest uppercase text-[#C8102E] block mb-1">
           MAGIC
         </span>
-        <h1 className="font-display font-black text-3xl sm:text-4xl lg:text-[2.75rem] text-[#3C1518] leading-[1.05] tracking-tight">
+        <h1 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#3C1518] leading-[1.04] tracking-tight">
           {product.name.replace(/^MAGIC\s*/i, '')}
         </h1>
-        <div className="flex items-baseline gap-3 mt-1.5 flex-wrap">
+        <div className="flex items-baseline gap-3 mt-2 flex-wrap">
           <span className="font-arabic text-base sm:text-lg text-[#3C1518]/80 font-medium">
             {product.arabicName}
           </span>
@@ -104,29 +104,29 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
       {/* ========================================================================= */}
       {/* 3. SHORT PRODUCT DESCRIPTION                                              */}
       {/* ========================================================================= */}
-      <p className="text-xs sm:text-sm text-[#3C1518]/80 font-sans leading-relaxed mb-4">
+      <p className="text-sm sm:text-base text-[#3C1518]/85 font-sans leading-relaxed mb-5">
         {details.shortDescription || product.culinaryProfile}
       </p>
 
       {/* ========================================================================= */}
       {/* 4. VISUALLY DOMINANT PRICE                                                */}
       {/* ========================================================================= */}
-      <div className="py-3 border-y border-[#3C1518]/12 flex items-baseline justify-between gap-3 mb-4">
+      <div className="py-3.5 border-y border-[#3C1518]/12 flex items-baseline justify-between gap-3 mb-5">
         <div className="flex items-baseline gap-2.5">
-          <span className="text-3xl sm:text-4xl font-black font-mono text-[#3C1518] leading-none">
+          <span className="text-3xl sm:text-4xl lg:text-5xl font-black font-display text-[#3C1518] leading-none">
             AED {activeUnitPrice.toFixed(2)}
           </span>
           {purchaseType === 'subscription' && (
-            <span className="text-xs font-mono text-[#3C1518]/50 line-through">
+            <span className="text-sm font-sans font-semibold text-[#3C1518]/50 line-through">
               AED {regularPrice.toFixed(2)}
             </span>
           )}
-          <span className="text-[11px] text-[#3C1518]/60 font-medium">
+          <span className="text-xs text-[#3C1518]/60 font-medium">
             {isRTL ? 'شامل ضريبة القيمة المضافة' : 'VAT Inclusive'}
           </span>
         </div>
         <div>
-          <span className="inline-block text-[11px] font-mono font-semibold text-[#2B6E2A] bg-[#2B6E2A]/10 px-2.5 py-0.5 rounded-full border border-[#2B6E2A]/20">
+          <span className="inline-block text-xs font-sans font-semibold text-[#2B6E2A] bg-[#2B6E2A]/10 px-3 py-1 rounded-full border border-[#2B6E2A]/20">
             {isRTL ? 'متوفر • شحن سريع' : 'In Stock • UAE Express'}
           </span>
         </div>
@@ -135,19 +135,19 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
       {/* ========================================================================= */}
       {/* 5. WEIGHT / SIZE / EXISTING PRODUCT OPTIONS                               */}
       {/* ========================================================================= */}
-      <div className="mb-4">
-        <div className="flex items-center justify-between text-xs mb-1.5">
-          <span className="font-bold text-[#3C1518] uppercase tracking-wider text-[11px]">
+      <div className="mb-5">
+        <div className="flex items-center justify-between text-xs mb-2">
+          <span className="font-bold text-[#3C1518] uppercase tracking-wider text-xs">
             {isRTL ? 'وزن العبوة' : 'Pack Weight'}
           </span>
-          <span className="text-[#3C1518]/60 text-[11px] font-mono">
+          <span className="text-[#3C1518]/60 text-xs font-sans font-medium">
             {isRTL ? 'عبوة فردية محكمة الإغلاق' : 'Single Pouch Format'}
           </span>
         </div>
         <div className="flex gap-2">
-          <div className="px-4 py-2 bg-white border-2 border-[#C8102E] text-[#C8102E] font-bold text-xs font-mono rounded-lg shadow-2xs flex items-center gap-1.5">
+          <div className="px-4 py-2 bg-white border-2 border-[#C8102E] text-[#C8102E] font-bold text-xs sm:text-sm font-sans rounded-lg shadow-2xs flex items-center gap-1.5">
             <span>{isRTL && product.arabicWeight ? product.arabicWeight : product.weight}</span>
-            <span className="text-[10px] text-[#3C1518]/50 font-normal">
+            <span className="text-xs text-[#3C1518]/50 font-normal">
               ({isRTL ? 'قياسي' : 'Standard'})
             </span>
           </div>
@@ -177,7 +177,7 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
               {isRTL ? 'شراء لمرة واحدة' : 'One-Time Purchase'}
             </span>
           </div>
-          <span className="text-xs sm:text-sm font-bold font-mono text-[#3C1518]">
+          <span className="text-xs sm:text-sm font-bold font-sans text-[#3C1518]">
             AED {regularPrice.toFixed(2)}
           </span>
         </label>
@@ -200,12 +200,12 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
                 <span className="text-xs sm:text-sm font-bold text-[#3C1518]">
                   {isRTL ? 'اشترك ووفر' : 'Subscribe & Save'}
                 </span>
-                <span className="bg-[#2B6E2A] text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wide">
+                <span className="bg-[#2B6E2A] text-white text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wide">
                   {isRTL ? 'وفر 10%' : 'Save 10%'}
                 </span>
               </div>
             </div>
-            <span className="text-xs sm:text-sm font-bold font-mono text-[#C8102E]">
+            <span className="text-xs sm:text-sm font-bold font-sans text-[#C8102E]">
               AED {subscriptionPrice.toFixed(2)}
             </span>
           </label>
@@ -213,11 +213,11 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
           {/* Subscription Controls & Perks */}
           {purchaseType === 'subscription' && (
             <div className="px-4 pb-4 pt-1 border-t border-[#3C1518]/10 bg-[#FAF7F2] space-y-3 animate-in fade-in duration-200">
-              <div className="flex items-center justify-between text-[11px] pt-2">
-                <span className="font-mono font-bold text-[#3C1518] uppercase tracking-wider">
+              <div className="flex items-center justify-between text-xs pt-2">
+                <span className="font-sans font-bold text-[#3C1518] uppercase tracking-wider text-[11px]">
                   {isRTL ? 'تكرار التوصيل:' : 'Deliver Every:'}
                 </span>
-                <span className="text-[#2B6E2A] font-mono font-bold text-[10px] uppercase">
+                <span className="text-[#2B6E2A] font-sans font-bold text-xs uppercase">
                   {isRTL ? 'خصم 10% على كل دفعة' : '10% OFF Every Order'}
                 </span>
               </div>
@@ -233,16 +233,16 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
                     key={freq.value}
                     type="button"
                     onClick={() => setDeliveryFrequency(freq.value as any)}
-                    className={`py-2 px-2 rounded-lg border text-center transition-all cursor-pointer ${
+                    className={`py-2 px-2 rounded-lg border text-center transition-all cursor-pointer min-h-[44px] ${
                       deliveryFrequency === freq.value
                         ? 'border-[#C8102E] bg-white text-[#C8102E] font-bold shadow-2xs'
                         : 'border-[#3C1518]/15 bg-white/70 text-[#3C1518]/70 hover:bg-white'
                     }`}
                   >
-                    <div className="text-xs font-mono font-bold">
+                    <div className="text-xs font-sans font-bold">
                       {isRTL ? freq.labelAr : freq.labelEn}
                     </div>
-                    <div className="text-[9px] text-[#3C1518]/50 uppercase tracking-tight">
+                    <div className="text-[10px] text-[#3C1518]/50 uppercase tracking-tight font-medium">
                       {isRTL ? freq.descAr : freq.descEn}
                     </div>
                   </button>
@@ -250,16 +250,16 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
               </div>
 
               {/* Perks */}
-              <div className="pt-2 border-t border-[#3C1518]/10 text-[11px] text-[#3C1518]/80 space-y-1">
-                <div className="flex items-center gap-1.5">
+              <div className="pt-2 border-t border-[#3C1518]/10 text-xs text-[#3C1518]/80 space-y-1.5 font-sans">
+                <div className="flex items-center gap-2">
                   <span className="text-[#2B6E2A] font-bold">✓</span>
                   <span>{isRTL ? 'توفير 10% مستمر على كل طلب دوري' : 'Save 10% on every recurring harvest order'}</span>
                 </div>
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-2">
                   <span className="text-[#2B6E2A] font-bold">✓</span>
                   <span>{isRTL ? 'جدول توصيل مرن ومباشر إلى باب منزلك' : 'Flexible schedule delivered to your doorstep'}</span>
                 </div>
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-2">
                   <span className="text-[#2B6E2A] font-bold">✓</span>
                   <span>{isRTL ? 'يمكنك التخطي أو التعديل أو الإلغاء في أي وقت' : 'Skip, pause, or cancel anytime with zero fee'}</span>
                 </div>
@@ -272,10 +272,10 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
       {/* ========================================================================= */}
       {/* 7. QUANTITY STEPPER + DOMINANT ADD TO CART CTA                            */}
       {/* ========================================================================= */}
-      <div className="mb-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-        {/* Quantity Stepper (min 44px touch targets) */}
+      <div className="mb-5 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+        {/* Quantity Stepper (min 48px touch targets) */}
         <div
-          className="h-12 bg-white border border-[#3C1518]/20 rounded-lg flex items-center px-1 shadow-2xs min-w-[120px] justify-between"
+          className="h-12 sm:h-14 bg-white border border-[#3C1518]/20 rounded-lg flex items-center px-1 shadow-2xs min-w-[130px] justify-between"
           role="group"
           aria-label={`Quantity selector for ${product.name}`}
         >
@@ -283,13 +283,13 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
             type="button"
             onClick={handleDecrement}
             disabled={quantity <= 1}
-            className="w-10 h-10 flex items-center justify-center text-[#3C1518] hover:bg-[#FAF7F2] disabled:opacity-30 disabled:hover:bg-transparent rounded-md cursor-pointer transition-colors"
+            className="w-11 h-11 flex items-center justify-center text-[#3C1518] hover:bg-[#FAF7F2] disabled:opacity-30 disabled:hover:bg-transparent rounded-md cursor-pointer transition-colors"
             aria-label={isRTL ? 'تقليل الكمية' : 'Decrease quantity'}
           >
             <Minus className="w-4 h-4 stroke-[2.5]" />
           </button>
           <span
-            className="w-10 text-center text-sm font-bold text-[#3C1518] font-mono select-none"
+            className="w-10 text-center text-sm sm:text-base font-bold text-[#3C1518] font-sans select-none"
             aria-live="polite"
           >
             {quantity}
@@ -297,18 +297,18 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
           <button
             type="button"
             onClick={handleIncrement}
-            className="w-10 h-10 flex items-center justify-center text-[#3C1518] hover:bg-[#FAF7F2] rounded-md cursor-pointer transition-colors"
+            className="w-11 h-11 flex items-center justify-center text-[#3C1518] hover:bg-[#FAF7F2] rounded-md cursor-pointer transition-colors"
             aria-label={isRTL ? 'زيادة الكمية' : 'Increase quantity'}
           >
             <Plus className="w-4 h-4 stroke-[2.5]" />
           </button>
         </div>
 
-        {/* Primary CTA (Dominant MAGIC Red, min 44px) */}
+        {/* Primary CTA (Dominant MAGIC Red, min 48px) */}
         <button
           type="button"
           onClick={handleAddToCart}
-          className={`flex-1 h-12 px-6 rounded-lg font-bold text-xs sm:text-sm font-mono tracking-wider uppercase flex items-center justify-center gap-2.5 cursor-pointer transition-all shadow-md ${
+          className={`flex-1 h-12 sm:h-14 px-7 rounded-lg font-bold text-xs sm:text-sm font-sans tracking-wider uppercase flex items-center justify-center gap-2.5 cursor-pointer transition-all shadow-md ${
             justAdded
               ? 'bg-[#2B6E2A] text-white'
               : 'bg-[#C8102E] hover:bg-[#A60D26] text-white active:scale-[0.99] border border-white/20'
@@ -341,7 +341,7 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
         <button
           type="button"
           onClick={openCart}
-          className="h-12 px-4 bg-white hover:bg-[#FAF7F2] text-[#3C1518] border border-[#3C1518]/20 rounded-lg text-xs font-mono font-bold cursor-pointer transition-colors hidden md:inline-flex items-center justify-center shadow-2xs"
+          className="h-12 sm:h-14 px-5 bg-white hover:bg-[#FAF7F2] text-[#3C1518] border border-[#3C1518]/20 rounded-lg text-xs sm:text-sm font-sans font-bold cursor-pointer transition-colors hidden md:inline-flex items-center justify-center shadow-2xs"
         >
           {isRTL ? 'عرض السلة' : 'View Bag'}
         </button>

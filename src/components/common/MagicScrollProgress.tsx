@@ -256,8 +256,10 @@ export const MagicScrollProgress: React.FC = () => {
             <div
               className={`rounded-full transition-all duration-300 ${
                 isHovered || isDragging
-                  ? 'w-1.5 h-full bg-[#C8102E] shadow-[0_1px_8px_rgba(200,16,46,0.5)] ring-1 ring-white/70'
-                  : 'w-1 h-full bg-[#C8102E] opacity-90 shadow-xs ring-1 ring-white/50'
+                  ? 'w-1.5 h-full bg-[#C8102E] shadow-[0_1px_8px_rgba(200,16,46,0.5)] ring-1 ring-white/70 opacity-100'
+                  : scrollProgress > 0.01
+                  ? 'w-1 h-full bg-[#C8102E] opacity-80 shadow-xs ring-1 ring-white/50'
+                  : 'w-1 h-full bg-[#C8102E] opacity-0 pointer-events-none'
               }`}
             />
           </div>

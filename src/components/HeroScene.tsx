@@ -117,13 +117,13 @@ export const HeroScene: React.FC<HeroSceneProps> = ({ onAddToCart }) => {
           <span className="w-5 h-[1.5px] bg-[#C8102E]" />
         </div>
 
-        {/* Expressive Editorial Headline in Fraunces (compacted height so product world dominates) */}
+        {/* Expressive Display Headline (compacted height so product world dominates) */}
         <h1
           className="font-display font-black text-3xl sm:text-5xl md:text-6xl lg:text-[4.25rem] text-[#3C1518] leading-[0.98] tracking-tight max-w-4xl"
           style={{ textWrap: 'balance' }}
         >
           <span className="inline-block transform hover:scale-102 transition-transform">MAGIC</span>{' '}
-          <span className="italic font-light text-[#C8102E] font-serif">IN EVERY</span>{' '}
+          <span className="text-[#C8102E] font-display font-bold">IN EVERY</span>{' '}
           <span className="inline-block relative">
             PINCH
             {/* Subtle red/gold accent bar */}

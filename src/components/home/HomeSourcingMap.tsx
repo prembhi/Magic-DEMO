@@ -121,7 +121,7 @@ export const HomeSourcingMap: React.FC<HomeSourcingMapProps> = ({ onSelectProduc
   return (
     <section
       id="sourcing-map"
-      className="w-full bg-[#FAF5EE] text-[#3C1518] pb-10 sm:pb-14 lg:pb-16 px-4 sm:px-6 lg:px-12 border-b border-[#3C1518]/12 select-none relative overflow-hidden"
+      className="w-full bg-[#FAF5EE] text-[#3C1518] py-20 sm:py-28 lg:py-36 px-4 sm:px-6 lg:px-12 border-b border-[#3C1518]/12 select-none relative overflow-hidden"
       aria-labelledby="sourcing-map-heading"
     >
       <div className="max-w-7xl mx-auto relative z-10">
@@ -130,17 +130,17 @@ export const HomeSourcingMap: React.FC<HomeSourcingMapProps> = ({ onSelectProduc
         {/* ========================================================================= */}
         <div className="bg-white rounded-3xl border-2 border-[#3C1518]/15 shadow-xl p-5 sm:p-7 lg:p-8 relative overflow-hidden">
           {/* Section Header */}
-          <div className="max-w-3xl mb-3 sm:mb-3.5 lg:mb-4">
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#C8102E] mb-1">
+          <div className="max-w-3xl mb-5 sm:mb-6 lg:mb-8">
+            <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-[#C8102E] mb-2">
               {isRTL ? 'سجلات المنشأ والتوريد' : 'SOURCING MAP & REGISTERS'}
             </p>
             <h3
               id="sourcing-map-heading"
-              className="font-display font-black text-2xl sm:text-4xl lg:text-[2.75rem] text-[#3C1518] tracking-tight leading-tight mb-1.5"
+              className="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl text-[#3C1518] tracking-tight leading-[0.98] mb-3"
             >
               {isRTL ? 'من هنا يبدأ السحر.' : 'WHERE MAGIC BEGINS.'}
             </h3>
-            <p className="text-xs sm:text-sm lg:text-base text-[#3C1518]/80 font-sans leading-relaxed">
+            <p className="text-sm sm:text-base text-[#3C1518]/85 font-sans leading-relaxed">
               {isRTL
                 ? 'أربعة أقاليم زراعية عريقة. محاصيل نقية متباينة. التزام صارم بالشفافية الكاملة من المزرعة إلى مائدتك. مرر المؤشر فوق الخريطة لاستكشاف بيئة كل محصول.'
                 : 'Four growing regions. Distinct crops. One commitment to traceable sourcing. Hover or tap a hotspot on the map to explore our terroir credentials.'}
@@ -278,7 +278,7 @@ export const HomeSourcingMap: React.FC<HomeSourcingMapProps> = ({ onSelectProduc
 
                         {/* Floating Micro Location Label */}
                         <span
-                          className={`hidden sm:flex items-center gap-1.5 absolute whitespace-nowrap start-full ms-2.5 px-2.5 py-1 rounded-md text-[10px] font-mono font-bold tracking-wider uppercase border transition-all duration-200 pointer-events-none shadow-xs z-30 ${
+                          className={`hidden sm:flex items-center gap-1.5 absolute whitespace-nowrap start-full ms-2.5 px-2.5 py-1 rounded-md text-[10px] font-sans font-medium font-bold tracking-wider uppercase border transition-all duration-200 pointer-events-none shadow-xs z-30 ${
                             isActive
                               ? 'bg-[#3C1518] text-[#FDF6EC] border-[#D4A843]/70 scale-105 shadow-md'
                               : 'bg-white/95 text-[#3C1518] border-[#3C1518]/20 group-hover:border-[#C8102E] group-hover:text-[#C8102E]'
@@ -310,10 +310,10 @@ export const HomeSourcingMap: React.FC<HomeSourcingMapProps> = ({ onSelectProduc
                 />
 
                 <div className="flex items-center justify-between gap-2 mb-2.5">
-                  <span className="text-[10px] sm:text-[11px] font-mono font-bold text-[#6B4226] uppercase tracking-widest">
+                  <span className="text-[10px] sm:text-[11px] font-sans font-medium font-bold text-[#6B4226] uppercase tracking-widest">
                     {isRTL ? 'توريد إقليمي معتمد وموثق' : 'VERIFIED REGIONAL SOURCING'}
                   </span>
-                  <span className="inline-flex items-center gap-1 text-xs font-mono font-bold text-[#2B6E2A] bg-white px-2.5 py-0.5 rounded-full border border-[#2B6E2A]/30">
+                  <span className="inline-flex items-center gap-1 text-xs font-sans font-medium font-bold text-[#2B6E2A] bg-white px-2.5 py-0.5 rounded-full border border-[#2B6E2A]/30">
                     <ShieldCheck className="w-3.5 h-3.5" />
                     {isRTL ? 'قابل للتتبع 100%' : '100% Traceable'}
                   </span>
@@ -346,7 +346,7 @@ export const HomeSourcingMap: React.FC<HomeSourcingMapProps> = ({ onSelectProduc
                 </p>
 
                 {/* Sourcing Metrics */}
-                <div className="grid grid-cols-2 gap-4 pt-4 pb-1 border-t border-[#3C1518]/15 text-xs font-mono">
+                <div className="grid grid-cols-2 gap-4 pt-4 pb-1 border-t border-[#3C1518]/15 text-xs font-sans font-medium">
                   <div>
                     <span className="text-[#3C1518]/60 block mb-0.5">
                       {isRTL ? 'شبكة المزارعين' : 'GROWER NETWORK'}
@@ -369,11 +369,11 @@ export const HomeSourcingMap: React.FC<HomeSourcingMapProps> = ({ onSelectProduc
                 {activeProduct && (
                   <div className="mt-5 p-4 rounded-xl bg-white border border-[#3C1518]/15 shadow-2xs hover:border-[#C8102E]/40 hover:shadow-sm transition-all duration-200 group">
                     <div className="flex items-center justify-between gap-2 mb-3 pb-2 border-b border-[#3C1518]/10">
-                      <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase font-bold text-[#C8102E] tracking-wider">
-                        <Award className="w-3.5 h-3.5 text-[#D4A843]" />
+                      <div className="flex items-center gap-1.5 text-[11px] uppercase font-bold text-[#C8102E] tracking-wider">
+                        <Award className="w-4 h-4 text-[#D4A843]" />
                         <span>{isRTL ? 'محصول أساسي فاخر من المؤونة' : 'HARVESTED PANTRY STAPLE'}</span>
                       </div>
-                      <span className="text-[10px] font-mono text-[#6B4226] font-semibold">
+                      <span className="text-xs text-[#6B4226] font-semibold">
                         {isRTL && activeProduct.arabicWeight ? activeProduct.arabicWeight : activeProduct.weight}
                       </span>
                     </div>
@@ -384,7 +384,7 @@ export const HomeSourcingMap: React.FC<HomeSourcingMapProps> = ({ onSelectProduc
                         type="button"
                         onClick={() => onSelectProduct(activeProduct.slug)}
                         aria-label={`View ${activeProduct.name} details`}
-                        className="w-20 h-24 sm:w-24 sm:h-28 shrink-0 bg-[#FAF5EE] rounded-lg p-2 border border-[#3C1518]/10 flex items-center justify-center cursor-pointer overflow-hidden transition-transform duration-200 group-hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C8102E]"
+                        className="w-24 h-28 sm:w-28 sm:h-32 shrink-0 bg-[#FAF5EE] rounded-lg p-2.5 border border-[#3C1518]/10 flex items-center justify-center cursor-pointer overflow-hidden transition-transform duration-200 group-hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C8102E]"
                       >
                         <img
                           src={activeProduct.image}
@@ -396,7 +396,7 @@ export const HomeSourcingMap: React.FC<HomeSourcingMapProps> = ({ onSelectProduc
 
                       {/* Product Info & Action */}
                       <div className="flex-1 min-w-0">
-                        <span className="text-[10px] font-mono uppercase tracking-wider text-[#6B4226] block truncate">
+                        <span className="text-[11px] uppercase tracking-wider text-[#6B4226] block truncate font-medium">
                           {isRTL && activeProduct.arabicCategory ? activeProduct.arabicCategory : activeProduct.category}{' '}
                           {activeProduct.englishSub ? `· ${activeProduct.englishSub}` : ''}
                         </span>
@@ -407,10 +407,10 @@ export const HomeSourcingMap: React.FC<HomeSourcingMapProps> = ({ onSelectProduc
                           {isRTL && activeProduct.arabicName ? activeProduct.arabicName : activeProduct.name}
                         </h5>
                         <div className="flex items-baseline gap-2 mt-0.5 mb-2.5">
-                          <span className="font-mono font-bold text-sm text-[#C8102E]">
+                          <span className="font-bold text-sm sm:text-base text-[#C8102E]">
                             {isRTL ? `${activeProduct.price.toFixed(2)} د.إ` : `AED ${activeProduct.price.toFixed(2)}`}
                           </span>
-                          <span className="text-[11px] font-mono text-[#3C1518]/60">
+                          <span className="text-xs text-[#3C1518]/60">
                             / {isRTL && activeProduct.arabicWeight ? activeProduct.arabicWeight : activeProduct.weight}
                           </span>
                         </div>
@@ -418,7 +418,7 @@ export const HomeSourcingMap: React.FC<HomeSourcingMapProps> = ({ onSelectProduc
                         <button
                           type="button"
                           onClick={() => onSelectProduct(activeProduct.slug)}
-                          className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#C8102E] hover:text-[#A60D26] transition-all cursor-pointer font-sans"
+                          className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#C8102E] hover:text-[#A60D26] transition-all cursor-pointer font-sans"
                         >
                           <span>{isRTL ? 'عرض المنتج' : 'VIEW PRODUCT'}</span>
                           <ArrowRight className="w-3.5 h-3.5 rtl:rotate-180 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
@@ -430,7 +430,7 @@ export const HomeSourcingMap: React.FC<HomeSourcingMapProps> = ({ onSelectProduc
               </div>
 
               {/* Quick Navigation Region Selector Chips */}
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2.5">
                 {sourcingHotspots.map((hotspot) => {
                   const isSelected = activeHotspot.id === hotspot.id;
                   return (
@@ -438,7 +438,7 @@ export const HomeSourcingMap: React.FC<HomeSourcingMapProps> = ({ onSelectProduc
                       key={hotspot.id}
                       type="button"
                       onClick={() => setActiveHotspotId(hotspot.id)}
-                      className={`px-3.5 py-2 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer border ${
+                      className={`px-4 py-2.5 min-h-[44px] rounded-lg text-xs font-semibold transition-all cursor-pointer border ${
                         isSelected
                           ? 'bg-[#3C1518] text-[#FDF6EC] border-[#3C1518] shadow-xs'
                           : 'bg-white hover:bg-[#FAF5EE] text-[#3C1518] border-[#3C1518]/15'

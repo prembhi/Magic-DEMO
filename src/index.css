@@ -1,9 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: 'Syne', 'Fraunces', Georgia, serif;
-  --font-serif-display: 'Fraunces', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body: 'Poppins', system-ui, sans-serif;
+  --font-sans: 'Poppins', system-ui, sans-serif;
+  --font-serif: 'Poppins', system-ui, sans-serif;
+  --font-serif-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-mono: 'Poppins', system-ui, sans-serif;
   --font-arabic: 'Noto Kufi Arabic', 'Amiri', system-ui, sans-serif;
   --font-arabic-display: 'Noto Kufi Arabic', 'Amiri', serif;
 
@@ -19,6 +22,14 @@
 }
 
 @layer base {
+  :root {
+    --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+    --font-body: 'Poppins', system-ui, sans-serif;
+    --font-sans: 'Poppins', system-ui, sans-serif;
+    --font-serif: 'Poppins', system-ui, sans-serif;
+    --font-serif-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  }
+
   /* ============================================================ */
   /* HIDE NATIVE BROWSER SCROLLBAR ACROSS ALL BROWSERS            */
   /* Preserves full scrolling functionality (wheel, touch, keys)  */
@@ -37,16 +48,85 @@
   }
 
   body {
-    font-family: var(--font-sans);
+    font-family: var(--font-body);
+    font-weight: 400;
     background-color: #FDF6EC;
     color: #3C1518;
-    overflow-x: hidden;
+    overflow-x: clip;
     scrollbar-width: none !important;
     -ms-overflow-style: none !important;
+    font-synthesis: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
-  h1, h2, h3, .font-display {
+  /* Universal neutralizer: Monospace is banned in MAGIC brand typography */
+  .font-mono,
+  code,
+  kbd,
+  samp,
+  pre {
+    font-family: var(--font-body) !important;
+  }
+
+  /* Headings & Display: Bricolage Grotesque */
+  h1, h2, h3, h4, h5, h6, .font-display {
     font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  /* Strongest display impact: 800 ExtraBold */
+  h1, .font-display.font-extrabold, .font-display.font-black {
+    font-weight: 800;
+  }
+
+  /* Secondary headlines: 700 Bold */
+  h2, h3, .font-display.font-bold {
+    font-weight: 700;
+  }
+
+  /* Inherit display font across children of display containers */
+  .font-display span:not([class*="font-body"]):not([class*="font-sans"]):not([class*="font-serif"]),
+  h1 span:not([class*="font-body"]):not([class*="font-sans"]):not([class*="font-serif"]),
+  h2 span:not([class*="font-body"]):not([class*="font-sans"]):not([class*="font-serif"]),
+  h3 span:not([class*="font-body"]):not([class*="font-sans"]):not([class*="font-serif"]) {
+    font-family: inherit;
+  }
+
+  /* Body copy, UI, Buttons, Navigation, Labels, Inputs: Poppins */
+  body, p, a, button, input, optgroup, select, textarea, label {
+    font-family: var(--font-body);
+  }
+
+  /* Poppins Weight Standards */
+  body, p {
+    font-weight: 400;
+  }
+
+  button, label, nav a {
+    font-weight: 500;
+  }
+
+  b, strong {
+    font-weight: 600;
+  }
+
+  .font-body.font-bold,
+  .font-body.font-extrabold,
+  .font-body.font-black,
+  .font-sans.font-bold,
+  .font-sans.font-extrabold,
+  .font-sans.font-black,
+  .font-serif.font-bold,
+  .font-serif.font-extrabold,
+  .font-serif.font-black {
+    font-weight: 600;
+  }
+
+  /* Standard MAGIC typography is upright */
+  .not-italic {
+    font-style: normal;
   }
 
   .font-arabic {
@@ -295,7 +375,7 @@
   transform: translateY(0) scale(1);
 }
 
-/* Typography Reveal: Fraunces section titles */
+/* Typography Reveal: Section titles */
 .reveal-heading {
   opacity: 0;
   transform: translateY(28px);
@@ -372,4 +452,5 @@
     transform: none !important;
   }
 }
+
 

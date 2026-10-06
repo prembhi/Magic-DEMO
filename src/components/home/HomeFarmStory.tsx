@@ -81,7 +81,7 @@ export const HomeFarmStory: React.FC<HomeFarmStoryProps> = ({ onNavigateImpact }
   return (
     <section
       id="farm-to-kitchen"
-      className="relative w-full bg-[#3C1518] text-[#FDF6EC] select-none overflow-hidden py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12"
+      className="relative w-full bg-[#3C1518] text-[#FDF6EC] select-none overflow-hidden py-20 sm:py-28 lg:py-36 px-4 sm:px-6 lg:px-12"
       aria-labelledby="farm-story-heading"
     >
       {/* ============================================================ */}
@@ -123,7 +123,7 @@ export const HomeFarmStory: React.FC<HomeFarmStoryProps> = ({ onNavigateImpact }
             <h2
               id="farm-story-heading"
               ref={headingRef}
-              className={`font-display font-black text-3xl sm:text-5xl lg:text-6xl text-[#FDF6EC] tracking-tight leading-tight reveal-heading ${
+              className={`font-display font-black text-4xl sm:text-6xl lg:text-7xl xl:text-8xl text-[#FDF6EC] tracking-tight leading-tight reveal-heading ${
                 headingRevealed ? 'is-revealed' : ''
               }`}
             >
@@ -149,7 +149,7 @@ export const HomeFarmStory: React.FC<HomeFarmStoryProps> = ({ onNavigateImpact }
               key={st.num}
               type="button"
               onClick={() => setActiveStep(i)}
-              className={`px-4 sm:px-5 py-2 rounded-full text-xs font-mono font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer flex items-center gap-2 shrink-0 ${
+              className={`px-4 sm:px-5 py-2 rounded-full text-xs font-sans font-medium font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer flex items-center gap-2 shrink-0 ${
                 activeStep === i
                   ? 'bg-[#D4A843] text-[#3C1518] shadow-md scale-102'
                   : 'bg-white/10 hover:bg-white/20 text-[#FDF6EC]/80 border border-white/10'
@@ -166,10 +166,10 @@ export const HomeFarmStory: React.FC<HomeFarmStoryProps> = ({ onNavigateImpact }
           {/* LEFT: STEP CONTENT & SOURCING DETAILS */}
           <div key={currentStep.num} className="lg:col-span-6 flex flex-col justify-center animate-in fade-in slide-in-from-bottom-2 duration-600 ease-editorial">
             <div className="mb-3">
-              <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#D4A843] font-bold block mb-1">
+              <span className="text-xs font-sans font-medium uppercase tracking-[0.2em] text-[#D4A843] font-bold block mb-1">
                 {currentStep.sub}
               </span>
-              <h3 className="font-display font-black text-2xl sm:text-4xl text-[#FDF6EC] tracking-tight leading-tight">
+              <h3 className="font-display font-black text-3xl sm:text-5xl lg:text-5xl text-[#FDF6EC] tracking-tight leading-tight">
                 {currentStep.title}
               </h3>
             </div>
@@ -184,7 +184,7 @@ export const HomeFarmStory: React.FC<HomeFarmStoryProps> = ({ onNavigateImpact }
                 <StepIcon className="w-4 h-4" />
               </div>
               <div>
-                <span className="font-mono text-[10px] text-white/60 uppercase tracking-widest block">
+                <span className="font-sans font-medium text-[10px] text-white/60 uppercase tracking-widest block">
                   ORIGIN HARVEST REGION
                 </span>
                 <span className="text-xs font-bold text-[#FDF6EC] tracking-wider">
@@ -223,7 +223,7 @@ export const HomeFarmStory: React.FC<HomeFarmStoryProps> = ({ onNavigateImpact }
               />
 
               {/* Dynamic Caption Pill */}
-              <div className="mt-3 px-4 py-1.5 rounded-full bg-[#3C1518]/95 border border-[#D4A843]/50 text-xs font-mono text-[#D4A843] shadow-lg backdrop-blur-md">
+              <div className="mt-3 px-4 py-1.5 rounded-full bg-[#3C1518]/95 border border-[#D4A843]/50 text-xs font-sans font-medium text-[#D4A843] shadow-lg backdrop-blur-md">
                 {currentStep.caption}
               </div>
             </div>
@@ -232,7 +232,7 @@ export const HomeFarmStory: React.FC<HomeFarmStoryProps> = ({ onNavigateImpact }
 
         {/* BOTTOM STEP RESOLUTION: FARM → INGREDIENTS → KITCHEN */}
         <div className="w-full pt-4 border-t border-white/15 flex flex-wrap items-center justify-between text-xs text-white/70">
-          <div className="flex items-center gap-2 sm:gap-4 font-mono text-[11px] uppercase tracking-wider">
+          <div className="flex items-center gap-2 sm:gap-4 font-sans font-medium text-[11px] uppercase tracking-wider">
             <span className={activeStep === 0 ? 'text-[#D4A843] font-bold' : ''}>FARM</span>
             <span>→</span>
             <span className={activeStep === 1 || activeStep === 2 ? 'text-[#D4A843] font-bold' : ''}>INGREDIENTS</span>
@@ -241,7 +241,7 @@ export const HomeFarmStory: React.FC<HomeFarmStoryProps> = ({ onNavigateImpact }
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="font-mono text-[11px] text-white/50">STEP {activeStep + 1} OF {steps.length}</span>
+            <span className="font-sans font-medium text-[11px] text-white/50">STEP {activeStep + 1} OF {steps.length}</span>
           </div>
         </div>
       </div>

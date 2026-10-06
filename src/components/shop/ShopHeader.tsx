@@ -11,6 +11,7 @@ export interface ShopHeaderProps {
   onNavigateImpact?: () => void;
   onNavigateNewsletter?: () => void;
   onSelectProduct?: (productSlug: string) => void;
+  onOpenCart?: () => void;
 }
 
 /**
@@ -27,6 +28,7 @@ export const ShopHeader: React.FC<ShopHeaderProps> = ({
   onNavigateImpact,
   onNavigateNewsletter,
   onSelectProduct,
+  onOpenCart,
 }) => {
   return (
     <MagicHeader
@@ -39,6 +41,7 @@ export const ShopHeader: React.FC<ShopHeaderProps> = ({
       onNavigateImpact={onNavigateImpact}
       onNavigateNewsletter={onNavigateNewsletter}
       onSelectProduct={onSelectProduct}
+      onOpenCart={onOpenCart}
     />
   );
 };

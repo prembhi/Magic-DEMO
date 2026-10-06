@@ -114,7 +114,7 @@ export const SectionFeaturedProducts: React.FC<SectionFeaturedProductsProps> = (
                     {/* Category & Weight Label (Clean Unboxed) */}
                     <div className="flex items-center justify-between text-xs text-[#6B4226] mb-1.5 font-medium">
                       <span>{prod.spiceCategory}</span>
-                      <span className="font-mono font-semibold text-[#3C1518]">
+                      <span className="font-sans font-medium font-semibold text-[#3C1518]">
                         {prod.weight} · {prod.weightArabic}
                       </span>
                     </div>
@@ -141,7 +141,7 @@ export const SectionFeaturedProducts: React.FC<SectionFeaturedProductsProps> = (
                       <span className="text-[10px] uppercase font-bold tracking-wider text-[#3C1518]/60">
                         Packaging
                       </span>
-                      <span className="font-mono text-xs font-bold text-[#3C1518]">
+                      <span className="font-sans font-medium text-xs font-bold text-[#3C1518]">
                         Aroma-Lock Pouch
                       </span>
                     </div>

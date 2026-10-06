@@ -227,7 +227,7 @@ export const HomeProductShowcase: React.FC<HomeProductShowcaseProps> = ({
                       <span className="text-[11px] font-bold uppercase tracking-wider text-[#6B4226]">
                         {product.category}
                       </span>
-                      <span className="border border-dashed border-[#3C1518]/30 rounded-full px-2.5 py-0.5 text-[11px] font-mono font-medium text-[#3C1518]">
+                      <span className="border border-dashed border-[#3C1518]/30 rounded-full px-2.5 py-0.5 text-[11px] font-sans font-medium font-medium text-[#3C1518]">
                         {product.weight}
                       </span>
                     </div>
@@ -243,7 +243,7 @@ export const HomeProductShowcase: React.FC<HomeProductShowcaseProps> = ({
                     )}
 
                     <div className="flex items-center justify-between pt-3 border-t border-[#3C1518]/10">
-                      <div className="font-mono text-base font-black text-[#3C1518]">
+                      <div className="font-sans font-medium text-base font-black text-[#3C1518]">
                         AED {product.price.toFixed(2)}
                       </div>
                       <span className="text-xs font-bold uppercase tracking-wider text-[#C8102E] group-hover:underline">
@@ -259,7 +259,7 @@ export const HomeProductShowcase: React.FC<HomeProductShowcaseProps> = ({
 
         {/* BOTTOM SCROLL PROGRESS BAR */}
         <div className="max-w-7xl mx-auto w-full flex items-center justify-between pt-4 border-t border-[#3C1518]/10 text-xs text-[#3C1518]/60">
-          <span className="font-mono text-[11px] uppercase tracking-wider">
+          <span className="font-sans font-medium text-[11px] uppercase tracking-wider">
             SCROLL VERTICALLY TO EXPLORE PANTRY
           </span>
           <div className="w-36 h-1.5 rounded-full bg-[#3C1518]/10 overflow-hidden">
@@ -306,12 +306,12 @@ export const HomeProductShowcase: React.FC<HomeProductShowcaseProps> = ({
               <div>
                 <div className="flex items-center justify-between text-[11px] mb-1">
                   <span className="font-bold uppercase text-[#6B4226]">{product.category}</span>
-                  <span className="font-mono text-[#3C1518]/70">{product.weight}</span>
+                  <span className="font-sans font-medium text-[#3C1518]/70">{product.weight}</span>
                 </div>
                 <h3 className="font-display font-bold text-base text-[#3C1518] mb-2 line-clamp-1">
                   {product.name}
                 </h3>
-                <div className="flex items-center justify-between pt-2 border-t border-[#3C1518]/10 text-sm font-mono font-bold text-[#3C1518]">
+                <div className="flex items-center justify-between pt-2 border-t border-[#3C1518]/10 text-sm font-sans font-medium font-bold text-[#3C1518]">
                   <span>AED {product.price.toFixed(2)}</span>
                   <span className="text-xs text-[#C8102E]">VIEW →</span>
                 </div>

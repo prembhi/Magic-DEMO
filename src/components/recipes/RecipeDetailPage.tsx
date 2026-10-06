@@ -236,11 +236,11 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
               {/* Kicker with subtle spice glyph */}
               <div className="flex items-center gap-2 mb-3">
                 <span className="w-2 h-2 rounded-full bg-[#C8102E]" />
-                <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#C8102E] font-bold">
+                <span className="text-[11px] font-sans font-medium uppercase tracking-[0.25em] text-[#C8102E] font-bold">
                   COOK WITH MAGIC
                 </span>
                 <span className="text-[#3C1518]/25 text-xs">·</span>
-                <span className="text-[11px] font-mono uppercase tracking-wider text-[#3C1518]/65 font-medium">
+                <span className="text-[11px] font-sans font-medium uppercase tracking-wider text-[#3C1518]/65 font-medium">
                   {recipe.meal}
                 </span>
               </div>
@@ -272,7 +272,7 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
               {/* Quick Summary Grid */}
               <div className="grid grid-cols-3 gap-4 p-4 sm:p-5 bg-white border border-[#E6DFC8] rounded-xs mb-8">
                 <div>
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#3C1518]/60 block mb-1">
+                  <span className="text-[10px] font-sans font-medium uppercase tracking-widest text-[#3C1518]/60 block mb-1">
                     Cook Time
                   </span>
                   <div className="flex items-center gap-1.5 text-sm sm:text-base font-serif font-bold text-[#3C1518]">
@@ -282,7 +282,7 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
                 </div>
 
                 <div className="border-l border-[#3C1518]/10 pl-4">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#3C1518]/60 block mb-1">
+                  <span className="text-[10px] font-sans font-medium uppercase tracking-widest text-[#3C1518]/60 block mb-1">
                     Difficulty
                   </span>
                   <div className="flex items-center gap-1.5 text-sm sm:text-base font-serif font-bold text-[#3C1518]">
@@ -292,7 +292,7 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
                 </div>
 
                 <div className="border-l border-[#3C1518]/10 pl-4">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#3C1518]/60 block mb-1">
+                  <span className="text-[10px] font-sans font-medium uppercase tracking-widest text-[#3C1518]/60 block mb-1">
                     Yield
                   </span>
                   <div className="flex items-center gap-1.5 text-sm sm:text-base font-serif font-bold text-[#3C1518]">
@@ -367,13 +367,13 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
               <div className="relative z-10 pt-4 border-t border-[#3C1518]/10 bg-white/70 backdrop-blur-xs p-3.5 rounded-2xs border border-[#E6DFC8]/60">
                 <div className="flex items-center justify-between gap-3">
                   <div>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#C8102E] font-bold block">
+                    <span className="text-[10px] font-sans font-medium uppercase tracking-widest text-[#C8102E] font-bold block">
                       Primary Heritage Staple
                     </span>
                     <span className="text-xs sm:text-sm font-serif font-bold text-[#3C1518] block">
                       {recipe.primaryProduct.name}
                     </span>
-                    <span className="text-[11px] font-mono text-[#3C1518]/65">
+                    <span className="text-[11px] font-sans font-medium text-[#3C1518]/65">
                       {recipe.primaryProduct.weight} · AED {recipe.primaryProduct.price.toFixed(2)}
                     </span>
                   </div>
@@ -405,7 +405,7 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
           </p>
 
           {/* Editorial Trust Signature */}
-          <div className="mt-6 pt-6 border-t border-[#3C1518]/10 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#3C1518]/65">
+          <div className="mt-6 pt-6 border-t border-[#3C1518]/10 flex flex-wrap items-center justify-between gap-4 text-xs font-sans font-medium text-[#3C1518]/65">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#2B6E2A]" />
               <span>100% Optical Laser Sorted Pulses & Single-Origin Spices</span>
@@ -424,7 +424,7 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
         <div className="bg-[#FAF7F2] border border-[#E6DFC8] rounded-xs p-4 sm:p-6 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
           <div className="flex flex-col items-center">
             <Clock className="w-5 h-5 text-[#C8102E] mb-1.5" />
-            <span className="text-[10px] font-mono uppercase tracking-widest text-[#3C1518]/60">
+            <span className="text-[10px] font-sans font-medium uppercase tracking-widest text-[#3C1518]/60">
               Total Time
             </span>
             <span className="text-sm font-serif font-bold text-[#3C1518] mt-0.5">
@@ -434,7 +434,7 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
 
           <div className="flex flex-col items-center border-l border-[#3C1518]/10">
             <ChefHat className="w-5 h-5 text-[#D4A843] mb-1.5" />
-            <span className="text-[10px] font-mono uppercase tracking-widest text-[#3C1518]/60">
+            <span className="text-[10px] font-sans font-medium uppercase tracking-widest text-[#3C1518]/60">
               Skill Level
             </span>
             <span className="text-sm font-serif font-bold text-[#3C1518] mt-0.5">
@@ -444,7 +444,7 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
 
           <div className="flex flex-col items-center sm:border-l border-[#3C1518]/10">
             <Users className="w-5 h-5 text-[#3C1518]/65 mb-1.5" />
-            <span className="text-[10px] font-mono uppercase tracking-widest text-[#3C1518]/60">
+            <span className="text-[10px] font-sans font-medium uppercase tracking-widest text-[#3C1518]/60">
               Serving Yield
             </span>
             <span className="text-sm font-serif font-bold text-[#3C1518] mt-0.5">
@@ -454,7 +454,7 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
 
           <div className="flex flex-col items-center border-l border-[#3C1518]/10">
             <UtensilsCrossed className="w-5 h-5 text-[#2B6E2A] mb-1.5" />
-            <span className="text-[10px] font-mono uppercase tracking-widest text-[#3C1518]/60">
+            <span className="text-[10px] font-sans font-medium uppercase tracking-widest text-[#3C1518]/60">
               Category
             </span>
             <span className="text-sm font-serif font-bold text-[#3C1518] mt-0.5 truncate max-w-[120px]">
@@ -601,7 +601,7 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
                           {step}
                         </p>
 
-                        <div className="mt-3 flex items-center gap-2 text-[11px] font-mono font-medium text-[#3C1518]/50">
+                        <div className="mt-3 flex items-center gap-2 text-[11px] font-sans font-medium font-medium text-[#3C1518]/50">
                           {isStepDone ? (
                             <span className="text-[#2B6E2A] flex items-center gap-1 font-bold">
                               <Check className="w-3.5 h-3.5" />
@@ -623,7 +623,7 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
             {/* 6. COOKING NOTES SECTION (Rendered only if genuine notes exist) */}
             {recipe.cookingNotes && (
               <div className="mt-10 p-6 sm:p-7 bg-[#FAF7F2] border border-[#D4A843]/40 rounded-xs relative overflow-hidden">
-                <div className="flex items-center gap-2 mb-2 text-xs font-mono uppercase tracking-[0.2em] text-[#D4A843] font-bold">
+                <div className="flex items-center gap-2 mb-2 text-xs font-sans font-medium uppercase tracking-[0.2em] text-[#D4A843] font-bold">
                   <BookOpen className="w-4 h-4 text-[#D4A843]" />
                   <span>Chef's Pantry Notes & Technique</span>
                 </div>
@@ -646,7 +646,7 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#C8102E] font-bold block mb-1">
+            <span className="text-[11px] font-sans font-medium uppercase tracking-[0.25em] text-[#C8102E] font-bold block mb-1">
               AUTHENTIC INGREDIENTS
             </span>
             <h2
@@ -680,13 +680,13 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
                       />
                     </div>
 
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#3C1518]/50 block mb-1">
+                    <span className="text-[10px] font-sans font-medium uppercase tracking-widest text-[#3C1518]/50 block mb-1">
                       {prod.weight} · Single Origin
                     </span>
                     <h3 className="text-lg font-serif font-bold text-[#3C1518] group-hover:text-[#C8102E] transition-colors mb-1">
                       {prod.name}
                     </h3>
-                    <span className="text-sm font-mono font-bold text-[#C8102E] block mb-4">
+                    <span className="text-sm font-sans font-medium font-bold text-[#C8102E] block mb-4">
                       AED {price.toFixed(2)}
                     </span>
                   </div>
@@ -725,7 +725,7 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-[#3C1518]/12 gap-4">
               <div>
-                <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#D4A843] font-bold block mb-1">
+                <span className="text-[11px] font-sans font-medium uppercase tracking-[0.25em] text-[#D4A843] font-bold block mb-1">
                   PANTRY EXPANSION
                 </span>
                 <h2
@@ -765,7 +765,7 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
                         className="max-h-36 w-auto object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-sm"
                       />
                     </div>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#3C1518]/50 block mb-0.5">
+                    <span className="text-[10px] font-sans font-medium uppercase tracking-widest text-[#3C1518]/50 block mb-0.5">
                       {comp.weight} · {comp.category}
                     </span>
                     <h3 className="text-base font-serif font-bold text-[#3C1518] group-hover:text-[#C8102E] transition-colors mb-1">
@@ -774,7 +774,7 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
                     <p className="text-xs text-[#3C1518]/70 line-clamp-2 mb-3">
                       {comp.culinaryProfile}
                     </p>
-                    <span className="text-sm font-mono font-bold text-[#3C1518] block mb-3">
+                    <span className="text-sm font-sans font-medium font-bold text-[#3C1518] block mb-3">
                       AED {comp.price.toFixed(2)}
                     </span>
                   </div>
@@ -846,12 +846,12 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
                       alt={other.title}
                       className="max-h-28 w-auto object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-sm"
                     />
-                    <span className="absolute bottom-2 right-2 text-[9px] font-mono uppercase text-[#3C1518]/50 bg-white/80 px-1.5 py-0.5 rounded-2xs">
+                    <span className="absolute bottom-2 right-2 text-[9px] font-sans font-medium uppercase text-[#3C1518]/50 bg-white/80 px-1.5 py-0.5 rounded-2xs">
                       {other.meal}
                     </span>
                   </div>
 
-                  <span className="text-[10px] font-mono uppercase text-[#C8102E] font-bold block mb-1">
+                  <span className="text-[10px] font-sans font-medium uppercase text-[#C8102E] font-bold block mb-1">
                     {other.cookingTime} · {other.difficulty}
                   </span>
                   <h3 className="text-base font-serif font-bold text-[#3C1518] group-hover:text-[#C8102E] transition-colors mb-1 line-clamp-1">
@@ -880,7 +880,7 @@ export const RecipeDetailPage: React.FC<RecipeDetailPageProps> = ({
         <div className="absolute inset-0 bg-[radial-gradient(#D4A843_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none" />
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white/10 rounded-full border border-[#D4A843]/30 text-[10px] font-mono uppercase tracking-[0.25em] text-[#D4A843] mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white/10 rounded-full border border-[#D4A843]/30 text-[10px] font-sans font-medium uppercase tracking-[0.25em] text-[#D4A843] mb-4">
             <Sparkles className="w-3 h-3 text-[#D4A843]" />
             <span>THE HERITAGE PANTRY</span>
           </div>

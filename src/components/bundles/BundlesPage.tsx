@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import {
   ChevronRight,
   ChevronLeft,
+  ChevronDown,
   Filter,
   Sparkles,
   ArrowUpDown,
@@ -64,7 +65,7 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
   onNavigateNewsletter,
   onSelectProduct,
 }) => {
-  const { totalItems, isCartOpen, closeCart } = useShopCart();
+  const { totalItems, isCartOpen, openCart, closeCart } = useShopCart();
   const { isRTL, t } = useLanguage();
   const ChevronIcon = isRTL ? ChevronLeft : ChevronRight;
 
@@ -191,6 +192,7 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
         onNavigateBundles={() => onNavigateBundles()}
         onNavigateImpact={onNavigateImpact}
         onNavigateNewsletter={onNavigateNewsletter}
+        onOpenCart={openCart}
       />
 
       {/* 2. MAIN CONTENT AREA */}
@@ -262,7 +264,7 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
               <div
                 role="tablist"
                 aria-label="Bundle categories"
-                className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none pb-1"
+                className="flex items-center gap-2 overflow-x-auto scrollbar-none pb-1 -mx-4 px-4 sm:mx-0 sm:px-0"
               >
                 {CATEGORY_TABS.map((tab) => {
                   const isActive = activeCategoryTab === tab;
@@ -273,9 +275,9 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
                       role="tab"
                       aria-selected={isActive}
                       onClick={() => handleCategoryTabClick(tab)}
-                      className={`px-3 sm:px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-xs transition-all whitespace-nowrap cursor-pointer ${
+                      className={`min-h-[40px] px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-md transition-all whitespace-nowrap cursor-pointer active:scale-[0.98] ${
                         isActive
-                          ? 'bg-[#C8102E] text-white shadow-2xs'
+                          ? 'bg-[#C8102E] text-white shadow-xs'
                           : 'bg-white hover:bg-white/80 text-[#3C1518]/75 hover:text-[#3C1518] border border-[#E6E0D6]'
                       }`}
                     >
@@ -289,7 +291,7 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
               <button
                 type="button"
                 onClick={() => setIsMobileFilterOpen(true)}
-                className="lg:hidden shrink-0 inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-[#D9D2C7] rounded-xs text-xs font-bold text-[#3C1518] hover:border-[#C8102E] cursor-pointer shadow-2xs"
+                className="lg:hidden shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 min-h-[40px] bg-white border border-[#D9D2C7] rounded-md text-xs font-bold text-[#3C1518] hover:border-[#C8102E] cursor-pointer shadow-2xs active:scale-[0.98]"
                 aria-label="Open filter drawer"
               >
                 <Filter className="w-3.5 h-3.5 text-[#C8102E]" />
@@ -299,25 +301,29 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
 
             {/* SORTING & RESULT COUNT BAR */}
             <div className="flex items-center justify-between gap-4 mb-6 pb-2 text-xs text-[#3C1518]/70">
-              <span className="font-mono font-semibold">
+              <span className="font-sans font-semibold">
                 {filteredBundles.length} {filteredBundles.length === 1 ? 'bundle' : 'bundles'}
               </span>
 
               <div className="flex items-center gap-2">
-                <span className="font-mono uppercase tracking-wider text-[11px] hidden sm:inline">
+                <span className="font-sans font-medium uppercase tracking-wider text-[11px] hidden sm:inline text-[#3C1518]/60">
                   Sort:
                 </span>
-                <select
-                  value={sortOption}
-                  onChange={(e) => setSortOption(e.target.value as SortOption)}
-                  className="bg-white border border-[#D9CEBA] text-xs text-[#3C1518] font-medium rounded-xs px-2.5 py-1.5 cursor-pointer focus:outline-hidden focus:border-[#C8102E]"
-                >
-                  <option value="Featured">Featured</option>
-                  <option value="Name A-Z">Name A-Z</option>
-                  <option value="Name Z-A">Name Z-A</option>
-                  <option value="Price Low to High">Price Low to High</option>
-                  <option value="Price High to Low">Price High to Low</option>
-                </select>
+                <div className="relative">
+                  <select
+                    value={sortOption}
+                    onChange={(e) => setSortOption(e.target.value as SortOption)}
+                    aria-label="Sort bundles"
+                    className="appearance-none bg-white border border-[#D9CEBA] text-xs text-[#3C1518] font-semibold rounded-md ps-3 pe-8 py-2 min-h-[38px] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#C8102E]/30 focus:border-[#C8102E] shadow-2xs transition-all"
+                  >
+                    <option value="Featured">Featured</option>
+                    <option value="Name A-Z">Name A-Z</option>
+                    <option value="Name Z-A">Name Z-A</option>
+                    <option value="Price Low to High">Price: Low to High</option>
+                    <option value="Price High to Low">Price: High to Low</option>
+                  </select>
+                  <ChevronDown className="w-3.5 h-3.5 text-[#3C1518]/60 absolute end-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                </div>
               </div>
             </div>
 

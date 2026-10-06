@@ -229,20 +229,20 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               {/* Left Column: Large Editorial Fraunces Typography */}
               <div className="lg:col-span-7 text-center lg:text-left">
                 {/* Editorial Micro Kicker */}
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/10 rounded-full border border-[#D4A843]/40 text-[11px] font-mono uppercase tracking-[0.25em] text-[#D4A843] mb-6">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/10 rounded-full border border-[#D4A843]/40 text-[11px] font-sans uppercase tracking-[0.25em] text-[#D4A843] mb-6">
                   <Sparkles className="w-3.5 h-3.5 text-[#D4A843]" />
                   <span>THE SOURCING DISPATCH · 2026/2027</span>
                 </div>
 
                 {/* Primary Fraunces Headline */}
-                <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-serif font-black text-[#FDF6EC] tracking-tight leading-[1.02] mb-6">
+                <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-display font-black text-[#FDF6EC] tracking-tight leading-[1.02] mb-6">
                   MAGIC BEGINS
                   <br />
                   <span className="text-[#D4A843] italic font-normal">WITH WHAT'S REAL.</span>
                 </h1>
 
                 {/* Editorial Narrative */}
-                <p className="text-lg sm:text-2xl font-serif italic text-[#FDF6EC]/90 mb-5 font-normal leading-snug">
+                <p className="text-lg sm:text-2xl font-display italic text-[#FDF6EC]/90 mb-5 font-normal leading-snug">
                   "An editorial journey through the soils, farmers, harvests, and spice courtyards of India — into everyday home kitchens."
                 </p>
 
@@ -280,7 +280,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                   <div className="absolute inset-8 rounded-full border border-dashed border-[#D4A843]/30" />
 
                   {/* Top Floating Badge */}
-                  <div className="absolute top-2 right-2 sm:right-6 bg-white/15 border border-[#D4A843]/50 backdrop-blur-xs px-3.5 py-1.5 rounded-2xs text-[10px] font-mono uppercase tracking-widest text-[#D4A843] z-20 shadow-md">
+                  <div className="absolute top-2 right-2 sm:right-6 bg-white/15 border border-[#D4A843]/50 backdrop-blur-xs px-3.5 py-1.5 rounded-2xs text-[10px] font-sans uppercase tracking-widest text-[#D4A843] z-20 shadow-md">
                     DOCUMENTED ORIGIN
                   </div>
 
@@ -294,7 +294,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                   </div>
 
                   {/* Bottom Verification Label */}
-                  <div className="absolute bottom-2 bg-[#3C1518]/95 border border-[#D4A843]/40 px-4 py-2 rounded-full text-[10px] font-mono uppercase tracking-widest text-[#FDF6EC]/90 z-20 shadow-lg flex items-center gap-2">
+                  <div className="absolute bottom-2 bg-[#3C1518]/95 border border-[#D4A843]/40 px-4 py-2 rounded-full text-[10px] font-sans uppercase tracking-widest text-[#FDF6EC]/90 z-20 shadow-lg flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-[#2B6E2A] inline-block" />
                     <span>100% UNPOLISHED · TRACEABLE TERROIR</span>
                   </div>
@@ -315,13 +315,13 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
           <div className="max-w-7xl mx-auto">
             {/* Section Header */}
             <div className="max-w-3xl mb-12 sm:mb-16">
-              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-[#C8102E] font-bold mb-3">
+              <div className="inline-flex items-center gap-2 text-xs font-sans uppercase tracking-[0.25em] text-[#C8102E] font-bold mb-3">
                 <Compass className="w-4 h-4 text-[#C8102E]" />
                 <span>CHAPTER 01 · GEOGRAPHIC TERROIR</span>
               </div>
               <h2
                 id="origins-heading"
-                className="text-3xl sm:text-5xl lg:text-6xl font-serif font-black text-[#3C1518] tracking-tight leading-[1.08] mb-4"
+                className="text-3xl sm:text-5xl lg:text-6xl font-display font-black text-[#3C1518] tracking-tight leading-[1.08] mb-4"
               >
                 A LAND OF DEEP FLAVOUR.
               </h2>
@@ -336,11 +336,11 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               <div className="bg-[#3C1518] text-[#FDF6EC] px-6 py-4 border-b border-[#D4A843]/30 flex flex-wrap items-center justify-between gap-3">
                 <div className="flex items-center gap-2">
                   <Globe className="w-4 h-4 text-[#D4A843]" />
-                  <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#D4A843] font-bold">
+                  <span className="text-xs font-sans uppercase tracking-[0.2em] text-[#D4A843] font-bold">
                     VERIFIED REGIONAL SOURCING ATLAS
                   </span>
                 </div>
-                <div className="flex items-center gap-2 text-xs font-mono text-[#FDF6EC]/70">
+                <div className="flex items-center gap-2 text-xs font-sans text-[#FDF6EC]/70">
                   <span className="w-2 h-2 rounded-full bg-[#C8102E] animate-pulse" />
                   <span>4 Verified Single-Origin Agricultural Belts</span>
                 </div>
@@ -352,7 +352,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                   {/* Subtle Cartographic Rose */}
                   <div className="absolute top-4 right-4 pointer-events-none opacity-20">
                     <div className="w-24 h-24 rounded-full border border-dashed border-[#3C1518]/50 flex items-center justify-center">
-                      <span className="text-[10px] font-mono font-bold text-[#3C1518]">N ↑</span>
+                      <span className="text-[10px] font-sans font-bold text-[#3C1518]">N ↑</span>
                     </div>
                   </div>
 
@@ -496,7 +496,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                   </div>
 
                   {/* Micro Guidance */}
-                  <div className="mt-4 pt-3 border-t border-[#3C1518]/10 w-full flex flex-wrap items-center justify-between text-xs text-[#3C1518]/70 font-mono">
+                  <div className="mt-4 pt-3 border-t border-[#3C1518]/10 w-full flex flex-wrap items-center justify-between text-xs text-[#3C1518]/70 font-sans">
                     <span className="flex items-center gap-1.5">
                       <span className="w-2.5 h-2.5 rounded-full bg-[#C8102E] inline-block" />
                       <span>Active Verified Sourcing Hub</span>
@@ -512,7 +512,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                   <div>
                     {/* Region Selector Pills */}
                     <div className="mb-6">
-                      <span className="text-[10px] font-mono uppercase tracking-widest text-[#3C1518]/60 font-semibold block mb-2.5">
+                      <span className="text-[10px] font-sans uppercase tracking-widest text-[#3C1518]/60 font-semibold block mb-2.5">
                         SELECT SOURCING REGION
                       </span>
                       <div className="flex flex-wrap gap-2">
@@ -544,11 +544,11 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                       {/* Crop Title & Packaging Asset */}
                       <div className="flex items-start justify-between gap-4 mb-4 pb-4 border-b border-[#3C1518]/10">
                         <div>
-                          <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-widest text-[#C8102E] font-bold mb-1">
+                          <div className="flex items-center gap-1.5 text-[10px] font-sans uppercase tracking-widest text-[#C8102E] font-bold mb-1">
                             <Sparkles className="w-3 h-3 text-[#D4A843]" />
                             <span>{activeHotspot.category}</span>
                           </div>
-                          <h3 className="text-xl sm:text-2xl font-serif font-black text-[#3C1518] leading-tight">
+                          <h3 className="text-xl sm:text-2xl font-display font-black text-[#3C1518] leading-tight">
                             {activeHotspot.crop}
                           </h3>
                           <span className="font-hindi text-sm text-[#3C1518]/60">
@@ -568,7 +568,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                       {/* Detail Metrics */}
                       <div className="space-y-3.5 text-xs mb-5 font-sans">
                         <div>
-                          <span className="text-[10px] font-mono uppercase tracking-wider text-[#3C1518]/55 block">
+                          <span className="text-[10px] font-sans uppercase tracking-wider text-[#3C1518]/55 block">
                             TERROIR & REGION
                           </span>
                           <p className="font-bold text-[#3C1518] text-sm">
@@ -577,7 +577,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                         </div>
 
                         <div>
-                          <span className="text-[10px] font-mono uppercase tracking-wider text-[#3C1518]/55 block">
+                          <span className="text-[10px] font-sans uppercase tracking-wider text-[#3C1518]/55 block">
                             FARMER NETWORK
                           </span>
                           <p className="font-medium text-[#3C1518]">
@@ -586,7 +586,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                         </div>
 
                         <div>
-                          <span className="text-[10px] font-mono uppercase tracking-wider text-[#3C1518]/55 block">
+                          <span className="text-[10px] font-sans uppercase tracking-wider text-[#3C1518]/55 block">
                             GROWER PREMIUM PAID
                           </span>
                           <p className="font-bold text-[#2B6E2A]">
@@ -595,7 +595,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                         </div>
 
                         <div>
-                          <span className="text-[10px] font-mono uppercase tracking-wider text-[#3C1518]/55 block">
+                          <span className="text-[10px] font-sans uppercase tracking-wider text-[#3C1518]/55 block">
                             TERROIR PROFILE
                           </span>
                           <p className="text-[#3C1518]/80 leading-relaxed font-sans">
@@ -606,7 +606,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
 
                       {/* Sourcing Narrative */}
                       <div className="pt-3 border-t border-[#3C1518]/10">
-                        <span className="text-[10px] font-mono uppercase tracking-wider text-[#3C1518]/55 block mb-1">
+                        <span className="text-[10px] font-sans uppercase tracking-wider text-[#3C1518]/55 block mb-1">
                           THE SOURCING STORY
                         </span>
                         <p className="text-xs text-[#3C1518]/85 leading-relaxed font-sans">
@@ -642,13 +642,13 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
           <div className="max-w-7xl mx-auto">
             {/* Section Header */}
             <div className="max-w-3xl mb-16 sm:mb-24">
-              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-[#D4A843] font-bold mb-3">
+              <div className="inline-flex items-center gap-2 text-xs font-sans uppercase tracking-[0.25em] text-[#D4A843] font-bold mb-3">
                 <Layers className="w-4 h-4 text-[#D4A843]" />
                 <span>CHAPTER 02 · THE LIVING CYCLE</span>
               </div>
               <h2
                 id="journey-heading"
-                className="text-3xl sm:text-5xl lg:text-6xl font-serif font-black text-[#FDF6EC] tracking-tight leading-[1.08] mb-4"
+                className="text-3xl sm:text-5xl lg:text-6xl font-display font-black text-[#FDF6EC] tracking-tight leading-[1.08] mb-4"
               >
                 FROM SEED TO SACK.
               </h2>
@@ -670,22 +670,22 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#3C1518]/80 via-transparent to-transparent pointer-events-none" />
-                    <div className="absolute bottom-4 left-6 text-xs font-mono text-[#D4A843] uppercase tracking-widest">
+                    <div className="absolute bottom-4 left-6 text-xs font-sans text-[#D4A843] uppercase tracking-widest">
                       STAGE 01 · LIVING EARTH & NON-HYBRID SEEDS
                     </div>
                   </div>
                 </div>
                 <div className="lg:col-span-5 order-1 lg:order-2">
-                  <span className="text-4xl sm:text-6xl font-serif font-black text-[#D4A843]/40 block mb-2">
+                  <span className="text-4xl sm:text-6xl font-display font-black text-[#D4A843]/40 block mb-2">
                     01
                   </span>
-                  <h3 className="text-2xl sm:text-4xl font-serif font-black text-[#FDF6EC] leading-tight mb-4">
+                  <h3 className="text-2xl sm:text-4xl font-display font-black text-[#FDF6EC] leading-tight mb-4">
                     THE LIVING SOIL.
                   </h3>
                   <p className="text-sm sm:text-base text-[#FDF6EC]/80 leading-relaxed font-sans mb-4">
                     India's black regur and red laterite soils are living ecosystems rich in organic carbon and micro-flora. We partner exclusively with farmers who protect native topsoil through legume rotation, allowing crops to absorb balanced mineral nutrition naturally.
                   </p>
-                  <div className="inline-flex items-center gap-2 text-xs font-mono text-[#D4A843]">
+                  <div className="inline-flex items-center gap-2 text-xs font-sans text-[#D4A843]">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     <span>Zero chemical fumigation or soil sterilizers</span>
                   </div>
@@ -695,16 +695,16 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               {/* SPREAD 02: THE GROWING CROP */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
                 <div className="lg:col-span-5 order-1">
-                  <span className="text-4xl sm:text-6xl font-serif font-black text-[#D4A843]/40 block mb-2">
+                  <span className="text-4xl sm:text-6xl font-display font-black text-[#D4A843]/40 block mb-2">
                     02
                   </span>
-                  <h3 className="text-2xl sm:text-4xl font-serif font-black text-[#FDF6EC] leading-tight mb-4">
+                  <h3 className="text-2xl sm:text-4xl font-display font-black text-[#FDF6EC] leading-tight mb-4">
                     RAIN AND MONSOON SUN.
                   </h3>
                   <p className="text-sm sm:text-base text-[#FDF6EC]/80 leading-relaxed font-sans mb-4">
                     Our pulses and cumin are natural rainfed crops. They thrive on the rhythm of Indian monsoons and dry winter breezes without draining local groundwater tables. The natural stress of seasonal weather triggers dense essential oil production inside each seed head.
                   </p>
-                  <div className="inline-flex items-center gap-2 text-xs font-mono text-[#D4A843]">
+                  <div className="inline-flex items-center gap-2 text-xs font-sans text-[#D4A843]">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     <span>100% Rainfed & groundwater-conscious</span>
                   </div>
@@ -718,7 +718,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#3C1518]/80 via-transparent to-transparent pointer-events-none" />
-                    <div className="absolute bottom-4 left-6 text-xs font-mono text-[#D4A843] uppercase tracking-widest">
+                    <div className="absolute bottom-4 left-6 text-xs font-sans text-[#D4A843] uppercase tracking-widest">
                       STAGE 02 · NATURAL SEASONAL RIPENING
                     </div>
                   </div>
@@ -736,22 +736,22 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#3C1518]/80 via-transparent to-transparent pointer-events-none" />
-                    <div className="absolute bottom-4 left-6 text-xs font-mono text-[#D4A843] uppercase tracking-widest">
+                    <div className="absolute bottom-4 left-6 text-xs font-sans text-[#D4A843] uppercase tracking-widest">
                       STAGE 03 · MORNING HARVEST & GENTLE SUN CURING
                     </div>
                   </div>
                 </div>
                 <div className="lg:col-span-5 order-1 lg:order-2">
-                  <span className="text-4xl sm:text-6xl font-serif font-black text-[#D4A843]/40 block mb-2">
+                  <span className="text-4xl sm:text-6xl font-display font-black text-[#D4A843]/40 block mb-2">
                     03
                   </span>
-                  <h3 className="text-2xl sm:text-4xl font-serif font-black text-[#FDF6EC] leading-tight mb-4">
+                  <h3 className="text-2xl sm:text-4xl font-display font-black text-[#FDF6EC] leading-tight mb-4">
                     THE GENTLE HARVEST.
                   </h3>
                   <p className="text-sm sm:text-base text-[#FDF6EC]/80 leading-relaxed font-sans mb-4">
                     Harvesting happens at peak maturity during crisp morning hours when delicate seed pods are least prone to shattering. Turmeric rhizomes are harvested with care, boiled in natural copper cauldrons, and laid out across stone courtyards for gentle sun-drying.
                   </p>
-                  <div className="inline-flex items-center gap-2 text-xs font-mono text-[#D4A843]">
+                  <div className="inline-flex items-center gap-2 text-xs font-sans text-[#D4A843]">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     <span>Open-air courtyard sun drying</span>
                   </div>
@@ -761,16 +761,16 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               {/* SPREAD 04: GENTLE PROCESSING & LASER SORTING */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
                 <div className="lg:col-span-5 order-1">
-                  <span className="text-4xl sm:text-6xl font-serif font-black text-[#D4A843]/40 block mb-2">
+                  <span className="text-4xl sm:text-6xl font-display font-black text-[#D4A843]/40 block mb-2">
                     04
                   </span>
-                  <h3 className="text-2xl sm:text-4xl font-serif font-black text-[#FDF6EC] leading-tight mb-4">
+                  <h3 className="text-2xl sm:text-4xl font-display font-black text-[#FDF6EC] leading-tight mb-4">
                     OPTICAL PURITY.
                   </h3>
                   <p className="text-sm sm:text-base text-[#FDF6EC]/80 leading-relaxed font-sans mb-4">
                     High-speed optical laser cameras inspect every single seed and split lentil, removing stones, stalks, and chipped grains. Dals are left completely unpolished—we refuse water sprays, yellow mineral dyes, or petroleum oil glazes.
                   </p>
-                  <div className="inline-flex items-center gap-2 text-xs font-mono text-[#D4A843]">
+                  <div className="inline-flex items-center gap-2 text-xs font-sans text-[#D4A843]">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     <span>Zero artificial glazes or water polishing</span>
                   </div>
@@ -784,7 +784,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#3C1518]/80 via-transparent to-transparent pointer-events-none" />
-                    <div className="absolute bottom-4 left-6 text-xs font-mono text-[#D4A843] uppercase tracking-widest">
+                    <div className="absolute bottom-4 left-6 text-xs font-sans text-[#D4A843] uppercase tracking-widest">
                       STAGE 04 · REGIONAL MILLING & OPTICAL CLEANING
                     </div>
                   </div>
@@ -805,18 +805,18 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
           <div className="max-w-7xl mx-auto">
             {/* Large Statement Headline */}
             <div className="border-l-4 border-[#C8102E] pl-6 sm:pl-10 mb-16 sm:mb-24">
-              <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#C8102E] font-bold block mb-3">
+              <span className="text-xs font-sans uppercase tracking-[0.25em] text-[#C8102E] font-bold block mb-3">
                 CHAPTER 03 · THE STEWARDS
               </span>
               <h2
                 id="farmers-heading"
-                className="text-3xl sm:text-5xl lg:text-7xl font-serif font-black text-[#3C1518] tracking-tight leading-[1.05] mb-6"
+                className="text-3xl sm:text-5xl lg:text-7xl font-display font-black text-[#3C1518] tracking-tight leading-[1.05] mb-6"
               >
                 GOOD SPICES START
                 <br />
                 WITH GOOD RELATIONSHIPS.
               </h2>
-              <p className="text-base sm:text-xl text-[#3C1518]/80 font-serif italic max-w-3xl leading-relaxed">
+              <p className="text-base sm:text-xl text-[#3C1518]/80 font-display italic max-w-3xl leading-relaxed">
                 "We don't buy from anonymous wholesale grain auctions. We work with farmers whose families have walked the same fields for generations."
               </p>
             </div>
@@ -833,18 +833,18 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                       className="max-h-full max-w-full object-contain filter drop-shadow-xs"
                     />
                   </div>
-                  <div className="inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-widest text-[#C8102E] font-bold mb-2">
+                  <div className="inline-flex items-center gap-1.5 text-[10px] font-sans uppercase tracking-widest text-[#C8102E] font-bold mb-2">
                     <MapPin className="w-3 h-3 text-[#C8102E]" />
                     <span>UNJHA, GUJARAT</span>
                   </div>
-                  <h3 className="text-xl font-serif font-black text-[#3C1518] mb-3">
+                  <h3 className="text-xl font-display font-black text-[#3C1518] mb-3">
                     The Cumin Harvesters of Mehsana
                   </h3>
                   <p className="text-xs sm:text-sm text-[#3C1518]/75 leading-relaxed font-sans mb-6">
                     Multi-generational grower families who practice early morning harvest runs before dew evaporates, protecting volatile essential oils from afternoon heat degradation.
                   </p>
                 </div>
-                <div className="pt-4 border-t border-[#3C1518]/10 flex items-center justify-between text-[11px] font-mono text-[#6B4226]">
+                <div className="pt-4 border-t border-[#3C1518]/10 flex items-center justify-between text-[11px] font-sans text-[#6B4226]">
                   <span className="font-semibold">+18% Direct Premium</span>
                   <span className="text-[#3C1518]/50">Rabi Season</span>
                 </div>
@@ -860,18 +860,18 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                       className="max-h-full max-w-full object-contain filter drop-shadow-xs"
                     />
                   </div>
-                  <div className="inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-widest text-[#C8102E] font-bold mb-2">
+                  <div className="inline-flex items-center gap-1.5 text-[10px] font-sans uppercase tracking-widest text-[#C8102E] font-bold mb-2">
                     <MapPin className="w-3 h-3 text-[#C8102E]" />
                     <span>SALEM, TAMIL NADU</span>
                   </div>
-                  <h3 className="text-xl font-serif font-black text-[#3C1518] mb-3">
+                  <h3 className="text-xl font-display font-black text-[#3C1518] mb-3">
                     The Curcumin Stewards of the River Basin
                   </h3>
                   <p className="text-xs sm:text-sm text-[#3C1518]/75 leading-relaxed font-sans mb-6">
                     Preserving heirloom Curcuma rhizomes that mature for 9 months in red laterite soil, cured in wood-fired water baths and dried naturally on sunlit courtyards.
                   </p>
                 </div>
-                <div className="pt-4 border-t border-[#3C1518]/10 flex items-center justify-between text-[11px] font-mono text-[#6B4226]">
+                <div className="pt-4 border-t border-[#3C1518]/10 flex items-center justify-between text-[11px] font-sans text-[#6B4226]">
                   <span className="font-semibold">+22% Direct Premium</span>
                   <span className="text-[#3C1518]/50">Cauvery Belt</span>
                 </div>
@@ -887,18 +887,18 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                       className="w-full h-full object-cover rounded-md"
                     />
                   </div>
-                  <div className="inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-widest text-[#C8102E] font-bold mb-2">
+                  <div className="inline-flex items-center gap-1.5 text-[10px] font-sans uppercase tracking-widest text-[#C8102E] font-bold mb-2">
                     <MapPin className="w-3 h-3 text-[#C8102E]" />
                     <span>GULBARGA, KARNATAKA</span>
                   </div>
-                  <h3 className="text-xl font-serif font-black text-[#3C1518] mb-3">
+                  <h3 className="text-xl font-display font-black text-[#3C1518] mb-3">
                     The Black Soil Pigeon Pea Growers
                   </h3>
                   <p className="text-xs sm:text-sm text-[#3C1518]/75 leading-relaxed font-sans mb-6">
                     Smallholders cultivating GI-protected Toor Dal on deep black cotton soil, rotating pulses with pearl millet to replenish nitrogen and keep regional biodiversity thriving.
                   </p>
                 </div>
-                <div className="pt-4 border-t border-[#3C1518]/10 flex items-center justify-between text-[11px] font-mono text-[#6B4226]">
+                <div className="pt-4 border-t border-[#3C1518]/10 flex items-center justify-between text-[11px] font-sans text-[#6B4226]">
                   <span className="font-semibold">+20% Direct Premium</span>
                   <span className="text-[#3C1518]/50">GI District</span>
                 </div>
@@ -918,13 +918,13 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
           <div className="max-w-7xl mx-auto">
             {/* Section Header */}
             <div className="max-w-3xl mb-16 sm:mb-20">
-              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-[#C8102E] font-bold mb-3">
+              <div className="inline-flex items-center gap-2 text-xs font-sans uppercase tracking-[0.25em] text-[#C8102E] font-bold mb-3">
                 <ShieldCheck className="w-4 h-4 text-[#C8102E]" />
                 <span>CHAPTER 04 · THE SOURCING CODE</span>
               </div>
               <h2
                 id="philosophy-heading"
-                className="text-3xl sm:text-5xl lg:text-6xl font-serif font-black text-[#3C1518] tracking-tight leading-[1.08] mb-4"
+                className="text-3xl sm:text-5xl lg:text-6xl font-display font-black text-[#3C1518] tracking-tight leading-[1.08] mb-4"
               >
                 FOUR UNCOMPROMISING PILLARS.
               </h2>
@@ -939,10 +939,10 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               <div className="lg:col-span-6 bg-white rounded-2xl border-2 border-[#3C1518]/15 p-8 sm:p-10 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#3C1518]/10">
-                    <span className="text-3xl sm:text-5xl font-serif font-black text-[#C8102E]">01</span>
-                    <span className="text-xs font-mono uppercase tracking-widest text-[#3C1518]/50">DIRECT PARTNERSHIPS</span>
+                    <span className="text-3xl sm:text-5xl font-display font-black text-[#C8102E]">01</span>
+                    <span className="text-xs font-sans uppercase tracking-widest text-[#3C1518]/50">DIRECT PARTNERSHIPS</span>
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-serif font-black text-[#3C1518] mb-4">
+                  <h3 className="text-2xl sm:text-3xl font-display font-black text-[#3C1518] mb-4">
                     FAIR VALUE AT THE SOURCE.
                   </h3>
                   <p className="text-sm text-[#3C1518]/80 leading-relaxed font-sans mb-6">
@@ -951,7 +951,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                 </div>
                 <div className="bg-[#FAF5EE] p-4 rounded-xl border border-[#3C1518]/10 flex items-center gap-3">
                   <HeartHandshake className="w-5 h-5 text-[#C8102E] shrink-0" />
-                  <span className="text-xs font-mono font-semibold text-[#3C1518]">
+                  <span className="text-xs font-sans font-semibold text-[#3C1518]">
                     Multi-season forward commitments over seasonal speculation
                   </span>
                 </div>
@@ -961,10 +961,10 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               <div className="lg:col-span-6 bg-[#3C1518] text-[#FDF6EC] rounded-2xl border-2 border-[#D4A843]/40 p-8 sm:p-10 shadow-lg flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#D4A843]/30">
-                    <span className="text-3xl sm:text-5xl font-serif font-black text-[#D4A843]">02</span>
-                    <span className="text-xs font-mono uppercase tracking-widest text-[#D4A843]/70">SINGLE ORIGIN</span>
+                    <span className="text-3xl sm:text-5xl font-display font-black text-[#D4A843]">02</span>
+                    <span className="text-xs font-sans uppercase tracking-widest text-[#D4A843]/70">SINGLE ORIGIN</span>
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-serif font-black text-[#FDF6EC] mb-4">
+                  <h3 className="text-2xl sm:text-3xl font-display font-black text-[#FDF6EC] mb-4">
                     ZERO ORIGIN BLENDING.
                   </h3>
                   <p className="text-sm text-[#FDF6EC]/80 leading-relaxed font-sans mb-6">
@@ -973,7 +973,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                 </div>
                 <div className="bg-white/10 p-4 rounded-xl border border-[#D4A843]/30 flex items-center gap-3">
                   <Compass className="w-5 h-5 text-[#D4A843] shrink-0" />
-                  <span className="text-xs font-mono font-semibold text-[#D4A843]">
+                  <span className="text-xs font-sans font-semibold text-[#D4A843]">
                     100% Traceable batch numbers back to the regional farm gate
                   </span>
                 </div>
@@ -983,17 +983,17 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               <div className="lg:col-span-7 bg-[#FAF7F2] rounded-2xl border-2 border-[#3C1518]/15 p-8 sm:p-10 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#3C1518]/10">
-                    <span className="text-3xl sm:text-5xl font-serif font-black text-[#6B4226]">03</span>
-                    <span className="text-xs font-mono uppercase tracking-widest text-[#3C1518]/50">UNPOLISHED INTEGRITY</span>
+                    <span className="text-3xl sm:text-5xl font-display font-black text-[#6B4226]">03</span>
+                    <span className="text-xs font-sans uppercase tracking-widest text-[#3C1518]/50">UNPOLISHED INTEGRITY</span>
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-serif font-black text-[#3C1518] mb-4">
+                  <h3 className="text-2xl sm:text-3xl font-display font-black text-[#3C1518] mb-4">
                     OPTICAL LASER SORTING, ZERO DYES.
                   </h3>
                   <p className="text-sm text-[#3C1518]/80 leading-relaxed font-sans mb-6">
                     Industrial dal processing often uses water spray, yellow dyes (tartrazine), or petroleum oil polishing to make dull grains look shiny. MAGIC dals are 100% unpolished. Optical laser sorters remove imperfect grains mechanically, preserving raw nutritional fiber.
                   </p>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-3 border-t border-[#3C1518]/10 text-xs font-mono text-[#6B4226]">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-3 border-t border-[#3C1518]/10 text-xs font-sans text-[#6B4226]">
                   <div>✓ No Water Polish</div>
                   <div>✓ No Oil Coatings</div>
                   <div>✓ No Synthetic Colors</div>
@@ -1004,10 +1004,10 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               <div className="lg:col-span-5 bg-white rounded-2xl border-2 border-[#3C1518]/15 p-8 sm:p-10 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#3C1518]/10">
-                    <span className="text-3xl sm:text-5xl font-serif font-black text-[#C8102E]">04</span>
-                    <span className="text-xs font-mono uppercase tracking-widest text-[#3C1518]/50">FRESH HARVEST SPEED</span>
+                    <span className="text-3xl sm:text-5xl font-display font-black text-[#C8102E]">04</span>
+                    <span className="text-xs font-sans uppercase tracking-widest text-[#3C1518]/50">FRESH HARVEST SPEED</span>
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-serif font-black text-[#3C1518] mb-4">
+                  <h3 className="text-2xl sm:text-3xl font-display font-black text-[#3C1518] mb-4">
                     TRIPLE-BARRIER PROTECTION.
                   </h3>
                   <p className="text-sm text-[#3C1518]/80 leading-relaxed font-sans mb-6">
@@ -1016,7 +1016,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                 </div>
                 <div className="bg-[#FAF5EE] p-4 rounded-xl border border-[#3C1518]/10 flex items-center gap-3">
                   <Clock className="w-5 h-5 text-[#C8102E] shrink-0" />
-                  <span className="text-xs font-mono font-semibold text-[#3C1518]">
+                  <span className="text-xs font-sans font-semibold text-[#3C1518]">
                     Shipped within weeks of milling
                   </span>
                 </div>
@@ -1035,13 +1035,13 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
           <div className="max-w-7xl mx-auto">
             {/* Section Header */}
             <div className="max-w-3xl mb-16 sm:mb-20 text-center mx-auto">
-              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-[#C8102E] font-bold mb-3">
+              <div className="inline-flex items-center gap-2 text-xs font-sans uppercase tracking-[0.25em] text-[#C8102E] font-bold mb-3">
                 <Scale className="w-4 h-4 text-[#C8102E]" />
                 <span>CHAPTER 05 · THE ANATOMY OF PURITY</span>
               </div>
               <h2
                 id="different-heading"
-                className="text-3xl sm:text-5xl lg:text-6xl font-serif font-black text-[#3C1518] tracking-tight leading-[1.08] mb-4"
+                className="text-3xl sm:text-5xl lg:text-6xl font-display font-black text-[#3C1518] tracking-tight leading-[1.08] mb-4"
               >
                 WHAT MAKES MAGIC DIFFERENT.
               </h2>
@@ -1054,10 +1054,10 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 bg-white rounded-3xl border-2 border-[#3C1518]/15 p-8 sm:p-12 lg:p-16 shadow-xl">
               {/* Left Page: The Conventional Commodity Model */}
               <div className="lg:col-span-6 pr-0 lg:pr-8 border-b lg:border-b-0 lg:border-r border-[#3C1518]/15 pb-8 lg:pb-0">
-                <div className="inline-block px-3 py-1 bg-[#3C1518]/10 rounded-2xs text-[10px] font-mono uppercase tracking-widest text-[#3C1518] font-bold mb-6">
+                <div className="inline-block px-3 py-1 bg-[#3C1518]/10 rounded-2xs text-[10px] font-sans uppercase tracking-widest text-[#3C1518] font-bold mb-6">
                   CONVENTIONAL COMMODITY SUPPLY CHAIN
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#3C1518]/70 mb-6 line-through decoration-[#C8102E]/60">
+                <h3 className="text-2xl sm:text-3xl font-display font-bold text-[#3C1518]/70 mb-6 line-through decoration-[#C8102E]/60">
                   Anonymous & Speculative
                 </h3>
 
@@ -1106,10 +1106,10 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
 
               {/* Right Page: The MAGIC Direct Standard */}
               <div className="lg:col-span-6 pl-0 lg:pl-4">
-                <div className="inline-block px-3 py-1 bg-[#C8102E] rounded-2xs text-[10px] font-mono uppercase tracking-widest text-white font-bold mb-6">
+                <div className="inline-block px-3 py-1 bg-[#C8102E] rounded-2xs text-[10px] font-sans uppercase tracking-widest text-white font-bold mb-6">
                   THE MAGIC SINGLE-ORIGIN STANDARD
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-serif font-black text-[#3C1518] mb-6">
+                <h3 className="text-2xl sm:text-3xl font-display font-black text-[#3C1518] mb-6">
                   Documented & Pure
                 </h3>
 
@@ -1171,13 +1171,13 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
               {/* Left Column: Manifesto Headline & Quality Metrics */}
               <div className="lg:col-span-7">
-                <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-[#D4A843] font-bold mb-3">
+                <div className="inline-flex items-center gap-2 text-xs font-sans uppercase tracking-[0.25em] text-[#D4A843] font-bold mb-3">
                   <Award className="w-4 h-4 text-[#D4A843]" />
                   <span>CHAPTER 06 · QUALITY MANIFESTO</span>
                 </div>
                 <h2
                   id="standard-heading"
-                  className="text-3xl sm:text-5xl lg:text-6xl font-serif font-black text-[#FDF6EC] tracking-tight leading-[1.08] mb-6"
+                  className="text-3xl sm:text-5xl lg:text-6xl font-display font-black text-[#FDF6EC] tracking-tight leading-[1.08] mb-6"
                 >
                   REAL ORIGIN.
                   <br />
@@ -1193,28 +1193,28 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                 {/* Quality Stat Metrics */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-6 border-t border-[#D4A843]/30">
                   <div>
-                    <span className="text-3xl sm:text-4xl font-serif font-black text-[#D4A843] block mb-1">
+                    <span className="text-3xl sm:text-4xl font-display font-black text-[#D4A843] block mb-1">
                       &gt;4.8%
                     </span>
-                    <span className="text-xs font-mono text-[#FDF6EC]/70 uppercase tracking-wider block">
+                    <span className="text-xs font-sans text-[#FDF6EC]/70 uppercase tracking-wider block">
                       Natural Curcumin in Haldi
                     </span>
                   </div>
 
                   <div>
-                    <span className="text-3xl sm:text-4xl font-serif font-black text-[#D4A843] block mb-1">
+                    <span className="text-3xl sm:text-4xl font-display font-black text-[#D4A843] block mb-1">
                       99.8%
                     </span>
-                    <span className="text-xs font-mono text-[#FDF6EC]/70 uppercase tracking-wider block">
+                    <span className="text-xs font-sans text-[#FDF6EC]/70 uppercase tracking-wider block">
                       Optical Laser Purity
                     </span>
                   </div>
 
                   <div>
-                    <span className="text-3xl sm:text-4xl font-serif font-black text-[#D4A843] block mb-1">
+                    <span className="text-3xl sm:text-4xl font-display font-black text-[#D4A843] block mb-1">
                       0%
                     </span>
-                    <span className="text-xs font-mono text-[#FDF6EC]/70 uppercase tracking-wider block">
+                    <span className="text-xs font-sans text-[#FDF6EC]/70 uppercase tracking-wider block">
                       Synthetic Water / Oil Glaze
                     </span>
                   </div>
@@ -1231,10 +1231,10 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                       className="max-h-full max-w-full object-contain filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.6)] hover:scale-105 transition-transform"
                     />
                   </div>
-                  <span className="text-sm font-serif font-bold text-[#FDF6EC] mb-1">
+                  <span className="text-sm font-display font-bold text-[#FDF6EC] mb-1">
                     The Sacred Masala Dabba
                   </span>
-                  <span className="text-[11px] font-mono text-[#D4A843] uppercase tracking-widest">
+                  <span className="text-[11px] font-sans text-[#D4A843] uppercase tracking-widest">
                     HONORING ANCIENT KITCHEN RITUALS
                   </span>
                 </div>
@@ -1253,13 +1253,13 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
           <div className="max-w-7xl mx-auto">
             {/* Section Header */}
             <div className="max-w-3xl mb-16 sm:mb-20">
-              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-[#C8102E] font-bold mb-3">
+              <div className="inline-flex items-center gap-2 text-xs font-sans uppercase tracking-[0.25em] text-[#C8102E] font-bold mb-3">
                 <Truck className="w-4 h-4 text-[#C8102E]" />
                 <span>CHAPTER 07 · THE CONTINENTAL BRIDGE</span>
               </div>
               <h2
                 id="continental-bridge-heading"
-                className="text-3xl sm:text-5xl lg:text-6xl font-serif font-black text-[#3C1518] tracking-tight leading-[1.08] mb-4"
+                className="text-3xl sm:text-5xl lg:text-6xl font-display font-black text-[#3C1518] tracking-tight leading-[1.08] mb-4"
               >
                 FROM INDIAN SOIL
                 <br />
@@ -1275,17 +1275,17 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               {/* Step 01: Indian Fields */}
               <div className="bg-white rounded-2xl border-2 border-[#3C1518]/15 p-6 shadow-sm flex flex-col justify-between">
                 <div>
-                  <span className="text-xs font-mono uppercase tracking-widest text-[#C8102E] font-bold block mb-2">
+                  <span className="text-xs font-sans uppercase tracking-widest text-[#C8102E] font-bold block mb-2">
                     01 · THE FIELDS
                   </span>
-                  <h3 className="text-xl font-serif font-black text-[#3C1518] mb-2">
+                  <h3 className="text-xl font-display font-black text-[#3C1518] mb-2">
                     Indian Terroirs
                   </h3>
                   <p className="text-xs text-[#3C1518]/75 leading-relaxed font-sans mb-4">
                     Gujarat cumin, Tamil Nadu turmeric, and Karnataka pigeon peas harvested at peak maturity.
                   </p>
                 </div>
-                <div className="text-[11px] font-mono text-[#6B4226] pt-3 border-t border-[#3C1518]/10">
+                <div className="text-[11px] font-sans text-[#6B4226] pt-3 border-t border-[#3C1518]/10">
                   ✓ Field Gate Inspection
                 </div>
               </div>
@@ -1293,17 +1293,17 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               {/* Step 02: Gentle Regional Milling */}
               <div className="bg-white rounded-2xl border-2 border-[#3C1518]/15 p-6 shadow-sm flex flex-col justify-between">
                 <div>
-                  <span className="text-xs font-mono uppercase tracking-widest text-[#C8102E] font-bold block mb-2">
+                  <span className="text-xs font-sans uppercase tracking-widest text-[#C8102E] font-bold block mb-2">
                     02 · THE MILL
                   </span>
-                  <h3 className="text-xl font-serif font-black text-[#3C1518] mb-2">
+                  <h3 className="text-xl font-display font-black text-[#3C1518] mb-2">
                     Optical Cleaning
                   </h3>
                   <p className="text-xs text-[#3C1518]/75 leading-relaxed font-sans mb-4">
                     Laser sorted and packed in airtight, triple-barrier nitrogen barrier pouches.
                   </p>
                 </div>
-                <div className="text-[11px] font-mono text-[#6B4226] pt-3 border-t border-[#3C1518]/10">
+                <div className="text-[11px] font-sans text-[#6B4226] pt-3 border-t border-[#3C1518]/10">
                   ✓ Aroma Sealed
                 </div>
               </div>
@@ -1311,17 +1311,17 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               {/* Step 03: Direct Maritime Transit */}
               <div className="bg-white rounded-2xl border-2 border-[#3C1518]/15 p-6 shadow-sm flex flex-col justify-between">
                 <div>
-                  <span className="text-xs font-mono uppercase tracking-widest text-[#C8102E] font-bold block mb-2">
+                  <span className="text-xs font-sans uppercase tracking-widest text-[#C8102E] font-bold block mb-2">
                     03 · THE TRANSIT
                   </span>
-                  <h3 className="text-xl font-serif font-black text-[#3C1518] mb-2">
+                  <h3 className="text-xl font-display font-black text-[#3C1518] mb-2">
                     Arabian Sea Route
                   </h3>
                   <p className="text-xs text-[#3C1518]/75 leading-relaxed font-sans mb-4">
                     Direct climate-controlled shipping from Indian ports straight into UAE fulfillment centers.
                   </p>
                 </div>
-                <div className="text-[11px] font-mono text-[#6B4226] pt-3 border-t border-[#3C1518]/10">
+                <div className="text-[11px] font-sans text-[#6B4226] pt-3 border-t border-[#3C1518]/10">
                   ✓ Fast Turnaround
                 </div>
               </div>
@@ -1329,17 +1329,17 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               {/* Step 04: Your Home Kitchen */}
               <div className="bg-[#C8102E] text-white rounded-2xl border-2 border-[#C8102E] p-6 shadow-md flex flex-col justify-between">
                 <div>
-                  <span className="text-xs font-mono uppercase tracking-widest text-white/80 font-bold block mb-2">
+                  <span className="text-xs font-sans uppercase tracking-widest text-white/80 font-bold block mb-2">
                     04 · THE TADKA
                   </span>
-                  <h3 className="text-xl font-serif font-black text-white mb-2">
+                  <h3 className="text-xl font-display font-black text-white mb-2">
                     Your Home Pantry
                   </h3>
                   <p className="text-xs text-white/90 leading-relaxed font-sans mb-4">
                     Bloomed in hot ghee, filling your living room with genuine earthy aroma and comforting warmth.
                   </p>
                 </div>
-                <div className="text-[11px] font-mono text-white/80 pt-3 border-t border-white/20">
+                <div className="text-[11px] font-sans text-white/80 pt-3 border-t border-white/20">
                   ✓ Uncompromised Flavor
                 </div>
               </div>
@@ -1356,10 +1356,10 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#3C1518]/90 via-[#3C1518]/40 to-transparent pointer-events-none" />
                 <div className="absolute inset-y-0 left-0 p-8 sm:p-12 lg:p-16 flex flex-col justify-center max-w-xl text-[#FDF6EC]">
-                  <span className="text-xs font-mono uppercase tracking-widest text-[#D4A843] font-bold mb-2">
+                  <span className="text-xs font-sans uppercase tracking-widest text-[#D4A843] font-bold mb-2">
                     THE FINAL DESTINATION
                   </span>
-                  <h3 className="text-2xl sm:text-4xl font-serif font-black mb-3 leading-tight">
+                  <h3 className="text-2xl sm:text-4xl font-display font-black mb-3 leading-tight">
                     THE EVENING TADKA.
                   </h3>
                   <p className="text-xs sm:text-sm text-[#FDF6EC]/85 leading-relaxed font-sans mb-6">
@@ -1398,12 +1398,12 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
           </div>
 
           <div className="max-w-4xl mx-auto relative z-10 text-center">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/10 rounded-full border border-[#D4A843]/40 text-[11px] font-mono uppercase tracking-[0.25em] text-[#D4A843] mb-8">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/10 rounded-full border border-[#D4A843]/40 text-[11px] font-sans uppercase tracking-[0.25em] text-[#D4A843] mb-8">
               <Sparkles className="w-3.5 h-3.5 text-[#D4A843]" />
               <span>THE MAGIC MANIFESTO</span>
             </div>
 
-            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-black text-[#FDF6EC] tracking-tight leading-[1.08] mb-8">
+            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-display font-black text-[#FDF6EC] tracking-tight leading-[1.08] mb-8">
               PURE INGREDIENTS.
               <br />
               REAL ORIGINS.
@@ -1411,7 +1411,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               <span className="text-[#D4A843] italic font-normal">MAGIC IN EVERY PINCH.</span>
             </h2>
 
-            <p className="text-base sm:text-xl text-[#FDF6EC]/85 font-serif italic max-w-2xl mx-auto leading-relaxed mb-10">
+            <p className="text-base sm:text-xl text-[#FDF6EC]/85 font-display italic max-w-2xl mx-auto leading-relaxed mb-10">
               "Because the meals we cook for our families every day deserve the honesty and respect of the soil they grew in."
             </p>
 
@@ -1444,13 +1444,13 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
           aria-labelledby="dispatch-heading"
         >
           <div className="max-w-4xl mx-auto bg-white rounded-3xl border-2 border-[#3C1518]/15 p-8 sm:p-12 lg:p-16 text-center shadow-lg">
-            <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.25em] text-[#C8102E] font-bold mb-3">
+            <div className="inline-flex items-center gap-2 text-xs font-sans uppercase tracking-[0.25em] text-[#C8102E] font-bold mb-3">
               <BookOpen className="w-4 h-4 text-[#C8102E]" />
               <span>THE SOURCING DISPATCH</span>
             </div>
             <h2
               id="dispatch-heading"
-              className="text-3xl sm:text-4xl lg:text-5xl font-serif font-black text-[#3C1518] tracking-tight mb-4"
+              className="text-3xl sm:text-4xl lg:text-5xl font-display font-black text-[#3C1518] tracking-tight mb-4"
             >
               JOIN THE MAGIC TABLE.
             </h2>
@@ -1459,7 +1459,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
             </p>
 
             {isSubscribed ? (
-              <div className="p-4 bg-[#2B6E2A]/10 border border-[#2B6E2A]/30 rounded-xl text-xs font-mono text-[#2B6E2A] font-bold">
+              <div className="p-4 bg-[#2B6E2A]/10 border border-[#2B6E2A]/30 rounded-xl text-xs font-sans text-[#2B6E2A] font-bold">
                 ✓ Welcome to the MAGIC family. Your first harvest dispatch is on its way.
               </div>
             ) : (

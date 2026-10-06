@@ -123,7 +123,7 @@ export const ShopCartDrawer: React.FC<ShopCartDrawerProps> = ({ isOpen, onClose 
                 </span>
               )}
             </span>
-            <span className="font-mono text-[#3C1518]/60">{progressToFreeShipping.toFixed(0)}%</span>
+            <span className="font-sans font-medium text-[#3C1518]/60">{progressToFreeShipping.toFixed(0)}%</span>
           </div>
           <div className="w-full h-1.5 bg-[#3C1518]/10 rounded-full mt-1.5 overflow-hidden">
             <div
@@ -134,7 +134,7 @@ export const ShopCartDrawer: React.FC<ShopCartDrawerProps> = ({ isOpen, onClose 
         </div>
 
         {/* Drawer Body */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-3">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-3.5">
           {orderPlaced ? (
             /* Order Success State */
             <div className="h-full flex flex-col items-center justify-center text-center p-6 space-y-4">
@@ -142,10 +142,10 @@ export const ShopCartDrawer: React.FC<ShopCartDrawerProps> = ({ isOpen, onClose 
                 <ShieldCheck className="w-8 h-8" />
               </div>
               <div>
-                <h3 className="text-xl font-bold font-serif text-[#3C1518]">
+                <h3 className="text-xl font-bold font-display text-[#3C1518]">
                   {isRTL ? 'تم تسجيل طلبك بنجاح!' : 'Order Inquiry Registered!'}
                 </h3>
-                <p className="text-xs text-[#3C1518]/70 mt-1 leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#3C1518]/70 mt-1 leading-relaxed font-sans">
                   {isRTL
                     ? 'شكراً لك! يتم تجهيز عبوات ماجيك الأصيلة مباشرة من مركز التوزيع الإقليمي في دولة الإمارات العربية المتحدة.'
                     : 'Thank you! Your simulated sample order has been registered for demonstration. Authentic MAGIC packaging is prepared direct from our regional distribution hub in the UAE.'}
@@ -153,7 +153,7 @@ export const ShopCartDrawer: React.FC<ShopCartDrawerProps> = ({ isOpen, onClose 
               </div>
               <button
                 onClick={handleResetCheckout}
-                className="w-full py-3 bg-[#C8102E] hover:bg-[#a60d26] text-white font-bold text-xs uppercase tracking-wider rounded-xs cursor-pointer transition-colors"
+                className="w-full py-3.5 bg-[#C8102E] hover:bg-[#a60d26] text-white font-bold text-xs uppercase tracking-wider rounded-md cursor-pointer transition-colors min-h-[46px]"
               >
                 {t('cart.startShopping')}
               </button>
@@ -164,15 +164,15 @@ export const ShopCartDrawer: React.FC<ShopCartDrawerProps> = ({ isOpen, onClose 
               <div className="w-16 h-16 rounded-full bg-[#3C1518]/5 flex items-center justify-center text-[#3C1518]/30">
                 <ShoppingBag className="w-8 h-8" />
               </div>
-              <h3 className="text-base font-bold text-[#3C1518]">
+              <h3 className="text-base font-bold font-display text-[#3C1518]">
                 {t('cart.empty')}
               </h3>
-              <p className="text-xs text-[#3C1518]/65 max-w-xs">
+              <p className="text-xs sm:text-sm text-[#3C1518]/65 max-w-xs font-sans">
                 {t('cart.emptyDesc')}
               </p>
               <button
                 onClick={onClose}
-                className="mt-2 py-2 px-5 bg-[#C8102E] hover:bg-[#a60d26] text-white font-bold text-xs uppercase tracking-wider rounded-xs cursor-pointer transition-colors"
+                className="mt-2 py-2.5 px-6 bg-[#C8102E] hover:bg-[#a60d26] text-white font-bold text-xs uppercase tracking-wider rounded-md cursor-pointer transition-colors min-h-[44px]"
               >
                 {t('cart.startShopping')}
               </button>
@@ -182,10 +182,10 @@ export const ShopCartDrawer: React.FC<ShopCartDrawerProps> = ({ isOpen, onClose 
             items.map(({ product, quantity }) => (
               <div
                 key={product.id}
-                className="p-3 bg-white rounded-xs border border-[#3C1518]/10 flex items-center gap-3 shadow-2xs"
+                className="p-3.5 bg-white rounded-lg border border-[#3C1518]/10 flex items-center gap-3.5 shadow-2xs"
               >
                 {/* Product Thumbnail */}
-                <div className="w-16 h-16 sm:w-18 sm:h-18 bg-[#FAF4EB] p-1.5 rounded-2xs border border-[#3C1518]/6 shrink-0 flex items-center justify-center">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#FAF4EB] p-1.5 rounded-md border border-[#3C1518]/6 shrink-0 flex items-center justify-center">
                   <img
                     src={product.image}
                     alt={product.name}
@@ -195,46 +195,46 @@ export const ShopCartDrawer: React.FC<ShopCartDrawerProps> = ({ isOpen, onClose 
 
                 {/* Details */}
                 <div className="flex-1 min-w-0">
-                  <h4 className="text-xs sm:text-sm font-bold text-[#3C1518] truncate">
+                  <h4 className="text-xs sm:text-sm font-bold text-[#3C1518] truncate font-display">
                     {product.name}
                   </h4>
-                  <p className="text-[11px] text-[#3C1518]/60 font-medium">
-                    {product.weight} • <span className="font-mono">AED {product.price.toFixed(2)}</span>
+                  <p className="text-xs text-[#3C1518]/60 font-medium">
+                    {product.weight} • <span className="font-sans font-semibold">AED {product.price.toFixed(2)}</span>
                   </p>
 
                   {/* Quantity Stepper Row */}
-                  <div className="mt-2 flex items-center justify-between">
-                    <div className="inline-flex items-center bg-[#FDF6EC] border border-[#3C1518]/15 rounded-xs overflow-hidden">
+                  <div className="mt-2.5 flex items-center justify-between">
+                    <div className="inline-flex items-center bg-[#FDF6EC] border border-[#3C1518]/15 rounded-md overflow-hidden">
                       <button
                         onClick={() => updateQuantity(product.id, quantity - 1)}
-                        className="w-6 h-6 flex items-center justify-center text-[#3C1518]/80 hover:bg-[#C8102E] hover:text-white transition-colors cursor-pointer"
+                        className="w-8 h-8 flex items-center justify-center text-[#3C1518]/80 hover:bg-[#C8102E] hover:text-white transition-colors cursor-pointer"
                         aria-label="Decrease quantity"
                       >
-                        <Minus className="w-3 h-3" />
+                        <Minus className="w-3.5 h-3.5" />
                       </button>
-                      <span className="w-6 text-center text-xs font-bold font-mono text-[#3C1518]">
+                      <span className="w-8 text-center text-xs sm:text-sm font-bold font-sans text-[#3C1518]">
                         {quantity}
                       </span>
                       <button
                         onClick={() => updateQuantity(product.id, quantity + 1)}
-                        className="w-6 h-6 flex items-center justify-center text-[#3C1518]/80 hover:bg-[#C8102E] hover:text-white transition-colors cursor-pointer"
+                        className="w-8 h-8 flex items-center justify-center text-[#3C1518]/80 hover:bg-[#C8102E] hover:text-white transition-colors cursor-pointer"
                         aria-label="Increase quantity"
                       >
-                        <Plus className="w-3 h-3" />
+                        <Plus className="w-3.5 h-3.5" />
                       </button>
                     </div>
 
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold text-[#3C1518] font-mono">
+                    <div className="flex items-center gap-2.5">
+                      <span className="text-xs sm:text-sm font-bold text-[#3C1518] font-sans">
                         AED {(product.price * quantity).toFixed(2)}
                       </span>
                       <button
                         onClick={() => removeItem(product.id)}
-                        className="text-[#3C1518]/40 hover:text-[#C8102E] transition-colors p-1 cursor-pointer"
+                        className="text-[#3C1518]/40 hover:text-[#C8102E] transition-colors p-1.5 cursor-pointer"
                         aria-label={`Remove ${product.name} from bag`}
                         title={t('cart.remove')}
                       >
-                        <Trash2 className="w-3.5 h-3.5" />
+                        <Trash2 className="w-4 h-4" />
                       </button>
                     </div>
                   </div>
@@ -246,15 +246,15 @@ export const ShopCartDrawer: React.FC<ShopCartDrawerProps> = ({ isOpen, onClose 
 
         {/* Drawer Footer with Financial Summary & Checkout Action */}
         {items.length > 0 && (
-          <div className="p-4 sm:p-5 bg-white border-t border-[#3C1518]/12 space-y-3">
-            <div className="space-y-1.5 text-xs text-[#3C1518]">
+          <div className="p-4 sm:p-5 bg-white border-t border-[#3C1518]/12 space-y-3.5">
+            <div className="space-y-2 text-xs sm:text-sm text-[#3C1518]">
               <div className="flex justify-between text-[#3C1518]/70">
                 <span>{t('cart.subtotal')} ({totalItems})</span>
-                <span className="font-mono font-medium">AED {subtotal.toFixed(2)}</span>
+                <span className="font-sans font-medium">AED {subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-[#3C1518]/70">
                 <span>{t('cart.shipping')}</span>
-                <span className="font-mono font-medium">
+                <span className="font-sans font-medium">
                   {standardShippingCost === 0 ? (
                     <span className="text-[#5A7247] font-bold">{t('cart.freeShipping')}</span>
                   ) : (
@@ -262,22 +262,22 @@ export const ShopCartDrawer: React.FC<ShopCartDrawerProps> = ({ isOpen, onClose 
                   )}
                 </span>
               </div>
-              <div className="flex justify-between text-sm font-bold text-[#3C1518] pt-2 border-t border-[#3C1518]/10">
+              <div className="flex justify-between text-base font-bold text-[#3C1518] pt-2.5 border-t border-[#3C1518]/10">
                 <span>{t('cart.total')}</span>
-                <span className="font-mono text-base text-[#C8102E]">
+                <span className="font-sans font-bold text-lg text-[#C8102E]">
                   AED {finalTotal.toFixed(2)}
                 </span>
               </div>
             </div>
 
-            <p className="text-[10px] text-[#3C1518]/50 text-center italic">
+            <p className="text-[11px] text-[#3C1518]/50 text-center italic font-sans">
               {t('cart.deliveryNote')}
             </p>
 
             <button
               onClick={handleSimulateCheckout}
               disabled={isCheckingOut}
-              className="w-full py-3 bg-[#C8102E] hover:bg-[#a60d26] disabled:bg-[#C8102E]/60 text-white font-bold text-xs uppercase tracking-wider rounded-xs shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer min-h-[44px]"
+              className="w-full py-3.5 bg-[#C8102E] hover:bg-[#a60d26] disabled:bg-[#C8102E]/60 text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded-md shadow-xs transition-all flex items-center justify-center gap-2.5 cursor-pointer min-h-[48px]"
             >
               {isCheckingOut ? (
                 <span>{isRTL ? 'جاري تجهيز الطلب...' : 'Confirming Order Dispatch...'}</span>

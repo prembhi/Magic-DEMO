@@ -31,7 +31,7 @@ export const RecipePagination: React.FC<RecipePaginationProps> = ({
       aria-label="Recipe pagination"
       className="w-full flex flex-col sm:flex-row items-center justify-between gap-4 py-8 mt-6 border-t border-[#3C1518]/15"
     >
-      <div className="text-xs text-[#3C1518]/70 font-mono">
+      <div className="text-xs text-[#3C1518]/70 font-sans font-medium">
         Showing <span className="font-bold text-[#3C1518]">{startItem}–{endItem}</span> of{' '}
         <span className="font-bold text-[#3C1518]">{totalItems}</span> recipes
       </div>
@@ -56,7 +56,7 @@ export const RecipePagination: React.FC<RecipePaginationProps> = ({
               key={pageNum}
               type="button"
               onClick={() => onPageChange(pageNum)}
-              className={`w-9 h-9 rounded-xs text-xs font-mono font-bold transition-all cursor-pointer flex items-center justify-center ${
+              className={`w-9 h-9 rounded-xs text-xs font-sans font-medium font-bold transition-all cursor-pointer flex items-center justify-center ${
                 isActive
                   ? 'bg-[#C8102E] text-white shadow-2xs border border-[#C8102E]'
                   : 'bg-white text-[#3C1518] border border-[#E6E0D6] hover:border-[#C8102E]'

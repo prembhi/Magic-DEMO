@@ -689,7 +689,7 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
               <button
                 type="button"
                 onClick={() => setLanguage('en')}
-                className={`px-2.5 py-1 text-xs font-bold rounded-full transition-all cursor-pointer ${
+                className={`px-3 py-1.5 min-h-[34px] text-xs font-sans font-bold rounded-full transition-all cursor-pointer active:scale-[0.97] ${
                   language === 'en'
                     ? 'bg-[#FDF6EC] text-[#C8102E] shadow-xs'
                     : 'text-[#FDF6EC]/80 hover:text-white'
@@ -702,7 +702,7 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
               <button
                 type="button"
                 onClick={() => setLanguage('ar')}
-                className={`px-2.5 py-1 text-xs font-bold rounded-full transition-all cursor-pointer font-arabic ${
+                className={`px-3 py-1.5 min-h-[34px] text-xs font-bold rounded-full transition-all cursor-pointer font-arabic active:scale-[0.97] ${
                   language === 'ar'
                     ? 'bg-[#FDF6EC] text-[#C8102E] shadow-xs'
                     : 'text-[#FDF6EC]/80 hover:text-white'
@@ -717,19 +717,19 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
             {/* SEARCH BUTTON */}
             <button
               onClick={() => setIsSearchOpen((prev) => !prev)}
-              className={`p-2 rounded-full transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[#D4A843] ${
+              className={`min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[#D4A843] active:scale-[0.95] ${
                 isSearchOpen ? 'bg-[#A60D26] text-[#D4A843]' : 'text-[#FDF6EC] hover:bg-[#A60D26]'
               }`}
               title={t('nav.search')}
               aria-label={t('nav.search')}
               aria-expanded={isSearchOpen}
             >
-              <Search className="w-4.5 h-4.5" />
+              <Search className="w-5 h-5" />
             </button>
 
-            {/* ACCOUNT BUTTON & POPOVER (UAE Only) */}
+            {/* ACCOUNT BUTTON & POPOVER (UAE Only - Cleanly consolidated in mobile drawer for small viewports) */}
             <div
-              className="relative"
+              className="relative hidden sm:block"
               onMouseEnter={() => handleMouseEnter('account')}
               onMouseLeave={handleMouseLeave}
             >
@@ -738,11 +738,11 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
                 onClick={() => handleDropdownToggle('account')}
                 aria-haspopup="true"
                 aria-expanded={activeDropdown === 'account'}
-                className="p-2 rounded-full text-[#FDF6EC] hover:bg-[#A60D26] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[#D4A843]"
+                className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full text-[#FDF6EC] hover:bg-[#A60D26] transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[#D4A843] active:scale-[0.95]"
                 title={t('nav.account')}
                 aria-label={t('nav.account')}
               >
-                <User className="w-4.5 h-4.5" />
+                <User className="w-5 h-5" />
               </button>
 
               {/* ACCOUNT POPOVER */}
@@ -836,14 +836,15 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
 
             {/* CART BUTTON */}
             <button
+              data-testid="cart-button"
               onClick={handleOpenCart}
-              className="relative p-2 rounded-full text-[#FDF6EC] hover:bg-[#A60D26] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[#D4A843] flex items-center justify-center"
+              className="relative min-w-[44px] min-h-[44px] rounded-full text-[#FDF6EC] hover:bg-[#A60D26] transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[#D4A843] flex items-center justify-center active:scale-[0.95]"
               title={t('cart.title')}
               aria-label={`${t('cart.title')}, ${totalCartItems}`}
             >
               <ShoppingBag className="w-5 h-5" />
               {totalCartItems > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 rtl:right-auto rtl:-left-0.5 min-w-[19px] h-[19px] px-1 bg-[#D4A843] text-[#3C1518] text-[10px] font-extrabold rounded-full flex items-center justify-center border border-[#C8102E] shadow-sm animate-in zoom-in-75">
+                <span className="absolute top-1 right-1 rtl:right-auto rtl:left-1 min-w-[19px] h-[19px] px-1 bg-[#D4A843] text-[#3C1518] text-[10px] font-extrabold rounded-full flex items-center justify-center border border-[#C8102E] shadow-sm animate-in zoom-in-75">
                   {totalCartItems}
                 </span>
               )}
@@ -1216,18 +1217,22 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
               {/* Language Switcher inside Mobile Header */}
               <div className="flex items-center bg-[#A60D26] p-0.5 rounded-full border border-[#D4A843]/40">
                 <button
+                  type="button"
                   onClick={() => setLanguage('en')}
-                  className={`px-2 py-0.5 text-xs font-bold rounded-full ${
-                    language === 'en' ? 'bg-[#FDF6EC] text-[#C8102E]' : 'text-white/80'
+                  className={`px-3 py-1 text-xs font-sans font-bold rounded-full min-h-[34px] transition-all cursor-pointer ${
+                    language === 'en' ? 'bg-[#FDF6EC] text-[#C8102E] shadow-xs' : 'text-white/80 hover:text-white'
                   }`}
+                  aria-label="Switch to English"
                 >
                   EN
                 </button>
                 <button
+                  type="button"
                   onClick={() => setLanguage('ar')}
-                  className={`px-2 py-0.5 text-xs font-bold rounded-full font-arabic ${
-                    language === 'ar' ? 'bg-[#FDF6EC] text-[#C8102E]' : 'text-white/80'
+                  className={`px-3 py-1 text-xs font-bold rounded-full font-arabic min-h-[34px] transition-all cursor-pointer ${
+                    language === 'ar' ? 'bg-[#FDF6EC] text-[#C8102E] shadow-xs' : 'text-white/80 hover:text-white'
                   }`}
+                  aria-label="التبديل إلى العربية"
                 >
                   العربية
                 </button>

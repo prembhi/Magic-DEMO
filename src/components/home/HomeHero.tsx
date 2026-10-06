@@ -138,7 +138,7 @@ export const HomeHero: React.FC<HomeHeroProps> = ({
       id="farm"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full min-h-[100dvh] lg:h-[100dvh] lg:min-h-0 lg:max-h-[100dvh] bg-[#3C1518] text-[#FDF6EC] flex flex-col justify-between overflow-hidden px-4 sm:px-6 lg:px-12 pt-[94px] sm:pt-[100px] lg:pt-[106px] pb-4 sm:pb-6 select-none border-b-2 border-[#D4A843]/30"
+      className="relative w-full min-h-[100dvh] lg:h-[100dvh] lg:min-h-0 lg:max-h-[100dvh] bg-[#3C1518] text-[#FDF6EC] flex flex-col justify-between overflow-hidden px-4 sm:px-6 lg:px-12 pt-[94px] sm:pt-[100px] lg:pt-[106px] pb-10 sm:pb-14 select-none border-b-2 border-[#D4A843]/30"
       aria-label="MAGIC Farm-to-Spice Cinematic Hero"
     >
       {/* ========================================================================= */}
@@ -197,7 +197,7 @@ export const HomeHero: React.FC<HomeHeroProps> = ({
             transform: heroReady ? `translateY(${isReducedMotion ? 0 : (hasEntered ? headlineScrollY * 0.6 : 0)}px)` : 'translateY(30px)',
             transition: hasEntered ? 'none' : 'opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) 60ms, transform 600ms cubic-bezier(0.22, 1, 0.36, 1) 60ms',
           }}
-          className="text-[#D4A843] text-[11px] sm:text-xs font-bold tracking-[0.25em] uppercase mb-2.5 sm:mb-3.5"
+          className="text-[#D4A843] text-sm sm:text-base font-semibold tracking-[0.22em] uppercase mb-3 sm:mb-4"
         >
           {isRTL ? 'محاصيل هندية نقية أحادية المنشأ · تميز في الإمارات' : 'SINGLE-ORIGIN INDIAN HARVEST • UAE EXCELLENCE'}
         </p>
@@ -209,19 +209,19 @@ export const HomeHero: React.FC<HomeHeroProps> = ({
             transform: heroReady ? `translateY(${isReducedMotion ? 0 : (hasEntered ? headlineScrollY : 0)}px)` : 'translateY(45px)',
             transition: hasEntered ? 'none' : 'opacity 750ms cubic-bezier(0.22, 1, 0.36, 1) 180ms, transform 750ms cubic-bezier(0.22, 1, 0.36, 1) 180ms',
           }}
-          className="font-display font-black text-3xl sm:text-5xl md:text-5xl lg:text-[clamp(2.5rem,4.2vw,4.15rem)] xl:text-[4.25rem] text-[#FDF6EC] tracking-tight leading-[1.02] sm:leading-[1.04] mb-3 sm:mb-4 max-w-4xl"
+          className="font-display font-extrabold text-5xl sm:text-7xl md:text-8xl lg:text-[5.5rem] xl:text-[6.5rem] 2xl:text-[7.5rem] text-[#FDF6EC] tracking-tight leading-[1.02] sm:leading-[1.0] mb-5 sm:mb-7 max-w-5xl"
         >
           {isRTL ? (
             <>
               توابل وبقوليات هندية أصيلة.
               <br />
-              <span className="text-[#D4A843] italic font-normal">مباشرة من المزارع إلى مائدتك.</span>
+              <span className="text-[#D4A843] not-italic font-bold">مباشرة من المزارع إلى مائدتك.</span>
             </>
           ) : (
             <>
               PURE INDIAN SPICES & PULSES.
               <br />
-              <span className="text-[#D4A843] italic font-normal">Direct from generational farms.</span>
+              <span className="text-[#D4A843] not-italic font-bold">Direct from generational farms.</span>
             </>
           )}
         </h1>
@@ -233,7 +233,7 @@ export const HomeHero: React.FC<HomeHeroProps> = ({
             transform: heroReady ? `translateY(${isReducedMotion ? 0 : (hasEntered ? copyScrollY : 0)}px)` : 'translateY(25px)',
             transition: hasEntered ? 'none' : 'opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) 320ms, transform 700ms cubic-bezier(0.22, 1, 0.36, 1) 320ms',
           }}
-          className="max-w-xl lg:max-w-2xl text-xs sm:text-sm md:text-base text-[#FDF6EC]/90 font-sans font-normal leading-relaxed mb-4 sm:mb-5 drop-shadow-sm px-2"
+          className="max-w-xl lg:max-w-2xl text-base sm:text-lg md:text-xl text-[#FDF6EC]/90 font-sans font-normal leading-relaxed mb-6 sm:mb-8 drop-shadow-sm px-2"
         >
           {isRTL
             ? 'بقوليات نقية غير مغشوشة، توابل أحادية المنشأ مطحونة على البارد، وأساسيات مطبخ مستوردة مباشرة من مزارع هندية متوارثة لطهي منزلي أصيل في دولة الإمارات.'
@@ -247,12 +247,12 @@ export const HomeHero: React.FC<HomeHeroProps> = ({
             transform: heroReady ? `translateY(${isReducedMotion ? 0 : (hasEntered ? ctaScrollY : 0)}px)` : 'translateY(20px)',
             transition: hasEntered ? 'none' : 'opacity 650ms cubic-bezier(0.22, 1, 0.36, 1) 460ms, transform 650ms cubic-bezier(0.22, 1, 0.36, 1) 460ms',
           }}
-          className="flex flex-wrap items-center justify-center gap-3.5 sm:gap-5 mb-1 sm:mb-2"
+          className="flex flex-wrap items-center justify-center gap-4 sm:gap-5 mb-2 sm:mb-3"
         >
           <button
             type="button"
             onClick={onExplorePantry}
-            className="magic-btn-primary h-11 sm:h-12 px-6 sm:px-8 bg-[#C8102E] hover:bg-[#A60D26] text-white text-xs sm:text-[13px] font-bold uppercase tracking-widest rounded-md shadow-xl hover:shadow-2xl flex items-center gap-2.5 cursor-pointer group border border-white/20"
+            className="magic-btn-primary min-h-[48px] h-14 sm:h-16 px-8 sm:px-10 bg-[#C8102E] hover:bg-[#A60D26] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-md shadow-xl hover:shadow-2xl flex items-center gap-2.5 cursor-pointer group border border-white/20 active:scale-[0.98] transition-all"
           >
             <span>{isRTL ? 'تسوق المحصول' : 'SHOP THE HARVEST'}</span>
             <ArrowIcon className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1.5 rtl:group-hover:-translate-x-1.5" />
@@ -261,7 +261,7 @@ export const HomeHero: React.FC<HomeHeroProps> = ({
           <button
             type="button"
             onClick={onDiscoverStory}
-            className="magic-btn-secondary h-11 sm:h-12 px-6 sm:px-8 bg-white/10 hover:bg-white/20 text-[#FDF6EC] border-2 border-[#D4A843]/60 hover:border-[#D4A843] text-xs sm:text-[13px] font-bold uppercase tracking-widest rounded-md shadow-lg cursor-pointer backdrop-blur-md"
+            className="magic-btn-secondary min-h-[48px] h-14 sm:h-16 px-8 sm:px-10 bg-white/10 hover:bg-white/20 text-[#FDF6EC] border-2 border-[#D4A843]/60 hover:border-[#D4A843] text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-md shadow-lg cursor-pointer backdrop-blur-md active:scale-[0.98] transition-all"
           >
             {isRTL ? 'قصة التوريد الأصيل' : 'OUR SOURCING ETHOS'}
           </button>

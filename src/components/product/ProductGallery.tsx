@@ -307,18 +307,18 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({ product }) => {
         </div>
 
         {/* Top Assurance & Tag Row */}
-        <div className="w-full flex items-center justify-between text-xs text-[#3C1518]/70 z-10 border-b border-[#E6E0D6]/70 pb-2.5">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white border border-[#E6E0D6] shadow-2xs">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#2B6E2A]" />
-            <span className="font-mono font-bold text-[10px] tracking-wider uppercase text-[#2B6E2A]">
-              {isRTL ? 'محصول هندي أصيل' : '100% Authentic Indian Harvest'}
+        <div className="w-full flex items-center justify-between gap-2 text-xs text-[#3C1518]/70 z-10 border-b border-[#E6E0D6]/70 pb-2.5">
+          <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-white border border-[#E6E0D6] shadow-2xs shrink min-w-0">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#2B6E2A] shrink-0" />
+            <span className="font-sans font-bold text-[10px] sm:text-xs tracking-wider uppercase text-[#2B6E2A] truncate">
+              {isRTL ? 'محصول هندي أصيل' : 'Authentic Indian Harvest'}
             </span>
           </div>
 
-          <div className="inline-flex items-center gap-1.5 text-[11px] font-mono font-medium text-[#6B4226]">
-            <span>{currentImage.label}</span>
-            <span className="opacity-40">•</span>
-            <span>
+          <div className="inline-flex items-center gap-1.5 text-xs font-sans font-semibold text-[#6B4226] shrink-0">
+            <span className="hidden xs:inline">{currentImage.label}</span>
+            <span className="hidden xs:inline opacity-40">•</span>
+            <span className="bg-white/80 px-2 py-0.5 rounded-full border border-[#E6E0D6] text-[11px]">
               {activeIndex + 1}/{images.length}
             </span>
           </div>
@@ -340,7 +340,7 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({ product }) => {
                 className="max-h-[280px] sm:max-h-[340px] w-auto max-w-full object-contain filter drop-shadow-xs transition-transform duration-300 group-hover:scale-103"
                 loading="eager"
               />
-              <span className="text-xs font-mono font-semibold text-[#6B4226] uppercase tracking-wider mt-3">
+              <span className="text-xs font-sans font-semibold text-[#6B4226] uppercase tracking-wider mt-3">
                 {product.origin || 'Generational Heritage Belts'}
               </span>
             </div>
@@ -395,7 +395,7 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({ product }) => {
         )}
 
         {/* Bottom Stage Spec Footer */}
-        <div className="w-full flex items-center justify-between text-[11px] font-mono text-[#3C1518]/65 z-10 border-t border-[#E6E0D6]/70 pt-2.5">
+        <div className="w-full flex items-center justify-between text-xs font-sans text-[#3C1518]/65 z-10 border-t border-[#E6E0D6]/70 pt-2.5">
           <span>{product.weight} • Multi-Barrier Foil</span>
           <span className="font-arabic text-xs text-[#3C1518]/80 font-medium">
             {product.arabicName}
@@ -505,7 +505,7 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({ product }) => {
               <span className="font-display font-bold text-lg text-[#3C1518] block">
                 {product.name}
               </span>
-              <span className="text-xs font-mono text-[#6B4226] mt-0.5 block">
+              <span className="text-xs font-sans text-[#6B4226] mt-0.5 block">
                 {currentImage.label} • {product.weight}
               </span>
             </div>
@@ -516,14 +516,14 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({ product }) => {
                 <button
                   type="button"
                   onClick={handlePrev}
-                  className="px-4 py-2 rounded-md bg-white border border-[#E6E0D6] text-xs font-mono font-bold text-[#3C1518] hover:text-[#C8102E] cursor-pointer"
+                  className="px-4 py-2 rounded-md bg-white border border-[#E6E0D6] text-xs font-sans font-bold text-[#3C1518] hover:text-[#C8102E] cursor-pointer"
                 >
                   {isRTL ? 'التالي →' : '← Previous'}
                 </button>
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="px-4 py-2 rounded-md bg-white border border-[#E6E0D6] text-xs font-mono font-bold text-[#3C1518] hover:text-[#C8102E] cursor-pointer"
+                  className="px-4 py-2 rounded-md bg-white border border-[#E6E0D6] text-xs font-sans font-bold text-[#3C1518] hover:text-[#C8102E] cursor-pointer"
                 >
                   {isRTL ? '← السابق' : 'Next →'}
                 </button>

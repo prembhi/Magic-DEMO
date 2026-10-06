@@ -26,7 +26,7 @@ export const HomeBrandStatement: React.FC<HomeBrandStatementProps> = ({
   }, []);
 
   useEffect(() => {
-    if (!isReducedMotion) return;
+    if (isReducedMotion) return;
     const handleScroll = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
@@ -49,7 +49,7 @@ export const HomeBrandStatement: React.FC<HomeBrandStatementProps> = ({
   return (
     <section
       ref={sectionRef}
-      className="relative w-full bg-[#3C1518] text-[#FDF6EC] py-14 sm:py-18 lg:py-20 px-4 sm:px-6 lg:px-12 overflow-hidden select-none border-y-2 border-[#D4A843]/30"
+      className="relative w-full bg-[#3C1518] text-[#FDF6EC] py-24 sm:py-32 lg:py-40 px-4 sm:px-6 lg:px-12 overflow-hidden select-none border-y-2 border-[#D4A843]/30"
       aria-label="MAGIC Brand Statement"
     >
       {/* ========================================================================= */}
@@ -90,27 +90,36 @@ export const HomeBrandStatement: React.FC<HomeBrandStatementProps> = ({
         className="relative max-w-5xl mx-auto text-center z-10"
       >
         {/* EDITORIAL PROMISE EYEBROW */}
-        <p className="text-[#D4A843] text-xs font-bold tracking-[0.25em] uppercase mb-4 sm:mb-5">
+        <p className="text-[#D4A843] text-sm font-bold tracking-[0.25em] uppercase mb-4 sm:mb-5">
           {isRTL ? 'عهدنا الصادق لكل منزل' : 'OUR COMMITMENT TO YOUR KITCHEN'}
         </p>
 
-        {/* FRAUNCES STATEMENT HEADLINE */}
+        {/* EDITORIAL STATEMENT HEADLINE */}
         <h2
           style={{
             transform: isReducedMotion ? 'none' : `translate3d(0, ${headlineTranslateY}px, 0)`,
             willChange: 'transform',
           }}
-          className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.98] mb-5 sm:mb-6 drop-shadow-md"
+          className="font-display font-extrabold text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tight leading-[0.98] mb-5 sm:mb-6 drop-shadow-md"
         >
-          <span className="block text-[#FDF6EC]">{isRTL ? 'مكونات نقية.' : 'PURE INGREDIENTS.'}</span>
-          <span className="block text-[#D4A843]">{isRTL ? 'مناشئ حقيقية.' : 'REAL ORIGINS.'}</span>
-          <span className="block text-[#C8102E] italic font-normal text-3xl sm:text-5xl md:text-6xl lg:text-7xl mt-1.5">
+          {/* LINE 1: Dominant headline (Bricolage Grotesque, weight 800) */}
+          <span className="block font-display font-extrabold text-[#FDF6EC]">
+            {isRTL ? 'مكونات نقية.' : 'PURE INGREDIENTS.'}
+          </span>
+
+          {/* LINE 2: Direct continuation (Bricolage Grotesque, weight 700, not italic, 82% size, gold) */}
+          <span className="block font-display font-bold not-italic text-[#D4A843] text-[0.82em] leading-[1.04] mt-1 sm:mt-1.5">
+            {isRTL ? 'مناشئ حقيقية.' : 'REAL ORIGINS.'}
+          </span>
+
+          {/* LINE 3: Elegant editorial statement (Poppins, weight 500, upright / not italic, 38% size, brand red) */}
+          <span className="block font-body font-medium not-italic text-[#C8102E] text-[0.36em] tracking-normal leading-snug mt-3 sm:mt-4">
             {isRTL ? 'سحر ونقاء في كل رشة.' : 'Magic in every pinch.'}
           </span>
         </h2>
 
         {/* SUPPORTING NARRATIVE WITH ENHANCED CONTRAST & READABILITY */}
-        <p className="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-[#FDF6EC]/90 leading-relaxed font-sans mb-6 sm:mb-8 drop-shadow-sm font-normal">
+        <p className="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-[#FDF6EC]/90 leading-relaxed font-body font-normal mb-6 sm:mb-8 drop-shadow-sm">
           {isRTL
             ? 'بلا خلط مع إضافات رخيصة. بلا زيوت تلميع صناعية أو ملونات تجارية. نعمل مباشرة مع المزارعين في الهند لنصل بنقاء أصيل وعطري إلى كل طبق دال وكاري في دولة الإمارات.'
             : 'No blending with cheap fillers. No artificial polishing oils or industrial colorants. We work directly with Indian farmers to bring unhurried, fragrant purity to every pot of dal and every spiced dish in the UAE.'}
@@ -121,7 +130,7 @@ export const HomeBrandStatement: React.FC<HomeBrandStatementProps> = ({
           <button
             type="button"
             onClick={onNavigateImpact}
-            className="h-12 sm:h-13 px-8 sm:px-10 bg-[#C8102E] hover:bg-[#9B0D23] text-white text-xs sm:text-sm font-bold uppercase tracking-widest rounded-md shadow-xl hover:shadow-2xl transition-all flex items-center gap-3 cursor-pointer group active:scale-[0.98] border border-white/20"
+            className="h-12 sm:h-13 px-8 sm:px-10 bg-[#C8102E] hover:bg-[#9B0D23] text-white text-xs sm:text-sm font-body font-semibold uppercase tracking-widest rounded-md shadow-xl hover:shadow-2xl transition-all flex items-center gap-3 cursor-pointer group active:scale-[0.98] border border-white/20"
           >
             <span>{isRTL ? 'أثرنا الزراعي' : 'OUR FARM IMPACT'}</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
@@ -130,7 +139,7 @@ export const HomeBrandStatement: React.FC<HomeBrandStatementProps> = ({
           <button
             type="button"
             onClick={onExplorePantry}
-            className="h-12 sm:h-13 px-8 sm:px-10 bg-white/10 hover:bg-white/20 text-[#FDF6EC] border-2 border-[#D4A843]/60 hover:border-[#D4A843] text-xs sm:text-sm font-bold uppercase tracking-widest rounded-md transition-all cursor-pointer backdrop-blur-md active:scale-[0.98]"
+            className="h-12 sm:h-13 px-8 sm:px-10 bg-white/10 hover:bg-white/20 text-[#FDF6EC] border-2 border-[#D4A843]/60 hover:border-[#D4A843] text-xs sm:text-sm font-body font-semibold uppercase tracking-widest rounded-md transition-all cursor-pointer backdrop-blur-md active:scale-[0.98]"
           >
             {isRTL ? 'استكشف الأساسيات' : 'EXPLORE STAPLES'}
           </button>

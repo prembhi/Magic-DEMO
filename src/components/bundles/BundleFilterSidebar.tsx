@@ -105,11 +105,11 @@ export const BundleFilterSidebar: React.FC<BundleFilterSidebarProps> = ({
       {/* Top Header & Clear All */}
       <div className="flex items-center justify-between pb-3 border-b border-[#3C1518]/12">
         <div className="flex items-center gap-2">
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#3C1518]">
+          <span className="text-xs font-sans font-medium font-bold uppercase tracking-widest text-[#3C1518]">
             FILTER BY
           </span>
           {activeFiltersCount > 0 && (
-            <span className="w-5 h-5 rounded-full bg-[#C8102E] text-white text-[10px] font-bold flex items-center justify-center font-mono">
+            <span className="w-5 h-5 rounded-full bg-[#C8102E] text-white text-[10px] font-bold flex items-center justify-center font-sans font-medium">
               {activeFiltersCount}
             </span>
           )}
@@ -129,7 +129,7 @@ export const BundleFilterSidebar: React.FC<BundleFilterSidebarProps> = ({
 
       {/* Group 1: Bundle Type */}
       <div>
-        <h4 className="text-[11px] font-mono uppercase tracking-wider text-[#3C1518]/70 font-semibold mb-2.5">
+        <h4 className="text-[11px] font-sans font-medium uppercase tracking-wider text-[#3C1518]/70 font-semibold mb-2.5">
           BUNDLE TYPE
         </h4>
         <div className="space-y-2">
@@ -164,7 +164,7 @@ export const BundleFilterSidebar: React.FC<BundleFilterSidebarProps> = ({
 
       {/* Group 2: Main Use */}
       <div className="pt-4 border-t border-[#3C1518]/10">
-        <h4 className="text-[11px] font-mono uppercase tracking-wider text-[#3C1518]/70 font-semibold mb-2.5">
+        <h4 className="text-[11px] font-sans font-medium uppercase tracking-wider text-[#3C1518]/70 font-semibold mb-2.5">
           MAIN USE
         </h4>
         <div className="space-y-2">
@@ -199,7 +199,7 @@ export const BundleFilterSidebar: React.FC<BundleFilterSidebarProps> = ({
 
       {/* Group 3: Includes Products */}
       <div className="pt-4 border-t border-[#3C1518]/10">
-        <h4 className="text-[11px] font-mono uppercase tracking-wider text-[#3C1518]/70 font-semibold mb-2.5">
+        <h4 className="text-[11px] font-sans font-medium uppercase tracking-wider text-[#3C1518]/70 font-semibold mb-2.5">
           INCLUDES
         </h4>
         <div className="space-y-2">
@@ -234,7 +234,7 @@ export const BundleFilterSidebar: React.FC<BundleFilterSidebarProps> = ({
 
       {/* Group 4: Availability */}
       <div className="pt-4 border-t border-[#3C1518]/10">
-        <h4 className="text-[11px] font-mono uppercase tracking-wider text-[#3C1518]/70 font-semibold mb-2.5">
+        <h4 className="text-[11px] font-sans font-medium uppercase tracking-wider text-[#3C1518]/70 font-semibold mb-2.5">
           AVAILABILITY
         </h4>
         <div className="space-y-2">

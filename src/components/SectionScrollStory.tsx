@@ -102,7 +102,7 @@ export const SectionScrollStory: React.FC<SectionScrollStoryProps> = ({
 
           {/* Interactive Progress Counter */}
           <div className="flex items-center gap-4">
-            <div className="font-mono text-xs font-bold text-[#3C1518] tracking-widest">
+            <div className="font-sans font-medium text-xs font-bold text-[#3C1518] tracking-widest">
               <span className="text-[#C8102E] text-sm">{activeProduct.number}</span>
               <span className="text-[#3C1518]/40"> / 06</span>
             </div>
@@ -138,7 +138,7 @@ export const SectionScrollStory: React.FC<SectionScrollStoryProps> = ({
             </h3>
 
             {/* Category & Pack Size */}
-            <div className="flex items-center justify-center lg:justify-start gap-2 text-xs font-mono font-bold text-[#3C1518] mb-4">
+            <div className="flex items-center justify-center lg:justify-start gap-2 text-xs font-sans font-medium font-bold text-[#3C1518] mb-4">
               <span className="px-2 py-0.5 rounded bg-[#3C1518]/5 border border-[#3C1518]/10">
                 {activeProduct.spiceCategory}
               </span>
@@ -167,7 +167,7 @@ export const SectionScrollStory: React.FC<SectionScrollStoryProps> = ({
                 <span className="text-[10px] uppercase font-bold tracking-wider text-[#3C1518]/60">
                   Commercial Tier
                 </span>
-                <span className="font-mono text-xs font-bold text-[#3C1518]">
+                <span className="font-sans font-medium text-xs font-bold text-[#3C1518]">
                   Export Ready
                 </span>
               </div>

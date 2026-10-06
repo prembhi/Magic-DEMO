@@ -70,7 +70,7 @@ export const HomeWhyMagic: React.FC = () => {
     <section
       ref={sectionRef}
       id="why-magic"
-      className="w-full bg-[#FAF5EE] text-[#3C1518] py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-12 border-b border-[#3C1518]/12 select-none relative overflow-hidden"
+      className="w-full bg-[#FAF5EE] text-[#3C1518] py-20 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-12 border-b border-[#3C1518]/12 select-none relative overflow-hidden"
       aria-labelledby="why-magic-heading"
     >
       <div className="max-w-6xl mx-auto relative z-10">
@@ -84,20 +84,20 @@ export const HomeWhyMagic: React.FC = () => {
             opacity: isVisible || isReducedMotion ? 1 : 0,
             transition: 'opacity 650ms cubic-bezier(0.22, 1, 0.36, 1), transform 650ms cubic-bezier(0.22, 1, 0.36, 1)',
           }}
-          className="max-w-3xl mb-6 sm:mb-8"
+          className="max-w-3xl mb-8 sm:mb-10"
         >
-          <span className="text-xs font-mono font-bold uppercase tracking-[0.25em] text-[#C8102E] block mb-2">
+          <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#C8102E] block mb-2.5">
             {isRTL ? 'معيار ماجيك' : 'THE MAGIC STANDARD'}
           </span>
 
           <h2
             id="why-magic-heading"
-            className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-[#3C1518] tracking-tight leading-[0.95] mb-3"
+            className="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl text-[#3C1518] tracking-tight leading-[0.98] mb-3.5"
           >
             {isRTL ? 'ما الذي يميّز ماجيك.' : 'WHAT SETS MAGIC APART.'}
           </h2>
 
-          <p className="text-base sm:text-lg text-[#3C1518]/80 font-sans leading-relaxed max-w-2xl">
+          <p className="text-base sm:text-lg text-[#3C1518]/85 font-sans leading-relaxed max-w-2xl">
             {isRTL
               ? 'من المزارع التي نتشارك معها إلى الطريقة التي نحمي بها كل حصاد، إليك ما يجعل ماجيك متفردة.'
               : 'From the farms we partner with to the way we protect every harvest, here\'s what makes MAGIC different.'}
@@ -136,7 +136,7 @@ export const HomeWhyMagic: React.FC = () => {
                 <h3 className="font-display font-bold text-lg sm:text-xl text-[#3C1518] tracking-tight mt-2.5 block leading-tight">
                   {isRTL ? 'أسواق الجملة' : 'CONVENTIONAL'}
                 </h3>
-                <span className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-[#6B4226] block mt-0.5">
+                <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6B4226] block mt-0.5">
                   {isRTL ? 'التجارية التقليدية' : 'BULK MARKET'}
                 </span>
               </div>
@@ -145,7 +145,7 @@ export const HomeWhyMagic: React.FC = () => {
               <div className="divide-y divide-[#3C1518]/10 flex-1 flex flex-col justify-between">
                 {principles.map((p) => (
                   <div key={p.title} className="py-2.5 sm:py-3 lg:py-3.5 flex flex-col justify-center">
-                    <span className="text-[11px] font-mono font-medium uppercase tracking-wider text-[#6B4226] block mb-0.5">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-[#6B4226] block mb-0.5">
                       {p.title}
                     </span>
                     <p className="font-sans text-xs sm:text-sm text-[#3C1518]/75 leading-relaxed">
@@ -162,7 +162,7 @@ export const HomeWhyMagic: React.FC = () => {
             <div className="bg-[#FDF6EC] rounded-2xl border border-[#3C1518]/12 border-t-2 border-t-[#C8102E] shadow-2xs p-3.5 sm:p-5 lg:p-6 flex flex-col justify-between order-1 md:order-2 relative">
               {/* Header Visual: Authentic Toor Dal Product Packaging */}
               <div className="flex flex-col items-center text-center pb-3 border-b border-[#3C1518]/15">
-                <div className="h-30 sm:h-38 lg:h-40 w-full flex items-center justify-center pointer-events-none select-none">
+                <div className="h-36 sm:h-44 lg:h-48 w-full flex items-center justify-center pointer-events-none select-none">
                   <img
                     src={MAGIC_ASSETS.toor}
                     alt="MAGIC Toor Dal Authentic Packaging Pouch"
@@ -170,10 +170,10 @@ export const HomeWhyMagic: React.FC = () => {
                     loading="lazy"
                   />
                 </div>
-                <h3 className="font-display font-black text-xl sm:text-2xl text-[#C8102E] tracking-tight mt-2.5 block leading-tight">
+                <h3 className="font-display font-extrabold text-xl sm:text-2xl text-[#C8102E] tracking-tight mt-2.5 block leading-tight">
                   {isRTL ? 'ماجيك' : 'MAGIC'}
                 </h3>
-                <span className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-[#3C1518] block mt-0.5">
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#3C1518] block mt-0.5">
                   {isRTL ? 'معيارنا المعتمد' : 'OUR STANDARD'}
                 </span>
               </div>
@@ -182,10 +182,10 @@ export const HomeWhyMagic: React.FC = () => {
               <div className="divide-y divide-[#3C1518]/12 flex-1 flex flex-col justify-between">
                 {principles.map((p) => (
                   <div key={p.title} className="py-2.5 sm:py-3 lg:py-3.5 flex flex-col justify-center">
-                    <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#C8102E] block mb-0.5">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#C8102E] block mb-0.5">
                       {p.title}
                     </span>
-                    <p className="font-sans font-semibold text-xs sm:text-sm text-[#3C1518] leading-relaxed">
+                    <p className="font-sans font-semibold text-sm sm:text-base text-[#3C1518] leading-relaxed">
                       {p.magic}
                     </p>
                   </div>
@@ -211,7 +211,7 @@ export const HomeWhyMagic: React.FC = () => {
                 <h3 className="font-display font-bold text-lg sm:text-xl text-[#3C1518] tracking-tight mt-2.5 block leading-tight">
                   {isRTL ? 'التوابل التجارية' : 'TYPICAL'}
                 </h3>
-                <span className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-[#6B4226] block mt-0.5">
+                <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6B4226] block mt-0.5">
                   {isRTL ? 'المعلبة المتداولة' : 'PACKAGED SPICE'}
                 </span>
               </div>
@@ -220,7 +220,7 @@ export const HomeWhyMagic: React.FC = () => {
               <div className="divide-y divide-[#3C1518]/10 flex-1 flex flex-col justify-between">
                 {principles.map((p) => (
                   <div key={p.title} className="py-2.5 sm:py-3 lg:py-3.5 flex flex-col justify-center">
-                    <span className="text-[11px] font-mono font-medium uppercase tracking-wider text-[#6B4226] block mb-0.5">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-[#6B4226] block mb-0.5">
                       {p.title}
                     </span>
                     <p className="font-sans text-xs sm:text-sm text-[#3C1518]/75 leading-relaxed">
@@ -234,23 +234,10 @@ export const HomeWhyMagic: React.FC = () => {
           </div>
 
           {/* RESTRAINED MARGIN DETAIL INSIDE PANEL */}
-          <div className="mt-4 pt-4 border-t border-[#3C1518]/12 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <span className="text-[11px] font-mono font-medium text-[#6B4226] tracking-wider uppercase">
+          <div className="mt-5 pt-4 border-t border-[#3C1518]/12 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <span className="text-xs font-semibold text-[#6B4226] tracking-wider uppercase">
               {isRTL ? 'محاصيل موثقة أحادية المنشأ مخصصة للمطابخ المنزلية في الإمارات' : 'DOCUMENTED SINGLE-ORIGIN HARVESTS FOR UAE HOME KITCHENS'}
             </span>
-
-            <div
-              aria-hidden="true"
-              className="self-end sm:self-center w-12 sm:w-14 opacity-75 pointer-events-none select-none"
-            >
-              <img
-                src={MAGIC_ASSETS.illustrations.harvestBasket}
-                alt=""
-                style={{ mixBlendMode: 'multiply' }}
-                className="w-full h-auto object-contain"
-                loading="lazy"
-              />
-            </div>
           </div>
         </div>
 

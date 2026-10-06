@@ -53,7 +53,7 @@ export const ProductCookWithMagic: React.FC<ProductCookWithMagicProps> = ({
             >
               <ChefHat className="w-3.5 h-3.5" />
               <span>{dish.name}</span>
-              <span className="text-[10px] font-mono opacity-60">({dish.prepTime})</span>
+              <span className="text-[10px] font-sans font-medium opacity-60">({dish.prepTime})</span>
             </button>
           ))}
         </div>
@@ -63,7 +63,7 @@ export const ProductCookWithMagic: React.FC<ProductCookWithMagicProps> = ({
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
             <div className="flex-1">
               <div className="flex items-center gap-2 text-xs text-[#3C1518]/60 mb-2">
-                <span className="font-mono text-[#C8102E] font-bold uppercase text-[10px] bg-[#C8102E]/10 px-2 py-0.5 rounded-2xs">
+                <span className="font-sans font-medium text-[#C8102E] font-bold uppercase text-[10px] bg-[#C8102E]/10 px-2 py-0.5 rounded-2xs">
                   Featured Application
                 </span>
                 <span className="flex items-center gap-1">

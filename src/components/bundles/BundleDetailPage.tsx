@@ -124,7 +124,7 @@ export const BundleDetailPage: React.FC<BundleDetailPageProps> = ({
             <div className="bg-white border border-[#E6DFC8] p-6 sm:p-8 rounded-xs shadow-2xs">
               <BundleComposition products={bundle.products} size="lg" />
 
-              <div className="mt-4 pt-4 border-t border-[#3C1518]/10 flex flex-wrap items-center justify-between text-xs text-[#3C1518]/65 font-mono">
+              <div className="mt-4 pt-4 border-t border-[#3C1518]/10 flex flex-wrap items-center justify-between text-xs text-[#3C1518]/65 font-sans font-medium">
                 <span>Includes {bundle.products.length} Authentic Products</span>
                 <span>{bundle.totalWeight}</span>
               </div>
@@ -136,11 +136,11 @@ export const BundleDetailPage: React.FC<BundleDetailPageProps> = ({
             {/* Kicker */}
             <div className="flex items-center gap-2 mb-2">
               <span className="w-2 h-2 rounded-full bg-[#C8102E]" />
-              <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#C8102E] font-bold">
+              <span className="text-[11px] font-sans font-medium uppercase tracking-[0.25em] text-[#C8102E] font-bold">
                 {bundle.category}
               </span>
               <span className="text-[#3C1518]/25 text-xs">·</span>
-              <span className="text-[11px] font-mono uppercase text-[#3C1518]/60 font-semibold">
+              <span className="text-[11px] font-sans font-medium uppercase text-[#3C1518]/60 font-semibold">
                 {bundle.mainUse}
               </span>
             </div>
@@ -166,10 +166,10 @@ export const BundleDetailPage: React.FC<BundleDetailPageProps> = ({
             {/* Pricing Section (Accurate sum, strictly zero discount claims) */}
             <div className="p-4 bg-[#FAF7F2] border border-[#E6DFC8] rounded-2xs mb-6">
               <div className="flex items-baseline justify-between mb-1">
-                <span className="text-[11px] font-mono uppercase tracking-wider text-[#3C1518]/60">
+                <span className="text-[11px] font-sans font-medium uppercase tracking-wider text-[#3C1518]/60">
                   Combined Price
                 </span>
-                <span className="text-2xl font-mono font-black text-[#C8102E]">
+                <span className="text-2xl font-sans font-medium font-black text-[#C8102E]">
                   AED {(bundle.price * quantity).toFixed(2)}
                 </span>
               </div>
@@ -181,7 +181,7 @@ export const BundleDetailPage: React.FC<BundleDetailPageProps> = ({
             {/* Quantity Selector + Add To Cart */}
             <div className="space-y-4 mb-6">
               <div className="flex items-center gap-4">
-                <span className="text-xs font-mono uppercase tracking-wider text-[#3C1518]/70 font-semibold">
+                <span className="text-xs font-sans font-medium uppercase tracking-wider text-[#3C1518]/70 font-semibold">
                   Quantity:
                 </span>
                 <div className="inline-flex items-center border border-[#D9CEBA] bg-white rounded-2xs">
@@ -194,7 +194,7 @@ export const BundleDetailPage: React.FC<BundleDetailPageProps> = ({
                   >
                     <Minus className="w-3.5 h-3.5" />
                   </button>
-                  <span className="px-4 py-1 text-xs font-mono font-bold text-[#3C1518]">
+                  <span className="px-4 py-1 text-xs font-sans font-medium font-bold text-[#3C1518]">
                     {quantity}
                   </span>
                   <button
@@ -240,7 +240,7 @@ export const BundleDetailPage: React.FC<BundleDetailPageProps> = ({
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-8">
-            <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#C8102E] font-bold block mb-1">
+            <span className="text-[11px] font-sans font-medium uppercase tracking-[0.25em] text-[#C8102E] font-bold block mb-1">
               INDIVIDUAL ITEMS
             </span>
             <h2
@@ -269,7 +269,7 @@ export const BundleDetailPage: React.FC<BundleDetailPageProps> = ({
                     />
                   </div>
 
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#3C1518]/50 block mb-0.5">
+                  <span className="text-[10px] font-sans font-medium uppercase tracking-widest text-[#3C1518]/50 block mb-0.5">
                     {prod.weight} · {prod.category}
                   </span>
                   <h3 className="text-base font-serif font-bold text-[#3C1518] group-hover:text-[#C8102E] transition-colors mb-1">
@@ -278,7 +278,7 @@ export const BundleDetailPage: React.FC<BundleDetailPageProps> = ({
                   <p className="text-xs text-[#3C1518]/70 line-clamp-2 mb-3">
                     {prod.culinaryProfile}
                   </p>
-                  <span className="text-sm font-mono font-bold text-[#C8102E] block mb-3">
+                  <span className="text-sm font-sans font-medium font-bold text-[#C8102E] block mb-3">
                     AED {prod.price.toFixed(2)}
                   </span>
                 </div>
@@ -317,7 +317,7 @@ export const BundleDetailPage: React.FC<BundleDetailPageProps> = ({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-baseline justify-between mb-8 pb-3 border-b border-[#3C1518]/10">
               <div>
-                <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#C8102E] font-bold block mb-1">
+                <span className="text-[11px] font-sans font-medium uppercase tracking-[0.25em] text-[#C8102E] font-bold block mb-1">
                   MORE SETS
                 </span>
                 <h2
@@ -351,7 +351,7 @@ export const BundleDetailPage: React.FC<BundleDetailPageProps> = ({
                     <div className="mb-3">
                       <BundleComposition products={b.products} size="sm" />
                     </div>
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-[#C8102E] font-bold block mb-1">
+                    <span className="text-[10px] font-sans font-medium uppercase tracking-wider text-[#C8102E] font-bold block mb-1">
                       {b.category}
                     </span>
                     <h3 className="text-base font-serif font-bold text-[#3C1518] group-hover:text-[#C8102E] transition-colors mb-1 line-clamp-1">
@@ -362,7 +362,7 @@ export const BundleDetailPage: React.FC<BundleDetailPageProps> = ({
                     </p>
                   </div>
                   <div className="pt-3 border-t border-[#3C1518]/10 flex items-center justify-between">
-                    <span className="text-sm font-mono font-bold text-[#C8102E]">
+                    <span className="text-sm font-sans font-medium font-bold text-[#C8102E]">
                       AED {b.price.toFixed(2)}
                     </span>
                     <span className="text-xs font-bold text-[#3C1518] group-hover:text-[#C8102E] flex items-center gap-1">

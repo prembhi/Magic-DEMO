@@ -247,34 +247,22 @@ export const HomeBundles: React.FC<HomeBundlesProps> = ({
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* ========================================================================= */}
-        {/* 1. SECTION INTRO WITH SUPPORTING KITCHEN COOKING ARTWORK                  */}
         {/* ========================================================================= */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-4 sm:mb-6">
-          <div className="max-w-2xl">
+        {/* 1. SECTION INTRO (CLEAN SPREAD INTRO, NO CLUTTERED FLOATING ARTWORK)      */}
+        {/* ========================================================================= */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6 sm:mb-8">
+          <div className="max-w-3xl">
             <h2
               id="bundles-heading"
-              className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-[#3C1518] tracking-tight leading-[0.96] mb-2.5"
+              className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-[#3C1518] tracking-tight leading-[0.98] mb-3"
             >
               {isRTL ? 'اطبخ سحر النكهات.' : 'COOK SOMETHING MAGIC.'}
             </h2>
-            <p className="text-sm sm:text-base text-[#3C1518]/85 font-normal font-sans leading-relaxed max-w-xl">
+            <p className="text-base sm:text-lg text-[#3C1518]/85 font-normal font-sans leading-relaxed max-w-2xl">
               {isRTL
                 ? 'أساسيات مؤونة منسقة للأطباق التي تعشق طهيها. بقوليات هندية أحادية المنشأ وتوابل عطرية موزونة خصيصاً لوصفات منزلية أصيلة في دولة الإمارات.'
                 : 'Curated pantry staples for the dishes you love to cook. Single-origin Indian dals and aromatic spices proportioned for authentic regional recipes in the UAE.'}
             </p>
-          </div>
-
-          {/* EDITORIAL KITCHEN COOKING ARTWORK IN UPPER-RIGHT WHITESPACE */}
-          <div
-            aria-hidden="true"
-            className="shrink-0 self-start md:self-end w-36 sm:w-44 lg:w-52 max-w-full pointer-events-none select-none flex items-center justify-center opacity-80 pb-1"
-          >
-            <img
-              src={MAGIC_ASSETS.illustrations.kitchenCooking}
-              alt=""
-              className="w-full h-auto max-h-[110px] sm:max-h-[125px] lg:max-h-[135px] object-contain filter drop-shadow-xs"
-              loading="lazy"
-            />
           </div>
         </div>
 
@@ -290,7 +278,7 @@ export const HomeBundles: React.FC<HomeBundlesProps> = ({
                   key={b.id}
                   type="button"
                   onClick={() => handleSelectBundle(idx)}
-                  className={`pb-2 text-xs sm:text-sm font-mono font-bold tracking-wider uppercase whitespace-nowrap transition-colors cursor-pointer border-b-2 ${
+                  className={`pb-2 text-xs sm:text-sm font-sans font-medium font-bold tracking-wider uppercase whitespace-nowrap transition-colors cursor-pointer border-b-2 ${
                     isActive
                       ? 'text-[#C8102E] border-[#C8102E]'
                       : 'text-[#3C1518]/60 hover:text-[#3C1518] border-transparent'
@@ -329,7 +317,7 @@ export const HomeBundles: React.FC<HomeBundlesProps> = ({
           >
             {/* Dish Eyebrow & Title */}
             <div>
-              <span className="text-[11px] font-mono font-bold tracking-widest uppercase text-[#C8102E] block mb-1">
+              <span className="text-[11px] font-sans font-medium font-bold tracking-widest uppercase text-[#C8102E] block mb-1">
                 {currentBundle.badge}
               </span>
 
@@ -356,16 +344,16 @@ export const HomeBundles: React.FC<HomeBundlesProps> = ({
               className="pt-1 will-change-transform"
             >
               <div className="flex items-center justify-between mb-2 border-b border-[#3C1518]/15 pb-1">
-                <span className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#6B4226]">
+                <span className="text-xs font-sans font-medium font-bold uppercase tracking-[0.2em] text-[#6B4226]">
                   {isRTL ? 'الحبوب والتوابل المشمولة' : 'INCLUDED STAPLES'}
                 </span>
-                <span className="text-xs font-mono font-bold text-[#C8102E]">
+                <span className="text-xs font-sans font-medium font-bold text-[#C8102E]">
                   {currentBundle.stapleCountText}
                 </span>
               </div>
 
               {/* Horizontal Product Packaging Lineup */}
-              <div className="flex items-end gap-4 sm:gap-6 pt-1 pb-1 overflow-x-auto no-scrollbar">
+              <div className="flex items-end gap-5 sm:gap-7 pt-2 pb-2 overflow-x-auto no-scrollbar">
                 {currentBundle.products.map((prod, idx) => (
                   <div
                     key={idx}
@@ -373,9 +361,9 @@ export const HomeBundles: React.FC<HomeBundlesProps> = ({
                     className="flex flex-col items-center shrink-0 cursor-pointer group/prod transition-transform hover:-translate-y-1.5 duration-200"
                     title={`${prod.name} (${prod.weight})`}
                   >
-                    <div className="relative flex items-end justify-center mb-1">
+                    <div className="relative flex items-end justify-center mb-1.5">
                       <div
-                        className="absolute bottom-0 inset-x-1 h-3 rounded-full blur-xs opacity-35 pointer-events-none"
+                        className="absolute bottom-0 inset-x-1 h-3.5 rounded-full blur-xs opacity-35 pointer-events-none"
                         style={{
                           background: 'radial-gradient(ellipse at center, rgba(60, 21, 24, 0.8) 0%, transparent 70%)',
                         }}
@@ -383,14 +371,14 @@ export const HomeBundles: React.FC<HomeBundlesProps> = ({
                       <img
                         src={prod.image}
                         alt={prod.name}
-                        className="h-20 sm:h-24 lg:h-26 w-auto object-contain filter drop-shadow-md group-hover/prod:drop-shadow-xl transition-all"
+                        className="h-24 sm:h-28 lg:h-32 w-auto object-contain filter drop-shadow-md group-hover/prod:drop-shadow-xl transition-all"
                         loading="lazy"
                       />
                     </div>
                     <span className="text-xs font-bold text-[#3C1518] text-center leading-tight group-hover/prod:text-[#C8102E] transition-colors">
                       {prod.name}
                     </span>
-                    <span className="text-[10px] font-mono text-[#6B4226] font-medium">
+                    <span className="text-[11px] text-[#6B4226] font-medium mt-0.5">
                       {prod.weight}
                     </span>
                   </div>
@@ -399,11 +387,11 @@ export const HomeBundles: React.FC<HomeBundlesProps> = ({
             </div>
 
             {/* Action Row & Stepper Controls */}
-            <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-[#3C1518]/15 pt-3">
+            <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-[#3C1518]/15 pt-3.5">
               <button
                 type="button"
                 onClick={() => onNavigateBundles(currentBundle.slug)}
-                className="h-11 sm:h-12 px-7 bg-[#C8102E] hover:bg-[#A60D26] text-white text-xs sm:text-sm font-bold uppercase tracking-widest rounded-md shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2.5 cursor-pointer group active:scale-[0.98] border border-white/20"
+                className="min-h-[48px] h-12 sm:h-13 px-8 bg-[#C8102E] hover:bg-[#A60D26] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-md shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2.5 cursor-pointer group active:scale-[0.98] border border-white/20"
               >
                 <span>{isRTL ? 'استكشف تفاصيل الباقة' : 'EXPLORE THE BUNDLE'}</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1.5 rtl:group-hover:-translate-x-1.5" />
@@ -414,20 +402,20 @@ export const HomeBundles: React.FC<HomeBundlesProps> = ({
                 <button
                   type="button"
                   onClick={handlePrev}
-                  className="w-7 h-7 rounded-full flex items-center justify-center text-[#3C1518] hover:text-[#C8102E] hover:bg-[#FAF5EE] transition-colors cursor-pointer active:scale-95"
+                  className="w-8 h-8 rounded-full flex items-center justify-center text-[#3C1518] hover:text-[#C8102E] hover:bg-[#FAF5EE] transition-colors cursor-pointer active:scale-95"
                   aria-label="Previous recipe set"
                 >
                   <ChevronLeft className="w-4 h-4 rtl:rotate-180" />
                 </button>
 
-                <span className="text-xs font-mono font-bold text-[#3C1518] px-1">
+                <span className="text-xs font-bold text-[#3C1518] px-1.5">
                   0{activeIndex + 1} / 0{bundles.length}
                 </span>
 
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="w-7 h-7 rounded-full flex items-center justify-center text-[#3C1518] hover:text-[#C8102E] hover:bg-[#FAF5EE] transition-colors cursor-pointer active:scale-95"
+                  className="w-8 h-8 rounded-full flex items-center justify-center text-[#3C1518] hover:text-[#C8102E] hover:bg-[#FAF5EE] transition-colors cursor-pointer active:scale-95"
                   aria-label="Next recipe set"
                 >
                   <ChevronRight className="w-4 h-4 rtl:rotate-180" />
@@ -443,7 +431,7 @@ export const HomeBundles: React.FC<HomeBundlesProps> = ({
           <div className="lg:col-span-7 order-1 lg:order-2 relative">
             <div
               onClick={() => onNavigateBundles(currentBundle.slug)}
-              className="relative w-full aspect-[4/3] sm:aspect-[16/11] lg:aspect-[16/11] lg:min-h-[460px] xl:min-h-[500px] rounded-2xl overflow-hidden shadow-2xl bg-[#FAF5EE] border border-[#3C1518]/10 cursor-pointer group mt-2 lg:mt-0"
+              className="relative w-full aspect-[4/3] sm:aspect-[16/11] lg:aspect-[16/11] lg:min-h-[480px] xl:min-h-[520px] rounded-2xl overflow-hidden shadow-2xl bg-[#FAF5EE] border border-[#3C1518]/10 cursor-pointer group mt-2 lg:mt-0"
             >
               <img
                 src={currentBundle.dishPhoto}

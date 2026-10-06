@@ -49,16 +49,16 @@ export const HomeBenefitStrip: React.FC = () => {
             return (
               <div
                 key={item.id}
-                className={`flex items-start gap-3.5 ${
+                className={`flex items-start gap-4 ${
                   idx !== 0 ? 'lg:ps-6' : ''
                 }`}
               >
-                <IconComponent className="w-5 h-5 text-[#D4A843] shrink-0 stroke-[2] mt-0.5" />
+                <IconComponent className="w-6 h-6 text-[#D4A843] shrink-0 stroke-[2] mt-0.5" />
                 <div className="min-w-0">
-                  <h3 className="font-display font-bold text-xs sm:text-sm tracking-wider uppercase text-[#FDF6EC] leading-tight">
+                  <h3 className="font-display font-bold text-sm sm:text-base tracking-wider uppercase text-[#FDF6EC] leading-tight">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-[#FDF6EC]/80 leading-relaxed font-sans mt-1">
+                  <p className="text-xs sm:text-sm text-[#FDF6EC]/85 leading-relaxed font-sans mt-1.5">
                     {item.subtitle}
                   </p>
                 </div>

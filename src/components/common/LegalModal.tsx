@@ -32,7 +32,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, docType, onClose
       icon: ShieldCheck,
       content: (
         <div className="space-y-4 text-xs sm:text-sm text-[#3C1518]/85 leading-relaxed">
-          <div className="p-3.5 bg-[#FAF5EE] rounded-lg border border-[#D4A843]/30 text-xs font-mono text-[#3C1518]">
+          <div className="p-3.5 bg-[#FAF5EE] rounded-lg border border-[#D4A843]/30 text-xs font-sans font-medium text-[#3C1518]">
             <strong>STATUS:</strong> [LEGAL CONTENT REQUIRED]
           </div>
           <p>
@@ -58,7 +58,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, docType, onClose
       icon: FileText,
       content: (
         <div className="space-y-4 text-xs sm:text-sm text-[#3C1518]/85 leading-relaxed">
-          <div className="p-3.5 bg-[#FAF5EE] rounded-lg border border-[#D4A843]/30 text-xs font-mono text-[#3C1518]">
+          <div className="p-3.5 bg-[#FAF5EE] rounded-lg border border-[#D4A843]/30 text-xs font-sans font-medium text-[#3C1518]">
             <strong>STATUS:</strong> [LEGAL CONTENT REQUIRED]
           </div>
           <p>
@@ -80,7 +80,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, docType, onClose
       icon: Truck,
       content: (
         <div className="space-y-4 text-xs sm:text-sm text-[#3C1518]/85 leading-relaxed">
-          <div className="p-3.5 bg-[#FAF5EE] rounded-lg border border-[#D4A843]/30 text-xs font-mono text-[#3C1518]">
+          <div className="p-3.5 bg-[#FAF5EE] rounded-lg border border-[#D4A843]/30 text-xs font-sans font-medium text-[#3C1518]">
             <strong>STATUS:</strong> [LEGAL CONTENT REQUIRED]
           </div>
           <h4 className="font-display font-bold text-base text-[#3C1518]">1. Coverage</h4>
@@ -99,7 +99,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, docType, onClose
       icon: RotateCcw,
       content: (
         <div className="space-y-4 text-xs sm:text-sm text-[#3C1518]/85 leading-relaxed">
-          <div className="p-3.5 bg-[#FAF5EE] rounded-lg border border-[#D4A843]/30 text-xs font-mono text-[#3C1518]">
+          <div className="p-3.5 bg-[#FAF5EE] rounded-lg border border-[#D4A843]/30 text-xs font-sans font-medium text-[#3C1518]">
             <strong>STATUS:</strong> [LEGAL CONTENT REQUIRED]
           </div>
           <p>
@@ -166,7 +166,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, docType, onClose
               <h3 id="legal-modal-title" className="font-display font-bold text-lg sm:text-xl text-[#3C1518]">
                 {currentDoc.title}
               </h3>
-              <span className="font-mono text-[10px] text-[#3C1518]/60 uppercase tracking-wider">
+              <span className="font-sans font-medium text-[10px] text-[#3C1518]/60 uppercase tracking-wider">
                 MAGIC Foods UAE Documentation
               </span>
             </div>

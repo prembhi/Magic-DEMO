@@ -88,7 +88,7 @@ export const SectionSubscribeSave: React.FC<SectionSubscribeSaveProps> = ({
                 {b.icon}
               </div>
 
-              <span className="font-mono text-xs font-bold text-[#C8102E] tracking-widest uppercase mb-1">
+              <span className="font-sans font-medium text-xs font-bold text-[#C8102E] tracking-widest uppercase mb-1">
                 {b.step}
               </span>
 

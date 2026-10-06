@@ -42,7 +42,7 @@ export const ProductAbout: React.FC<ProductAboutProps> = ({ product }) => {
             <span className="text-xs font-bold uppercase tracking-wider text-[#3C1518]/60">
               Pack Weight
             </span>
-            <span className="sm:col-span-2 text-sm font-bold font-mono text-[#3C1518] mt-0.5 sm:mt-0">
+            <span className="sm:col-span-2 text-sm font-bold font-sans font-medium text-[#3C1518] mt-0.5 sm:mt-0">
               {product.weight}
             </span>
           </div>
@@ -87,7 +87,7 @@ export const ProductAbout: React.FC<ProductAboutProps> = ({ product }) => {
             <span className="text-xs font-bold uppercase tracking-wider text-[#3C1518]/60">
               Shelf Life
             </span>
-            <span className="sm:col-span-2 text-sm font-mono text-[#3C1518] mt-0.5 sm:mt-0">
+            <span className="sm:col-span-2 text-sm font-sans font-medium text-[#3C1518] mt-0.5 sm:mt-0">
               {details.shelfLife}
             </span>
           </div>

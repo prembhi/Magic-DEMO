@@ -130,7 +130,7 @@ export const BundleComposition: React.FC<BundleCompositionProps> = ({
       )}
 
       {/* Product count pill badge */}
-      <div className="absolute top-2.5 right-2.5 z-30 bg-white/90 backdrop-blur-xs border border-[#D9CEBA] px-2 py-0.5 rounded-2xs text-[10px] font-mono font-bold text-[#3C1518]/70 shadow-2xs">
+      <div className="absolute top-2.5 right-2.5 z-30 bg-white/90 backdrop-blur-xs border border-[#D9CEBA] px-2 py-0.5 rounded-2xs text-[10px] font-sans font-medium font-bold text-[#3C1518]/70 shadow-2xs">
         {products.length} STAPLES
       </div>
     </div>

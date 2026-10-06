@@ -80,7 +80,7 @@ export const HomeRecipes: React.FC<HomeRecipesProps> = ({
               key={rec.id}
               type="button"
               onClick={() => setActiveStoryIndex(idx)}
-              className={`px-5 py-2.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase transition-all duration-300 cursor-pointer flex items-center gap-2 ${
+              className={`px-5 py-2.5 rounded-full text-xs font-sans font-medium font-bold tracking-wider uppercase transition-all duration-300 cursor-pointer flex items-center gap-2 ${
                 activeStoryIndex === idx
                   ? 'bg-[#3C1518] text-[#FDF6EC] shadow-md scale-102'
                   : 'bg-white text-[#3C1518]/70 hover:bg-[#3C1518]/10 border border-[#3C1518]/10'
@@ -142,11 +142,11 @@ export const HomeRecipes: React.FC<HomeRecipesProps> = ({
 
             {/* Badges */}
             <div className="absolute top-4 start-4 z-20 flex items-center gap-2">
-              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-mono font-bold bg-white/95 border border-[#3C1518]/15 text-[#3C1518] shadow-xs">
+              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-sans font-medium font-bold bg-white/95 border border-[#3C1518]/15 text-[#3C1518] shadow-xs">
                 <Clock className="w-3.5 h-3.5 text-[#C8102E]" />
                 <span>{activeRecipe.cookingTime}</span>
               </span>
-              <span className="px-3 py-1 rounded-full text-xs font-mono font-bold uppercase bg-white/95 border border-[#3C1518]/15 text-[#3C1518] shadow-xs">
+              <span className="px-3 py-1 rounded-full text-xs font-sans font-medium font-bold uppercase bg-white/95 border border-[#3C1518]/15 text-[#3C1518] shadow-xs">
                 {activeRecipe.difficulty}
               </span>
             </div>
@@ -167,7 +167,7 @@ export const HomeRecipes: React.FC<HomeRecipesProps> = ({
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
-                <span className="absolute bottom-3 start-4 text-xs font-mono font-bold text-white tracking-wider uppercase drop-shadow-md">
+                <span className="absolute bottom-3 start-4 text-xs font-sans font-medium font-bold text-white tracking-wider uppercase drop-shadow-md">
                   HOME-COOKED DAL TADKA
                 </span>
               </div>
@@ -193,7 +193,7 @@ export const HomeRecipes: React.FC<HomeRecipesProps> = ({
               key={`recipe-meta-${activeRecipe.id}`}
               className="animate-in fade-in slide-in-from-bottom-2 duration-500 ease-editorial"
             >
-              <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#C8102E] block mb-2">
+              <span className="font-sans font-medium text-xs font-bold uppercase tracking-wider text-[#C8102E] block mb-2">
                 TESTED HOME RECIPE · {activeRecipe.servings}
               </span>
 
@@ -207,7 +207,7 @@ export const HomeRecipes: React.FC<HomeRecipesProps> = ({
 
               {/* KEY MAGIC STAPLES WITH TACTILE LINKS */}
               <div className="space-y-2 mb-8">
-                <span className="font-mono text-[11px] font-bold text-[#3C1518]/70 uppercase tracking-widest block">
+                <span className="font-sans font-medium text-[11px] font-bold text-[#3C1518]/70 uppercase tracking-widest block">
                   AUTHENTIC INGREDIENTS REQUIRED:
                 </span>
                 <div className="flex flex-wrap gap-2">
@@ -240,7 +240,7 @@ export const HomeRecipes: React.FC<HomeRecipesProps> = ({
               <button
                 type="button"
                 onClick={() => onNavigateRecipes()}
-                className="text-xs font-mono text-[#3C1518]/60 hover:text-[#3C1518] transition-colors cursor-pointer"
+                className="text-xs font-sans font-medium text-[#3C1518]/60 hover:text-[#3C1518] transition-colors cursor-pointer"
               >
                 VIEW ALL 6 RECIPES →
               </button>

@@ -116,7 +116,7 @@ export const HomeSubscribe: React.FC<HomeSubscribeProps> = ({
           {/* LEFT: ART-DIRECTED PANTRY COMPOSITION (Pouch layers glide into shelf formation) */}
           <div className="lg:col-span-6 relative w-full h-[360px] sm:h-[440px] bg-gradient-to-b from-white/[0.08] to-white/[0.02] rounded-3xl border border-white/10 p-6 sm:p-8 flex items-center justify-center overflow-hidden">
             {/* Delivery cadence badge */}
-            <div className="absolute top-4 start-4 z-30 px-3.5 py-1.5 rounded-full bg-[#3C1518]/90 border border-[#D4A843]/40 text-xs font-mono text-[#D4A843] shadow-md flex items-center gap-2">
+            <div className="absolute top-4 start-4 z-30 px-3.5 py-1.5 rounded-full bg-[#3C1518]/90 border border-[#D4A843]/40 text-xs font-sans font-medium text-[#D4A843] shadow-md flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#C8102E] animate-pulse" />
               <span>DELIVERY CADENCE: 30 / 14 / 7 DAYS</span>
             </div>
@@ -224,7 +224,7 @@ export const HomeSubscribe: React.FC<HomeSubscribeProps> = ({
                       <h3 className="font-display font-bold text-lg text-[#FDF6EC]">
                         {b.title}
                       </h3>
-                      <span className="font-mono text-xs text-[#D4A843] font-bold">
+                      <span className="font-sans font-medium text-xs text-[#D4A843] font-bold">
                         {b.step}
                       </span>
                     </div>
@@ -233,7 +233,7 @@ export const HomeSubscribe: React.FC<HomeSubscribeProps> = ({
                       {b.desc}
                     </p>
 
-                    <span className="font-mono text-[10px] text-[#D4A843] uppercase tracking-wider block">
+                    <span className="font-sans font-medium text-[10px] text-[#D4A843] uppercase tracking-wider block">
                       ✓ {b.detail}
                     </span>
                   </div>

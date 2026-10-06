@@ -51,7 +51,7 @@ export const RecipesPage: React.FC<RecipesPageProps> = ({
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const { isCartOpen, closeCart, toastMessage } = useShopCart();
+  const { isCartOpen, openCart, closeCart, toastMessage } = useShopCart();
   const { isRTL, t } = useLanguage();
   const ChevronIcon = isRTL ? ChevronLeft : ChevronRight;
 
@@ -177,6 +177,7 @@ export const RecipesPage: React.FC<RecipesPageProps> = ({
         onNavigateBundles={onNavigateBundles}
         onNavigateImpact={onNavigateImpact}
         onNavigateNewsletter={onNavigateNewsletter}
+        onOpenCart={openCart}
       />
 
       {/* MAIN CONTENT AREA */}
@@ -238,7 +239,7 @@ export const RecipesPage: React.FC<RecipesPageProps> = ({
                 <div
                   role="tablist"
                   aria-label="Recipe categories"
-                  className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none pb-1"
+                  className="flex items-center gap-2 overflow-x-auto scrollbar-none pb-1 -mx-4 px-4 sm:mx-0 sm:px-0"
                 >
                   {CATEGORY_TABS.map((tab) => {
                     const isActive = activeCategoryTab === tab;
@@ -249,9 +250,9 @@ export const RecipesPage: React.FC<RecipesPageProps> = ({
                         role="tab"
                         aria-selected={isActive}
                         onClick={() => handleTabClick(tab)}
-                        className={`px-3 sm:px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-xs transition-all whitespace-nowrap cursor-pointer ${
+                        className={`min-h-[40px] px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-md transition-all whitespace-nowrap cursor-pointer active:scale-[0.98] ${
                           isActive
-                            ? 'bg-[#C8102E] text-white shadow-2xs'
+                            ? 'bg-[#C8102E] text-white shadow-xs'
                             : 'bg-white hover:bg-white/80 text-[#3C1518]/70 hover:text-[#3C1518] border border-[#E6E0D6]'
                         }`}
                       >
@@ -265,7 +266,7 @@ export const RecipesPage: React.FC<RecipesPageProps> = ({
                 <button
                   type="button"
                   onClick={() => setIsMobileFilterOpen(true)}
-                  className="lg:hidden shrink-0 inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-[#D9D2C7] rounded-xs text-xs font-bold text-[#3C1518] hover:border-[#C8102E] cursor-pointer shadow-2xs"
+                  className="lg:hidden shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 min-h-[40px] bg-white border border-[#D9D2C7] rounded-md text-xs font-bold text-[#3C1518] hover:border-[#C8102E] cursor-pointer shadow-2xs active:scale-[0.98]"
                   aria-label="Open filter drawer"
                 >
                   <Filter className="w-3.5 h-3.5 text-[#C8102E]" />

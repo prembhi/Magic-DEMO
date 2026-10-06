@@ -55,13 +55,13 @@ export const ProductEditorialBenefitStrip: React.FC<ProductEditorialBenefitStrip
       aria-labelledby="product-benefits-heading"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-7">
-          <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-[0.25em] text-[#C8102E] block mb-1">
+        <div className="text-center mb-8">
+          <span className="text-xs font-sans font-bold uppercase tracking-[0.25em] text-[#C8102E] block mb-2">
             {isRTL ? 'معيار ماجيك المعتمد' : 'THE MAGIC BENCHMARK'}
           </span>
           <h2
             id="product-benefits-heading"
-            className="text-xl sm:text-2xl lg:text-3xl font-display font-black text-[#3C1518] tracking-tight"
+            className="text-2xl sm:text-3xl lg:text-4xl font-display font-black text-[#3C1518] tracking-tight"
           >
             {isRTL ? 'أساسيات نقية متجذرة في بيئتها الأصلية.' : 'Pure Staples, Rooted in Terroir.'}
           </h2>
@@ -75,17 +75,17 @@ export const ProductEditorialBenefitStrip: React.FC<ProductEditorialBenefitStrip
               className="flex flex-col items-start border-t border-[#3C1518]/15 pt-3.5"
             >
               <div className="flex items-center justify-between w-full mb-2">
-                <span className="font-mono text-xs font-bold text-[#D4A843] tracking-widest">
+                <span className="font-sans text-xs font-extrabold text-[#D4A843] tracking-widest">
                   {p.num}
                 </span>
                 <div className="p-1.5 bg-white rounded-full border border-[#3C1518]/10 shadow-2xs">
                   {p.icon}
                 </div>
               </div>
-              <h3 className="text-sm sm:text-base font-display font-bold text-[#3C1518] mb-1">
+              <h3 className="text-base sm:text-lg font-display font-bold text-[#3C1518] mb-1">
                 {isRTL ? p.titleAr : p.titleEn}
               </h3>
-              <p className="text-xs text-[#3C1518]/75 leading-relaxed font-sans">
+              <p className="text-xs sm:text-sm text-[#3C1518]/75 leading-relaxed font-sans">
                 {isRTL ? p.subtitleAr : p.subtitleEn}
               </p>
             </div>

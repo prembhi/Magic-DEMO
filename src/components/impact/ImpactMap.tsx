@@ -21,11 +21,11 @@ export const ImpactMap: React.FC<ImpactMapProps> = ({ onSelectProduct }) => {
       <div className="bg-[#3C1518] text-[#FDF6EC] px-6 py-4 border-b border-[#D4A843]/30 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2">
           <Compass className="w-4 h-4 text-[#D4A843]" />
-          <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#D4A843] font-bold">
+          <span className="text-xs font-sans font-medium uppercase tracking-[0.2em] text-[#D4A843] font-bold">
             VERIFIED REGIONAL SOURCING ATLAS
           </span>
         </div>
-        <div className="flex items-center gap-3 text-[11px] font-mono text-[#FDF6EC]/70">
+        <div className="flex items-center gap-3 text-[11px] font-sans font-medium text-[#FDF6EC]/70">
           <span className="inline-flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-[#C8102E] animate-pulse" />
             <span>{VERIFIED_SOURCING_LOCATIONS.length} Documented Single-Origin Regions</span>
@@ -39,7 +39,7 @@ export const ImpactMap: React.FC<ImpactMapProps> = ({ onSelectProduct }) => {
           {/* Subtle Indian geographic compass watermark */}
           <div className="absolute top-4 right-4 pointer-events-none opacity-20">
             <div className="w-28 h-28 rounded-full border border-dashed border-[#3C1518]/40 flex items-center justify-center">
-              <span className="text-[10px] font-mono font-bold text-[#3C1518]">N ↑</span>
+              <span className="text-[10px] font-sans font-medium font-bold text-[#3C1518]">N ↑</span>
             </div>
           </div>
 
@@ -100,13 +100,13 @@ export const ImpactMap: React.FC<ImpactMapProps> = ({ onSelectProduct }) => {
                 />
 
                 {/* Neighboring maritime indications */}
-                <text x="75" y="470" className="text-[11px] font-mono tracking-widest fill-[#3C1518]/25 select-none" transform="rotate(-45 75 470)">
+                <text x="75" y="470" className="text-[11px] font-sans font-medium tracking-widest fill-[#3C1518]/25 select-none" transform="rotate(-45 75 470)">
                   ARABIAN SEA
                 </text>
-                <text x="390" y="470" className="text-[11px] font-mono tracking-widest fill-[#3C1518]/25 select-none" transform="rotate(45 390 470)">
+                <text x="390" y="470" className="text-[11px] font-sans font-medium tracking-widest fill-[#3C1518]/25 select-none" transform="rotate(45 390 470)">
                   BAY OF BENGAL
                 </text>
-                <text x="210" y="685" className="text-[10px] font-mono tracking-widest fill-[#3C1518]/25 select-none">
+                <text x="210" y="685" className="text-[10px] font-sans font-medium tracking-widest fill-[#3C1518]/25 select-none">
                   INDIAN OCEAN
                 </text>
               </g>
@@ -194,7 +194,7 @@ export const ImpactMap: React.FC<ImpactMapProps> = ({ onSelectProduct }) => {
           </div>
 
           {/* Map Legend & Micro Guidance */}
-          <div className="mt-4 pt-3 border-t border-[#3C1518]/10 w-full flex flex-wrap items-center justify-between text-xs text-[#3C1518]/70 font-mono">
+          <div className="mt-4 pt-3 border-t border-[#3C1518]/10 w-full flex flex-wrap items-center justify-between text-xs text-[#3C1518]/70 font-sans font-medium">
             <span className="flex items-center gap-1.5">
               <span className="w-2.5 h-2.5 rounded-full bg-[#C8102E] inline-block" />
               <span>Active Sourcing Node</span>
@@ -210,7 +210,7 @@ export const ImpactMap: React.FC<ImpactMapProps> = ({ onSelectProduct }) => {
           <div>
             {/* Quick State Pills Selector */}
             <div className="mb-6">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#3C1518]/60 font-semibold block mb-2">
+              <span className="text-[10px] font-sans font-medium uppercase tracking-widest text-[#3C1518]/60 font-semibold block mb-2">
                 SELECT SOURCING REGION
               </span>
               <div className="flex flex-wrap gap-1.5">
@@ -239,7 +239,7 @@ export const ImpactMap: React.FC<ImpactMapProps> = ({ onSelectProduct }) => {
               {/* Product Thumbnail & Category Header */}
               <div className="flex items-start justify-between gap-3 mb-4 pb-3 border-b border-[#3C1518]/10">
                 <div>
-                  <div className="flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-widest text-[#C8102E] font-bold mb-1">
+                  <div className="flex items-center gap-1.5 text-[10px] font-sans font-medium uppercase tracking-widest text-[#C8102E] font-bold mb-1">
                     <Sparkles className="w-3 h-3 text-[#D4A843]" />
                     <span>{activeLocation.category}</span>
                   </div>
@@ -263,7 +263,7 @@ export const ImpactMap: React.FC<ImpactMapProps> = ({ onSelectProduct }) => {
               {/* Data Grid: State, Partner, Harvest */}
               <div className="space-y-3 text-xs mb-4">
                 <div>
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#3C1518]/55 block">
+                  <span className="text-[10px] font-sans font-medium uppercase tracking-wider text-[#3C1518]/55 block">
                     STATE & REGION
                   </span>
                   <p className="font-semibold text-[#3C1518]">
@@ -272,7 +272,7 @@ export const ImpactMap: React.FC<ImpactMapProps> = ({ onSelectProduct }) => {
                 </div>
 
                 <div>
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#3C1518]/55 block">
+                  <span className="text-[10px] font-sans font-medium uppercase tracking-wider text-[#3C1518]/55 block">
                     FARM / PARTNER
                   </span>
                   <p className="font-medium text-[#3C1518]">
@@ -281,7 +281,7 @@ export const ImpactMap: React.FC<ImpactMapProps> = ({ onSelectProduct }) => {
                 </div>
 
                 <div>
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#3C1518]/55 block">
+                  <span className="text-[10px] font-sans font-medium uppercase tracking-wider text-[#3C1518]/55 block">
                     HARVEST CYCLE
                   </span>
                   <p className="font-medium text-[#C8102E]">
@@ -290,7 +290,7 @@ export const ImpactMap: React.FC<ImpactMapProps> = ({ onSelectProduct }) => {
                 </div>
 
                 <div>
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#3C1518]/55 block">
+                  <span className="text-[10px] font-sans font-medium uppercase tracking-wider text-[#3C1518]/55 block">
                     TERROIR & CLIMATE
                   </span>
                   <p className="text-[#3C1518]/80 leading-relaxed font-sans">
@@ -301,7 +301,7 @@ export const ImpactMap: React.FC<ImpactMapProps> = ({ onSelectProduct }) => {
 
               {/* Story Narrative */}
               <div className="pt-3 border-t border-[#3C1518]/10">
-                <span className="text-[10px] font-mono uppercase tracking-wider text-[#3C1518]/55 block mb-1">
+                <span className="text-[10px] font-sans font-medium uppercase tracking-wider text-[#3C1518]/55 block mb-1">
                   OUR SOURCING STORY
                 </span>
                 <p className="text-xs text-[#3C1518]/85 leading-relaxed font-sans">

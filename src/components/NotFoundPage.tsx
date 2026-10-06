@@ -55,7 +55,7 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({
             />
           </div>
 
-          <span className="font-mono text-xs text-[#C8102E] uppercase tracking-[0.25em] font-bold mb-3">
+          <span className="font-sans font-medium text-xs text-[#C8102E] uppercase tracking-[0.25em] font-bold mb-3">
             ERROR 404
           </span>
 

@@ -59,7 +59,7 @@ export const BundleFaqSection: React.FC = () => {
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/70 rounded-full border border-[#D4A843]/40 text-[10px] font-mono uppercase tracking-[0.25em] text-[#C8102E] mb-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/70 rounded-full border border-[#D4A843]/40 text-[10px] font-sans font-medium uppercase tracking-[0.25em] text-[#C8102E] mb-3">
             <HelpCircle className="w-3.5 h-3.5 text-[#D4A843]" />
             <span>KITCHEN DESK & ASSISTANCE</span>
           </div>

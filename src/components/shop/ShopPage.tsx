@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Filter, ArrowUpDown, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Filter, ArrowUpDown, X, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
 import { SHOP_PRODUCTS, SHOP_CATEGORIES, ShopProduct } from '../../data/shopProducts';
 import { ShopHeader } from './ShopHeader';
 import { ShopBreadcrumb } from './ShopBreadcrumb';
@@ -36,7 +36,7 @@ export const ShopPage: React.FC<ShopPageProps> = ({
   const [sortBy, setSortBy] = useState<SortOption>('featured');
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState<boolean>(false);
 
-  const { isCartOpen, closeCart, toastMessage } = useShopCart();
+  const { isCartOpen, openCart, closeCart, toastMessage } = useShopCart();
 
   // Find active category definition
   const currentCategory = useMemo(() => {
@@ -131,6 +131,7 @@ export const ShopPage: React.FC<ShopPageProps> = ({
         onNavigateBundles={onNavigateBundles}
         onNavigateImpact={onNavigateImpact}
         onNavigateNewsletter={onNavigateNewsletter}
+        onOpenCart={openCart}
       />
 
       {/* 2. COMPACT BREADCRUMB (Centered inside main content width) */}
@@ -147,8 +148,8 @@ export const ShopPage: React.FC<ShopPageProps> = ({
       {/* 3. MAIN SHOPPING AREA (Centered max-width with generous whitespace outside) */}
       <div className="flex-1 w-full max-w-[1240px] mx-auto px-4 sm:px-6 py-5">
         <div className="flex flex-col lg:flex-row gap-5 items-start">
-          {/* LEFT: Categories Sidebar (~210px Desktop) */}
-          <aside className="hidden lg:block w-[210px] shrink-0 sticky top-4">
+          {/* LEFT: Categories Sidebar (~240px Desktop) */}
+          <aside className="hidden lg:block w-[240px] shrink-0 sticky top-4">
             <ShopSidebar
               selectedCategoryId={selectedCategoryId}
               onSelectCategory={setSelectedCategoryId}
@@ -159,11 +160,11 @@ export const ShopPage: React.FC<ShopPageProps> = ({
 
           {/* RIGHT: Product Content Area */}
           <main className="flex-1 w-full min-w-0 focus:outline-none" id="main-content" tabIndex={-1}>
-            {/* MAIN PRODUCT HEADER (Compact Grocery Heading + Controls) */}
-            <div className="bg-white rounded border border-[#E6E0D6] p-3 mb-4">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div className="flex items-baseline gap-2">
-                  <h2 className="text-base sm:text-lg font-bold text-[#3C1518] leading-tight">
+            {/* MAIN PRODUCT HEADER (Spacious Heading + Controls) */}
+            <div className="bg-white rounded-xl border border-[#E6E0D6] p-4 sm:p-5 mb-6 shadow-2xs">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex items-baseline gap-2.5">
+                  <h2 className="text-lg sm:text-2xl font-bold font-display text-[#3C1518] leading-tight">
                     {selectedCategoryId === 'all'
                       ? 'Shop All Products'
                       : selectedSubItem
@@ -176,57 +177,60 @@ export const ShopPage: React.FC<ShopPageProps> = ({
                 </div>
 
                 {/* Controls: Mobile Filter Button & Sort */}
-                <div className="flex items-center gap-2.5 justify-between sm:justify-end">
+                <div className="flex items-center gap-3 justify-between sm:justify-end">
                   {/* Mobile category toggle */}
                   <button
                     onClick={() => setMobileDrawerOpen(true)}
-                    className="lg:hidden inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold bg-[#FAF7F2] hover:bg-white text-[#3C1518] border border-[#D9D2C7] rounded cursor-pointer"
+                    className="lg:hidden inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold bg-[#FAF7F2] hover:bg-white text-[#3C1518] border border-[#D9D2C7] rounded-md cursor-pointer min-h-[40px]"
                     aria-label="Open categories filter"
                   >
-                    <Filter className="w-3.5 h-3.5 text-[#C8102E]" />
+                    <Filter className="w-4 h-4 text-[#C8102E]" />
                     <span>Categories</span>
                   </button>
 
                   {/* Active search filter badge */}
                   {searchQuery && (
-                    <div className="hidden xs:flex items-center gap-1 text-[11px] bg-[#FDF2F4] text-[#C8102E] px-2 py-0.5 rounded font-medium">
+                    <div className="hidden xs:flex items-center gap-1.5 text-xs bg-[#FDF2F4] text-[#C8102E] px-2.5 py-1 rounded font-medium">
                       <span>"{searchQuery}"</span>
                       <button
                         onClick={() => setSearchQuery('')}
                         className="hover:text-[#3C1518] cursor-pointer"
                         aria-label="Clear search"
                       >
-                        <X className="w-3 h-3" />
+                        <X className="w-3.5 h-3.5" />
                       </button>
                     </div>
                   )}
 
                   {/* Sort selector */}
-                  <div className="flex items-center gap-1.5 text-xs text-[#3C1518]/70 ml-auto">
-                    <ArrowUpDown className="w-3 h-3 text-[#3C1518]/50" />
-                    <label htmlFor="grocery-sort" className="hidden sm:inline-block">
+                  <div className="flex items-center gap-2 text-xs text-[#3C1518]/70 ml-auto">
+                    <label htmlFor="grocery-sort" className="hidden sm:inline-block font-semibold text-[#3C1518]/70">
                       Sort:
                     </label>
-                    <select
-                      id="grocery-sort"
-                      value={sortBy}
-                      onChange={(e) => setSortBy(e.target.value as SortOption)}
-                      className="text-xs font-semibold text-[#3C1518] bg-[#FAF7F2] hover:bg-white border border-[#D9D2C7] focus:border-[#C8102E] rounded px-2 py-1 cursor-pointer focus:outline-hidden"
-                    >
-                      <option value="featured">Featured</option>
-                      <option value="name-asc">Name A-Z</option>
-                      <option value="name-desc">Name Z-A</option>
-                      <option value="price-asc">Price Low to High</option>
-                      <option value="price-desc">Price High to Low</option>
-                    </select>
+                    <div className="relative">
+                      <select
+                        id="grocery-sort"
+                        value={sortBy}
+                        onChange={(e) => setSortBy(e.target.value as SortOption)}
+                        aria-label="Sort products"
+                        className="appearance-none text-xs font-semibold text-[#3C1518] bg-white hover:bg-[#FAF7F2] border border-[#D9D2C7] focus:border-[#C8102E] focus:ring-2 focus:ring-[#C8102E]/20 rounded-md ps-3 pe-8 py-2 cursor-pointer focus:outline-hidden min-h-[40px] shadow-2xs transition-all"
+                      >
+                        <option value="featured">Featured</option>
+                        <option value="name-asc">Name A-Z</option>
+                        <option value="name-desc">Name Z-A</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                      </select>
+                      <ChevronDown className="w-3.5 h-3.5 text-[#3C1518]/60 absolute end-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* 6. DENSE 4-COLUMN PRODUCT GRID (Desktop 4 cols, Tablet 3 cols, Mobile 2 cols) */}
+            {/* 6. GENEROUS 3-COLUMN PRODUCT GRID (Desktop 3 cols, Tablet 2 cols, Mobile 1 col) */}
             {filteredProducts.length > 0 ? (
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-3.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6">
                 {filteredProducts.map((product) => (
                   <ShopProductCard
                     key={product.id}

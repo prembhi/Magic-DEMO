@@ -55,7 +55,7 @@ export const HomeCookWithMagic: React.FC<HomeCookWithMagicProps> = ({
     <section
       ref={sectionRef}
       id="recipes"
-      className="w-full bg-[#FDF6EC] text-[#3C1518] py-10 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-12 border-b border-[#3C1518]/12 select-none relative overflow-hidden"
+      className="w-full bg-[#FDF6EC] text-[#3C1518] py-20 sm:py-28 lg:py-36 px-4 sm:px-6 lg:px-12 border-b border-[#3C1518]/12 select-none relative overflow-hidden"
       aria-labelledby="recipes-heading"
     >
       <div className="max-w-7xl mx-auto relative z-10">
@@ -73,7 +73,7 @@ export const HomeCookWithMagic: React.FC<HomeCookWithMagicProps> = ({
           >
             <h2
               id="recipes-heading"
-              className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-[#3C1518] tracking-tight leading-[0.96]"
+              className="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl xl:text-8xl text-[#3C1518] tracking-tight leading-[0.98]"
             >
               {isRTL ? 'اطبخ مع ماجيك.' : 'COOK WITH MAGIC.'}
             </h2>
@@ -82,7 +82,7 @@ export const HomeCookWithMagic: React.FC<HomeCookWithMagicProps> = ({
           <button
             type="button"
             onClick={() => onNavigateRecipes()}
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#C8102E] hover:text-[#A60D26] transition-colors cursor-pointer group pb-1"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#C8102E] hover:text-[#A60D26] transition-colors cursor-pointer group pb-1"
           >
             <span>{isRTL ? 'عرض أرشيف الوصفات كاملاً' : 'VIEW COMPLETE CULINARY ARCHIVE'}</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
@@ -100,10 +100,10 @@ export const HomeCookWithMagic: React.FC<HomeCookWithMagicProps> = ({
               opacity: isVisible || isReducedMotion ? 1 : 0,
               transition: 'opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) 150ms, transform 700ms cubic-bezier(0.22, 1, 0.36, 1) 150ms',
             }}
-            className="group grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 xl:gap-12 items-center bg-white rounded-2xl border border-[#3C1518]/15 hover:border-[#C8102E] p-4 sm:p-6 lg:p-7 shadow-xs hover:shadow-lg transition-all duration-300 cursor-pointer mb-8 sm:mb-10 will-change-transform"
+            className="group grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center bg-white rounded-2xl border border-[#3C1518]/15 hover:border-[#C8102E] p-4 sm:p-6 lg:p-7 shadow-xs hover:shadow-lg transition-all duration-300 cursor-pointer mb-8 sm:mb-10 will-change-transform"
           >
             {/* LEFT / DOMINANT FOOD PHOTOGRAPHY (60% Desktop Width) */}
-            <div className="lg:col-span-7 overflow-hidden rounded-xl bg-[#FAF7F2] aspect-[16/10] sm:aspect-[16/10] max-h-[420px] relative">
+            <div className="lg:col-span-7 overflow-hidden rounded-2xl bg-[#FAF7F2] aspect-[16/10] sm:aspect-[16/10] min-h-[380px] sm:min-h-[460px] lg:min-h-[540px] max-h-[600px] relative">
               <img
                 src={recipeVisuals[0]?.photo || MAGIC_ASSETS.dalTadka}
                 alt={primaryRecipe.title}
@@ -115,7 +115,7 @@ export const HomeCookWithMagic: React.FC<HomeCookWithMagicProps> = ({
             {/* RIGHT / SUPPORTING RECIPE EDITORIAL STORY (40% Desktop Width) */}
             <div className="lg:col-span-5 flex flex-col justify-between space-y-3.5 sm:space-y-4">
               {/* Metadata */}
-              <div className="flex items-center gap-2.5 text-xs text-[#3C1518]/70 font-mono">
+              <div className="flex items-center gap-2.5 text-xs text-[#3C1518]/70">
                 <span className="flex items-center gap-1 font-semibold text-[#3C1518]">
                   <Clock className="w-3.5 h-3.5 text-[#C8102E]" />
                   {primaryRecipe.cookingTime}
@@ -127,7 +127,7 @@ export const HomeCookWithMagic: React.FC<HomeCookWithMagicProps> = ({
               </div>
 
               {/* Title */}
-              <h3 className="font-display font-black text-2xl sm:text-3xl lg:text-4xl text-[#3C1518] group-hover:text-[#C8102E] transition-colors leading-[1.05]">
+              <h3 className="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[#3C1518] group-hover:text-[#C8102E] transition-colors leading-[1.05]">
                 {primaryRecipe.title}
               </h3>
 
@@ -143,23 +143,23 @@ export const HomeCookWithMagic: React.FC<HomeCookWithMagicProps> = ({
                     e.stopPropagation();
                     onSelectProduct(primaryRecipe.primaryProduct.slug);
                   }}
-                  className="flex items-center gap-3 pt-2 pb-1 border-t border-[#3C1518]/10 cursor-pointer group/staple"
+                  className="flex items-center gap-3 pt-2.5 pb-1 border-t border-[#3C1518]/10 cursor-pointer group/staple"
                 >
                   <img
                     src={primaryRecipe.primaryProduct.image}
                     alt={primaryRecipe.primaryProduct.name}
-                    className="w-9 h-9 object-contain filter drop-shadow-2xs"
+                    className="w-10 h-10 object-contain filter drop-shadow-2xs"
                     loading="lazy"
                   />
                   <div className="flex-1 min-w-0">
-                    <span className="text-[10px] font-mono uppercase text-[#6B4226] block font-semibold">
+                    <span className="text-[10px] uppercase text-[#6B4226] block font-semibold tracking-wider">
                       {isRTL ? 'المكوّن الأساسي' : 'PRIMARY STAPLE'}
                     </span>
-                    <span className="text-xs font-bold text-[#3C1518] group-hover/staple:text-[#C8102E] transition-colors truncate block">
+                    <span className="text-xs sm:text-sm font-bold text-[#3C1518] group-hover/staple:text-[#C8102E] transition-colors truncate block">
                       {primaryRecipe.primaryProduct.name}
                     </span>
                   </div>
-                  <span className="text-xs font-mono font-bold text-[#C8102E]">
+                  <span className="text-xs sm:text-sm font-bold text-[#C8102E]">
                     {isRTL ? `${primaryRecipe.primaryProduct.price.toFixed(2)} د.إ` : `AED ${primaryRecipe.primaryProduct.price.toFixed(2)}`}
                   </span>
                 </div>
@@ -170,7 +170,7 @@ export const HomeCookWithMagic: React.FC<HomeCookWithMagicProps> = ({
                 <button
                   type="button"
                   onClick={() => onNavigateRecipes(primaryRecipe.slug)}
-                  className="h-11 px-7 bg-[#C8102E] hover:bg-[#A60D26] text-white text-xs font-bold uppercase tracking-widest rounded-md shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer group active:scale-[0.98]"
+                  className="min-h-[48px] h-12 px-7 bg-[#C8102E] hover:bg-[#A60D26] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-md shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer group active:scale-[0.98]"
                 >
                   <span>{isRTL ? 'عرض طريقة الإعداد' : 'VIEW RECIPE & METHOD'}</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
@@ -199,7 +199,7 @@ export const HomeCookWithMagic: React.FC<HomeCookWithMagicProps> = ({
               >
                 <div>
                   {/* Photo Stage */}
-                  <div className="relative w-full h-[180px] sm:h-[200px] overflow-hidden rounded-lg bg-[#FAF7F2] mb-3.5">
+                  <div className="relative w-full h-[220px] sm:h-[240px] overflow-hidden rounded-lg bg-[#FAF7F2] mb-3.5">
                     <img
                       src={visual.photo}
                       alt={recipe.title}
@@ -209,7 +209,7 @@ export const HomeCookWithMagic: React.FC<HomeCookWithMagicProps> = ({
                   </div>
 
                   {/* Metadata */}
-                  <div className="flex items-center gap-2.5 text-xs text-[#3C1518]/60 font-mono mb-1.5">
+                  <div className="flex items-center gap-2.5 text-xs text-[#3C1518]/70 mb-1.5">
                     <span className="flex items-center gap-1 font-semibold text-[#3C1518]">
                       <Clock className="w-3.5 h-3.5 text-[#C8102E]" />
                       {recipe.cookingTime}
@@ -221,7 +221,7 @@ export const HomeCookWithMagic: React.FC<HomeCookWithMagicProps> = ({
                   </div>
 
                   {/* Title */}
-                  <h4 className="font-display font-bold text-lg sm:text-xl text-[#3C1518] group-hover:text-[#C8102E] transition-colors leading-tight mb-1.5">
+                  <h4 className="font-display font-extrabold text-lg sm:text-xl text-[#3C1518] group-hover:text-[#C8102E] transition-colors leading-tight mb-1.5">
                     {recipe.title}
                   </h4>
 
@@ -232,7 +232,7 @@ export const HomeCookWithMagic: React.FC<HomeCookWithMagicProps> = ({
                 </div>
 
                 {/* Bottom Link */}
-                <div className="pt-3 mt-3 border-t border-[#3C1518]/10 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#C8102E] group-hover:underline">
+                <div className="pt-3 mt-3 border-t border-[#3C1518]/10 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-[#C8102E] group-hover:underline">
                   <span>{isRTL ? 'عرض الوصفة' : 'VIEW RECIPE'}</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
                 </div>

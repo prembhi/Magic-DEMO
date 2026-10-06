@@ -32,9 +32,9 @@ export const ProductStorytelling: React.FC<ProductStorytellingProps> = ({ produc
       aria-labelledby="story-heading"
     >
       {/* Top Tagline */}
-      <div className="flex items-center gap-2 mb-2">
+      <div className="flex items-center gap-2 mb-2.5">
         <Sparkles className="w-3.5 h-3.5 text-[#D4A843]" />
-        <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#C8102E]">
+        <span className="text-xs font-sans font-bold uppercase tracking-[0.25em] text-[#C8102E]">
           {isRTL ? 'قصة الحصاد والأصل الزراعي' : 'FROM FARM TO PANTRY • HARVEST STORY'}
         </span>
       </div>
@@ -47,7 +47,7 @@ export const ProductStorytelling: React.FC<ProductStorytellingProps> = ({ produc
         >
           {story.headline}
         </h2>
-        <p className="text-sm sm:text-base lg:text-lg text-[#3C1518]/75 font-serif italic">
+        <p className="text-sm sm:text-base lg:text-lg text-[#3C1518]/75 font-sans italic">
           {story.subheadline}
         </p>
       </div>
@@ -68,13 +68,13 @@ export const ProductStorytelling: React.FC<ProductStorytellingProps> = ({ produc
 
             {/* Bottom Caption Pill */}
             <div className="absolute bottom-3.5 inset-x-3.5 z-10 flex items-center justify-between text-white text-xs">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#3C1518]/80 backdrop-blur-xs border border-white/20">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#3C1518]/85 backdrop-blur-xs border border-white/20">
                 <MapPin className="w-3 h-3 text-[#D4A843]" />
-                <span className="font-mono text-[11px] font-bold">
+                <span className="font-sans text-xs font-bold">
                   {details.origin}
                 </span>
               </div>
-              <span className="font-mono text-[10px] uppercase tracking-wider opacity-85">
+              <span className="font-sans text-[11px] uppercase tracking-wider opacity-85 font-medium">
                 {isRTL ? 'توثيق الحصاد' : 'Verified Harvest'}
               </span>
             </div>
@@ -84,8 +84,8 @@ export const ProductStorytelling: React.FC<ProductStorytellingProps> = ({ produc
         {/* Right Column: Terroir Narrative & Pull Quote */}
         <div className="lg:col-span-6 space-y-5">
           {/* Terroir & Soil Story */}
-          <div className="space-y-3 text-xs sm:text-sm text-[#3C1518]/85 leading-relaxed font-sans">
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-[#5A7247] uppercase tracking-wider pb-1.5 border-b border-[#3C1518]/10">
+          <div className="space-y-3 text-sm sm:text-base text-[#3C1518]/85 leading-relaxed font-sans">
+            <div className="inline-flex items-center gap-2 text-xs font-sans font-bold text-[#5A7247] uppercase tracking-wider pb-1.5 border-b border-[#3C1518]/10">
               <Sprout className="w-4 h-4 text-[#5A7247]" />
               <span>{isRTL ? 'التربة والبيئة الزراعية' : 'TERROIR & SOIL ECOLOGY'}</span>
             </div>
@@ -100,10 +100,10 @@ export const ProductStorytelling: React.FC<ProductStorytellingProps> = ({ produc
           {/* Editorial Pull Quote Box */}
           <div className="p-5 sm:p-6 bg-[#FAF7F2] border border-[#3C1518]/15 rounded-xl relative shadow-2xs">
             <Quote className="w-7 h-7 text-[#D4A843]/40 absolute top-4 end-4" />
-            <p className="text-sm sm:text-base font-serif italic text-[#3C1518] leading-snug mb-2.5 pe-6">
+            <p className="text-base sm:text-lg font-sans italic text-[#3C1518] leading-snug mb-3 pe-6">
               &ldquo;{story.quote}&rdquo;
             </p>
-            <div className="text-[10px] font-mono uppercase tracking-widest text-[#6B4226] font-bold">
+            <div className="text-[11px] font-sans uppercase tracking-widest text-[#6B4226] font-bold">
               {isRTL ? 'فلسفة مطبخ ماجيك' : 'THE MAGIC KITCHEN PHILOSOPHY'}
             </div>
           </div>

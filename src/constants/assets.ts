@@ -85,4 +85,24 @@ export const MAGIC_ASSETS = {
     heritageKitchen: `${baseUrl}assets/magic/illustrations/illustration-heritage-kitchen.png`,
     farmSourcing: `${baseUrl}assets/magic/illustrations/illustration-farm-sourcing.png`,
   },
+
+  // Authentic Indian Farm & Spice Editorial Photography Collection
+  editorial: {
+    twoFarmersJungle: `${baseUrl}assets/magic/editorial/two-farmers-jungle.png`,
+    twoLadyFarmersBasket: `${baseUrl}assets/magic/editorial/2 Lasdy Farmer with basket close shot.png`,
+    fiveFarmersGinger: `${baseUrl}assets/magic/editorial/5 Farmers Holding Giger baskets.png`,
+    chilliField: `${baseUrl}assets/magic/editorial/chilli-field.png`,
+    chilliPickingBox: `${baseUrl}assets/magic/editorial/chilling picking from box close  up shot.png`,
+    dryChilliesInHand: `${baseUrl}assets/magic/editorial/dry-chillies-hand.png`,
+    farmerHoldingSpice: `${baseUrl}assets/magic/editorial/farmer-holding-spice.png`,
+    farmerHoldingGinger: `${baseUrl}assets/magic/editorial/Farmer Holding Ginder in Farmer.png`,
+    femaleFarmersField: `${baseUrl}assets/magic/editorial/Females Farmer in field.png`,
+    gingerFieldFarmers: `${baseUrl}assets/magic/editorial/Ginder field with mulipel farmer.png`,
+    auntyPickingChillies: `${baseUrl}assets/magic/editorial/Indian Aunty Picking Chills under blue sky in farm.png`,
+    ladyPickingChilliesClose: `${baseUrl}assets/magic/editorial/Lady Close up shot in field picking chills.png`,
+    manPickingChillies: `${baseUrl}assets/magic/editorial/man-picking-chillies.png`,
+    multipleSpices: `${baseUrl}assets/magic/editorial/multiple-spices.png`,
+    oldLadyInFarm: `${baseUrl}assets/magic/editorial/old-lady-farm.png`,
+    rawSpicesBasket: `${baseUrl}assets/magic/editorial/raw-spices-basket.png`,
+  },
 } as const;

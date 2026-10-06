@@ -70,7 +70,7 @@ export const RecipeFilterSidebar: React.FC<RecipeFilterSidebarProps> = ({
           <h2 className="text-sm font-bold uppercase tracking-wider text-[#3C1518]">
             Filter Recipes
           </h2>
-          <span className="text-[11px] font-mono text-[#3C1518]/50">
+          <span className="text-[11px] font-sans font-medium text-[#3C1518]/50">
             ({totalFilteredCount})
           </span>
         </div>

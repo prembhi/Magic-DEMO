@@ -60,21 +60,21 @@ export const HomeFaq: React.FC = () => {
   return (
     <section
       id="faq"
-      className="w-full bg-[#FAF5EE] text-[#3C1518] py-12 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-12 border-b border-[#3C1518]/12 select-none relative"
+      className="w-full bg-[#FAF5EE] text-[#3C1518] py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 border-b border-[#3C1518]/12 select-none relative"
       aria-labelledby="faq-heading"
     >
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 xl:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 xl:gap-16 items-start">
           
-          {/* LEFT: EDITORIAL INTRO & RESTRAINED BOTANICAL BEE MOTIF */}
+          {/* LEFT: EDITORIAL INTRO & RESTRAINED BOTANICAL MOTIF */}
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#C8102E] mb-2.5">
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#C8102E] mb-3">
                 {isRTL ? 'الأسئلة الشائعة' : 'FREQUENTLY ASKED QUESTIONS'}
               </p>
               <h2
                 id="faq-heading"
-                className="font-display font-black text-2xl sm:text-4xl lg:text-[2.6rem] text-[#3C1518] tracking-tight leading-[1.1] mb-3"
+                className="font-display font-black text-4xl sm:text-6xl lg:text-7xl text-[#3C1518] tracking-tight leading-[1.08] mb-4"
               >
                 {isRTL ? (
                   <>
@@ -90,7 +90,7 @@ export const HomeFaq: React.FC = () => {
                   </>
                 )}
               </h2>
-              <p className="text-xs sm:text-sm lg:text-base text-[#3C1518]/85 leading-relaxed font-sans max-w-md mb-5 sm:mb-6">
+              <p className="text-sm sm:text-base text-[#3C1518]/85 leading-relaxed font-sans max-w-md mb-6 sm:mb-8">
                 {isRTL
                   ? 'هل ترغب بمعرفة المزيد عن شراكاتنا مع المزارعين، أو سرعة التوصيل في الإمارات، أو كيفية الحفظ؟ إليك إجابات وافية عن استفساراتكم.'
                   : 'Curious about our farm partnerships, UAE delivery speeds, or pantry storage? Here are answers to common questions about MAGIC products.'}
@@ -98,8 +98,8 @@ export const HomeFaq: React.FC = () => {
             </div>
 
             {/* Small Dedicated Pantry Spice Bowl Illustration */}
-            <div className="flex items-center gap-3 pt-1">
-              <div className="w-9 sm:w-10 opacity-90 shrink-0">
+            <div className="flex items-center gap-3 pt-2">
+              <div className="w-10 sm:w-11 opacity-90 shrink-0">
                 <img
                   src={MAGIC_ASSETS.illustrations.brassBowl}
                   alt="Hand-drawn brass spice bowl illustration"
@@ -108,7 +108,7 @@ export const HomeFaq: React.FC = () => {
                   loading="lazy"
                 />
               </div>
-              <span className="text-xs font-mono font-medium text-[#6B4226]">
+              <span className="text-xs font-sans font-medium text-[#6B4226]">
                 {isRTL
                   ? 'أصل أحادي · مغلف بالنيتروجين الطازج · نقي 100%'
                   : 'Single-Origin · Nitrogen Flushed · Unadulterated'}
@@ -127,10 +127,10 @@ export const HomeFaq: React.FC = () => {
                       type="button"
                       onClick={() => toggleFaq(idx)}
                       aria-expanded={isOpen}
-                      className="w-full py-3.5 sm:py-4 text-start flex items-center justify-between gap-4 cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C8102E] rounded-xs"
+                      className="w-full py-5 sm:py-7 min-h-[60px] text-start flex items-center justify-between gap-4 cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C8102E] rounded-xs"
                     >
                       <span
-                        className={`font-display font-bold text-base sm:text-lg transition-colors leading-snug ${
+                        className={`font-display font-bold text-lg sm:text-xl lg:text-2xl transition-colors leading-snug ${
                           isOpen ? 'text-[#C8102E]' : 'text-[#3C1518] group-hover:text-[#C8102E]'
                         }`}
                       >
@@ -146,8 +146,8 @@ export const HomeFaq: React.FC = () => {
                     </button>
 
                     {isOpen && (
-                      <div className="pb-4 sm:pb-5 pt-0.5 animate-in fade-in duration-200">
-                        <p className="text-xs sm:text-sm text-[#3C1518]/85 leading-relaxed font-sans">
+                      <div className="pb-5 sm:pb-6 pt-0.5 animate-in fade-in duration-200">
+                        <p className="text-sm sm:text-base text-[#3C1518]/85 leading-relaxed font-sans">
                           {faq.a}
                         </p>
                       </div>

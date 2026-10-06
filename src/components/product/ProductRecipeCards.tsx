@@ -48,10 +48,10 @@ export const ProductRecipeCards: React.FC<ProductRecipeCardsProps> = ({
               <div>
                 {/* Meta header */}
                 <div className="flex items-center justify-between text-xs text-[#3C1518]/60 mb-3 pb-2 border-b border-[#E6E0D6]/60">
-                  <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#C8102E] bg-[#C8102E]/10 px-2 py-0.5 rounded-2xs">
+                  <span className="font-sans font-medium text-[10px] font-bold uppercase tracking-wider text-[#C8102E] bg-[#C8102E]/10 px-2 py-0.5 rounded-2xs">
                     Application 0{idx + 1}
                   </span>
-                  <span className="flex items-center gap-1 font-mono text-[11px]">
+                  <span className="flex items-center gap-1 font-sans font-medium text-[11px]">
                     <Clock className="w-3 h-3 text-[#3C1518]/60" />
                     {dish.prepTime}
                   </span>

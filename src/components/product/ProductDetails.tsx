@@ -26,7 +26,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     >
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-6">
-          <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-[0.25em] text-[#C8102E] mb-1.5">
+          <div className="inline-flex items-center gap-1.5 text-xs font-sans font-bold uppercase tracking-[0.25em] text-[#C8102E] mb-1.5">
             <Sparkles className="w-3.5 h-3.5 fill-[#C8102E]" />
             <span>{isRTL ? 'البيانات والمواصفات الكاملة' : 'TRANSPARENCY & DATA'}</span>
           </div>
@@ -113,7 +113,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
               <div className="px-5 sm:px-6 pb-5 pt-1 text-xs sm:text-sm text-[#3C1518]/80 leading-relaxed border-t border-[#3C1518]/10 bg-[#FAF7F2]/30 space-y-3 animate-in fade-in duration-200">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                   <div className="p-3 bg-white rounded-lg border border-[#3C1518]/10">
-                    <span className="text-[10px] font-mono text-[#6B4226] uppercase font-bold block mb-0.5">
+                    <span className="text-[11px] font-sans text-[#6B4226] uppercase font-bold block mb-0.5">
                       {isRTL ? 'الإقليم الزراعي:' : 'Agricultural Origin:'}
                     </span>
                     <span className="font-semibold text-[#3C1518] text-xs sm:text-sm">
@@ -121,7 +121,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
                     </span>
                   </div>
                   <div className="p-3 bg-white rounded-lg border border-[#3C1518]/10">
-                    <span className="text-[10px] font-mono text-[#6B4226] uppercase font-bold block mb-0.5">
+                    <span className="text-[11px] font-sans text-[#6B4226] uppercase font-bold block mb-0.5">
                       {isRTL ? 'طريقة المعالجة:' : 'Processing Method:'}
                     </span>
                     <span className="font-semibold text-[#3C1518] text-xs sm:text-sm">
@@ -129,7 +129,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
                     </span>
                   </div>
                   <div className="p-3 bg-white rounded-lg border border-[#3C1518]/10">
-                    <span className="text-[10px] font-mono text-[#6B4226] uppercase font-bold block mb-0.5">
+                    <span className="text-[11px] font-sans text-[#6B4226] uppercase font-bold block mb-0.5">
                       {isRTL ? 'نوع التغليف:' : 'Packaging Type:'}
                     </span>
                     <span className="font-semibold text-[#3C1518] text-xs sm:text-sm">
@@ -137,7 +137,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
                     </span>
                   </div>
                   <div className="p-3 bg-white rounded-lg border border-[#3C1518]/10">
-                    <span className="text-[10px] font-mono text-[#6B4226] uppercase font-bold block mb-0.5">
+                    <span className="text-[11px] font-sans text-[#6B4226] uppercase font-bold block mb-0.5">
                       {isRTL ? 'الوزن الصافي:' : 'Net Weight:'}
                     </span>
                     <span className="font-semibold text-[#3C1518] text-xs sm:text-sm">
