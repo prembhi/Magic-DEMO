@@ -105,4 +105,14 @@ export const MAGIC_ASSETS = {
     oldLadyInFarm: `${baseUrl}assets/magic/editorial/old-lady-farm.png`,
     rawSpicesBasket: `${baseUrl}assets/magic/editorial/raw-spices-basket.png`,
   },
+
+  // 6 Curated Cut-Paper Indian Spice Illustrations for Full-Screen Loader
+  loader: {
+    chilli: `${baseUrl}assets/magic/loader/spice-chilli.png`,
+    turmeric: `${baseUrl}assets/magic/loader/spice-turmeric.png`,
+    cinnamon: `${baseUrl}assets/magic/loader/spice-cinnamon.png`,
+    cardamom: `${baseUrl}assets/magic/loader/spice-cardamom.png`,
+    starAnise: `${baseUrl}assets/magic/loader/spice-star-anise.png`,
+    seedCluster: `${baseUrl}assets/magic/loader/spice-seed-cluster.png`,
+  },
 } as const;

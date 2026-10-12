@@ -7,12 +7,9 @@ import { useShopCart } from '../../context/ShopCartContext';
 import { HomeHero } from './HomeHero';
 import { HomeBenefitStrip } from './HomeBenefitStrip';
 import { HomeFavourites } from './HomeFavourites';
-import { HomeBundles } from './HomeBundles';
-import { HomeBrandStatement } from './HomeBrandStatement';
 import { HomeCookWithMagic } from './HomeCookWithMagic';
 import { HomeFarmProvenance } from './HomeFarmProvenance';
 import { HomeWhyMagic } from './HomeWhyMagic';
-import { HomeSourcingMap } from './HomeSourcingMap';
 import { HomeFaq } from './HomeFaq';
 import { HomeCommunity } from './HomeCommunity';
 
@@ -73,59 +70,41 @@ export const HomePage: React.FC<HomePageProps> = ({
         onOpenCart={openCart}
       />
 
-      {/* REBUILT EDITORIAL ECOMMERCE HOMEPAGE (10-SECTION RHYTHM) */}
+      {/* CONSOLIDATED EDITORIAL ECOMMERCE HOMEPAGE (STRICT 7-SECTION STRUCTURE) */}
       <main className="flex-1 flex flex-col focus:outline-none" id="main-content" tabIndex={-1}>
-        {/* 01. HERO (2.5D Depth Composition + Authentic Packaging + Editorial Headlines) */}
+        {/* 01. HERO + BRAND BENEFITS (Hero + compact single-origin standards strip) */}
         <HomeHero
           onExplorePantry={() => scrollToSection('favourites')}
           onDiscoverStory={() => scrollToSection('farm-to-kitchen')}
           onSelectProduct={onSelectProduct}
         />
-
-        {/* 02. BENEFIT STRIP (Single Origin · Farm Sourced · Fresh Harvest · Unadulterated) */}
         <HomeBenefitStrip />
 
-        {/* 03. MAGIC FAVOURITES (Editorial Split + Canonical ShopProductCards) */}
+        {/* 02. KITCHEN FAVOURITES (Hero product showcase with large packaging & immediate add-to-cart) */}
         <HomeFavourites
           onNavigateShop={() => onNavigateShop()}
           onSelectProduct={onSelectProduct}
         />
 
-        {/* 04. BUILD YOUR MAGIC PANTRY (Recipe-Based Curated Pantry Sets) */}
-        <HomeBundles
-          onNavigateBundles={onNavigateBundles}
-          onSelectProduct={onSelectProduct}
-        />
-
-        {/* 05. BRAND STATEMENT (Pure Ingredients · Real Origins · Magic in Every Pinch) */}
-        <HomeBrandStatement
-          onNavigateImpact={onNavigateImpact}
-          onExplorePantry={() => onNavigateShop()}
-        />
-
-        {/* 06. COOK WITH MAGIC (Mixed Photography + Culinary Illustrations + Recipe Cards) */}
+        {/* 03. COOK SOMETHING MAGIC (Unified recipe experience: 1 large featured spread + 2 supporting recipes) */}
         <HomeCookWithMagic
           onNavigateRecipes={onNavigateRecipes}
           onSelectProduct={onSelectProduct}
         />
 
-        {/* 07. FROM INDIAN FARMS TO YOUR MAGIC PANTRY (Intro + 2.5D Landscape Banner) */}
+        {/* 04. FROM INDIAN FARMS TO YOUR MAGIC PANTRY (Unified sourcing: editorial field spread + interactive India atlas) */}
         <HomeFarmProvenance
           onNavigateImpact={onNavigateImpact}
-        />
-
-        {/* 08. WHAT SETS MAGIC APART (Editorial Sourcing Model Comparison Table) */}
-        <HomeWhyMagic />
-
-        {/* 09. WHERE MAGIC BEGINS (India Sourcing Map + Connected Harvest Product) */}
-        <HomeSourcingMap
           onSelectProduct={onSelectProduct}
         />
 
-        {/* 10. FREQUENTLY ASKED QUESTIONS (Hand-Drawn Bee & Flowers + Accessible Accordion) */}
+        {/* 05. WHAT SETS MAGIC APART (Editorial Sourcing Model & Lab-Tested Purity Comparison) */}
+        <HomeWhyMagic />
+
+        {/* 06. FREQUENTLY ASKED QUESTIONS (Clear, accessible questions on sourcing, delivery & storage) */}
         <HomeFaq />
 
-        {/* 11. COMMUNITY & HARVEST DISPATCH (Brand Newsletter Subscription) */}
+        {/* 07. FINAL CTA & HARVEST DISPATCH (Single clean newsletter signup experience) */}
         <HomeCommunity />
       </main>
 

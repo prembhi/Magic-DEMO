@@ -10,7 +10,7 @@ export const HomeCommunity: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isReducedMotion, setIsReducedMotion] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -18,21 +18,6 @@ export const HomeCommunity: React.FC = () => {
     const handler = (e: MediaQueryListEvent) => setIsReducedMotion(e.matches);
     mq.addEventListener('change', handler);
     return () => mq.removeEventListener('change', handler);
-  }, []);
-
-  useEffect(() => {
-    if (!sectionRef.current) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.12 }
-    );
-    observer.observe(sectionRef.current);
-    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -64,7 +49,7 @@ export const HomeCommunity: React.FC = () => {
     <section
       ref={sectionRef}
       id="community"
-      className="relative w-full flex items-center justify-center py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 overflow-hidden select-none"
+      className="relative w-full flex items-center justify-center py-12 sm:py-16 lg:py-20 px-5 sm:px-6 lg:px-12 overflow-hidden select-none"
       aria-label={isRTL ? 'انضم إلى مجتمع مطبخ ماجيك' : 'Join The MAGIC Kitchen Community'}
     >
       {/* ========================================================================= */}
@@ -119,7 +104,7 @@ export const HomeCommunity: React.FC = () => {
       />
 
       {/* ========================================================================= */}
-      {/* 4. CENTERED NEWSLETTER CONTENT (Max width ~740px)                         */}
+      {/* 4. CENTERED NEWSLETTER CONTENT (Max width ~680px)                         */}
       {/* ========================================================================= */}
       <div
         style={{
@@ -129,24 +114,24 @@ export const HomeCommunity: React.FC = () => {
             ? 'none'
             : 'opacity 800ms cubic-bezier(0.22, 1, 0.36, 1), transform 800ms cubic-bezier(0.22, 1, 0.36, 1)',
         }}
-        className="relative max-w-[740px] w-full mx-auto text-center z-10 px-4"
+        className="relative max-w-[680px] w-full mx-auto text-center z-10 px-2"
       >
-        <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#D4A843] mb-3">
-          {isRTL ? 'نشرة ماجيك الموسمية للمحاصيل' : 'THE HARVEST DISPATCH'}
+        <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-[#D4A843] mb-2">
+          {isRTL ? 'نشرة ماجيك الموسمية' : 'THE HARVEST DISPATCH'}
         </p>
 
-        <h2 className="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.06] mb-4 drop-shadow-[0_2px_12px_rgba(60,21,24,0.30)]">
-          {isRTL ? 'انضم إلى مجتمع مطبخ ماجيك.' : 'JOIN THE MAGIC KITCHEN.'}
+        <h2 className="font-display font-black text-[1.75rem] xs:text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.06] mb-3 drop-shadow-[0_2px_12px_rgba(60,21,24,0.30)]">
+          {isRTL ? 'قليل من السحر، إلى باب منزلك.' : 'A LITTLE MAGIC, DELIVERED.'}
         </h2>
 
-        <p className="max-w-xl mx-auto text-base sm:text-lg text-white/95 leading-relaxed font-sans mb-7 drop-shadow-xs">
+        <p className="max-w-lg mx-auto text-sm sm:text-base md:text-lg text-white/95 leading-relaxed font-sans mb-6 drop-shadow-xs">
           {isRTL
-            ? 'اشترك لتصلك أخبار المحاصيل الطازجة مباشرة من مزارع الهند، ووصفات الطهي المنزلي الأصيلة، وأولوية حجز الدفعات المحدودة في الإمارات.'
-            : 'Subscribe for seasonal crop updates from Indian farmers, unhurried home cooking recipes, and early access to fresh micro-lots delivered in the UAE.'}
+            ? 'تحديثات المحاصيل الموسمية ووصفات الطهي الأصيلة وأولوية حجز الدفعات المحدودة في الإمارات.'
+            : 'Seasonal harvest updates, authentic home cooking recipes, and early lot access in the UAE.'}
         </p>
 
         {subscribed ? (
-          <div className="p-6 sm:p-8 rounded-2xl bg-[#3C1518]/90 border border-white/30 max-w-md mx-auto animate-in fade-in duration-300 shadow-xl text-white">
+          <div className="p-6 sm:p-7 rounded-2xl bg-[#3C1518]/90 border border-white/30 max-w-md mx-auto animate-in fade-in duration-300 shadow-xl text-white">
             <div className="w-12 h-12 rounded-full bg-white text-[#C8102E] flex items-center justify-center mx-auto mb-3 shadow-md">
               <Check className="w-6 h-6 stroke-[3]" />
             </div>
@@ -155,7 +140,7 @@ export const HomeCommunity: React.FC = () => {
             </h3>
             <p className="text-sm text-white/85">
               {isRTL
-                ? 'تفقّد بريدك الإلكتروني للحصول على دليل المحصول الترحيبي وأولى وصفاتنا الحصرية.'
+                ? 'تفقّد بريدك الإلكتروني للحصول على دليل المحصول الترحيبي وأولى وصفاتنا.'
                 : 'Check your inbox for our seasonal harvest welcome guide and your first recipe dispatch.'}
             </p>
           </div>
@@ -185,12 +170,6 @@ export const HomeCommunity: React.FC = () => {
             </button>
           </form>
         )}
-
-        <span className="block mt-4 text-xs text-white/80 font-sans">
-          {isRTL
-            ? 'بدون رسائل مزعجة. يمكنك إلغاء الاشتراك بنقرة واحدة في أي وقت.'
-            : 'Zero spam. Unsubscribe anytime with a single click.'}
-        </span>
       </div>
     </section>
   );

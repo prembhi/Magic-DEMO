@@ -12,7 +12,7 @@ interface ComparisonPrinciple {
 export const HomeWhyMagic: React.FC = () => {
   const { isRTL } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [isReducedMotion, setIsReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -23,46 +23,25 @@ export const HomeWhyMagic: React.FC = () => {
     return () => mq.removeEventListener('change', handler);
   }, []);
 
-  useEffect(() => {
-    if (!sectionRef.current) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.08 }
-    );
-    observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
-
-  // Four Core Sourcing Principles
+  // Three Core Sourcing Dimensions
   const principles: ComparisonPrinciple[] = [
     {
-      title: isRTL ? 'شراكات المزارع المباشرة' : 'DIRECT FARM PARTNERSHIPS',
-      magic: isRTL ? 'شراكات مباشرة مع عائلات زراعية معتمدة' : 'Direct partnerships with verified farming families',
-      bulk: isRTL ? 'يتم الشراء غالباً عبر وسطاء وتجار متعددين' : 'Often purchased through multiple intermediaries',
-      packaged: isRTL ? 'نموذج التوريد يختلف حسب الشركة المصنعة' : 'Sourcing model varies',
+      title: isRTL ? 'التوريد الزراعي المباشر' : 'DIRECT FARM SOURCING',
+      magic: isRTL ? 'شراكات مباشرة 100% مع مزارع أسرية متوارثة' : 'Direct partnerships with generational growers',
+      bulk: isRTL ? 'مزادات حبوب مجهولة عبر وسطاء متعددين' : 'Anonymous auctions through multiple intermediaries',
+      packaged: isRTL ? 'سلاسل توريد تجارية غير محددة المنشأ' : 'Commercial supply chains without origin disclosure',
     },
     {
-      title: isRTL ? 'علاوات المزارعين' : 'GROWER PREMIUMS',
-      magic: isRTL ? '15–20% أعلى من أسعار السوق تُدفع مباشرة للمزارعين' : '15–20% above mandi rates paid directly to generational growers',
-      bulk: isRTL ? 'أسعار السلع الأساسية في البورصات المحلية' : 'Commodity-market pricing',
-      packaged: isRTL ? 'هيكل دفع المزارعين غير معلن ويختلف كثيراً' : 'Farmer payment structure varies',
+      title: isRTL ? 'طزاجة الحصاد والمعالجة' : 'FRESHNESS & PROCESSING',
+      magic: isRTL ? 'مطحون على البارد ومغلف بالنيتروجين لحفظ الأريج' : 'Cold-milled & nitrogen-flushed to lock in aroma',
+      bulk: isRTL ? 'تخزين مطول مع معالجة بالزيوت أو الكبريت' : 'Extended warehousing with artificial polishing oils',
+      packaged: isRTL ? 'معالجة تجارية مع إضافات لمنع التكتل' : 'Industrial processing with potential flow agents',
     },
     {
-      title: isRTL ? 'طزاجة الحصاد' : 'HARVEST FRESHNESS',
-      magic: isRTL ? 'تواريخ الحصاد موثقة ومتبعة كجزء أساسي من التوريد' : 'Harvest dates tracked as part of sourcing',
-      bulk: isRTL ? 'توقيت الحصاد يختلف حسب سلاسل التوريد والتخزين' : 'Harvest timing varies by supply chain',
-      packaged: isRTL ? 'إمكانية تتبع موسم الحصاد تتفاوت وغير مضمونة' : 'Harvest traceability varies',
-    },
-    {
-      title: isRTL ? 'الفحص ومعايير الجودة' : 'QUALITY & TESTING',
-      magic: isRTL ? 'توابل وبقوليات مفحوصة مخبرياً بمعايير جودة موثقة' : 'Lab-tested spices with documented quality standards',
-      bulk: isRTL ? 'ضوابط الجودة تتفاوت بحسب المورّد والتاجر' : 'Quality controls vary by supplier',
-      packaged: isRTL ? 'معايير الجودة تخضع للمواصفات التجارية لكل علامة' : 'Quality standards vary by brand',
+      title: isRTL ? 'النقاء والفحص المخبري' : 'PURITY & TESTING',
+      magic: isRTL ? 'محاصيل مفحوصة مخبرياً ومفروزة بالليزر 100%' : 'Lab-tested single-origin staples, laser-sorted for purity',
+      bulk: isRTL ? 'درجات نقاء متفاوتة وخلط بين شحنات متعددة' : 'Inconsistent commodity grading and batch blending',
+      packaged: isRTL ? 'مطابقة للمواصفات العامة دون تتبع المزرعة' : 'Standard compliance without farm traceability',
     },
   ];
 
@@ -70,7 +49,7 @@ export const HomeWhyMagic: React.FC = () => {
     <section
       ref={sectionRef}
       id="why-magic"
-      className="w-full bg-[#FAF5EE] text-[#3C1518] py-20 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-12 border-b border-[#3C1518]/12 select-none relative overflow-hidden"
+      className="w-full bg-[#FAF5EE] text-[#3C1518] py-12 sm:py-16 lg:py-20 px-5 sm:px-6 lg:px-12 border-b border-[#3C1518]/12 select-none relative overflow-hidden"
       aria-labelledby="why-magic-heading"
     >
       <div className="max-w-6xl mx-auto relative z-10">
@@ -84,23 +63,23 @@ export const HomeWhyMagic: React.FC = () => {
             opacity: isVisible || isReducedMotion ? 1 : 0,
             transition: 'opacity 650ms cubic-bezier(0.22, 1, 0.36, 1), transform 650ms cubic-bezier(0.22, 1, 0.36, 1)',
           }}
-          className="max-w-3xl mb-8 sm:mb-10"
+          className="w-full max-w-none lg:max-w-3xl mb-6 sm:mb-8"
         >
-          <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#C8102E] block mb-2.5">
+          <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#C8102E] block mb-2">
             {isRTL ? 'معيار ماجيك' : 'THE MAGIC STANDARD'}
           </span>
 
           <h2
             id="why-magic-heading"
-            className="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl text-[#3C1518] tracking-tight leading-[0.98] mb-3.5"
+            className="font-display font-extrabold text-[1.75rem] xs:text-3xl sm:text-5xl lg:text-7xl text-[#3C1518] tracking-tight leading-[1.02] sm:leading-[0.98] mb-2.5"
           >
-            {isRTL ? 'ما الذي يميّز ماجيك.' : 'WHAT SETS MAGIC APART.'}
+            {isRTL ? 'ما الذي يجعل ماجيك متفردة؟' : 'WHAT MAKES MAGIC DIFFERENT?'}
           </h2>
 
-          <p className="text-base sm:text-lg text-[#3C1518]/85 font-sans leading-relaxed max-w-2xl">
+          <p className="text-sm sm:text-base lg:text-lg text-[#3C1518]/85 font-sans leading-relaxed w-full lg:max-w-2xl">
             {isRTL
-              ? 'من المزارع التي نتشارك معها إلى الطريقة التي نحمي بها كل حصاد، إليك ما يجعل ماجيك متفردة.'
-              : 'From the farms we partner with to the way we protect every harvest, here\'s what makes MAGIC different.'}
+              ? 'من الشراكات الزراعية المباشرة إلى الطحن البارد والفحص المخبري، هكذا نحمي كل محصول.'
+              : 'From direct grower partnerships to cold-milling and laboratory testing, here is how we protect every harvest.'}
           </p>
         </div>
 

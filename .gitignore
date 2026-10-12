@@ -8,3 +8,5 @@ coverage/
 !.env.example
 bun.lock
 scratch/
+audit_*/
+audit_*.cjs

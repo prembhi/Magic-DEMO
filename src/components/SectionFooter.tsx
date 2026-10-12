@@ -14,7 +14,7 @@ export const SectionFooter: React.FC = () => {
   const { language, setLanguage, isRTL, t } = useLanguage();
   const [activeLegalDoc, setActiveLegalDoc] = useState<LegalDocType | null>(null);
   const footerRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [isReducedMotion, setIsReducedMotion] = useState(false);
 
   // Newsletter Form State
@@ -28,21 +28,6 @@ export const SectionFooter: React.FC = () => {
     const handler = (e: MediaQueryListEvent) => setIsReducedMotion(e.matches);
     mq.addEventListener('change', handler);
     return () => mq.removeEventListener('change', handler);
-  }, []);
-
-  useEffect(() => {
-    if (!footerRef.current) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.08 }
-    );
-    observer.observe(footerRef.current);
-    return () => observer.disconnect();
   }, []);
 
   const handleSubscribe = (e: React.FormEvent) => {
@@ -114,88 +99,7 @@ export const SectionFooter: React.FC = () => {
         />
       </div>
 
-      <div className="relative max-w-[1280px] mx-auto z-10">
-        {/* ============================================================ */}
-        {/* 2. TOP EDITORIAL NEWSLETTER BAND WITH CURATED ILLUSTRATIONS  */}
-        {/* ============================================================ */}
-        <div
-          style={{
-            transform: isVisible || isReducedMotion ? 'translateY(0)' : 'translateY(25px)',
-            opacity: isVisible || isReducedMotion ? 1 : 0,
-            transition: 'transform 800ms cubic-bezier(0.22, 1, 0.36, 1), opacity 800ms ease-out',
-          }}
-          className="relative bg-[#FAF5EE] border border-[#3C1518]/15 rounded-2xl p-6 sm:p-8 lg:p-10 mb-10 sm:mb-12 shadow-xs overflow-hidden"
-        >
-          {/* NEWSLETTER CONTENT GRID */}
-          <div className="relative z-20 max-w-2xl mx-auto text-center flex flex-col items-center">
-            {/* Small Editorial Overline */}
-            <p className="text-xs font-sans font-bold tracking-widest text-[#C8102E] uppercase mb-3.5">
-              {isRTL ? 'رسائل الحصاد والمطبخ' : 'THE MAGIC DISPATCH'}
-            </p>
-
-            {/* Headline */}
-            <h3 className="font-display font-black text-2xl sm:text-4xl lg:text-5xl text-[#3C1518] tracking-tight leading-[1.12] mb-3.5">
-              {isRTL ? 'ابقَ قريباً من مصدر التوابل.' : 'STAY CLOSE TO THE SOURCE.'}
-            </h3>
-
-            {/* Supporting Copy */}
-            <p className="font-sans text-sm sm:text-base text-[#3C1518]/80 max-w-lg leading-relaxed mb-6 sm:mb-8">
-              {isRTL
-                ? 'ملاحظات الحصاد الموسمي، وتوابل المطبخ الجديدة، ووصفات وقصص ماجيك من المزارع الهندية خلف كل رشة.'
-                : 'Seasonal harvest notes, new pantry arrivals, recipes and MAGIC stories from the farms behind every pinch.'}
-            </p>
-
-            {/* Form */}
-            {isSubscribed ? (
-              <div className="w-full max-w-md py-4 px-6 rounded-2xl bg-white border border-[#5A7247]/40 shadow-xs flex items-center justify-center gap-3 text-sm font-semibold text-[#3C1518] animate-in fade-in zoom-in duration-300">
-                <div className="w-6 h-6 rounded-full bg-[#5A7247] text-white flex items-center justify-center shrink-0">
-                  <Check className="w-3.5 h-3.5" />
-                </div>
-                <span>
-                  {isRTL
-                    ? 'أهلاً بك في طاولة ماجيك! تم تأكيد اشتراكك بنجاح.'
-                    : 'Welcome to the MAGIC table! Check your inbox for your 10% welcome note.'}
-                </span>
-              </div>
-            ) : (
-              <form
-                onSubmit={handleSubscribe}
-                className="w-full max-w-md flex flex-col sm:flex-row items-center gap-3"
-              >
-                <div className="relative w-full">
-                  <Mail className="absolute start-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-[#3C1518]/45 pointer-events-none" />
-                  <input
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder={isRTL ? 'أدخل بريدك الإلكتروني' : 'Enter your email address'}
-                    aria-label="Email address for MAGIC newsletter"
-                    className="w-full h-12 sm:h-14 ps-12 pe-4 text-sm bg-white/95 text-[#3C1518] placeholder-[#3C1518]/45 rounded-full border border-[#3C1518]/25 focus:border-[#C8102E] focus:ring-2 focus:ring-[#C8102E]/20 focus:outline-none transition-all shadow-2xs font-normal"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full sm:w-auto h-12 sm:h-14 px-8 rounded-full bg-[#C8102E] hover:bg-[#A60D26] text-white font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer flex items-center justify-center gap-2 shrink-0 active:scale-95 disabled:opacity-75 min-h-[48px]"
-                >
-                  <span>
-                    {isSubmitting
-                      ? (isRTL ? 'جاري الانضمام...' : 'JOINING...')
-                      : (isRTL ? 'اشترك الآن' : 'SIGN UP')}
-                  </span>
-                  <ArrowRight className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
-                </button>
-              </form>
-            )}
-
-            <span className="text-xs text-[#3C1518]/60 mt-3.5 font-sans">
-              {isRTL
-                ? 'نحترم خصوصيتك. يمكنك إلغاء الاشتراك في أي وقت.'
-                : 'Zero spam. Unsubscribe anytime with a single click.'}
-            </span>
-          </div>
-        </div>
+      <div className="relative max-w-[1280px] mx-auto z-10 pt-2 sm:pt-4">
 
         {/* ============================================================ */}
         {/* 3. MAIN FOOTER EDITORIAL GRID                                */}
@@ -251,34 +155,34 @@ export const SectionFooter: React.FC = () => {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Instagram"
-                  className="w-10 h-10 rounded-full bg-white/80 hover:bg-white text-[#3C1518] hover:text-[#C8102E] border border-[#3C1518]/15 hover:border-[#C8102E]/50 flex items-center justify-center transition-all shadow-2xs hover:scale-105"
+                  className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-white/80 hover:bg-white text-[#3C1518] hover:text-[#C8102E] border border-[#3C1518]/15 hover:border-[#C8102E]/50 flex items-center justify-center transition-all shadow-2xs hover:scale-105"
                 >
-                  <Instagram className="w-4.5 h-4.5" />
+                  <Instagram className="w-5 h-5" />
                 </a>
                 <a
                   href="https://wa.me/971500000000"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="WhatsApp Support"
-                  className="w-10 h-10 rounded-full bg-white/80 hover:bg-white text-[#3C1518] hover:text-[#5A7247] border border-[#3C1518]/15 hover:border-[#5A7247]/50 flex items-center justify-center transition-all shadow-2xs hover:scale-105"
+                  className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-white/80 hover:bg-white text-[#3C1518] hover:text-[#5A7247] border border-[#3C1518]/15 hover:border-[#5A7247]/50 flex items-center justify-center transition-all shadow-2xs hover:scale-105"
                 >
-                  <MessageCircle className="w-4.5 h-4.5" />
+                  <MessageCircle className="w-5 h-5" />
                 </a>
                 <a
                   href="https://youtube.com"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="YouTube"
-                  className="w-10 h-10 rounded-full bg-white/80 hover:bg-white text-[#3C1518] hover:text-[#C8102E] border border-[#3C1518]/15 hover:border-[#C8102E]/50 flex items-center justify-center transition-all shadow-2xs hover:scale-105"
+                  className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-white/80 hover:bg-white text-[#3C1518] hover:text-[#C8102E] border border-[#3C1518]/15 hover:border-[#C8102E]/50 flex items-center justify-center transition-all shadow-2xs hover:scale-105"
                 >
-                  <Youtube className="w-4.5 h-4.5" />
+                  <Youtube className="w-5 h-5" />
                 </a>
                 <a
                   href="mailto:hello@magicspices.com"
                   aria-label="Email Us"
-                  className="w-10 h-10 rounded-full bg-white/80 hover:bg-white text-[#3C1518] hover:text-[#D4A843] border border-[#3C1518]/15 hover:border-[#D4A843]/60 flex items-center justify-center transition-all shadow-2xs hover:scale-105"
+                  className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-white/80 hover:bg-white text-[#3C1518] hover:text-[#D4A843] border border-[#3C1518]/15 hover:border-[#D4A843]/60 flex items-center justify-center transition-all shadow-2xs hover:scale-105"
                 >
-                  <Mail className="w-4.5 h-4.5" />
+                  <Mail className="w-5 h-5" />
                 </a>
               </div>
             </div>

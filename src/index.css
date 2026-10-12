@@ -396,14 +396,75 @@
 .reveal-image {
   opacity: 0;
   transform: translateY(20px) scale(1.025);
-  transition: opacity 1100ms cubic-bezier(0.16, 1, 0.3, 1),
-              transform 1100ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 800ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 
 .reveal-image.is-revealed {
   opacity: 1;
   transform: translateY(0) scale(1);
+}
+
+/* ============================================================ */
+/* GLOBAL REUSABLE MOTION TOKENS (cubic-bezier(0.22, 1, 0.36, 1))*/
+/* ============================================================ */
+.motion-ease-premium {
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+/* Subtle route / page transition */
+.page-fade-enter {
+  animation: pageFadeEnter 280ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes pageFadeEnter {
+  0% {
+    opacity: 0.92;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card hover lift & settle */
+.card-hover-lift {
+  transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 250ms cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 200ms ease-out;
+  will-change: transform;
+}
+
+.card-hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+/* Modal and Drawer motion */
+.modal-enter {
+  animation: modalScaleEnter 220ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes modalScaleEnter {
+  0% {
+    opacity: 0;
+    transform: scale(0.97) translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Restrained button press micro-interaction */
+.btn-press {
+  transition: transform 150ms cubic-bezier(0.22, 1, 0.36, 1),
+              background-color 150ms ease-out;
+}
+
+.btn-press:active {
+  transform: scale(0.98);
 }
 
 /* Depth Hierarchy Tokens */

@@ -15,7 +15,10 @@ export function useScrollReveal<T extends HTMLElement = HTMLDivElement>(
 ) {
   const { threshold = 0.15, rootMargin = '0px 0px -40px 0px', delayMs = 0 } = options;
   const ref = useRef<T>(null);
-  const [isRevealed, setIsRevealed] = useState(false);
+  const [isRevealed, setIsRevealed] = useState(() => {
+    if (typeof window === 'undefined') return true;
+    return window.innerWidth < 768 || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  });
 
   useEffect(() => {
     if (typeof window === 'undefined') return;

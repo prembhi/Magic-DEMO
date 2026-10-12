@@ -1,0 +1,64 @@
+/* ========================================================================== */
+/* MAGIC V3 ANIMATED SPICE LOADING SCREEN STYLES                              */
+/* Keyframes for physics fall, bounce settle, and full-screen color wipe      */
+/* ========================================================================== */
+
+@keyframes magicLargeSpiceFall {
+  0% {
+    transform: translate3d(var(--start-x, 0px), -125vh, 0) rotate(var(--init-deg, 0deg));
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  75% {
+    transform: translate3d(var(--target-x, 0px), calc(var(--target-y, 0px) - 24px), 0) rotate(calc(var(--target-deg, 0deg) + 6deg));
+  }
+  88% {
+    /* Settling bounce on impact */
+    transform: translate3d(var(--target-x, 0px), calc(var(--target-y, 0px) - 6px), 0) rotate(calc(var(--target-deg, 0deg) - 2deg));
+  }
+  100% {
+    /* Settled final composition */
+    transform: translate3d(var(--target-x, 0px), var(--target-y, 0px), 0) rotate(var(--target-deg, 0deg));
+    opacity: 1;
+  }
+}
+
+.animate-large-spice-fall {
+  animation-name: magicLargeSpiceFall;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: both;
+  will-change: transform, opacity;
+}
+
+/* Full-Screen Brand Wipe (Magic Red #C8102E) */
+@keyframes magicRedCurtainIn {
+  0% {
+    transform: translate3d(0, 102%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0%, 0);
+  }
+}
+
+@keyframes magicRedCurtainExit {
+  0% {
+    transform: translate3d(0, 0%, 0);
+  }
+  100% {
+    transform: translate3d(0, -102%, 0);
+  }
+}
+
+.magic-curtain {
+  will-change: transform;
+}
+
+.animate-magic-curtain-in {
+  animation: magicRedCurtainIn 0.55s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.animate-magic-curtain-exit {
+  animation: magicRedCurtainExit 0.8s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}

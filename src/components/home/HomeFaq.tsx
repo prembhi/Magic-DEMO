@@ -10,46 +10,38 @@ export const HomeFaq: React.FC = () => {
   const faqs = isRTL
     ? [
         {
+          q: 'هل منتجات ماجيك غير مصقولة وخالية من الإضافات؟',
+          a: 'نعم، بنسبة 100%. يتم فرز البقوليات بعدسات الليزر الدقيقة لضمان النقاء مع انعدام تام للألوان الصناعية أو زيوت الصقل. توابلنا أحادية المكون وخالية تماماً من الحشوات.',
+        },
+        {
           q: 'أين تُزرع محاصيل وتوابل ماجيك؟',
-          a: 'تُجلب كافة محاصيل ماجيك مباشرة من مزارع أسرية موثوقة في أشهر الأقاليم الزراعية بالهند — بما في ذلك عدس التور من غولبارغا، والكركم من سالم، والكمون من أونجا، والعدس الأحمر من مادهيا براديش.',
+          a: 'تُجلب كافة المحاصيل مباشرة من مزارع أسرية موثوقة في أشهر الأقاليم الزراعية بالهند — بما في ذلك التور من غولبارغا، والكركم من سالم، والكمون من أونجا، والعدس الأحمر من مادهيا براديش.',
         },
         {
           q: 'كم تستغرق مدة التوصيل داخل دبي ودولة الإمارات؟',
-          a: 'نوفر خدمة التوصيل في اليوم التالي في دبي وأبوظبي والشارقة للطلبات المسجلة قبل الساعة 4:00 مساءً. وتستغرق باقي الإمارات (عجمان، رأس الخيمة، أم القيوين، الفجيرة) يومي عمل. التوصيل مجاني لكافة الطلبات فوق 50 درهم إماراتي.',
-        },
-        {
-          q: 'هل منتجات ماجيك غير مصقولة وخالية من الإضافات؟',
-          a: 'نعم، بنسبة 100%. يتم فرز البقوليات بعدسات الليزر الدقيقة لضمان النقاء مع انعدام تام للألوان الصناعية أو زيوت الصقل أو المعالجات المائية. توابلنا المطحونة أحادية المكون وخالية تماماً من الحشوات.',
-        },
-        {
-          q: 'كيف يعمل نظام الاشتراك والتوفير الدوري؟',
-          a: 'يمكنك تحديد دورة التوصيل المفضلة (كل 30 أو 14 أو 7 أيام) لأي منتج، وتوفير 10% على كل شحنة. يمكنك إيقاف الاشتراك أو تخطي شحنة أو إلغاء التكرار في أي وقت بسهولة وبدون أي التزام من حسابك.',
+          a: 'توصيل في اليوم التالي في دبي وأبوظبي والشارقة للطلبات قبل الساعة 4:00 مساءً (يومان لباقي الإمارات). التوصيل مجاني للطلبات فوق 50 درهم إماراتي.',
         },
         {
           q: 'كيف يُفضل حفظ توابل وبقوليات ماجيك؟',
-          a: 'صُممت أكياسنا بطبقات رقائق حاجبة وسحاب إغلاق محكم لحبس الزيوت العطرية ومنع الرطوبة. احفظها في مكان بارد وجاف بعيداً عن أشعة الشمس المباشرة، ولا حاجة لنقلها لبرطمانات زجاجية.',
+          a: 'تحفظ أكياسنا متعددة الطبقات المزودة بسحاب محكم الزيوت العطرية والنقاء. احفظها في مكان بارد وجاف بعيداً عن أشعة الشمس المباشرة.',
         },
       ]
     : [
         {
+          q: 'Are MAGIC products unpolished and free of additives?',
+          a: 'Yes, 100%. Our whole pulses are laser-sorted with zero artificial food dyes, polishing oils, or water treatments. Spices contain pure single-ingredient harvest with zero fillers.',
+        },
+        {
           q: 'Where are MAGIC spices and pulses grown?',
-          a: 'All MAGIC crops are sourced from verified generational farming communities in premier Indian agricultural belts — including Toor Dal from Gulbarga, Haldi from Salem, Cumin from Unjha, and Masoor from Madhya Pradesh.',
+          a: 'All crops are sourced directly from verified family farms in premier Indian belts: Toor Dal from Gulbarga, Haldi from Salem, Cumin from Unjha, and Masoor from Madhya Pradesh.',
         },
         {
           q: 'How fast is delivery across Dubai and the UAE?',
-          a: 'We offer Next-Day Delivery across Dubai, Abu Dhabi, and Sharjah for orders placed before 4:00 PM. Deliveries to Ajman, RAK, UAQ, and Fujairah take 2 business days. Free UAE shipping applies on all orders above AED 50.',
+          a: 'Next-Day Delivery across Dubai, Abu Dhabi, and Sharjah for orders placed before 4:00 PM (2 business days for other Emirates). Free UAE shipping on orders above AED 50.',
         },
         {
-          q: 'Are MAGIC products unpolished and free of additives?',
-          a: 'Yes, 100%. Our whole pulses are optically laser-sorted for purity with zero artificial food dyes, polishing oils, or water treatments. Our ground spices contain 100% single-ingredient harvest with no fillers.',
-        },
-        {
-          q: 'How does the Subscribe & Save delivery work?',
-          a: 'You can choose your preferred delivery cadence (every 30, 14, or 7 days) on any staple. You save 10% on every shipment, and you can pause, skip, reschedule, or cancel anytime with zero commitments directly from your account.',
-        },
-        {
-          q: 'How should I store my MAGIC spices and dals?',
-          a: 'Our pouches are multi-layered foil barriers with airtight resealable zippers. Store them in a cool, dry pantry away from direct sunlight. There is no need to transfer them into separate jars unless you prefer.',
+          q: 'How should I store my MAGIC spices and pulses?',
+          a: 'Our multi-layered foil pouches with airtight resealable zippers protect aroma and freshness. Store them in a cool, dry pantry away from direct sunlight.',
         },
       ];
 
@@ -60,45 +52,28 @@ export const HomeFaq: React.FC = () => {
   return (
     <section
       id="faq"
-      className="w-full bg-[#FAF5EE] text-[#3C1518] py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 border-b border-[#3C1518]/12 select-none relative"
+      className="w-full bg-[#FAF5EE] text-[#3C1518] py-12 sm:py-16 lg:py-20 px-5 sm:px-6 lg:px-12 border-b border-[#3C1518]/12 select-none relative"
       aria-labelledby="faq-heading"
     >
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 xl:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 xl:gap-16 items-start">
           
           {/* LEFT: EDITORIAL INTRO & RESTRAINED BOTANICAL MOTIF */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
+          <div className="lg:col-span-5 flex flex-col justify-between w-full">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#C8102E] mb-3">
+              <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#C8102E] mb-2">
                 {isRTL ? 'الأسئلة الشائعة' : 'FREQUENTLY ASKED QUESTIONS'}
               </p>
               <h2
                 id="faq-heading"
-                className="font-display font-black text-4xl sm:text-6xl lg:text-7xl text-[#3C1518] tracking-tight leading-[1.08] mb-4"
+                className="font-display font-black text-[1.75rem] xs:text-3xl sm:text-5xl lg:text-7xl text-[#3C1518] tracking-tight leading-[1.04] sm:leading-[1.08] mb-4"
               >
-                {isRTL ? (
-                  <>
-                    كل ما تود
-                    <br />
-                    معرفته عن ماجيك.
-                  </>
-                ) : (
-                  <>
-                    EVERYTHING YOU
-                    <br />
-                    NEED TO KNOW.
-                  </>
-                )}
+                {isRTL ? 'معلومات تهمك.' : 'GOOD TO KNOW.'}
               </h2>
-              <p className="text-sm sm:text-base text-[#3C1518]/85 leading-relaxed font-sans max-w-md mb-6 sm:mb-8">
-                {isRTL
-                  ? 'هل ترغب بمعرفة المزيد عن شراكاتنا مع المزارعين، أو سرعة التوصيل في الإمارات، أو كيفية الحفظ؟ إليك إجابات وافية عن استفساراتكم.'
-                  : 'Curious about our farm partnerships, UAE delivery speeds, or pantry storage? Here are answers to common questions about MAGIC products.'}
-              </p>
             </div>
 
             {/* Small Dedicated Pantry Spice Bowl Illustration */}
-            <div className="flex items-center gap-3 pt-2">
+            <div className="flex items-center gap-3 pt-1 sm:pt-2 mb-4 lg:mb-0">
               <div className="w-10 sm:w-11 opacity-90 shrink-0">
                 <img
                   src={MAGIC_ASSETS.illustrations.brassBowl}

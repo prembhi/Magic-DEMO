@@ -689,7 +689,7 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
               <button
                 type="button"
                 onClick={() => setLanguage('en')}
-                className={`px-3 py-1.5 min-h-[34px] text-xs font-sans font-bold rounded-full transition-all cursor-pointer active:scale-[0.97] ${
+                className={`px-2.5 sm:px-3 py-1.5 min-h-[36px] min-w-[38px] text-[11px] sm:text-xs font-sans font-bold rounded-full transition-all cursor-pointer active:scale-[0.97] flex items-center justify-center ${
                   language === 'en'
                     ? 'bg-[#FDF6EC] text-[#C8102E] shadow-xs'
                     : 'text-[#FDF6EC]/80 hover:text-white'
@@ -702,7 +702,7 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
               <button
                 type="button"
                 onClick={() => setLanguage('ar')}
-                className={`px-3 py-1.5 min-h-[34px] text-xs font-bold rounded-full transition-all cursor-pointer font-arabic active:scale-[0.97] ${
+                className={`px-2.5 sm:px-3 py-1.5 min-h-[36px] min-w-[48px] text-[11px] sm:text-xs font-bold rounded-full transition-all cursor-pointer font-arabic active:scale-[0.97] flex items-center justify-center ${
                   language === 'ar'
                     ? 'bg-[#FDF6EC] text-[#C8102E] shadow-xs'
                     : 'text-[#FDF6EC]/80 hover:text-white'

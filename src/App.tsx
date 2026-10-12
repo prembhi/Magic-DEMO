@@ -14,6 +14,7 @@ import { NewsletterPage } from './components/newsletter/NewsletterPage';
 import { TypographyTestPage } from './components/typography/TypographyTestPage';
 import { NotFoundPage } from './components/NotFoundPage';
 import { MagicScrollProgress } from './components/common/MagicScrollProgress';
+import { SpiceLoadingScreen } from './components/loader/SpiceLoadingScreen';
 import { ShopCartProvider, useShopCart } from './context/ShopCartContext';
 import { LanguageProvider } from './context/LanguageContext';
 import { updatePageMetadata } from './utils/seo';
@@ -340,103 +341,108 @@ function MainAppContent() {
         Skip to main content
       </a>
 
-      {routeState.page === 'product' ? (
-        /* REUSABLE DYNAMIC SINGLE PRODUCT PAGE */
-        <ProductPage
-          productSlug={routeState.productSlug}
-          onNavigateHome={handleNavigateHome}
-          onNavigateShop={handleNavigateShop}
-          onNavigateRecipes={handleNavigateRecipes}
-          onNavigateBundles={handleNavigateBundles}
-          onNavigateImpact={handleNavigateImpact}
-          onNavigateNewsletter={handleNavigateNewsletter}
-          onSelectProduct={handleNavigateProduct}
-        />
-      ) : routeState.page === 'recipes' ? (
-        /* RECIPES DISCOVERY & DETAIL PAGE */
-        <RecipesPage
-          recipeSlug={routeState.recipeSlug}
-          onNavigateHome={handleNavigateHome}
-          onNavigateShop={handleNavigateShop}
-          onNavigateRecipes={handleNavigateRecipes}
-          onNavigateBundles={handleNavigateBundles}
-          onNavigateImpact={handleNavigateImpact}
-          onNavigateNewsletter={handleNavigateNewsletter}
-          onSelectProduct={handleNavigateProduct}
-        />
-      ) : routeState.page === 'bundles' ? (
-        /* BUNDLES COLLECTION & DETAIL PAGE */
-        <BundlesPage
-          bundleSlug={routeState.bundleSlug}
-          onNavigateHome={handleNavigateHome}
-          onNavigateShop={handleNavigateShop}
-          onNavigateRecipes={handleNavigateRecipes}
-          onNavigateBundles={handleNavigateBundles}
-          onNavigateImpact={handleNavigateImpact}
-          onNavigateNewsletter={handleNavigateNewsletter}
-          onSelectProduct={handleNavigateProduct}
-        />
-      ) : routeState.page === 'impact' ? (
-        /* IMPACT STORY PAGE: FROM FARM TO MAGIC */
-        <ImpactPage
-          onNavigateHome={handleNavigateHome}
-          onNavigateShop={handleNavigateShop}
-          onNavigateRecipes={handleNavigateRecipes}
-          onNavigateBundles={handleNavigateBundles}
-          onNavigateImpact={handleNavigateImpact}
-          onNavigateNewsletter={handleNavigateNewsletter}
-          onSelectProduct={handleNavigateProduct}
-        />
-      ) : routeState.page === 'typography-test' ? (
-        /* TEMPORARY TYPOGRAPHY SYSTEM COMPARISON PAGE */
-        <TypographyTestPage onNavigateHome={handleNavigateHome} />
-      ) : routeState.page === 'newsletter' ? (
-        /* DEDICATED MAGIC NEWSLETTER PAGE */
-        <NewsletterPage
-          onNavigateHome={handleNavigateHome}
-          onNavigateShop={handleNavigateShop}
-          onNavigateRecipes={handleNavigateRecipes}
-          onNavigateBundles={handleNavigateBundles}
-          onNavigateImpact={handleNavigateImpact}
-          onNavigateNewsletter={handleNavigateNewsletter}
-          onSelectProduct={handleNavigateProduct}
-        />
-      ) : routeState.page === 'shop' ? (
-        /* SHOP PAGE */
-        <ShopPage
-          onNavigateHome={handleNavigateHome}
-          onSelectProduct={handleNavigateProduct}
-          initialCategoryId={routeState.categoryId}
-          onNavigateRecipes={handleNavigateRecipes}
-          onNavigateBundles={handleNavigateBundles}
-          onNavigateImpact={handleNavigateImpact}
-          onNavigateNewsletter={handleNavigateNewsletter}
-        />
-      ) : routeState.page === '404' ? (
-        /* 404 NOT FOUND PAGE */
-        <NotFoundPage
-          onNavigateHome={handleNavigateHome}
-          onNavigateShop={handleNavigateShop}
-          onNavigateRecipes={handleNavigateRecipes}
-          onNavigateBundles={handleNavigateBundles}
-          onNavigateImpact={handleNavigateImpact}
-          onNavigateNewsletter={handleNavigateNewsletter}
-        />
-      ) : (
-        /* REBUILT PREMIUM EDITORIAL HOME PAGE (7 EXPERIENCES) */
-        <HomePage
-          onNavigateHome={handleNavigateHome}
-          onNavigateShop={handleNavigateShop}
-          onNavigateRecipes={handleNavigateRecipes}
-          onNavigateBundles={handleNavigateBundles}
-          onNavigateImpact={handleNavigateImpact}
-          onNavigateNewsletter={handleNavigateNewsletter}
-          onSelectProduct={handleNavigateProduct}
-        />
-      )}
+      <div key={routeState.page + (routeState.productSlug || '') + (routeState.recipeSlug || '') + (routeState.bundleSlug || '') + (routeState.categoryId || '')} className="page-fade-enter flex-1 flex flex-col">
+        {routeState.page === 'product' ? (
+          /* REUSABLE DYNAMIC SINGLE PRODUCT PAGE */
+          <ProductPage
+            productSlug={routeState.productSlug}
+            onNavigateHome={handleNavigateHome}
+            onNavigateShop={handleNavigateShop}
+            onNavigateRecipes={handleNavigateRecipes}
+            onNavigateBundles={handleNavigateBundles}
+            onNavigateImpact={handleNavigateImpact}
+            onNavigateNewsletter={handleNavigateNewsletter}
+            onSelectProduct={handleNavigateProduct}
+          />
+        ) : routeState.page === 'recipes' ? (
+          /* RECIPES DISCOVERY & DETAIL PAGE */
+          <RecipesPage
+            recipeSlug={routeState.recipeSlug}
+            onNavigateHome={handleNavigateHome}
+            onNavigateShop={handleNavigateShop}
+            onNavigateRecipes={handleNavigateRecipes}
+            onNavigateBundles={handleNavigateBundles}
+            onNavigateImpact={handleNavigateImpact}
+            onNavigateNewsletter={handleNavigateNewsletter}
+            onSelectProduct={handleNavigateProduct}
+          />
+        ) : routeState.page === 'bundles' ? (
+          /* BUNDLES COLLECTION & DETAIL PAGE */
+          <BundlesPage
+            bundleSlug={routeState.bundleSlug}
+            onNavigateHome={handleNavigateHome}
+            onNavigateShop={handleNavigateShop}
+            onNavigateRecipes={handleNavigateRecipes}
+            onNavigateBundles={handleNavigateBundles}
+            onNavigateImpact={handleNavigateImpact}
+            onNavigateNewsletter={handleNavigateNewsletter}
+            onSelectProduct={handleNavigateProduct}
+          />
+        ) : routeState.page === 'impact' ? (
+          /* IMPACT STORY PAGE: FROM FARM TO MAGIC */
+          <ImpactPage
+            onNavigateHome={handleNavigateHome}
+            onNavigateShop={handleNavigateShop}
+            onNavigateRecipes={handleNavigateRecipes}
+            onNavigateBundles={handleNavigateBundles}
+            onNavigateImpact={handleNavigateImpact}
+            onNavigateNewsletter={handleNavigateNewsletter}
+            onSelectProduct={handleNavigateProduct}
+          />
+        ) : routeState.page === 'typography-test' ? (
+          /* TEMPORARY TYPOGRAPHY SYSTEM COMPARISON PAGE */
+          <TypographyTestPage onNavigateHome={handleNavigateHome} />
+        ) : routeState.page === 'newsletter' ? (
+          /* DEDICATED MAGIC NEWSLETTER PAGE */
+          <NewsletterPage
+            onNavigateHome={handleNavigateHome}
+            onNavigateShop={handleNavigateShop}
+            onNavigateRecipes={handleNavigateRecipes}
+            onNavigateBundles={handleNavigateBundles}
+            onNavigateImpact={handleNavigateImpact}
+            onNavigateNewsletter={handleNavigateNewsletter}
+            onSelectProduct={handleNavigateProduct}
+          />
+        ) : routeState.page === 'shop' ? (
+          /* SHOP PAGE */
+          <ShopPage
+            onNavigateHome={handleNavigateHome}
+            onSelectProduct={handleNavigateProduct}
+            initialCategoryId={routeState.categoryId}
+            onNavigateRecipes={handleNavigateRecipes}
+            onNavigateBundles={handleNavigateBundles}
+            onNavigateImpact={handleNavigateImpact}
+            onNavigateNewsletter={handleNavigateNewsletter}
+          />
+        ) : routeState.page === '404' ? (
+          /* 404 NOT FOUND PAGE */
+          <NotFoundPage
+            onNavigateHome={handleNavigateHome}
+            onNavigateShop={handleNavigateShop}
+            onNavigateRecipes={handleNavigateRecipes}
+            onNavigateBundles={handleNavigateBundles}
+            onNavigateImpact={handleNavigateImpact}
+            onNavigateNewsletter={handleNavigateNewsletter}
+          />
+        ) : (
+          /* CONSOLIDATED EDITORIAL HOME PAGE (7 EXPERIENCES) */
+          <HomePage
+            onNavigateHome={handleNavigateHome}
+            onNavigateShop={handleNavigateShop}
+            onNavigateRecipes={handleNavigateRecipes}
+            onNavigateBundles={handleNavigateBundles}
+            onNavigateImpact={handleNavigateImpact}
+            onNavigateNewsletter={handleNavigateNewsletter}
+            onSelectProduct={handleNavigateProduct}
+          />
+        )}
+      </div>
 
       {/* CUSTOM MAGIC SCROLL PROGRESS RAIL (Desktop Only - Global Viewport Overlay) */}
       <MagicScrollProgress />
+
+      {/* FULL-SCREEN ANIMATED SPICE LOADING INTRODUCTION */}
+      <SpiceLoadingScreen />
     </>
   );
 }

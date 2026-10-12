@@ -8,6 +8,7 @@ export interface ShopProductCardProps {
   product: ShopProduct;
   onSelectProduct?: (productId: string) => void;
   variant?: 'shop' | 'compact';
+  imageHeightClass?: string;
 }
 
 type FrequencyOption = '30' | '14' | '7';
@@ -28,6 +29,7 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
   product,
   onSelectProduct,
   variant = 'shop',
+  imageHeightClass,
 }) => {
   const { addItem, updateQuantity, getItemQuantity } = useShopCart();
   const { t, isRTL } = useLanguage();
@@ -235,7 +237,7 @@ export const ShopProductCard: React.FC<ShopProductCardProps> = ({
         {/* 1. PRODUCT IMAGE STAGE (Flush, generous ~310-360px height, packaging occupying 88-90%) */}
         <div
           onClick={handleViewProduct}
-          className="relative w-full h-[360px] sm:h-[400px] md:h-[440px] bg-gradient-to-b from-[#FDF6EC] to-[#FAF3E8]/40 rounded-t-[14px] flex items-center justify-center p-4 cursor-pointer select-none overflow-hidden"
+          className={`relative w-full ${imageHeightClass || 'h-[360px] sm:h-[400px] md:h-[440px]'} bg-gradient-to-b from-[#FDF6EC] to-[#FAF3E8]/40 rounded-t-[14px] flex items-center justify-center p-4 cursor-pointer select-none overflow-hidden`}
         >
           {/* Optional Pill Badge at top-left (e.g., Bestseller pill in reference) */}
           {product.badge && (

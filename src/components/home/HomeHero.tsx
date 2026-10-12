@@ -138,7 +138,7 @@ export const HomeHero: React.FC<HomeHeroProps> = ({
       id="farm"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full min-h-[100dvh] lg:h-[100dvh] lg:min-h-0 lg:max-h-[100dvh] bg-[#3C1518] text-[#FDF6EC] flex flex-col justify-between overflow-hidden px-4 sm:px-6 lg:px-12 pt-[94px] sm:pt-[100px] lg:pt-[106px] pb-10 sm:pb-14 select-none border-b-2 border-[#D4A843]/30"
+      className="relative w-full min-h-[100dvh] lg:min-h-[100dvh] bg-[#3C1518] text-[#FDF6EC] flex flex-col justify-between overflow-hidden px-4 sm:px-6 lg:px-12 pt-[94px] sm:pt-[106px] lg:pt-[116px] pb-12 sm:pb-16 lg:pb-20 select-none border-b-2 border-[#D4A843]/30"
       aria-label="MAGIC Farm-to-Spice Cinematic Hero"
     >
       {/* ========================================================================= */}
@@ -184,32 +184,20 @@ export const HomeHero: React.FC<HomeHeroProps> = ({
       {/* 2.5D LAYER 1: EDITORIAL HEADLINE, VALUES & ACTIONS                        */}
       {/* ========================================================================= */}
       <div
-        className="relative max-w-5xl mx-auto w-full z-10 my-auto flex flex-col items-center text-center py-1 sm:py-2"
+        className="relative max-w-6xl mx-auto w-full z-10 my-auto flex flex-col items-center text-center py-1 sm:py-2"
         style={{
           transform: isReducedMotion ? 'none' : `translate3d(${mx * -6}px, ${my * -5}px, 0)`,
           willChange: 'transform',
         }}
       >
-        {/* 1. EDITORIAL EYEBROW: Rises from 30px */}
-        <p
-          style={{
-            opacity: heroReady ? (isReducedMotion ? 1 : Math.max(0, 1 - scrollT * 1.3)) : 0,
-            transform: heroReady ? `translateY(${isReducedMotion ? 0 : (hasEntered ? headlineScrollY * 0.6 : 0)}px)` : 'translateY(30px)',
-            transition: hasEntered ? 'none' : 'opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) 60ms, transform 600ms cubic-bezier(0.22, 1, 0.36, 1) 60ms',
-          }}
-          className="text-[#D4A843] text-sm sm:text-base font-semibold tracking-[0.22em] uppercase mb-3 sm:mb-4"
-        >
-          {isRTL ? 'محاصيل هندية نقية أحادية المنشأ · تميز في الإمارات' : 'SINGLE-ORIGIN INDIAN HARVEST • UAE EXCELLENCE'}
-        </p>
-
-        {/* 2. MAIN HEADLINE */}
+        {/* 1. MAIN HEADLINE (STRICT MAXIMUM 2 LINES) */}
         <h1
           style={{
             opacity: heroReady ? (isReducedMotion ? 1 : (hasEntered ? headlineOpacity : 1)) : 0,
-            transform: heroReady ? `translateY(${isReducedMotion ? 0 : (hasEntered ? headlineScrollY : 0)}px)` : 'translateY(45px)',
-            transition: hasEntered ? 'none' : 'opacity 750ms cubic-bezier(0.22, 1, 0.36, 1) 180ms, transform 750ms cubic-bezier(0.22, 1, 0.36, 1) 180ms',
+            transform: heroReady ? `translateY(${isReducedMotion ? 0 : (hasEntered ? headlineScrollY : 0)}px)` : 'translateY(35px)',
+            transition: hasEntered ? 'none' : 'opacity 750ms cubic-bezier(0.22, 1, 0.36, 1) 120ms, transform 750ms cubic-bezier(0.22, 1, 0.36, 1) 120ms',
           }}
-          className="font-display font-extrabold text-5xl sm:text-7xl md:text-8xl lg:text-[5.5rem] xl:text-[6.5rem] 2xl:text-[7.5rem] text-[#FDF6EC] tracking-tight leading-[1.02] sm:leading-[1.0] mb-5 sm:mb-7 max-w-5xl"
+          className="font-display font-extrabold text-[1.35rem] xs:text-[1.55rem] sm:text-3xl md:text-5xl lg:text-[3.25rem] xl:text-[3.75rem] text-[#FDF6EC] tracking-tight leading-[1.06] sm:leading-[1.0] mb-3.5 sm:mb-5 max-w-6xl"
         >
           {isRTL ? (
             <>
@@ -226,18 +214,18 @@ export const HomeHero: React.FC<HomeHeroProps> = ({
           )}
         </h1>
 
-        {/* 3. EDITORIAL SUPPORTING STORY: Rises from 25px on load, translateY(0 -> -45px) on scroll */}
+        {/* 2. ONE SHORT SUPPORTING SENTENCE */}
         <p
           style={{
             opacity: heroReady ? (isReducedMotion ? 1 : (hasEntered ? copyOpacity : 1)) : 0,
-            transform: heroReady ? `translateY(${isReducedMotion ? 0 : (hasEntered ? copyScrollY : 0)}px)` : 'translateY(25px)',
-            transition: hasEntered ? 'none' : 'opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) 320ms, transform 700ms cubic-bezier(0.22, 1, 0.36, 1) 320ms',
+            transform: heroReady ? `translateY(${isReducedMotion ? 0 : (hasEntered ? copyScrollY : 0)}px)` : 'translateY(20px)',
+            transition: hasEntered ? 'none' : 'opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) 240ms, transform 700ms cubic-bezier(0.22, 1, 0.36, 1) 240ms',
           }}
-          className="max-w-xl lg:max-w-2xl text-base sm:text-lg md:text-xl text-[#FDF6EC]/90 font-sans font-normal leading-relaxed mb-6 sm:mb-8 drop-shadow-sm px-2"
+          className="max-w-xl text-sm sm:text-base md:text-lg text-[#FDF6EC]/90 font-sans font-normal leading-relaxed mb-6 sm:mb-8 drop-shadow-sm px-2"
         >
           {isRTL
-            ? 'بقوليات نقية غير مغشوشة، توابل أحادية المنشأ مطحونة على البارد، وأساسيات مطبخ مستوردة مباشرة من مزارع هندية متوارثة لطهي منزلي أصيل في دولة الإمارات.'
-            : 'Unadulterated pulses, cold-milled single-origin spices, and kitchen staples sourced directly from generational Indian farms for unhurried home cooking across the UAE.'}
+            ? 'توابل هندية نقية وبقوليات غير مصقولة من المزارع المتوارثة مباشرة إلى مطبخك في الإمارات.'
+            : 'Direct-sourced Indian spices and unpolished pulses delivered fresh to UAE kitchens.'}
         </p>
 
         {/* 4. HIGH-IMPACT CTAS: Rises from 20px on load, translateY(0 -> -25px) on scroll */}
@@ -247,7 +235,7 @@ export const HomeHero: React.FC<HomeHeroProps> = ({
             transform: heroReady ? `translateY(${isReducedMotion ? 0 : (hasEntered ? ctaScrollY : 0)}px)` : 'translateY(20px)',
             transition: hasEntered ? 'none' : 'opacity 650ms cubic-bezier(0.22, 1, 0.36, 1) 460ms, transform 650ms cubic-bezier(0.22, 1, 0.36, 1) 460ms',
           }}
-          className="flex flex-wrap items-center justify-center gap-4 sm:gap-5 mb-2 sm:mb-3"
+          className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-5 mb-2 sm:mb-4"
         >
           <button
             type="button"
