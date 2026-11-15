@@ -178,22 +178,15 @@ export const HomeFavourites: React.FC<HomeFavouritesProps> = ({
                   : '“Direct from generational farms. Ground and packed at source for pure aroma.”'}
               </h2>
 
-              {/* Supporting Editorial Paragraph */}
-              <p className="text-sm sm:text-[15px] text-[#3C1518]/80 leading-relaxed font-sans">
-                {isRTL
-                  ? 'تختار ماجيك البقوليات والتوابل المتوارثة مباشرة من مزارع العائلات في الهند — غير ملمعة 100%، مفروزة بالليزر بنسبة 99.8%، وتصل طازجة إلى مطابخ الإمارات بدون أي زيوت صناعية أو شوائب.'
-                  : 'MAGIC sources single-origin heirloom pulses and spices directly from verified family farms across India—100% unpolished, laser-sorted, cold-milled, and delivered fresh to UAE kitchens.'}
-              </p>
-
               {/* Primary Action Button & Carousel Controls */}
               <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
                 <button
                   type="button"
                   onClick={() => onNavigateShop()}
-                  className="magic-btn-primary min-h-[48px] px-7 py-3 rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase shadow-xs hover:shadow-md transition-all active:scale-[0.98] cursor-pointer inline-flex items-center gap-2"
+                  className="magic-btn-primary min-h-[48px] px-8 py-3 rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase bg-[#C8102E] hover:bg-[#A60D26] text-white shadow-sm hover:shadow-md transition-all active:scale-[0.98] cursor-pointer inline-flex items-center gap-2"
                 >
                   <span>{isRTL ? 'تسوق جميع الأساسيات' : 'SHOP ALL STAPLES'}</span>
-                  <ArrowRight className="w-4 h-4 rtl:rotate-180" />
+                  <ArrowRight className="w-4 h-4 rtl:rotate-180 text-white" />
                 </button>
 
                 {/* Circular Arrow Navigation Controls */}
