@@ -160,8 +160,8 @@ export const ShopPage: React.FC<ShopPageProps> = ({
 
           {/* RIGHT: Product Content Area */}
           <main className="flex-1 w-full min-w-0 focus:outline-none" id="main-content" tabIndex={-1}>
-            {/* MAIN PRODUCT HEADER (Spacious Heading + Controls) */}
-            <div className="bg-white rounded-xl border border-[#E6E0D6] p-4 sm:p-5 mb-6 shadow-2xs">
+            {/* MAIN PRODUCT HEADER (Spacious Heading + Controls - Diaspora Co. 14px Card) */}
+            <div className="bg-white rounded-[14px] border border-[#3C1518]/12 p-4 sm:p-5 mb-6 shadow-2xs">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="flex items-baseline gap-2.5">
                   <h2 className="text-lg sm:text-2xl font-bold font-display text-[#3C1518] leading-tight">
@@ -181,7 +181,7 @@ export const ShopPage: React.FC<ShopPageProps> = ({
                   {/* Mobile category toggle */}
                   <button
                     onClick={() => setMobileDrawerOpen(true)}
-                    className="lg:hidden inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold bg-[#FAF7F2] hover:bg-white text-[#3C1518] border border-[#D9D2C7] rounded-md cursor-pointer min-h-[40px]"
+                    className="lg:hidden inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold bg-[#FAF7F2] hover:bg-white text-[#3C1518] border border-[#3C1518]/15 rounded-full cursor-pointer min-h-[40px]"
                     aria-label="Open categories filter"
                   >
                     <Filter className="w-4 h-4 text-[#C8102E]" />
@@ -190,7 +190,7 @@ export const ShopPage: React.FC<ShopPageProps> = ({
 
                   {/* Active search filter badge */}
                   {searchQuery && (
-                    <div className="hidden xs:flex items-center gap-1.5 text-xs bg-[#FDF2F4] text-[#C8102E] px-2.5 py-1 rounded font-medium">
+                    <div className="hidden xs:flex items-center gap-1.5 text-xs bg-[#FDF2F4] text-[#C8102E] px-2.5 py-1 rounded-full font-medium border border-[#C8102E]/20">
                       <span>"{searchQuery}"</span>
                       <button
                         onClick={() => setSearchQuery('')}
@@ -213,7 +213,7 @@ export const ShopPage: React.FC<ShopPageProps> = ({
                         value={sortBy}
                         onChange={(e) => setSortBy(e.target.value as SortOption)}
                         aria-label="Sort products"
-                        className="appearance-none text-xs font-semibold text-[#3C1518] bg-white hover:bg-[#FAF7F2] border border-[#D9D2C7] focus:border-[#C8102E] focus:ring-2 focus:ring-[#C8102E]/20 rounded-md ps-3 pe-8 py-2 cursor-pointer focus:outline-hidden min-h-[40px] shadow-2xs transition-all"
+                        className="appearance-none text-xs font-semibold text-[#3C1518] bg-white hover:bg-[#FAF7F2] border border-[#3C1518]/20 focus:border-[#C8102E] focus:ring-1 focus:ring-[#C8102E]/20 rounded-[10px] ps-3 pe-8 py-2 cursor-pointer focus:outline-hidden min-h-[40px] transition-all"
                       >
                         <option value="featured">Featured</option>
                         <option value="name-asc">Name A-Z</option>

@@ -59,7 +59,7 @@ export const ShopSidebar: React.FC<ShopSidebarProps> = ({
 
   return (
     <div
-      className={`bg-white rounded-xl border border-[#E6E0D6] shadow-2xs ${
+      className={`bg-white rounded-[14px] border border-[#3C1518]/12 shadow-2xs ${
         isMobileDrawer ? 'h-full p-5 overflow-y-auto' : 'p-3.5'
       }`}
     >
@@ -95,7 +95,7 @@ export const ShopSidebar: React.FC<ShopSidebarProps> = ({
             <div key={cat.id} className="flex flex-col">
               <div
                 onClick={() => handleCategoryClick(cat.id)}
-                className={`flex items-center justify-between py-2 px-2.5 rounded-md cursor-pointer text-xs sm:text-sm transition-colors ${
+                className={`flex items-center justify-between py-2 px-2.5 rounded-[10px] cursor-pointer text-xs sm:text-sm transition-colors ${
                   isSelected
                     ? 'bg-[#FDF2F4] text-[#C8102E] font-bold border-l-3 border-[#C8102E]'
                     : 'text-[#3C1518]/85 hover:bg-[#FAF7F2] hover:text-[#C8102E] font-medium'

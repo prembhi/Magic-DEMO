@@ -190,14 +190,14 @@ export const HomeHero: React.FC<HomeHeroProps> = ({
           willChange: 'transform',
         }}
       >
-        {/* 1. MAIN HEADLINE (STRICT MAXIMUM 2 LINES) */}
+        {/* 1. MAIN HEADLINE (STRICT MAXIMUM 2 LINES - p22-mackinac-pro) */}
         <h1
           style={{
             opacity: heroReady ? (isReducedMotion ? 1 : (hasEntered ? headlineOpacity : 1)) : 0,
             transform: heroReady ? `translateY(${isReducedMotion ? 0 : (hasEntered ? headlineScrollY : 0)}px)` : 'translateY(35px)',
-            transition: hasEntered ? 'none' : 'opacity 750ms cubic-bezier(0.22, 1, 0.36, 1) 120ms, transform 750ms cubic-bezier(0.22, 1, 0.36, 1) 120ms',
+            transition: hasEntered ? 'none' : 'opacity 750ms cubic-bezier(0.3, 1, 0.3, 1) 120ms, transform 750ms cubic-bezier(0.3, 1, 0.3, 1) 120ms',
           }}
-          className="font-display font-extrabold text-[1.35rem] xs:text-[1.55rem] sm:text-3xl md:text-5xl lg:text-[3.25rem] xl:text-[3.75rem] text-[#FDF6EC] tracking-tight leading-[1.06] sm:leading-[1.0] mb-3.5 sm:mb-5 max-w-6xl"
+          className="font-display font-bold text-[1.4rem] xs:text-[1.65rem] sm:text-3xl md:text-5xl lg:text-[3.25rem] xl:text-[3.75rem] text-[#FDF6EC] tracking-tight leading-[1.08] sm:leading-[1.0] mb-3.5 sm:mb-5 max-w-6xl"
         >
           {isRTL ? (
             <>
@@ -214,33 +214,33 @@ export const HomeHero: React.FC<HomeHeroProps> = ({
           )}
         </h1>
 
-        {/* 2. ONE SHORT SUPPORTING SENTENCE */}
+        {/* 2. ONE SHORT SUPPORTING SENTENCE (Fustat Body) */}
         <p
           style={{
             opacity: heroReady ? (isReducedMotion ? 1 : (hasEntered ? copyOpacity : 1)) : 0,
             transform: heroReady ? `translateY(${isReducedMotion ? 0 : (hasEntered ? copyScrollY : 0)}px)` : 'translateY(20px)',
-            transition: hasEntered ? 'none' : 'opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) 240ms, transform 700ms cubic-bezier(0.22, 1, 0.36, 1) 240ms',
+            transition: hasEntered ? 'none' : 'opacity 700ms cubic-bezier(0.3, 1, 0.3, 1) 240ms, transform 700ms cubic-bezier(0.3, 1, 0.3, 1) 240ms',
           }}
-          className="max-w-xl text-sm sm:text-base md:text-lg text-[#FDF6EC]/90 font-sans font-normal leading-relaxed mb-6 sm:mb-8 drop-shadow-sm px-2"
+          className="max-w-xl text-sm sm:text-base md:text-lg text-[#FDF6EC]/90 font-sans font-normal leading-relaxed mb-6 sm:mb-8 px-2"
         >
           {isRTL
             ? 'توابل هندية نقية وبقوليات غير مصقولة من المزارع المتوارثة مباشرة إلى مطبخك في الإمارات.'
             : 'Direct-sourced Indian spices and unpolished pulses delivered fresh to UAE kitchens.'}
         </p>
 
-        {/* 4. HIGH-IMPACT CTAS: Rises from 20px on load, translateY(0 -> -25px) on scroll */}
+        {/* 4. HIGH-IMPACT CTAS: Diaspora Co. Pill-shaped 48px Controls with Hairline Depth */}
         <div
           style={{
             opacity: heroReady ? (isReducedMotion ? 1 : (hasEntered ? ctaOpacity : 1)) : 0,
             transform: heroReady ? `translateY(${isReducedMotion ? 0 : (hasEntered ? ctaScrollY : 0)}px)` : 'translateY(20px)',
-            transition: hasEntered ? 'none' : 'opacity 650ms cubic-bezier(0.22, 1, 0.36, 1) 460ms, transform 650ms cubic-bezier(0.22, 1, 0.36, 1) 460ms',
+            transition: hasEntered ? 'none' : 'opacity 650ms cubic-bezier(0.3, 1, 0.3, 1) 460ms, transform 650ms cubic-bezier(0.3, 1, 0.3, 1) 460ms',
           }}
           className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-5 mb-2 sm:mb-4"
         >
           <button
             type="button"
             onClick={onExplorePantry}
-            className="magic-btn-primary min-h-[48px] h-14 sm:h-16 px-8 sm:px-10 bg-[#C8102E] hover:bg-[#A60D26] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-md shadow-xl hover:shadow-2xl flex items-center gap-2.5 cursor-pointer group border border-white/20 active:scale-[0.98] transition-all"
+            className="magic-btn-primary min-h-[48px] h-12 sm:h-14 px-8 sm:px-10 bg-[#C8102E] hover:bg-[#A60D26] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-full flex items-center gap-2.5 cursor-pointer group border border-white/20 active:scale-[0.985] transition-all"
           >
             <span>{isRTL ? 'تسوق المحصول' : 'SHOP THE HARVEST'}</span>
             <ArrowIcon className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1.5 rtl:group-hover:-translate-x-1.5" />
@@ -249,7 +249,7 @@ export const HomeHero: React.FC<HomeHeroProps> = ({
           <button
             type="button"
             onClick={onDiscoverStory}
-            className="magic-btn-secondary min-h-[48px] h-14 sm:h-16 px-8 sm:px-10 bg-white/10 hover:bg-white/20 text-[#FDF6EC] border-2 border-[#D4A843]/60 hover:border-[#D4A843] text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-md shadow-lg cursor-pointer backdrop-blur-md active:scale-[0.98] transition-all"
+            className="magic-btn-secondary min-h-[48px] h-12 sm:h-14 px-8 sm:px-10 bg-white/10 hover:bg-white/20 text-[#FDF6EC] border border-[#D4A843]/60 hover:border-[#D4A843] text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-full cursor-pointer backdrop-blur-md active:scale-[0.985] transition-all"
           >
             {isRTL ? 'قصة التوريد الأصيل' : 'OUR SOURCING ETHOS'}
           </button>

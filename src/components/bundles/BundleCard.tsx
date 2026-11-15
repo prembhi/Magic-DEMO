@@ -31,7 +31,7 @@ export const BundleCard: React.FC<BundleCardProps> = ({
   return (
     <article
       onClick={() => onSelectBundle(bundle.slug)}
-      className="bg-white border border-[#E6DFC8] rounded-xl p-4 sm:p-5 flex flex-col justify-between hover:border-[#C8102E] transition-all group shadow-2xs cursor-pointer select-none"
+      className="bg-white border border-[#3C1518]/12 rounded-[14px] p-4 sm:p-5 flex flex-col justify-between hover:border-[#C8102E] transition-all group shadow-2xs cursor-pointer select-none"
     >
       <div>
         {/* Top bar: Category & Optional Editorial Badge */}
@@ -105,12 +105,12 @@ export const BundleCard: React.FC<BundleCardProps> = ({
         </div>
       </div>
 
-      {/* Bottom Action Buttons */}
+      {/* Bottom Action Buttons (Diaspora Co. Pill-shaped 48px controls) */}
       <div className="pt-2 flex items-center gap-2">
         <button
           type="button"
           onClick={handleAddBundleToCart}
-          className={`flex-1 min-h-[46px] h-11 px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-md transition-colors cursor-pointer flex items-center justify-center gap-2 shadow-2xs ${
+          className={`flex-1 min-h-[48px] h-12 px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-full transition-colors cursor-pointer flex items-center justify-center gap-2 shadow-2xs ${
             added
               ? 'bg-[#2B6E2A] text-white'
               : 'bg-[#C8102E] hover:bg-[#9B0D23] text-white'
@@ -136,7 +136,7 @@ export const BundleCard: React.FC<BundleCardProps> = ({
             e.stopPropagation();
             onSelectBundle(bundle.slug);
           }}
-          className="min-h-[46px] h-11 px-4 py-2 bg-white hover:bg-[#FAF7F2] text-[#3C1518] text-xs font-bold rounded-md border border-[#D9CEBA] transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+          className="min-h-[48px] h-12 px-5 py-2 bg-white hover:bg-[#FAF7F2] text-[#3C1518] text-xs font-bold rounded-full border border-[#3C1518]/20 transition-colors cursor-pointer flex items-center justify-center gap-1.5"
           aria-label={`View details for ${bundle.name}`}
         >
           <span>View</span>

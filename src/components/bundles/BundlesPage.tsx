@@ -275,7 +275,7 @@ export const BundlesPage: React.FC<BundlesPageProps> = ({
                       role="tab"
                       aria-selected={isActive}
                       onClick={() => handleCategoryTabClick(tab)}
-                      className={`min-h-[40px] px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-md transition-all whitespace-nowrap cursor-pointer active:scale-[0.98] ${
+                      className={`min-h-[40px] px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-full transition-all whitespace-nowrap cursor-pointer active:scale-[0.98] ${
                         isActive
                           ? 'bg-[#C8102E] text-white shadow-xs'
                           : 'bg-white hover:bg-white/80 text-[#3C1518]/75 hover:text-[#3C1518] border border-[#E6E0D6]'

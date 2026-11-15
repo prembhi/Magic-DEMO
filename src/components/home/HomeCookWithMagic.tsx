@@ -84,12 +84,12 @@ export const HomeCookWithMagic: React.FC<HomeCookWithMagicProps> = ({
             style={{
               transform: isVisible || isReducedMotion ? 'none' : 'translateY(30px)',
               opacity: isVisible || isReducedMotion ? 1 : 0,
-              transition: 'opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) 150ms, transform 700ms cubic-bezier(0.22, 1, 0.36, 1) 150ms',
+              transition: 'opacity 700ms cubic-bezier(0.3, 1, 0.3, 1) 150ms, transform 700ms cubic-bezier(0.3, 1, 0.3, 1) 150ms',
             }}
-            className="group grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-8 items-center bg-white rounded-2xl border border-[#3C1518]/15 hover:border-[#C8102E] p-4 sm:p-5 lg:p-6 shadow-xs hover:shadow-lg transition-all duration-300 cursor-pointer mb-6 sm:mb-8 will-change-transform"
+            className="group grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-8 items-center bg-white rounded-[14px] border border-[#3C1518]/12 hover:border-[#C8102E] p-4 sm:p-5 lg:p-6 transition-all duration-300 cursor-pointer mb-6 sm:mb-8 will-change-transform"
           >
             {/* LEFT / FOOD PHOTOGRAPHY (approx 58-60% Desktop Width, 7 cols, height ~350-360px) */}
-            <div className="w-full lg:col-span-7 min-w-0 overflow-hidden rounded-xl sm:rounded-2xl bg-[#FAF7F2] relative h-[210px] xs:h-[240px] sm:h-[280px] md:h-[320px] lg:h-[350px] xl:h-[360px]">
+            <div className="w-full lg:col-span-7 min-w-0 overflow-hidden rounded-[10px] bg-[#FAF7F2] relative h-[210px] xs:h-[240px] sm:h-[280px] md:h-[320px] lg:h-[350px] xl:h-[360px]">
               <img
                 src={recipeVisuals[0]?.photo || MAGIC_ASSETS.dalTadka}
                 alt={primaryRecipe.title}
@@ -118,12 +118,12 @@ export const HomeCookWithMagic: React.FC<HomeCookWithMagicProps> = ({
                 {primaryRecipe.tagline}
               </p>
 
-              {/* Action Button */}
+              {/* Action Button: Diaspora Co. Pill-shaped 48px Button */}
               <div className="pt-1.5 sm:pt-2">
                 <button
                   type="button"
                   onClick={() => onNavigateRecipes(primaryRecipe.slug)}
-                  className="w-full sm:w-auto min-h-[44px] h-11 sm:h-12 px-6 sm:px-7 bg-[#C8102E] hover:bg-[#A60D26] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-md shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer group active:scale-[0.98]"
+                  className="magic-btn-primary w-full sm:w-auto min-h-[48px] h-12 px-7 bg-[#C8102E] hover:bg-[#A60D26] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-full transition-all flex items-center justify-center gap-2 cursor-pointer group active:scale-[0.985]"
                 >
                   <span>{isRTL ? 'عرض الوصفة' : 'VIEW RECIPE'}</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
@@ -146,13 +146,13 @@ export const HomeCookWithMagic: React.FC<HomeCookWithMagicProps> = ({
                 style={{
                   transform: isVisible || isReducedMotion ? 'none' : 'translateY(25px)',
                   opacity: isVisible || isReducedMotion ? 1 : 0,
-                  transition: `opacity 650ms cubic-bezier(0.22, 1, 0.36, 1) ${300 + idx * 100}ms, transform 650ms cubic-bezier(0.22, 1, 0.36, 1) ${300 + idx * 100}ms`,
+                  transition: `opacity 650ms cubic-bezier(0.3, 1, 0.3, 1) ${300 + idx * 100}ms, transform 650ms cubic-bezier(0.3, 1, 0.3, 1) ${300 + idx * 100}ms`,
                 }}
-                className="group bg-white rounded-xl border border-[#3C1518]/15 hover:border-[#C8102E] p-4 sm:p-5 flex flex-col justify-between shadow-xs hover:shadow-md transition-all duration-300 cursor-pointer will-change-transform"
+                className="group bg-white rounded-[14px] border border-[#3C1518]/12 hover:border-[#C8102E] p-4 sm:p-5 flex flex-col justify-between transition-all duration-300 cursor-pointer will-change-transform"
               >
                 <div>
                   {/* Photo Stage */}
-                  <div className="relative w-full h-[200px] sm:h-[220px] overflow-hidden rounded-lg bg-[#FAF7F2] mb-3">
+                  <div className="relative w-full h-[200px] sm:h-[220px] overflow-hidden rounded-[10px] bg-[#FAF7F2] mb-3">
                     <img
                       src={visual.photo}
                       alt={recipe.title}

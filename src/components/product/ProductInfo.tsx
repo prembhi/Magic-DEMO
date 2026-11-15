@@ -155,9 +155,9 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
       </div>
 
       {/* ========================================================================= */}
-      {/* 6. PURCHASE MODE: ONE-TIME VS. SUBSCRIBE & SAVE                           */}
+      {/* 6. PURCHASE MODE: ONE-TIME VS. SUBSCRIBE & SAVE (Diaspora Co. 14px Card)  */}
       {/* ========================================================================= */}
-      <div className="mb-4 border border-[#3C1518]/15 rounded-xl bg-white overflow-hidden shadow-2xs">
+      <div className="mb-4 border border-[#3C1518]/12 rounded-[14px] bg-white overflow-hidden shadow-2xs">
         {/* OPTION 1: One-Time Purchase */}
         <label
           onClick={() => setPurchaseType('one-time')}
@@ -222,7 +222,7 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
                 </span>
               </div>
 
-              {/* Frequency Selector */}
+              {/* Frequency Selector (Diaspora Co. 10px rounded controls) */}
               <div className="grid grid-cols-3 gap-2">
                 {[
                   { value: '30', labelEn: '30 Days', labelAr: '30 يوم', descEn: 'Recommended', descAr: 'مستحسن' },
@@ -233,7 +233,7 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
                     key={freq.value}
                     type="button"
                     onClick={() => setDeliveryFrequency(freq.value as any)}
-                    className={`py-2 px-2 rounded-lg border text-center transition-all cursor-pointer min-h-[44px] ${
+                    className={`py-2 px-2 rounded-[10px] border text-center transition-all cursor-pointer min-h-[44px] ${
                       deliveryFrequency === freq.value
                         ? 'border-[#C8102E] bg-white text-[#C8102E] font-bold shadow-2xs'
                         : 'border-[#3C1518]/15 bg-white/70 text-[#3C1518]/70 hover:bg-white'
@@ -270,12 +270,12 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
       </div>
 
       {/* ========================================================================= */}
-      {/* 7. QUANTITY STEPPER + DOMINANT ADD TO CART CTA                            */}
+      {/* 7. QUANTITY STEPPER + DOMINANT PILL ADD TO CART CTA (Diaspora Co. 48px)   */}
       {/* ========================================================================= */}
       <div className="mb-5 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-        {/* Quantity Stepper (min 48px touch targets) */}
+        {/* Quantity Stepper (10px rounded container, min 48px height) */}
         <div
-          className="h-12 sm:h-14 bg-white border border-[#3C1518]/20 rounded-lg flex items-center px-1 shadow-2xs min-w-[130px] justify-between"
+          className="h-12 bg-white border border-[#3C1518]/20 rounded-[10px] flex items-center px-1 shadow-2xs min-w-[130px] justify-between"
           role="group"
           aria-label={`Quantity selector for ${product.name}`}
         >
@@ -283,7 +283,7 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
             type="button"
             onClick={handleDecrement}
             disabled={quantity <= 1}
-            className="w-11 h-11 flex items-center justify-center text-[#3C1518] hover:bg-[#FAF7F2] disabled:opacity-30 disabled:hover:bg-transparent rounded-md cursor-pointer transition-colors"
+            className="w-10 h-10 flex items-center justify-center text-[#3C1518] hover:bg-[#FAF7F2] disabled:opacity-30 disabled:hover:bg-transparent rounded-full cursor-pointer transition-colors"
             aria-label={isRTL ? 'تقليل الكمية' : 'Decrease quantity'}
           >
             <Minus className="w-4 h-4 stroke-[2.5]" />
@@ -297,21 +297,21 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
           <button
             type="button"
             onClick={handleIncrement}
-            className="w-11 h-11 flex items-center justify-center text-[#3C1518] hover:bg-[#FAF7F2] rounded-md cursor-pointer transition-colors"
+            className="w-10 h-10 flex items-center justify-center text-[#3C1518] hover:bg-[#FAF7F2] rounded-full cursor-pointer transition-colors"
             aria-label={isRTL ? 'زيادة الكمية' : 'Increase quantity'}
           >
             <Plus className="w-4 h-4 stroke-[2.5]" />
           </button>
         </div>
 
-        {/* Primary CTA (Dominant MAGIC Red, min 48px) */}
+        {/* Primary CTA (Dominant MAGIC Red, Pill-shaped 48px button) */}
         <button
           type="button"
           onClick={handleAddToCart}
-          className={`flex-1 h-12 sm:h-14 px-7 rounded-lg font-bold text-xs sm:text-sm font-sans tracking-wider uppercase flex items-center justify-center gap-2.5 cursor-pointer transition-all shadow-md ${
+          className={`magic-btn-primary flex-1 min-h-[48px] h-12 px-7 rounded-full font-bold text-xs sm:text-sm font-sans tracking-wider uppercase flex items-center justify-center gap-2.5 cursor-pointer transition-all ${
             justAdded
               ? 'bg-[#2B6E2A] text-white'
-              : 'bg-[#C8102E] hover:bg-[#A60D26] text-white active:scale-[0.99] border border-white/20'
+              : 'bg-[#C8102E] hover:bg-[#A60D26] text-white active:scale-[0.985] border border-white/20'
           }`}
           aria-label={
             purchaseType === 'subscription'
@@ -341,17 +341,17 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
         <button
           type="button"
           onClick={openCart}
-          className="h-12 sm:h-14 px-5 bg-white hover:bg-[#FAF7F2] text-[#3C1518] border border-[#3C1518]/20 rounded-lg text-xs sm:text-sm font-sans font-bold cursor-pointer transition-colors hidden md:inline-flex items-center justify-center shadow-2xs"
+          className="magic-btn-secondary min-h-[48px] h-12 px-6 bg-white hover:bg-[#FAF7F2] text-[#3C1518] border border-[#3C1518]/20 rounded-full text-xs sm:text-sm font-sans font-bold cursor-pointer transition-colors hidden md:inline-flex items-center justify-center shadow-2xs"
         >
           {isRTL ? 'عرض السلة' : 'View Bag'}
         </button>
       </div>
 
       {/* ========================================================================= */}
-      {/* 8. SUPPORTING ASSURANCE STRIP                                             */}
+      {/* 8. SUPPORTING ASSURANCE STRIP (Diaspora Co. 10px rounded boxes)           */}
       {/* ========================================================================= */}
       <div className="pt-3 border-t border-[#3C1518]/12 grid grid-cols-3 gap-2 text-center text-[10px] sm:text-[11px] text-[#3C1518]/75">
-        <div className="p-2 bg-white/70 rounded-lg border border-[#3C1518]/10">
+        <div className="p-2 bg-white/70 rounded-[10px] border border-[#3C1518]/10">
           <Truck className="w-3.5 h-3.5 text-[#C8102E] mx-auto mb-1" />
           <span className="font-bold block text-[#3C1518]">
             {isRTL ? 'توصيل مجاني' : 'Free Delivery'}
@@ -360,7 +360,7 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
             {isRTL ? 'للطلبات فوق 50 درهم' : 'Orders over AED 50'}
           </span>
         </div>
-        <div className="p-2 bg-white/70 rounded-lg border border-[#3C1518]/10">
+        <div className="p-2 bg-white/70 rounded-[10px] border border-[#3C1518]/10">
           <Clock className="w-3.5 h-3.5 text-[#C8102E] mx-auto mb-1" />
           <span className="font-bold block text-[#3C1518]">
             {isRTL ? 'شحن سريع' : 'UAE Express'}
@@ -369,7 +369,7 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
             {isRTL ? '30–45 دقيقة' : '30–45 min dispatch'}
           </span>
         </div>
-        <div className="p-2 bg-white/70 rounded-lg border border-[#3C1518]/10">
+        <div className="p-2 bg-white/70 rounded-[10px] border border-[#3C1518]/10">
           <ShieldCheck className="w-3.5 h-3.5 text-[#2B6E2A] mx-auto mb-1" />
           <span className="font-bold block text-[#3C1518]">
             {isRTL ? 'تغليف نيتروجين' : 'Airtight Foil'}

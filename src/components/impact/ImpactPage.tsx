@@ -331,7 +331,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
             </div>
 
             {/* Sourcing Atlas Container */}
-            <div className="bg-white rounded-2xl border-2 border-[#3C1518]/15 shadow-lg overflow-hidden">
+            <div className="bg-white rounded-[14px] border border-[#3C1518]/12 shadow-lg overflow-hidden">
               {/* Atlas Top Bar */}
               <div className="bg-[#3C1518] text-[#FDF6EC] px-6 py-4 border-b border-[#D4A843]/30 flex flex-wrap items-center justify-between gap-3">
                 <div className="flex items-center gap-2">
@@ -662,7 +662,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               {/* SPREAD 01: THE SOIL & SEED */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
                 <div className="lg:col-span-7 order-2 lg:order-1">
-                  <div className="relative rounded-2xl overflow-hidden border border-[#D4A843]/30 shadow-2xl group">
+                  <div className="relative rounded-[14px] overflow-hidden border border-[#D4A843]/30 shadow-2xl group">
                     <img
                       src={MAGIC_ASSETS.soilRoots}
                       alt="Living Indian agricultural soil and root biomes"
@@ -710,7 +710,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                   </div>
                 </div>
                 <div className="lg:col-span-7 order-2">
-                  <div className="relative rounded-2xl overflow-hidden border border-[#D4A843]/30 shadow-2xl group">
+                  <div className="relative rounded-[14px] overflow-hidden border border-[#D4A843]/30 shadow-2xl group">
                     <img
                       src={MAGIC_ASSETS.cropDetail}
                       alt="Flowering crop details in natural sunlight"
@@ -728,7 +728,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               {/* SPREAD 03: THE HARVEST */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
                 <div className="lg:col-span-7 order-2 lg:order-1">
-                  <div className="relative rounded-2xl overflow-hidden border border-[#D4A843]/30 shadow-2xl group">
+                  <div className="relative rounded-[14px] overflow-hidden border border-[#D4A843]/30 shadow-2xl group">
                     <img
                       src={MAGIC_ASSETS.harvest}
                       alt="Generational hand harvest at morning dew"
@@ -776,7 +776,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
                   </div>
                 </div>
                 <div className="lg:col-span-7 order-2">
-                  <div className="relative rounded-2xl overflow-hidden border border-[#D4A843]/30 shadow-2xl group">
+                  <div className="relative rounded-[14px] overflow-hidden border border-[#D4A843]/30 shadow-2xl group">
                     <img
                       src={MAGIC_ASSETS.spiceCourtyard}
                       alt="Traditional Indian spice sorting and milling courtyard"
@@ -824,7 +824,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
             {/* Farmer Portraits & Fieldwork Documentation Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
               {/* Story 01: Unjha */}
-              <div className="bg-white rounded-2xl border-2 border-[#3C1518]/15 p-6 sm:p-8 flex flex-col justify-between shadow-md">
+              <div className="bg-white rounded-[14px] border border-[#3C1518]/12 p-6 sm:p-8 flex flex-col justify-between shadow-md">
                 <div>
                   <div className="w-full h-48 sm:h-56 rounded-xl overflow-hidden mb-6 bg-[#FAF5EE] flex items-center justify-center p-4 border border-[#3C1518]/10">
                     <img
@@ -851,7 +851,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               </div>
 
               {/* Story 02: Salem */}
-              <div className="bg-white rounded-2xl border-2 border-[#3C1518]/15 p-6 sm:p-8 flex flex-col justify-between shadow-md">
+              <div className="bg-white rounded-[14px] border border-[#3C1518]/12 p-6 sm:p-8 flex flex-col justify-between shadow-md">
                 <div>
                   <div className="w-full h-48 sm:h-56 rounded-xl overflow-hidden mb-6 bg-[#FAF5EE] flex items-center justify-center p-4 border border-[#3C1518]/10">
                     <img
@@ -878,7 +878,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               </div>
 
               {/* Story 03: Gulbarga */}
-              <div className="bg-white rounded-2xl border-2 border-[#3C1518]/15 p-6 sm:p-8 flex flex-col justify-between shadow-md">
+              <div className="bg-white rounded-[14px] border border-[#3C1518]/12 p-6 sm:p-8 flex flex-col justify-between shadow-md">
                 <div>
                   <div className="w-full h-48 sm:h-56 rounded-xl overflow-hidden mb-6 bg-[#FAF5EE] flex items-center justify-center p-4 border border-[#3C1518]/10">
                     <img
@@ -936,7 +936,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
             {/* 4 Asymmetrical Editorial Layouts (NOT identical cards!) */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
               {/* Pillar 01: Direct Farm Partnerships (Span 6) */}
-              <div className="lg:col-span-6 bg-white rounded-2xl border-2 border-[#3C1518]/15 p-8 sm:p-10 shadow-sm flex flex-col justify-between">
+              <div className="lg:col-span-6 bg-white rounded-[14px] border border-[#3C1518]/12 p-8 sm:p-10 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#3C1518]/10">
                     <span className="text-3xl sm:text-5xl font-display font-black text-[#C8102E]">01</span>
@@ -958,7 +958,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               </div>
 
               {/* Pillar 02: Traceable Origin (Span 6) */}
-              <div className="lg:col-span-6 bg-[#3C1518] text-[#FDF6EC] rounded-2xl border-2 border-[#D4A843]/40 p-8 sm:p-10 shadow-lg flex flex-col justify-between">
+              <div className="lg:col-span-6 bg-[#3C1518] text-[#FDF6EC] rounded-[14px] border-2 border-[#D4A843]/40 p-8 sm:p-10 shadow-lg flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#D4A843]/30">
                     <span className="text-3xl sm:text-5xl font-display font-black text-[#D4A843]">02</span>
@@ -980,7 +980,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               </div>
 
               {/* Pillar 03: Careful Processing (Span 7) */}
-              <div className="lg:col-span-7 bg-[#FAF7F2] rounded-2xl border-2 border-[#3C1518]/15 p-8 sm:p-10 shadow-sm flex flex-col justify-between">
+              <div className="lg:col-span-7 bg-[#FAF7F2] rounded-[14px] border border-[#3C1518]/12 p-8 sm:p-10 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#3C1518]/10">
                     <span className="text-3xl sm:text-5xl font-display font-black text-[#6B4226]">03</span>
@@ -1001,7 +1001,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               </div>
 
               {/* Pillar 04: Freshness Speed (Span 5) */}
-              <div className="lg:col-span-5 bg-white rounded-2xl border-2 border-[#3C1518]/15 p-8 sm:p-10 shadow-sm flex flex-col justify-between">
+              <div className="lg:col-span-5 bg-white rounded-[14px] border border-[#3C1518]/12 p-8 sm:p-10 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#3C1518]/10">
                     <span className="text-3xl sm:text-5xl font-display font-black text-[#C8102E]">04</span>
@@ -1051,7 +1051,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
             </div>
 
             {/* Double-Page Magazine Spread */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 bg-white rounded-3xl border-2 border-[#3C1518]/15 p-8 sm:p-12 lg:p-16 shadow-xl">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 bg-white rounded-[14px] border border-[#3C1518]/12 p-8 sm:p-12 lg:p-16 shadow-xl">
               {/* Left Page: The Conventional Commodity Model */}
               <div className="lg:col-span-6 pr-0 lg:pr-8 border-b lg:border-b-0 lg:border-r border-[#3C1518]/15 pb-8 lg:pb-0">
                 <div className="inline-block px-3 py-1 bg-[#3C1518]/10 rounded-2xs text-[10px] font-sans uppercase tracking-widest text-[#3C1518] font-bold mb-6">
@@ -1223,7 +1223,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
 
               {/* Right Column: Masala Dabba & Mortar Visual Heritage */}
               <div className="lg:col-span-5 flex items-center justify-center">
-                <div className="relative w-full max-w-sm aspect-square bg-white/5 rounded-3xl border-2 border-[#D4A843]/40 p-6 flex flex-col items-center justify-center text-center shadow-2xl">
+                <div className="relative w-full max-w-sm aspect-square bg-white/5 rounded-[14px] border-2 border-[#D4A843]/40 p-6 flex flex-col items-center justify-center text-center shadow-2xl">
                   <div className="w-36 h-36 sm:w-44 sm:h-44 mb-4 flex items-center justify-center">
                     <img
                       src={MAGIC_ASSETS.masalaDabbaEditorialPng}
@@ -1273,7 +1273,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
             {/* Visual Route Journey Flow */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
               {/* Step 01: Indian Fields */}
-              <div className="bg-white rounded-2xl border-2 border-[#3C1518]/15 p-6 shadow-sm flex flex-col justify-between">
+              <div className="bg-white rounded-[14px] border border-[#3C1518]/12 p-6 shadow-sm flex flex-col justify-between">
                 <div>
                   <span className="text-xs font-sans uppercase tracking-widest text-[#C8102E] font-bold block mb-2">
                     01 · THE FIELDS
@@ -1291,7 +1291,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               </div>
 
               {/* Step 02: Gentle Regional Milling */}
-              <div className="bg-white rounded-2xl border-2 border-[#3C1518]/15 p-6 shadow-sm flex flex-col justify-between">
+              <div className="bg-white rounded-[14px] border border-[#3C1518]/12 p-6 shadow-sm flex flex-col justify-between">
                 <div>
                   <span className="text-xs font-sans uppercase tracking-widest text-[#C8102E] font-bold block mb-2">
                     02 · THE MILL
@@ -1309,7 +1309,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               </div>
 
               {/* Step 03: Direct Maritime Transit */}
-              <div className="bg-white rounded-2xl border-2 border-[#3C1518]/15 p-6 shadow-sm flex flex-col justify-between">
+              <div className="bg-white rounded-[14px] border border-[#3C1518]/12 p-6 shadow-sm flex flex-col justify-between">
                 <div>
                   <span className="text-xs font-sans uppercase tracking-widest text-[#C8102E] font-bold block mb-2">
                     03 · THE TRANSIT
@@ -1327,7 +1327,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
               </div>
 
               {/* Step 04: Your Home Kitchen */}
-              <div className="bg-[#C8102E] text-white rounded-2xl border-2 border-[#C8102E] p-6 shadow-md flex flex-col justify-between">
+              <div className="bg-[#C8102E] text-white rounded-[14px] border-2 border-[#C8102E] p-6 shadow-md flex flex-col justify-between">
                 <div>
                   <span className="text-xs font-sans uppercase tracking-widest text-white/80 font-bold block mb-2">
                     04 · THE TADKA
@@ -1346,7 +1346,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
             </div>
 
             {/* Bottom Sizzling Tadka Visual Spread */}
-            <div className="mt-12 rounded-3xl overflow-hidden border-2 border-[#3C1518]/15 shadow-xl relative">
+            <div className="mt-12 rounded-[14px] overflow-hidden border border-[#3C1518]/12 shadow-xl relative">
               <div className="relative w-full h-72 sm:h-96 lg:h-[400px]">
                 <img
                   src={MAGIC_ASSETS.dalTadka}
@@ -1443,7 +1443,7 @@ export const ImpactPage: React.FC<ImpactPageProps> = ({
           className="w-full bg-[#FAF5EE] py-20 sm:py-28 px-4 sm:px-6 lg:px-12 border-b border-[#3C1518]/15"
           aria-labelledby="dispatch-heading"
         >
-          <div className="max-w-4xl mx-auto bg-white rounded-3xl border-2 border-[#3C1518]/15 p-8 sm:p-12 lg:p-16 text-center shadow-lg">
+          <div className="max-w-4xl mx-auto bg-white rounded-[14px] border border-[#3C1518]/12 p-8 sm:p-12 lg:p-16 text-center shadow-lg">
             <div className="inline-flex items-center gap-2 text-xs font-sans uppercase tracking-[0.25em] text-[#C8102E] font-bold mb-3">
               <BookOpen className="w-4 h-4 text-[#C8102E]" />
               <span>THE SOURCING DISPATCH</span>

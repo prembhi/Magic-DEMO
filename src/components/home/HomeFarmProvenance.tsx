@@ -161,7 +161,7 @@ export const HomeFarmProvenance: React.FC<HomeFarmProvenanceProps> = ({
           
           {/* LEFT: MAJOR EDITORIAL FARM PHOTOGRAPH (7 Cols) */}
           <div className={`lg:col-span-7 flex flex-col justify-between gap-6 transition-all duration-700 delay-100 ease-out ${isRevealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-            <div className="relative rounded-2xl overflow-hidden border border-[#3C1518]/15 bg-[#3C1518] min-h-[320px] sm:min-h-[400px] lg:min-h-[480px] flex flex-col justify-end p-5 sm:p-7 group shadow-md flex-1">
+            <div className="relative rounded-[14px] overflow-hidden border border-[#3C1518]/12 bg-[#3C1518] min-h-[320px] sm:min-h-[400px] lg:min-h-[480px] flex flex-col justify-end p-5 sm:p-7 group flex-1">
               <img
                 src={MAGIC_ASSETS.editorial.chilliField}
                 alt="Authentic Indian Chilli Harvest Field"
@@ -193,7 +193,7 @@ export const HomeFarmProvenance: React.FC<HomeFarmProvenanceProps> = ({
 
           {/* RIGHT: PROMINENT INTERACTIVE SOURCING MAP & REGIONAL TERROIR (5 Cols) */}
           <div className={`lg:col-span-5 flex flex-col justify-between gap-5 transition-all duration-700 delay-200 ease-out ${isRevealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-            <div className="bg-white rounded-2xl border-2 border-[#3C1518]/15 shadow-md p-5 sm:p-6 flex flex-col justify-between h-full">
+            <div className="bg-white rounded-[14px] border border-[#3C1518]/12 p-5 sm:p-6 flex flex-col justify-between h-full">
               
               {/* Header */}
               <div className="flex items-center justify-between gap-2 pb-3 mb-3 border-b border-[#3C1518]/10">
@@ -215,7 +215,7 @@ export const HomeFarmProvenance: React.FC<HomeFarmProvenanceProps> = ({
               <div
                 dir="ltr"
                 style={{ direction: 'ltr' }}
-                className="relative w-full aspect-[840/640] bg-[#FAF5EE] rounded-xl border border-[#3C1518]/12 p-2 shadow-inner flex items-center justify-center overflow-hidden mb-4"
+                className="relative w-full aspect-[840/640] bg-[#FAF5EE] rounded-[10px] border border-[#3C1518]/12 p-2 shadow-inner flex items-center justify-center overflow-hidden mb-4"
               >
                 <svg
                   viewBox="70 80 840 850"
@@ -305,7 +305,7 @@ export const HomeFarmProvenance: React.FC<HomeFarmProvenanceProps> = ({
                   {activeHotspot.terroir}
                 </p>
 
-                {/* Region Selector Pills */}
+                {/* Region Selector Pills (Diaspora Co. pill rounded) */}
                 <div className="flex flex-wrap gap-1.5 pt-2 border-t border-[#3C1518]/10">
                   {sourcingHotspots.map((hotspot) => {
                     const isSelected = activeHotspot.id === hotspot.id;
@@ -314,9 +314,9 @@ export const HomeFarmProvenance: React.FC<HomeFarmProvenanceProps> = ({
                         key={hotspot.id}
                         type="button"
                         onClick={() => setActiveHotspotId(hotspot.id)}
-                        className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all cursor-pointer border ${
+                        className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer border ${
                           isSelected
-                            ? 'bg-[#3C1518] text-[#FDF6EC] border-[#3C1518] shadow-2xs'
+                            ? 'bg-[#3C1518] text-[#FDF6EC] border-[#3C1518]'
                             : 'bg-[#FAF5EE] hover:bg-white text-[#3C1518] border-[#3C1518]/15'
                         }`}
                       >
@@ -332,7 +332,7 @@ export const HomeFarmProvenance: React.FC<HomeFarmProvenanceProps> = ({
                     <button
                       type="button"
                       onClick={() => onSelectProduct(activeProduct.slug)}
-                      className="w-full py-2.5 px-3 rounded-lg bg-[#FAF5EE] hover:bg-[#F3ECE0] border border-[#3C1518]/15 flex items-center justify-between text-xs font-semibold text-[#3C1518] transition-colors cursor-pointer group"
+                      className="w-full py-2.5 px-4 rounded-full bg-[#FAF5EE] hover:bg-[#F3ECE0] border border-[#3C1518]/15 flex items-center justify-between text-xs font-semibold text-[#3C1518] transition-colors cursor-pointer group"
                     >
                       <span className="truncate">
                         {isRTL && activeProduct.arabicName ? activeProduct.arabicName : activeProduct.name}

@@ -16,7 +16,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
   return (
     <article
       onClick={() => onSelectRecipe(recipe.slug)}
-      className="group bg-white border border-[#E6E0D6] rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:border-[#C8102E] hover:shadow-md cursor-pointer select-none relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C8102E] active:scale-[0.99]"
+      className="group bg-white border border-[#3C1518]/12 rounded-[14px] overflow-hidden flex flex-col justify-between transition-all duration-300 hover:border-[#C8102E] cursor-pointer select-none relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C8102E] active:scale-[0.99]"
       tabIndex={0}
       role="button"
       aria-label={`View recipe for ${recipe.title}`}
@@ -28,19 +28,19 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
       }}
     >
       {/* 1. ART-DIRECTED CULINARY STAGE WITH AUTHENTIC PACKAGING HERO */}
-      <div className="relative w-full h-52 sm:h-56 bg-gradient-to-b from-[#FAF7F2] to-[#F5ECE1] p-4 flex flex-col items-center justify-center overflow-hidden border-b border-[#E6E0D6]/70">
+      <div className="relative w-full h-52 sm:h-56 bg-gradient-to-b from-[#FAF7F2] to-[#F5ECE1] p-4 flex flex-col items-center justify-center overflow-hidden border-b border-[#3C1518]/10">
         {/* Subtle decorative background motif */}
         <div className="absolute inset-0 pointer-events-none opacity-20">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full border border-[#D4A843]" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 rounded-full border border-dashed border-[#C8102E]" />
         </div>
 
-        {/* Top Badges */}
+        {/* Top Badges (Diaspora Co. Pill-shaped) */}
         <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-10 text-xs">
-          <span className="font-sans font-bold uppercase tracking-wider text-[#C8102E] bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-md border border-[#E6E0D6] shadow-2xs">
+          <span className="font-sans font-bold uppercase tracking-wider text-[#C8102E] bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-full border border-[#3C1518]/12 shadow-2xs">
             {recipe.meal}
           </span>
-          <span className="font-sans text-[#3C1518]/80 bg-white/95 px-2 py-1 rounded-md border border-[#E6E0D6] flex items-center gap-1.5 font-medium shadow-2xs">
+          <span className="font-sans text-[#3C1518]/80 bg-white/95 px-2.5 py-1 rounded-full border border-[#3C1518]/12 flex items-center gap-1.5 font-medium shadow-2xs">
             <Clock className="w-3.5 h-3.5 text-[#C8102E]" />
             {recipe.cookingTime}
           </span>

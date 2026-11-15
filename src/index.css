@@ -1,14 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
-  --font-body: 'Poppins', system-ui, sans-serif;
-  --font-sans: 'Poppins', system-ui, sans-serif;
-  --font-serif: 'Poppins', system-ui, sans-serif;
-  --font-serif-display: 'Bricolage Grotesque', system-ui, sans-serif;
-  --font-mono: 'Poppins', system-ui, sans-serif;
+  --font-display: 'p22-mackinac-pro', 'Bricolage Grotesque', serif;
+  --font-body: 'Fustat', 'Poppins', system-ui, sans-serif;
+  --font-sans: 'Fustat', 'Poppins', system-ui, sans-serif;
+  --font-serif: 'p22-mackinac-pro', serif;
+  --font-serif-display: 'p22-mackinac-pro', serif;
+  --font-mono: 'Fustat', system-ui, sans-serif;
   --font-arabic: 'Noto Kufi Arabic', 'Amiri', system-ui, sans-serif;
   --font-arabic-display: 'Noto Kufi Arabic', 'Amiri', serif;
+
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+  --radius-full: 9999px;
 
   --color-magic-red: #C8102E;
   --color-deep-maroon: #3C1518;
@@ -23,11 +29,15 @@
 
 @layer base {
   :root {
-    --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
-    --font-body: 'Poppins', system-ui, sans-serif;
-    --font-sans: 'Poppins', system-ui, sans-serif;
-    --font-serif: 'Poppins', system-ui, sans-serif;
-    --font-serif-display: 'Bricolage Grotesque', system-ui, sans-serif;
+    --font-display: 'p22-mackinac-pro', 'Bricolage Grotesque', serif;
+    --font-body: 'Fustat', 'Poppins', system-ui, sans-serif;
+    --font-sans: 'Fustat', 'Poppins', system-ui, sans-serif;
+    --font-serif: 'p22-mackinac-pro', serif;
+    --font-serif-display: 'p22-mackinac-pro', serif;
+
+    --ease-editorial: cubic-bezier(0.3, 1, 0.3, 1);
+    --ease-cinematic: cubic-bezier(0.3, 1, 0.3, 1);
+    --ease-gentle: cubic-bezier(0.3, 1, 0.3, 1);
   }
 
   /* ============================================================ */
@@ -99,8 +109,10 @@
     font-family: var(--font-body);
   }
 
-  /* Poppins Weight Standards */
+  /* Poppins & Fustat Weight Standards */
   body, p {
+    font-size: 14px;
+    line-height: 1.6;
     font-weight: 400;
   }
 
@@ -122,6 +134,65 @@
   .font-serif.font-extrabold,
   .font-serif.font-black {
     font-weight: 600;
+  }
+
+  /* Diaspora Co. Typography Scale Utilities */
+  .text-headline-display {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  .text-headline-lg {
+    font-family: var(--font-display);
+    font-size: 38.5px;
+    font-weight: 700;
+    line-height: 1.31;
+    letter-spacing: -0.015em;
+  }
+  .text-headline-md {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+  .text-headline-sm {
+    font-family: var(--font-display);
+    font-size: 26.5px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .text-body-lg {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+  .text-body-md {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  .text-body-sm {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.68;
+  }
+  .text-label-md {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.6;
+  }
+  .text-label-sm {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.6;
   }
 
   /* Standard MAGIC typography is upright */
@@ -273,32 +344,45 @@
 /* MAGIC EDITORIAL MOTION SYSTEM (60fps, No layout triggers)    */
 /* ============================================================ */
 :root {
-  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-editorial: cubic-bezier(0.3, 1, 0.3, 1);
+  --ease-cinematic: cubic-bezier(0.3, 1, 0.3, 1);
   --ease-gentle: cubic-bezier(0.25, 0.9, 0.35, 1);
 }
 
 .ease-editorial {
-  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  transition-timing-function: cubic-bezier(0.3, 1, 0.3, 1);
 }
 
 .ease-cinematic {
-  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  transition-timing-function: cubic-bezier(0.3, 1, 0.3, 1);
 }
 
 .ease-gentle {
   transition-timing-function: cubic-bezier(0.25, 0.9, 0.35, 1);
 }
 
-/* Global Button Micro-Interaction System */
+/* Global Button Micro-Interaction System (Diaspora Co. Pill-shaped 48px controls) */
 .magic-btn-primary {
-  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
-              background-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: 9999px;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  padding: 12px 24px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18), 0 1px 2px rgba(60, 21, 24, 0.06);
+  transition: transform 250ms cubic-bezier(0.3, 1, 0.3, 1),
+              background-color 250ms cubic-bezier(0.3, 1, 0.3, 1),
+              box-shadow 250ms cubic-bezier(0.3, 1, 0.3, 1);
 }
 
 .magic-btn-primary:hover {
   transform: translateY(-1px);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25), 0 2px 4px rgba(60, 21, 24, 0.1);
 }
 
 .magic-btn-primary:active {
@@ -306,36 +390,80 @@
 }
 
 .magic-btn-secondary {
-  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
-              background-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
-              border-color 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: 9999px;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  padding: 12px 24px;
+  border: 1px solid rgba(60, 21, 24, 0.16);
+  box-shadow: 0 1px 2px rgba(60, 21, 24, 0.04);
+  transition: transform 250ms cubic-bezier(0.3, 1, 0.3, 1),
+              background-color 250ms cubic-bezier(0.3, 1, 0.3, 1),
+              border-color 250ms cubic-bezier(0.3, 1, 0.3, 1);
 }
 
 .magic-btn-secondary:hover {
   transform: translateY(-1px);
+  border-color: rgba(60, 21, 24, 0.35);
 }
 
 .magic-btn-secondary:active {
   transform: translateY(1px) scale(0.985);
 }
 
-/* Product Card Tactile Physics */
+/* Product Card Tactile Physics (Diaspora Co. 14px radius, hairline borders, no blurry shadows) */
 .magic-product-card {
-  transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 380ms cubic-bezier(0.22, 1, 0.36, 1),
-              border-color 380ms cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: 14px;
+  border: 1px solid rgba(60, 21, 24, 0.12);
+  box-shadow: 0 1px 3px rgba(60, 21, 24, 0.04);
+  transition: transform 300ms cubic-bezier(0.3, 1, 0.3, 1),
+              box-shadow 300ms cubic-bezier(0.3, 1, 0.3, 1),
+              border-color 250ms cubic-bezier(0.3, 1, 0.3, 1);
 }
 
 .magic-product-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
+  border-color: rgba(60, 21, 24, 0.22);
 }
 
 .magic-product-image {
-  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 350ms cubic-bezier(0.3, 1, 0.3, 1);
 }
 
 .magic-product-card:hover .magic-product-image {
-  transform: scale(1.035);
+  transform: scale(1.03);
+}
+
+/* Diaspora Co. Hairline & Depth Utility Tokens */
+.hairline-border {
+  border: 1px solid rgba(60, 21, 24, 0.12);
+}
+
+.hairline-inset {
+  box-shadow: inset 0 0 0 1px rgba(60, 21, 24, 0.10);
+}
+
+.card-diaspora {
+  border-radius: 14px;
+  border: 1px solid rgba(60, 21, 24, 0.12);
+  box-shadow: 0 1px 3px rgba(60, 21, 24, 0.04);
+}
+
+.pill-control {
+  border-radius: 9999px;
+}
+
+.input-diaspora {
+  border-radius: 10px;
+  padding: 8px 16px;
+  border: 1px solid rgba(60, 21, 24, 0.16);
+  box-shadow: inset 0 1px 2px rgba(60, 21, 24, 0.04);
 }
 
 /* Universal Scroll Reveal Directives */
@@ -407,15 +535,15 @@
 }
 
 /* ============================================================ */
-/* GLOBAL REUSABLE MOTION TOKENS (cubic-bezier(0.22, 1, 0.36, 1))*/
+/* GLOBAL REUSABLE MOTION TOKENS (cubic-bezier(0.3, 1, 0.3, 1)) */
 /* ============================================================ */
 .motion-ease-premium {
-  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1) !important;
+  transition-timing-function: cubic-bezier(0.3, 1, 0.3, 1) !important;
 }
 
 /* Subtle route / page transition */
 .page-fade-enter {
-  animation: pageFadeEnter 280ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: pageFadeEnter 280ms cubic-bezier(0.3, 1, 0.3, 1) forwards;
 }
 
 @keyframes pageFadeEnter {
@@ -429,27 +557,27 @@
   }
 }
 
-/* Card hover lift & settle */
+/* Card hover lift & settle (Diaspora Co. minimal elevation) */
 .card-hover-lift {
-  transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 250ms cubic-bezier(0.22, 1, 0.36, 1),
+  transition: transform 250ms cubic-bezier(0.3, 1, 0.3, 1),
+              box-shadow 250ms cubic-bezier(0.3, 1, 0.3, 1),
               border-color 200ms ease-out;
   will-change: transform;
 }
 
 .card-hover-lift:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
 }
 
 /* Modal and Drawer motion */
 .modal-enter {
-  animation: modalScaleEnter 220ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: modalScaleEnter 220ms cubic-bezier(0.3, 1, 0.3, 1) forwards;
 }
 
 @keyframes modalScaleEnter {
   0% {
     opacity: 0;
-    transform: scale(0.97) translateY(8px);
+    transform: scale(0.98) translateY(6px);
   }
   100% {
     opacity: 1;
@@ -459,12 +587,12 @@
 
 /* Restrained button press micro-interaction */
 .btn-press {
-  transition: transform 150ms cubic-bezier(0.22, 1, 0.36, 1),
+  transition: transform 150ms cubic-bezier(0.3, 1, 0.3, 1),
               background-color 150ms ease-out;
 }
 
 .btn-press:active {
-  transform: scale(0.98);
+  transform: scale(0.985);
 }
 
 /* Depth Hierarchy Tokens */

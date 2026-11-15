@@ -323,12 +323,12 @@ export const SectionFooter: React.FC = () => {
                 {t('footer.language')}
               </span>
 
-              {/* Language Switcher Buttons */}
+              {/* Language Switcher Buttons (Diaspora Co. pill rounded) */}
               <div className="flex flex-col gap-2 mb-4">
                 <button
                   type="button"
                   onClick={() => setLanguage('en')}
-                  className={`inline-flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer min-h-[40px] ${
+                  className={`inline-flex items-center justify-between px-3.5 py-2 rounded-full text-xs font-semibold border transition-all cursor-pointer min-h-[40px] ${
                     language === 'en'
                       ? 'bg-white text-[#C8102E] border-[#C8102E]/60 shadow-xs font-bold'
                       : 'bg-white/50 text-[#3C1518]/75 border-[#3C1518]/15 hover:bg-white hover:text-[#3C1518]'
@@ -340,7 +340,7 @@ export const SectionFooter: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setLanguage('ar')}
-                  className={`inline-flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer font-arabic min-h-[40px] ${
+                  className={`inline-flex items-center justify-between px-3.5 py-2 rounded-full text-xs font-semibold border transition-all cursor-pointer font-arabic min-h-[40px] ${
                     language === 'ar'
                       ? 'bg-white text-[#C8102E] border-[#C8102E]/60 shadow-xs font-bold'
                       : 'bg-white/50 text-[#3C1518]/75 border-[#3C1518]/15 hover:bg-white hover:text-[#3C1518]'

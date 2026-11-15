@@ -61,7 +61,7 @@ export const HomeWhyMagic: React.FC = () => {
           style={{
             transform: isVisible || isReducedMotion ? 'none' : 'translateY(25px)',
             opacity: isVisible || isReducedMotion ? 1 : 0,
-            transition: 'opacity 650ms cubic-bezier(0.22, 1, 0.36, 1), transform 650ms cubic-bezier(0.22, 1, 0.36, 1)',
+            transition: 'opacity 650ms cubic-bezier(0.3, 1, 0.3, 1), transform 650ms cubic-bezier(0.3, 1, 0.3, 1)',
           }}
           className="w-full max-w-none lg:max-w-3xl mb-6 sm:mb-8"
         >
@@ -90,9 +90,9 @@ export const HomeWhyMagic: React.FC = () => {
           style={{
             transform: isVisible || isReducedMotion ? 'none' : 'translateY(30px)',
             opacity: isVisible || isReducedMotion ? 1 : 0,
-            transition: 'opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) 100ms, transform 700ms cubic-bezier(0.22, 1, 0.36, 1) 100ms',
+            transition: 'opacity 700ms cubic-bezier(0.3, 1, 0.3, 1) 100ms, transform 700ms cubic-bezier(0.3, 1, 0.3, 1) 100ms',
           }}
-          className="bg-[#F3ECE0] rounded-3xl border border-[#3C1518]/12 p-4 sm:p-6 lg:p-8"
+          className="bg-[#F3ECE0] rounded-[14px] border border-[#3C1518]/12 p-4 sm:p-6 lg:p-8"
         >
           {/* THREE-COLUMN LAYOUT WITH DEDICATED CENTER MAGIC INNER HIGHLIGHT PANEL */}
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1.35fr_1fr] gap-4 sm:gap-6 lg:gap-8 items-stretch">
@@ -138,7 +138,7 @@ export const HomeWhyMagic: React.FC = () => {
             {/* ------------------------------------------------------------------- */}
             {/* COLUMN 2: MAGIC (CENTER - LAYER 2: CONTINUOUS HIGHLIGHTED PANEL)    */}
             {/* ------------------------------------------------------------------- */}
-            <div className="bg-[#FDF6EC] rounded-2xl border border-[#3C1518]/12 border-t-2 border-t-[#C8102E] shadow-2xs p-3.5 sm:p-5 lg:p-6 flex flex-col justify-between order-1 md:order-2 relative">
+            <div className="bg-[#FDF6EC] rounded-[14px] border border-[#3C1518]/12 border-t-2 border-t-[#C8102E] p-3.5 sm:p-5 lg:p-6 flex flex-col justify-between order-1 md:order-2 relative">
               {/* Header Visual: Authentic Toor Dal Product Packaging */}
               <div className="flex flex-col items-center text-center pb-3 border-b border-[#3C1518]/15">
                 <div className="h-36 sm:h-44 lg:h-48 w-full flex items-center justify-center pointer-events-none select-none">

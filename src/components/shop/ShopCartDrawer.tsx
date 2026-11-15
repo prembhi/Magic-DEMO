@@ -204,7 +204,7 @@ export const ShopCartDrawer: React.FC<ShopCartDrawerProps> = ({ isOpen, onClose 
 
                   {/* Quantity Stepper Row */}
                   <div className="mt-2.5 flex items-center justify-between">
-                    <div className="inline-flex items-center bg-[#FDF6EC] border border-[#3C1518]/15 rounded-md overflow-hidden">
+                    <div className="inline-flex items-center bg-[#FDF6EC] border border-[#3C1518]/15 rounded-[10px] overflow-hidden">
                       <button
                         onClick={() => updateQuantity(product.id, quantity - 1)}
                         className="w-8 h-8 flex items-center justify-center text-[#3C1518]/80 hover:bg-[#C8102E] hover:text-white transition-colors cursor-pointer"
@@ -277,7 +277,7 @@ export const ShopCartDrawer: React.FC<ShopCartDrawerProps> = ({ isOpen, onClose 
             <button
               onClick={handleSimulateCheckout}
               disabled={isCheckingOut}
-              className="w-full py-3.5 bg-[#C8102E] hover:bg-[#a60d26] disabled:bg-[#C8102E]/60 text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded-md shadow-xs transition-all flex items-center justify-center gap-2.5 cursor-pointer min-h-[48px]"
+              className="magic-btn-primary w-full py-3.5 bg-[#C8102E] hover:bg-[#a60d26] disabled:bg-[#C8102E]/60 text-white font-bold text-xs sm:text-sm uppercase tracking-wider rounded-full shadow-xs transition-all flex items-center justify-center gap-2.5 cursor-pointer min-h-[48px] h-12"
             >
               {isCheckingOut ? (
                 <span>{isRTL ? 'جاري تجهيز الطلب...' : 'Confirming Order Dispatch...'}</span>

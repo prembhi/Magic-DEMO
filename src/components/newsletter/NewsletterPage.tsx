@@ -318,10 +318,10 @@ export const NewsletterPage: React.FC<NewsletterPageProps> = ({
               <div className="lg:col-span-6 relative">
                 <div className="relative mx-auto max-w-lg lg:max-w-none">
                   {/* Decorative warm aura glow */}
-                  <div className="absolute -inset-4 bg-gradient-to-tr from-[#F5C342]/20 via-[#D4A843]/15 to-[#C8102E]/10 rounded-3xl blur-2xl -z-10" />
+                  <div className="absolute -inset-4 bg-gradient-to-tr from-[#F5C342]/20 via-[#D4A843]/15 to-[#C8102E]/10 rounded-[14px] blur-2xl -z-10" />
 
                   {/* Editorial Parchment Frame */}
-                  <div className="relative bg-[#FAF5EB] border border-[#3C1518]/15 rounded-2xl p-6 sm:p-8 shadow-xl overflow-hidden">
+                  <div className="relative bg-[#FAF5EB] border border-[#3C1518]/15 rounded-[14px] p-6 sm:p-8 shadow-xl overflow-hidden">
                     {/* Top Editorial Ribbon */}
                     <div className="flex items-center justify-between border-b border-[#3C1518]/10 pb-4 mb-6">
                       <div className="flex items-center gap-2">
@@ -590,7 +590,7 @@ export const NewsletterPage: React.FC<NewsletterPageProps> = ({
                 type="button"
                 onClick={() => togglePreference('recipes')}
                 aria-pressed={selectedPreferences.includes('recipes')}
-                className={`text-left p-6 sm:p-7 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between min-h-[220px] ${
+                className={`text-left p-6 sm:p-7 rounded-[14px] border transition-all cursor-pointer flex flex-col justify-between min-h-[220px] ${
                   selectedPreferences.includes('recipes')
                     ? 'bg-white border-[#C8102E] shadow-md ring-2 ring-[#C8102E]/20'
                     : 'bg-white/80 border-[#3C1518]/10 hover:border-[#3C1518]/30 hover:bg-white shadow-2xs'
@@ -628,7 +628,7 @@ export const NewsletterPage: React.FC<NewsletterPageProps> = ({
                 type="button"
                 onClick={() => togglePreference('spice-knowledge')}
                 aria-pressed={selectedPreferences.includes('spice-knowledge')}
-                className={`text-left p-6 sm:p-7 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between min-h-[220px] ${
+                className={`text-left p-6 sm:p-7 rounded-[14px] border transition-all cursor-pointer flex flex-col justify-between min-h-[220px] ${
                   selectedPreferences.includes('spice-knowledge')
                     ? 'bg-white border-[#D4A843] shadow-md ring-2 ring-[#D4A843]/30'
                     : 'bg-white/80 border-[#3C1518]/10 hover:border-[#3C1518]/30 hover:bg-white shadow-2xs'
@@ -666,7 +666,7 @@ export const NewsletterPage: React.FC<NewsletterPageProps> = ({
                 type="button"
                 onClick={() => togglePreference('behind-the-pack')}
                 aria-pressed={selectedPreferences.includes('behind-the-pack')}
-                className={`text-left p-6 sm:p-7 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between min-h-[220px] ${
+                className={`text-left p-6 sm:p-7 rounded-[14px] border transition-all cursor-pointer flex flex-col justify-between min-h-[220px] ${
                   selectedPreferences.includes('behind-the-pack')
                     ? 'bg-white border-[#5A7247] shadow-md ring-2 ring-[#5A7247]/20'
                     : 'bg-white/80 border-[#3C1518]/10 hover:border-[#3C1518]/30 hover:bg-white shadow-2xs'
@@ -704,7 +704,7 @@ export const NewsletterPage: React.FC<NewsletterPageProps> = ({
                 type="button"
                 onClick={() => togglePreference('new-magic')}
                 aria-pressed={selectedPreferences.includes('new-magic')}
-                className={`text-left p-6 sm:p-7 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between min-h-[220px] ${
+                className={`text-left p-6 sm:p-7 rounded-[14px] border transition-all cursor-pointer flex flex-col justify-between min-h-[220px] ${
                   selectedPreferences.includes('new-magic')
                     ? 'bg-white border-[#C8102E] shadow-md ring-2 ring-[#C8102E]/20'
                     : 'bg-white/80 border-[#3C1518]/10 hover:border-[#3C1518]/30 hover:bg-white shadow-2xs'
@@ -769,7 +769,7 @@ export const NewsletterPage: React.FC<NewsletterPageProps> = ({
             {/* Four Large Editorial Newsletter Preview Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
               {/* PREVIEW CARD 01: THE RECIPE */}
-              <article className="bg-white rounded-2xl border border-[#3C1518]/12 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between overflow-hidden group">
+              <article className="bg-white rounded-[14px] border border-[#3C1518]/12 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between overflow-hidden group">
                 <div className="p-6">
                   {/* Category Pill */}
                   <div className="flex items-center justify-between mb-4">
@@ -814,7 +814,7 @@ export const NewsletterPage: React.FC<NewsletterPageProps> = ({
               </article>
 
               {/* PREVIEW CARD 02: THE PANTRY */}
-              <article className="bg-white rounded-2xl border border-[#3C1518]/12 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between overflow-hidden group">
+              <article className="bg-white rounded-[14px] border border-[#3C1518]/12 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between overflow-hidden group">
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#D4A843]/20 text-[#6B4226]">
@@ -857,7 +857,7 @@ export const NewsletterPage: React.FC<NewsletterPageProps> = ({
               </article>
 
               {/* PREVIEW CARD 03: FROM THE FARM */}
-              <article className="bg-white rounded-2xl border border-[#3C1518]/12 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between overflow-hidden group">
+              <article className="bg-white rounded-[14px] border border-[#3C1518]/12 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between overflow-hidden group">
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#5A7247]/15 text-[#5A7247]">
@@ -906,7 +906,7 @@ export const NewsletterPage: React.FC<NewsletterPageProps> = ({
               </article>
 
               {/* PREVIEW CARD 04: THE MAGIC DROP */}
-              <article className="bg-white rounded-2xl border border-[#3C1518]/12 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between overflow-hidden group">
+              <article className="bg-white rounded-[14px] border border-[#3C1518]/12 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between overflow-hidden group">
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#C8102E]/10 text-[#C8102E]">

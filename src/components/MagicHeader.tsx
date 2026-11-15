@@ -397,7 +397,7 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
                   onClick={() => handleDropdownToggle('shopAll')}
                   aria-haspopup="true"
                   aria-expanded={activeDropdown === 'shopAll'}
-                  className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-xs transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[#D4A843] ${
+                  className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-[10px] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[#D4A843] ${
                     activeDropdown === 'shopAll' || isShopActive
                       ? 'text-[#FDF6EC] font-bold bg-[#A60D26]/70 underline decoration-[#D4A843] decoration-2 underline-offset-8'
                       : 'hover:text-[#FDF6EC] hover:bg-[#A60D26]/40'
@@ -414,7 +414,7 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
                 {/* COMPACT CREAM DROPDOWN: SHOP ALL */}
                 {activeDropdown === 'shopAll' && (
                   <div
-                    className="absolute top-full mt-1.5 start-0 w-[320px] bg-[#FDF6EC] text-[#3C1518] shadow-lg shadow-[#3C1518]/10 rounded-xs border border-[#D4A843]/30 px-[22px] py-[20px] z-50 text-start animate-in fade-in slide-in-from-top-1 duration-150"
+                    className="absolute top-full mt-1.5 start-0 w-[320px] bg-[#FDF6EC] text-[#3C1518] shadow-sm rounded-[14px] border border-[#D4A843]/30 px-[22px] py-[20px] z-50 text-start animate-in fade-in slide-in-from-top-1 duration-150"
                     onMouseEnter={() => handleMouseEnter('shopAll')}
                     onMouseLeave={handleMouseLeave}
                     role="menu"
@@ -425,10 +425,10 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
                       <button
                         type="button"
                         onClick={(e) => navigateToShop('spices', e)}
-                        className="w-full grid grid-cols-[44px_1fr] gap-[14px] items-start py-[10px] px-2 -mx-2 rounded-xs transition-colors hover:bg-[#F4ECE1]/60 group cursor-pointer text-start motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-[#C8102E]"
+                        className="w-full grid grid-cols-[44px_1fr] gap-[14px] items-start py-[10px] px-2 -mx-2 rounded-[10px] transition-colors hover:bg-[#F4ECE1]/60 group cursor-pointer text-start motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-[#C8102E]"
                         role="menuitem"
                       >
-                        <div className="w-[40px] h-[40px] rounded-xs bg-white/95 border border-[#D4A843]/30 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-[#C8102E]/40 transition-colors">
+                        <div className="w-[40px] h-[40px] rounded-[10px] bg-white/95 border border-[#D4A843]/30 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-[#C8102E]/40 transition-colors">
                           <ChilliIcon className="w-5 h-5 text-[#C8102E] transition-transform motion-reduce:transform-none group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
                         </div>
                         <div className="flex flex-col text-start">
@@ -445,10 +445,10 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
                       <button
                         type="button"
                         onClick={(e) => navigateToBundles(undefined, e)}
-                        className="w-full grid grid-cols-[44px_1fr] gap-[14px] items-start py-[10px] px-2 -mx-2 rounded-xs transition-colors hover:bg-[#F4ECE1]/60 group cursor-pointer text-start motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-[#C8102E]"
+                        className="w-full grid grid-cols-[44px_1fr] gap-[14px] items-start py-[10px] px-2 -mx-2 rounded-[10px] transition-colors hover:bg-[#F4ECE1]/60 group cursor-pointer text-start motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-[#C8102E]"
                         role="menuitem"
                       >
-                        <div className="w-[40px] h-[40px] rounded-xs bg-white/95 border border-[#D4A843]/30 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-[#C8102E]/40 transition-colors">
+                        <div className="w-[40px] h-[40px] rounded-[10px] bg-white/95 border border-[#D4A843]/30 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-[#C8102E]/40 transition-colors">
                           <BundleBoxIcon className="w-5 h-5 text-[#C8102E] transition-transform motion-reduce:transform-none group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
                         </div>
                         <div className="flex flex-col text-start">
@@ -465,10 +465,10 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
                       <button
                         type="button"
                         onClick={(e) => navigateToRecipes(undefined, e)}
-                        className="w-full grid grid-cols-[44px_1fr] gap-[14px] items-start py-[10px] px-2 -mx-2 rounded-xs transition-colors hover:bg-[#F4ECE1]/60 group cursor-pointer text-start motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-[#C8102E]"
+                        className="w-full grid grid-cols-[44px_1fr] gap-[14px] items-start py-[10px] px-2 -mx-2 rounded-[10px] transition-colors hover:bg-[#F4ECE1]/60 group cursor-pointer text-start motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-[#C8102E]"
                         role="menuitem"
                       >
-                        <div className="w-[40px] h-[40px] rounded-xs bg-white/95 border border-[#D4A843]/30 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-[#C8102E]/40 transition-colors">
+                        <div className="w-[40px] h-[40px] rounded-[10px] bg-white/95 border border-[#D4A843]/30 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-[#C8102E]/40 transition-colors">
                           <RecipePotIcon className="w-5 h-5 text-[#C8102E] transition-transform motion-reduce:transform-none group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
                         </div>
                         <div className="flex flex-col text-start">
@@ -486,7 +486,7 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
                         <button
                           type="button"
                           onClick={(e) => navigateToShop(undefined, e)}
-                          className="w-full flex items-center justify-between text-start font-sans font-bold text-[13px] tracking-wider text-[#C8102E] hover:text-[#A60D26] transition-colors group cursor-pointer px-1 py-0.5 rounded-xs focus-visible:outline-2 focus-visible:outline-[#C8102E]"
+                          className="w-full flex items-center justify-between text-start font-sans font-bold text-[13px] tracking-wider text-[#C8102E] hover:text-[#A60D26] transition-colors group cursor-pointer px-1 py-0.5 rounded-[10px] focus-visible:outline-2 focus-visible:outline-[#C8102E]"
                           role="menuitem"
                         >
                           <span className="uppercase">{t('nav.shopAllMagic')}</span>
@@ -509,7 +509,7 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
                   onClick={() => handleDropdownToggle('spices')}
                   aria-haspopup="true"
                   aria-expanded={activeDropdown === 'spices'}
-                  className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-xs transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[#D4A843] ${
+                  className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-[10px] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[#D4A843] ${
                     activeDropdown === 'spices' || isSpicesActive
                       ? 'text-[#FDF6EC] font-bold bg-[#A60D26]/70 underline decoration-[#D4A843] decoration-2 underline-offset-8'
                       : 'hover:text-[#FDF6EC] hover:bg-[#A60D26]/40'
@@ -528,7 +528,7 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
               <a
                 href="#bundles"
                 onClick={(e) => navigateToBundles(undefined, e)}
-                className={`px-3 py-2 rounded-xs transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[#D4A843] ${
+                className={`px-3 py-2 rounded-[10px] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[#D4A843] ${
                   isBundlesActive
                     ? 'text-[#FDF6EC] font-bold bg-[#A60D26]/70 underline decoration-[#D4A843] decoration-2 underline-offset-8'
                     : 'hover:text-[#FDF6EC] hover:bg-[#A60D26]/40'
@@ -541,7 +541,7 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
               <a
                 href="#recipes"
                 onClick={(e) => navigateToRecipes(undefined, e)}
-                className={`px-3 py-2 rounded-xs transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[#D4A843] ${
+                className={`px-3 py-2 rounded-[10px] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[#D4A843] ${
                   isRecipesActive
                     ? 'text-[#FDF6EC] font-bold bg-[#A60D26]/70 underline decoration-[#D4A843] decoration-2 underline-offset-8'
                     : 'hover:text-[#FDF6EC] hover:bg-[#A60D26]/40'
@@ -561,7 +561,7 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
                   onClick={() => handleDropdownToggle('discover')}
                   aria-haspopup="true"
                   aria-expanded={activeDropdown === 'discover'}
-                  className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-xs transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[#D4A843] ${
+                  className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-[10px] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[#D4A843] ${
                     activeDropdown === 'discover' || isDiscoverActive
                       ? 'text-[#FDF6EC] font-bold bg-[#A60D26]/70 underline decoration-[#D4A843] decoration-2 underline-offset-8'
                       : 'hover:text-[#FDF6EC] hover:bg-[#A60D26]/40'
@@ -578,7 +578,7 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
                 {/* COMPACT CREAM DROPDOWN: DISCOVER */}
                 {activeDropdown === 'discover' && (
                   <div
-                    className="absolute top-full mt-1.5 start-0 w-[340px] bg-[#FDF6EC] text-[#3C1518] shadow-lg shadow-[#3C1518]/10 rounded-xs border border-[#D4A843]/30 p-3.5 z-50 text-start animate-in fade-in slide-in-from-top-1 duration-150"
+                    className="absolute top-full mt-1.5 start-0 w-[340px] bg-[#FDF6EC] text-[#3C1518] shadow-lg shadow-[#3C1518]/10 rounded-[10px] border border-[#D4A843]/30 p-3.5 z-50 text-start animate-in fade-in slide-in-from-top-1 duration-150"
                     onMouseEnter={() => handleMouseEnter('discover')}
                     onMouseLeave={handleMouseLeave}
                     role="menu"
@@ -596,10 +596,10 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
                       <button
                         type="button"
                         onClick={navigateToImpact}
-                        className="w-full flex items-start gap-3 p-2.5 rounded-xs hover:bg-[#F4ECE1] transition-colors group cursor-pointer text-start motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-[#C8102E]"
+                        className="w-full flex items-start gap-3 p-2.5 rounded-[10px] hover:bg-[#F4ECE1] transition-colors group cursor-pointer text-start motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-[#C8102E]"
                         role="menuitem"
                       >
-                        <div className="w-8 h-8 rounded-xs bg-white/95 border border-[#D4A843]/30 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-[#C8102E]/40 transition-colors">
+                        <div className="w-8 h-8 rounded-[10px] bg-white/95 border border-[#D4A843]/30 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-[#C8102E]/40 transition-colors">
                           <ImpactSproutIcon className="w-4 h-4 text-[#C8102E] transition-transform motion-reduce:transform-none group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
                         </div>
                         <div className="flex-1 min-w-0">
@@ -616,10 +616,10 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
                       <button
                         type="button"
                         onClick={navigateToNewsletter}
-                        className="w-full flex items-start gap-3 p-2.5 rounded-xs hover:bg-[#F4ECE1] transition-colors group cursor-pointer text-start motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-[#C8102E]"
+                        className="w-full flex items-start gap-3 p-2.5 rounded-[10px] hover:bg-[#F4ECE1] transition-colors group cursor-pointer text-start motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-[#C8102E]"
                         role="menuitem"
                       >
-                        <div className="w-8 h-8 rounded-xs bg-white/95 border border-[#D4A843]/30 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-[#C8102E]/40 transition-colors">
+                        <div className="w-8 h-8 rounded-[10px] bg-white/95 border border-[#D4A843]/30 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-[#C8102E]/40 transition-colors">
                           <NewsletterLetterIcon className="w-4 h-4 text-[#C8102E] transition-transform motion-reduce:transform-none group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
                         </div>
                         <div className="flex-1 min-w-0">
@@ -636,10 +636,10 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
                       <button
                         type="button"
                         onClick={(e) => navigateToRecipes(undefined, e)}
-                        className="w-full flex items-start gap-3 p-2.5 rounded-xs hover:bg-[#F4ECE1] transition-colors group cursor-pointer text-start motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-[#C8102E]"
+                        className="w-full flex items-start gap-3 p-2.5 rounded-[10px] hover:bg-[#F4ECE1] transition-colors group cursor-pointer text-start motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-[#C8102E]"
                         role="menuitem"
                       >
-                        <div className="w-8 h-8 rounded-xs bg-white/95 border border-[#D4A843]/30 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-[#C8102E]/40 transition-colors">
+                        <div className="w-8 h-8 rounded-[10px] bg-white/95 border border-[#D4A843]/30 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-[#C8102E]/40 transition-colors">
                           <RecipePotIcon className="w-4 h-4 text-[#C8102E] transition-transform motion-reduce:transform-none group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
                         </div>
                         <div className="flex-1 min-w-0">
@@ -656,10 +656,10 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
                       <button
                         type="button"
                         onClick={(e) => navigateToBundles(undefined, e)}
-                        className="w-full flex items-start gap-3 p-2.5 rounded-xs hover:bg-[#F4ECE1] transition-colors group cursor-pointer text-start motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-[#C8102E]"
+                        className="w-full flex items-start gap-3 p-2.5 rounded-[10px] hover:bg-[#F4ECE1] transition-colors group cursor-pointer text-start motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-[#C8102E]"
                         role="menuitem"
                       >
-                        <div className="w-8 h-8 rounded-xs bg-white/95 border border-[#D4A843]/30 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-[#C8102E]/40 transition-colors">
+                        <div className="w-8 h-8 rounded-[10px] bg-white/95 border border-[#D4A843]/30 flex items-center justify-center shrink-0 shadow-2xs group-hover:border-[#C8102E]/40 transition-colors">
                           <BundleBoxIcon className="w-4 h-4 text-[#C8102E] transition-transform motion-reduce:transform-none group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" />
                         </div>
                         <div className="flex-1 min-w-0">
@@ -748,7 +748,7 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
               {/* ACCOUNT POPOVER */}
               {activeDropdown === 'account' && (
                 <div
-                  className={`absolute top-full mt-1 w-68 bg-[#FDF6EC] text-[#3C1518] shadow-2xl rounded-xs border border-[#D4A843]/30 p-4 z-50 animate-in fade-in slide-in-from-top-1 duration-150 ${
+                  className={`absolute top-full mt-1 w-68 bg-[#FDF6EC] text-[#3C1518] shadow-md rounded-[14px] border border-[#D4A843]/30 p-4 z-50 animate-in fade-in slide-in-from-top-1 duration-150 ${
                     isRTL ? 'left-0 text-right' : 'right-0 text-left'
                   }`}
                   onMouseEnter={() => handleMouseEnter('account')}
@@ -880,7 +880,7 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
                     if (onSearchChange) onSearchChange(e.target.value);
                   }}
                   placeholder={t('search.placeholder')}
-                  className={`w-full py-2.5 bg-white text-xs sm:text-sm text-[#3C1518] placeholder-[#3C1518]/50 border border-[#D9D2C7] focus:border-[#C8102E] focus:outline-hidden rounded-xs shadow-inner ${
+                  className={`w-full py-2.5 bg-white text-xs sm:text-sm text-[#3C1518] placeholder-[#3C1518]/50 border border-[#D9D2C7] focus:border-[#C8102E] focus:outline-hidden rounded-[10px] shadow-inner ${
                     isRTL ? 'pr-9 pl-10 text-right' : 'pl-9 pr-10 text-left'
                   }`}
                 />
@@ -899,7 +899,7 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
                 )}
                 <button
                   type="submit"
-                  className="py-2.5 px-4 bg-[#C8102E] hover:bg-[#A60D26] text-white text-xs font-bold rounded-xs transition-colors shrink-0 shadow-xs cursor-pointer"
+                  className="py-2.5 px-5 bg-[#C8102E] hover:bg-[#A60D26] text-white text-xs font-bold rounded-full transition-colors shrink-0 shadow-xs cursor-pointer"
                 >
                   {t('search.button')}
                 </button>
@@ -1145,10 +1145,10 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
                       <button
                         key={prod.slug}
                         onClick={(e) => navigateToProduct(prod.slug, e)}
-                        className="bg-white/80 hover:bg-white rounded-xs p-2.5 border border-[#3C1518]/10 hover:border-[#C8102E]/40 shadow-xs hover:shadow-md transition-all text-start group cursor-pointer flex flex-col justify-between"
+                        className="bg-white/80 hover:bg-white rounded-[10px] p-2.5 border border-[#3C1518]/10 hover:border-[#C8102E]/40 shadow-xs hover:shadow-md transition-all text-start group cursor-pointer flex flex-col justify-between"
                         role="menuitem"
                       >
-                        <div className="w-full h-20 sm:h-22 bg-[#FAF7F2] rounded-xs mb-2 flex items-center justify-center overflow-hidden p-1 border border-[#3C1518]/5">
+                        <div className="w-full h-20 sm:h-22 bg-[#FAF7F2] rounded-[10px] mb-2 flex items-center justify-center overflow-hidden p-1 border border-[#3C1518]/5">
                           <img
                             src={prod.image}
                             alt={prod.name}
@@ -1259,7 +1259,7 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
                     if (onSearchChange) onSearchChange(e.target.value);
                   }}
                   placeholder={t('search.placeholder')}
-                  className={`w-full py-2.5 bg-white text-xs text-[#3C1518] placeholder-[#3C1518]/50 border border-[#D9D2C7] focus:border-[#C8102E] rounded-xs ${
+                  className={`w-full py-2.5 bg-white text-xs text-[#3C1518] placeholder-[#3C1518]/50 border border-[#D9D2C7] focus:border-[#C8102E] rounded-[10px] ${
                     isRTL ? 'pr-9 pl-9 text-right' : 'pl-9 pr-9 text-left'
                   }`}
                 />
@@ -1465,7 +1465,7 @@ export const MagicHeader: React.FC<MagicHeaderProps> = ({
                   setMobileMenuOpen(false);
                   handleOpenCart();
                 }}
-                className="w-full py-2.5 px-4 bg-[#C8102E] hover:bg-[#A60D26] text-white font-bold text-xs rounded-xs flex items-center justify-center gap-2 cursor-pointer shadow-xs min-h-[44px]"
+                className="w-full py-2.5 px-4 bg-[#C8102E] hover:bg-[#A60D26] text-white font-bold text-xs rounded-[10px] flex items-center justify-center gap-2 cursor-pointer shadow-xs min-h-[44px]"
               >
                 <ShoppingBag className="w-4 h-4" />
                 <span>{t('cart.title')} ({totalCartItems})</span>

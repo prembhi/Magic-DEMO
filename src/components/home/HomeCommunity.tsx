@@ -131,8 +131,8 @@ export const HomeCommunity: React.FC = () => {
         </p>
 
         {subscribed ? (
-          <div className="p-6 sm:p-7 rounded-2xl bg-[#3C1518]/90 border border-white/30 max-w-md mx-auto animate-in fade-in duration-300 shadow-xl text-white">
-            <div className="w-12 h-12 rounded-full bg-white text-[#C8102E] flex items-center justify-center mx-auto mb-3 shadow-md">
+          <div className="p-6 sm:p-7 rounded-[14px] bg-[#3C1518]/90 border border-white/30 max-w-md mx-auto animate-in fade-in duration-300 shadow-md text-white">
+            <div className="w-12 h-12 rounded-full bg-white text-[#C8102E] flex items-center justify-center mx-auto mb-3 shadow-xs">
               <Check className="w-6 h-6 stroke-[3]" />
             </div>
             <h3 className="font-display font-bold text-lg sm:text-xl text-white mb-1.5">
@@ -158,13 +158,13 @@ export const HomeCommunity: React.FC = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder={isRTL ? 'أدخل بريدك الإلكتروني' : 'Enter your email address'}
                 aria-label={isRTL ? 'البريد الإلكتروني لنشرة ماجيك' : 'Email address for MAGIC harvest dispatch'}
-                className="w-full h-12 sm:h-14 ps-12 pe-4 rounded-md bg-white text-[#3C1518] placeholder-[#3C1518]/50 text-sm font-normal focus:outline-hidden focus:ring-2 focus:ring-white border border-white shadow-md text-start"
+                className="w-full h-12 ps-12 pe-4 rounded-[10px] bg-white text-[#3C1518] placeholder-[#3C1518]/50 text-sm font-normal focus:outline-hidden focus:ring-2 focus:ring-white border border-white/60 text-start"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full sm:w-auto h-12 sm:h-14 px-8 bg-[#3C1518] hover:bg-[#250D0F] text-[#FDF6EC] text-sm font-bold uppercase tracking-wider rounded-md shadow-md transition-all shrink-0 cursor-pointer active:scale-[0.98]"
+              className="magic-btn-primary w-full sm:w-auto min-h-[48px] h-12 px-8 bg-[#3C1518] hover:bg-[#250D0F] text-[#FDF6EC] text-sm font-semibold uppercase tracking-wider rounded-full transition-all shrink-0 cursor-pointer active:scale-[0.985]"
             >
               {isRTL ? 'اشترك الآن' : 'SUBSCRIBE'}
             </button>
