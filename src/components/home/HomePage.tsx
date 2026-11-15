@@ -80,9 +80,10 @@ export const HomePage: React.FC<HomePageProps> = ({
         />
         <HomeBenefitStrip />
 
-        {/* 02. KITCHEN FAVOURITES (Hero product showcase with large packaging & immediate add-to-cart) */}
+        {/* 02. EDITORIAL PRODUCT DISCOVERY (Diaspora Co. inspired showcase + Most Popular categories) */}
         <HomeFavourites
-          onNavigateShop={() => onNavigateShop()}
+          onNavigateShop={onNavigateShop}
+          onNavigateBundles={onNavigateBundles}
           onSelectProduct={onSelectProduct}
         />
 
